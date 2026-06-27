@@ -1,20 +1,22 @@
+server:
+  port: "${PORT:8080}"
+
 spring:
   application:
     name: saap-mvp
   
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:saap_db}}
-    username: ${DATABASE_USERNAME:postgres}
-    password: ${DATABASE_PASSWORD:postgres}
+    url: "${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:saap_db}}"
+    username: "${DATABASE_USERNAME:postgres}"
+    password: "${DATABASE_PASSWORD:postgres}"
     driver-class-name: org.postgresql.Driver
     
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: ${SPRING_JPA_SHOW_SQL:false}
+    show-sql: "${SPRING_JPA_SHOW_SQL:false}"
     properties:
-      hibernate:
-        format_sql: false
+      "[hibernate.format_sql]": "${HIBERNATE_FORMAT_SQL:true}"
         
   flyway:
-    enabled: ${FLYWAY_ENABLED:true}
+    enabled: "${FLYWAY_ENABLED:true}"

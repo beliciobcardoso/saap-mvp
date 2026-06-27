@@ -1,105 +1,158 @@
-# SAAP MVP
+# SAAP MVP - Sistema de Agendamento e Atendimento de Pacientes
 
-Este é o produto mínimo viável (MVP) do sistema **SAAP**, desenvolvido utilizando o ecossistema Spring Boot com Java 21.
+Este é o Produto Mínimo Viável (MVP) do **SAAP** (Sistema de Agendamento e Atendimento de Pacientes), uma plataforma desenvolvida utilizando **Java 21** e **Spring Boot 4.1.x** seguindo os princípios de **Clean Architecture / Hexagonal Architecture**.
 
-## 🚀 Tecnologias Utilizadas
-
-O projeto foi construído utilizando as seguintes tecnologias e dependências principais:
-
-- **Java 21**
-- **Spring Boot 4.1.x**
-- **Spring Web MVC** — Criação de APIs REST e endpoints web.
-- **Spring Security** — Mecanismos de autenticação e autorização robustos.
-- **Spring Data JPA** — Integração simplificada com o banco de dados via Hibernate.
-- **PostgreSQL** — Banco de dados relacional (Driver runtime).
-- **Flyway Migration** — Controle de versão e migração de esquemas de banco de dados.
-- **Spring Boot Actuator** — Monitoramento, métricas e auditoria da integridade da aplicação.
-- **Spring Boot DevTools** — Reload rápido e facilidades para ambiente de desenvolvimento.
-- **Hibernate Validation** — Validação declarativa de beans/DTOs (`jakarta.validation`).
-- **Lombok** — Redução de código boilerplate (getters, setters, construtores, etc.).
-- **Maven** — Gerenciador de dependências e build.
+O objetivo do sistema é suportar as operações principais de uma clínica de saúde, incluindo o gerenciamento de usuários, cadastro e controle de pacientes (com validação de CPF), cadastro de profissionais de saúde, catálogo de serviços médicos e controle de acessos (RBAC).
 
 ---
 
-## 🛠️ Pré-requisitos
+## ⚙️ Arquitetura do Projeto (Hexagonal / Clean)
 
-Para executar e desenvolver este projeto localmente, você precisará de:
+A estrutura de código é dividida rigorosamente para isolar as regras de negócio de detalhes de infraestrutura (como banco de dados e frameworks web):
 
-- **JDK 21** instalado e configurado nas variáveis de ambiente.
-- **Maven 3.9+** (ou utilizar o Maven Wrapper `./mvnw` incluso no projeto).
-- **PostgreSQL** instalado e em execução local ou via Docker.
+```text
+src/main/java/br/com/belloinfo/saap_mvp/
+├── domain/                         # Camada de Domínio Puro (Sem acoplamento com Spring)
+│   ├── model/                      # Entidades de Domínio (User, Patient, Professional, Service)
+│   ├── repository/                 # Portas de Saída (Interfaces de Repositório)
+│   └── valueobject/                # Value Objects e Enums (UserRole, ProfessionalRole)
+│
+├── application/                    # Camada de Aplicação (Regras de Caso de Uso)
+│   └── usecase/                    # Casos de Uso específicos de CRUD das Entidades Core
+│
+├── infrastructure/                 # Camada de Infraestrutura e Adaptadores (Spring/JPA/Web)
+│   ├── database/                   # Inicializadores e Listeners (Auto-criação do Banco de Dados)
+│   ├── persistence/                # Implementação JPA, Entidades Físicas e Repositórios JpaRepository
+│   ├── security/                   # Configuração de Autenticação e Spring Security
+│   └── web/                        # Adaptadores de Entrada (REST Controllers, DTOs, Exception Handler)
+│       ├── config/                 # Configuração de Rotas Web (Prefixo Global /api/v1)
+│       ├── controller/             # Controladores REST das Entidades Core
+│       ├── dto/                    # Data Transfer Objects imutáveis (Records) com Validações
+│       ├── exception/              # Manipulador Global de Exceções (GlobalExceptionHandler)
+│       ├── mapper/                 # Mapeadores do MapStruct (WebMapper)
+│       └── validation/             # Anotações de Validação customizadas (ex: @CPF para pacientes)
+```
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Java 21** (Uso de Records, Pattern Matching, Local Variable Type Inference)
+- **Spring Boot 4.1.x** (Spring Web MVC, Spring Security, Spring Data JPA, Spring Actuator, Spring DevTools)
+- **PostgreSQL** & **Flyway Migration** (Versionamento de banco de dados e migrações SQL)
+- **MapStruct 1.5.5** (Mapeamento performático compile-time entre DTOs e entidades)
+- **Lombok** (Geração automática de construtores/boilerplate de domínio)
+- **Jakarta Validation** (Validações automáticas de payloads de entrada)
+- **Testcontainers** & **JUnit 5** (Testes de integração rodando banco PostgreSQL real em container)
 
 ---
 
 ## ⚙️ Configuração Local
 
-1. Instale as dependências e compile o projeto para garantir que tudo está correto:
+### Pré-requisitos
+- **JDK 21** instalado e configurado.
+- **Docker** em execução (para rodar os testes de integração com Testcontainers).
+- **PostgreSQL** instalado (se for rodar localmente sem Docker).
+
+### Passo a Passo
+
+1. Compile o projeto e baixe as dependências:
    ```bash
    ./mvnw clean compile
    ```
 
-2. Crie o banco de dados no PostgreSQL (por exemplo, `saap_db`).
-
-3. Configure a conexão com o banco de dados. Crie um arquivo `src/main/resources/application-local.yaml` (que já está configurado no `.gitignore` para não expor suas credenciais) com a seguinte estrutura básica:
-   ```yaml
-   spring:
-     datasource:
-       url: jdbc:postgresql://localhost:5432/saap_db
-       username: seu_usuario
-       password: sua_senha
-       driver-class-name: org.postgresql.Driver
-     jpa:
-       hibernate:
-         ddl-auto: validate
-       show-sql: true
-       properties:
-         hibernate:
-           format_sql: true
-     flyway:
-       enabled: true
+2. Crie o arquivo `.env` de configuração na raiz do projeto baseado no modelo:
+   ```bash
+   cp .env.example .env
    ```
+
+3. Abra o arquivo `.env` e configure as credenciais do seu banco de dados local:
+   - `DB_HOST`, `DB_PORT`, `DB_NAME`, `DATABASE_USERNAME`, `DATABASE_PASSWORD`.
+   - `PORT`: Define a porta que o servidor Tomcat subirá (padrão: `8080`).
+
+   > [!TIP]
+   > **Criação Automática do Banco:** Você não precisa rodar comandos SQL no PostgreSQL para criar o banco de dados. Na primeira inicialização, um Listener do Spring (`DatabaseInitializerListener`) criará automaticamente o banco de dados especificado em `DB_NAME` caso ele não exista no servidor.
 
 ---
 
-## 🏃 Como Executar
+## 🏃 Como Executar a Aplicação
 
-Para iniciar a aplicação em modo de desenvolvimento com hot-reload ativo (via DevTools):
+Inicie a aplicação localmente:
+```bash
+./mvnw spring-boot:run
+```
+O servidor estará em execução em `http://localhost:<PORT>` (geralmente `http://localhost:8080`).
+
+---
+
+## 🧪 Como Executar os Testes
+
+O projeto utiliza **Testcontainers** para subir uma instância real do PostgreSQL em Docker durante os testes de integração. Certifique-se de que o Docker está rodando localmente e execute:
 
 ```bash
-./mvnw spring-boot:run -Dspring-boot.run.profiles=local
+./mvnw clean test
 ```
-
-A aplicação estará disponível em `http://localhost:8080` (ou na porta configurada).
 
 ---
 
 ## 📦 Empacotamento (Build)
 
-Como o projeto está configurado para empacotamento em formato **WAR**, execute o comando abaixo para gerar o artefato pronto para deploy:
+Para gerar o artefato empacotado em formato **WAR** (pronto para deploy em servidores como Tomcat externo):
 
 ```bash
 ./mvnw clean package
 ```
-
-O arquivo `.war` resultante será gerado dentro do diretório `target/`.
+O arquivo `.war` resultante será gerado na pasta `target/`.
 
 ---
 
-## 📁 Estrutura de Pastas Principal
+## 🌐 Endpoints da API REST (Versão 1.0)
 
-```text
-saap-mvp/
-├── .mvn/                     # Configurações do Maven Wrapper
-├── src/
-│   ├── main/
-│   │   ├── java/             # Código-fonte Java da aplicação
-│   │   │   └── br/com/belloinfo/saap_mvp/
-│   │   │       ├── SaapMvpApplication.java   # Classe principal (Bootstrap)
-│   │   │       └── ServletInitializer.java   # Configuração para deploy em Servidores Web externos (WAR)
-│   │   └── resources/
-│   │       ├── db/migration/ # Scripts SQL de migração do Flyway
-│   │       └── application.yaml  # Configurações globais da aplicação
-│   └── test/                 # Testes unitários e de integração
-├── pom.xml                   # Definição de dependências e plugins do Maven
-└── .gitignore                # Arquivos ignorados no controle de versão
+Todas as rotas REST são expostas automaticamente com o prefixo global `/api/v1`.
+
+### 👥 Usuários (`/api/v1/users`)
+- `POST /api/v1/users` - Cadastra um novo usuário.
+- `GET /api/v1/users/{id}` - Busca usuário por UUID.
+- `GET /api/v1/users` - Lista todos os usuários ativos.
+- `PUT /api/v1/users/{id}` - Atualiza dados do usuário.
+- `DELETE /api/v1/users/{id}` - Desativação lógica (soft delete).
+
+### 🏥 Pacientes (`/api/v1/patients`)
+- `POST /api/v1/patients` - Cadastra um paciente (valida CPF e formato de e-mail).
+- `GET /api/v1/patients/{id}` - Busca paciente por UUID.
+- `GET /api/v1/patients` - Lista todos os pacientes ativos.
+- `PUT /api/v1/patients/{id}` - Atualiza dados cadastrais.
+- `DELETE /api/v1/patients/{id}` - Desativação lógica (soft delete).
+
+### 🩺 Profissionais (`/api/v1/professionals`)
+- `POST /api/v1/professionals` - Cadastra profissional de saúde (CRM, especialidade).
+- `GET /api/v1/professionals/{id}` - Busca profissional por UUID.
+- `GET /api/v1/professionals` - Lista profissionais ativos.
+- `PUT /api/v1/professionals/{id}` - Atualiza dados cadastrais.
+- `DELETE /api/v1/professionals/{id}` - Desativação lógica (soft delete).
+
+### 💼 Serviços (`/api/v1/services`)
+- `POST /api/v1/services` - Cadastra um novo tipo de serviço/procedimento.
+- `GET /api/v1/services/{id}` - Busca serviço por UUID.
+- `GET /api/v1/services` - Lista serviços ativos.
+- `PUT /api/v1/services/{id}` - Atualiza dados do serviço.
+- `DELETE /api/v1/services/{id}` - Desativação lógica (soft delete).
+
+---
+
+## 🛡️ Tratamento de Erros e Resposta
+
+O manipulador global de exceções captura falhas e retorna payloads JSON padronizados, por exemplo:
+
+```json
+{
+  "timestamp": "2026-06-27T14:00:00.123Z",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Validation failed",
+  "path": "/api/v1/patients",
+  "fields": {
+    "cpf": "O CPF informado é inválido"
+  }
+}
 ```
