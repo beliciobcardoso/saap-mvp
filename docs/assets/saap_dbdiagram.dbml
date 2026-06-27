@@ -1,0 +1,301 @@
+// ============================================================
+// SAAP — Sistema de Agendamento de Atendimentos Profissionais
+// Diagrama de Classes Conceituais (DBML para dbdiagram.io)
+// ============================================================
+
+// ─────────────────────────────────────────
+// ENUMERAÇÕES DE DOMÍNIO
+// ─────────────────────────────────────────
+
+Enum StatusAgendamento {
+  PENDENTE
+  CONFIRMADO
+  REALIZADO
+  CANCELADO
+  NO_SHOW
+}
+
+Enum FormaPagamento {
+  PARTICULAR
+  CONVENIO
+}
+
+Enum PapelProfissional {
+  MEDICO
+  ENFERMEIRO
+  ASSISTENTE
+  ADMINISTRADOR
+  RECEPCIONISTA
+}
+
+Enum DiaSemana {
+  DOMINGO
+  SEGUNDA
+  TERCA
+  QUARTA
+  QUINTA
+  SEXTA
+  SABADO
+}
+
+Enum TipoNotificacao {
+  CONFIRMACAO_AGENDAMENTO
+  LEMBRETE_AGENDAMENTO
+  AVISO_CANCELAMENTO
+  AVISO_REMARCACAO
+  SOLICITACAO_PRESENCA
+  VAGA_FILA_ESPERA
+}
+
+Enum CanalNotificacao {
+  EMAIL
+  WHATSAPP
+  SMS
+}
+
+Enum StatusNotificacao {
+  PENDENTE
+  ENVIADA
+  ENTREGUE
+  LIDA
+  FALHA
+}
+
+// ─────────────────────────────────────────
+// AUTENTICAÇÃO / ACESSO
+// ─────────────────────────────────────────
+
+Table Usuario {
+  id UUID [pk, note: 'Identificador único']
+  email VARCHAR [unique, not null, note: 'E-mail de login']
+  senha_hash VARCHAR [not null, note: 'Hash BCrypt da senha']
+  ativo BOOLEAN [default: true, note: 'Conta ativa/inativa']
+  profissional_id UUID [unique, not null, note: 'Vínculo obrigatório com Profissional (1:1)']
+  paciente_id UUID [unique, note: 'Vínculo opcional — permite que um profissional também seja paciente']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Credencial de acesso ao sistema. Todo usuário é obrigatoriamente um profissional (Admin, Recepcionista, Médico, etc.). Pacientes NÃO possuem login — interações como confirmação de presença ocorrem via notificações externas (e-mail/WhatsApp), contemplando menores, idosos e dependentes.'
+}
+
+// ─────────────────────────────────────────
+// ENTIDADES CORE DO DOMÍNIO
+// ─────────────────────────────────────────
+
+Table Paciente {
+  id UUID [pk]
+  nome VARCHAR [not null]
+  email VARCHAR [note: 'Para notificações por e-mail']
+  telefone VARCHAR [note: 'Para notificações por WhatsApp/SMS']
+  contato VARCHAR [not null, note: 'Contato principal']
+  preferencia_notificacao CanalNotificacao [not null, default: 'EMAIL']
+  convenio_id UUID [note: 'Convênio do paciente (null = particular)']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Pessoa que solicita atendimentos. Não possui login no sistema — cadastro gerenciado pela recepção/administração.'
+}
+
+Table Profissional {
+  id UUID [pk]
+  nome VARCHAR [not null]
+  registro_profissional VARCHAR [unique, note: 'CRM, COREN, etc. Opcional para assistentes']
+  especialidade VARCHAR [note: 'Ex: Cardiologia, Fisioterapia']
+  papel PapelProfissional [not null, default: 'MEDICO']
+  ativo BOOLEAN [default: true, note: 'Desativar sem excluir']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Ator que executa atendimentos e registra evoluções clínicas. Flag ativo permite desativação sem exclusão, preservando integridade referencial.'
+}
+
+Table Servico {
+  id UUID [pk]
+  descricao VARCHAR [not null, note: 'Ex: Consulta, Exame, Retorno']
+  duracao_minutos INT [not null]
+  preco DECIMAL [not null, note: 'Valor base (particular)']
+  ativo BOOLEAN [default: true, note: 'Desativar sem excluir']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Define o que é oferecido pela clínica. O preço é o valor particular; convênios possuem tabela própria (ConvenioServico).'
+}
+
+// ─────────────────────────────────────────
+// CLASSE CENTRAL — AGENDAMENTO
+// ─────────────────────────────────────────
+
+Table Agendamento {
+  id UUID [pk]
+  data_hora TIMESTAMP [not null, note: 'Data e horário do atendimento']
+  status StatusAgendamento [not null, default: 'PENDENTE']
+  forma_pagamento FormaPagamento [not null, default: 'PARTICULAR']
+  paciente_id UUID [not null]
+  profissional_id UUID [not null]
+  servico_id UUID [not null]
+  convenio_id UUID [note: 'Convênio utilizado (null = particular)']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Classe central que relaciona Paciente, Profissional e Serviço. Encapsula lógica de transição de estados e registra forma de pagamento por atendimento.'
+}
+
+// ─────────────────────────────────────────
+// GRADE DE HORÁRIOS
+// ─────────────────────────────────────────
+
+Table GradeHorario {
+  id UUID [pk]
+  profissional_id UUID [not null]
+  dia_semana DiaSemana [not null]
+  hora_inicio TIME [not null]
+  hora_fim TIME [not null]
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Intervalos de disponibilidade semanal de cada profissional.'
+}
+
+// ─────────────────────────────────────────
+// PRONTUÁRIO / HISTÓRICO CLÍNICO
+// ─────────────────────────────────────────
+
+Table Prontuario {
+  id UUID [pk]
+  paciente_id UUID [unique, not null, note: '1:1 com Paciente']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Prontuário eletrônico do paciente. Relação 1:1 — cada paciente possui um prontuário único.'
+}
+
+Table EntradaProntuario {
+  id UUID [pk]
+  prontuario_id UUID [not null]
+  agendamento_id UUID [unique, not null, note: 'Cada entrada vinculada a um único atendimento']
+  observacoes TEXT [not null, note: 'Notas clínicas do profissional']
+  diagnostico TEXT
+  prescricao TEXT
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Registro individual de atendimento dentro do prontuário, vinculado a um agendamento específico.'
+}
+
+// ─────────────────────────────────────────
+// CONVÊNIOS E PLANOS
+// ─────────────────────────────────────────
+
+Table Convenio {
+  id UUID [pk]
+  nome VARCHAR [not null, note: 'Ex: Unimed, SulAmérica']
+  detalhes_cobertura TEXT [note: 'Detalhes de cobertura do plano']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Convênio/plano de saúde com regras de cobertura e tabela de preços diferenciados por serviço.'
+}
+
+Table ConvenioServico {
+  id UUID [pk]
+  convenio_id UUID [not null]
+  servico_id UUID [not null]
+  preco DECIMAL [not null, note: 'Preço cobrado pelo convênio (pode diferir do particular)']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  indexes {
+    (convenio_id, servico_id) [unique, note: 'Um preço por combinação convênio+serviço']
+  }
+
+  Note: 'Tabela de preços diferenciados por convênio e serviço.'
+}
+
+// ─────────────────────────────────────────
+// RELAÇÃO N:N — PROFISSIONAL ↔ SERVIÇO
+// ─────────────────────────────────────────
+
+Table ProfissionalServico {
+  id UUID [pk]
+  profissional_id UUID [not null]
+  servico_id UUID [not null]
+
+  Note: 'Tabela associativa N:N. Um profissional pode oferecer múltiplos serviços e vice-versa.'
+}
+
+// ─────────────────────────────────────────
+// NOTIFICAÇÕES E LEMBRETES AUTOMÁTICOS
+// ─────────────────────────────────────────
+
+Table Notificacao {
+  id UUID [pk]
+  tipo TipoNotificacao [not null, note: 'Tipo da notificação']
+  canal CanalNotificacao [not null, note: 'Canal utilizado (e-mail, WhatsApp, SMS)']
+  status StatusNotificacao [not null, default: 'PENDENTE']
+  agendado_para TIMESTAMP [note: 'Para lembretes agendados (ex: 24h antes)']
+  enviado_em TIMESTAMP [note: 'Quando foi efetivamente enviada']
+  lido_em TIMESTAMP [note: 'Quando foi lida (se aplicável)']
+  conteudo TEXT [not null, note: 'Corpo da mensagem']
+  paciente_id UUID [not null]
+  agendamento_id UUID [note: 'Null para notificações não vinculadas a agendamento']
+  criado_em TIMESTAMP [default: `now()`, not null]
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Registro de comunicações enviadas ao paciente. Suporta confirmações, lembretes, cancelamentos e avisos de fila de espera com rastreamento completo de entrega.'
+}
+
+// ─────────────────────────────────────────
+// FILA DE ESPERA INTELIGENTE
+// ─────────────────────────────────────────
+
+Table FilaEspera {
+  id UUID [pk]
+  paciente_id UUID [not null]
+  servico_id UUID [not null]
+  profissional_id UUID [not null]
+  ativo BOOLEAN [default: true, note: 'Entrada ativa na fila']
+  criado_em TIMESTAMP [default: `now()`, not null, note: 'Usado para ordenação FIFO']
+  atualizado_em TIMESTAMP [not null]
+
+  Note: 'Entrada na fila de espera. Vincula paciente a serviço e profissional desejados com ordenação FIFO para alocação automática em desistências.'
+}
+
+// ============================================================
+// RELACIONAMENTOS (References)
+// ============================================================
+
+// Usuario ↔ Perfis de domínio
+Ref: Usuario.profissional_id - Profissional.id
+Ref: Usuario.paciente_id - Paciente.id
+
+// Paciente → Convênio (opcional)
+Ref: Paciente.convenio_id > Convenio.id
+
+// Agendamento → Entidades core
+Ref: Agendamento.paciente_id > Paciente.id
+Ref: Agendamento.profissional_id > Profissional.id
+Ref: Agendamento.servico_id > Servico.id
+Ref: Agendamento.convenio_id > Convenio.id
+
+// Grade de horários
+Ref: GradeHorario.profissional_id > Profissional.id
+
+// Prontuário
+Ref: Prontuario.paciente_id - Paciente.id
+Ref: EntradaProntuario.prontuario_id > Prontuario.id
+Ref: EntradaProntuario.agendamento_id - Agendamento.id
+
+// Tabelas associativas N:N
+Ref: ProfissionalServico.profissional_id > Profissional.id
+Ref: ProfissionalServico.servico_id > Servico.id
+Ref: ConvenioServico.convenio_id > Convenio.id
+Ref: ConvenioServico.servico_id > Servico.id
+
+// Notificações
+Ref: Notificacao.paciente_id > Paciente.id
+Ref: Notificacao.agendamento_id > Agendamento.id
+
+// Fila de espera
+Ref: FilaEspera.paciente_id > Paciente.id
+Ref: FilaEspera.servico_id > Servico.id
+Ref: FilaEspera.profissional_id > Profissional.id

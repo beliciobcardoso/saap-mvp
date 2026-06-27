@@ -1,0 +1,204 @@
+@startuml SAAP_Diagrama_Sequencia_UC02
+
+' ============================================================
+' SAAP — Sistema de Agendamento de Atendimentos Profissionais
+' Diagrama de Sequência — UC02: Agendar Atendimento
+' ============================================================
+
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam shadowing false
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 12
+
+skinparam sequence {
+  ArrowColor #2C2C2A
+  ArrowFontColor #5F5E5A
+  ArrowFontSize 11
+  LifeLineBorderColor #B4B2A9
+  LifeLineBackgroundColor #F1EFE8
+  ParticipantBorderColor #5F5E5A
+  ParticipantFontSize 12
+  ParticipantFontStyle bold
+  GroupBorderColor #5F5E5A
+  GroupFontSize 11
+  GroupHeaderFontStyle bold
+  DividerFontSize 11
+  DividerFontStyle italic
+}
+
+' ─────────────────────────────────────────
+' PARTICIPANTES (Lifelines)
+' ─────────────────────────────────────────
+
+actor "Paciente /\nRecepcionista" as ATOR #E1F5EE
+
+participant "<<controller>>\nAgendamentoCtrl" as CTRL #E6F1FB
+
+participant "<<service>>\nServicoService" as SVC #FAEEDA
+
+participant "<<entity>>\nSchedule\n(GradeHorario)" as GRADE #EEEDFE
+
+participant "<<entity>>\nAppointment\n(Agendamento)" as AGEND #FAECE7
+
+participant "<<service>>\nNotificacaoService" as NOTIF #FFF3E0
+
+' ─────────────────────────────────────────
+' FLUXO PRINCIPAL
+' ─────────────────────────────────────────
+
+title UC02 — Agendar Atendimento\nFluxo principal + alternativo + notificação assíncrona
+
+== Fase 1: Seleção de profissional e horário ==
+
+ATOR -> CTRL : 1: solicitarAgendamento(servicoId)
+activate ATOR
+activate CTRL
+
+CTRL -> SVC : 2: listarProfissionais(servicoId)
+activate SVC
+
+SVC --> CTRL : 3: listaProfissionais[ ]
+deactivate SVC
+
+CTRL --> ATOR : 4: exibirProfissionaisDisponiveis( )
+
+ATOR -> CTRL : 5: selecionarHorario(profId, dataHora)
+
+== Fase 2: Validação de disponibilidade ==
+
+CTRL -> GRADE : 6: verificarDisponibilidade(profId, dataHora)
+activate GRADE
+
+' ─────────────────────────────────────────
+' FRAGMENTO ALT: Horário disponível vs. Conflito
+' ─────────────────────────────────────────
+
+alt #EAFADE Horário disponível = true
+
+  GRADE --> CTRL : 7: disponivel = true
+
+  CTRL -> GRADE : 8: verificarConflito(pacienteId, dataHora)
+
+  GRADE --> CTRL : 9: conflito = false
+  deactivate GRADE
+
+  == Fase 3: Forma de pagamento ==
+
+  CTRL --> ATOR : 10: solicitarFormaPagamento( )
+
+  ATOR -> CTRL : 11: informarPagamento(paymentMethod, healthPlanId?)
+
+  note right of ATOR
+    **PaymentMethod**: PARTICULAR ou CONVENIO.
+    Se CONVENIO, informa o healthPlanId.
+    Se PARTICULAR, healthPlanId = null.
+  end note
+
+  == Fase 4: Criação do agendamento ==
+
+  CTRL -> AGEND : 12: criar(pacienteId, profId, servicoId,\n    dataHora, paymentMethod, healthPlanId)
+  activate AGEND
+
+  AGEND -> AGEND : 13: setStatus(PENDENTE)
+
+  AGEND --> CTRL : 14: agendamento {id, status: PENDENTE}
+  deactivate AGEND
+
+  CTRL -> GRADE : 15: bloquearHorario(profId, dataHora)
+  activate GRADE
+  deactivate GRADE
+
+  CTRL --> ATOR : 16: confirmaçãoAgendamento(agendamento)
+
+  ' ─────────────────────────────────────────
+  ' FRAGMENTO OPT: Notificação assíncrona
+  ' ─────────────────────────────────────────
+
+  opt #E6F1FB Agendamento criado com sucesso
+
+    CTRL ->> NOTIF : 17: enviar(APPOINTMENT_CONFIRMATION,\n    paciente, agendamento)
+    activate NOTIF
+
+    note right of NOTIF
+      **Assíncrono** — não bloqueia o fluxo.
+      Canal definido por
+      paciente.notificationPreference
+      (EMAIL, WHATSAPP ou SMS).
+    end note
+
+    NOTIF -> NOTIF : 18: criar Notification\n{type: APPOINTMENT_CONFIRMATION,\n status: PENDING}
+
+    NOTIF ->> ATOR : 19: notificação(email | whatsapp | sms)
+    deactivate NOTIF
+
+  end
+
+else #FCEBEB Horário indisponível ou conflito detectado
+
+  GRADE --> CTRL : 7a: disponivel = false | conflito = true
+  deactivate GRADE
+
+  CTRL --> ATOR : 8a: erroConflito("Horário indisponível")
+
+  note over ATOR, CTRL #FCEBEB
+    O ator é redirecionado para
+    selecionar outro horário (passo 5).
+  end note
+
+end
+
+deactivate CTRL
+deactivate ATOR
+
+' ─────────────────────────────────────────
+' NOTAS EXPLICATIVAS
+' ─────────────────────────────────────────
+
+note over CTRL
+  O **AgendamentoCtrl** orquestra todo o
+  fluxo, mantendo a lógica de negócio
+  encapsulada nas entidades de domínio.
+  Alinhado à **Clean Architecture**.
+end note
+
+note over AGEND
+  A transição de estado (PENDENTE →
+  CONFIRMADO → REALIZADO | CANCELADO
+  | NO_SHOW) é **encapsulada** na entidade
+  **Appointment**, conforme o princípio
+  de Encapsulamento de Regras de Negócio.
+end note
+
+note over GRADE
+  A **Schedule** (GradeHorario) é responsável
+  por validar disponibilidade e detectar
+  conflitos, evitando sobreposição de
+  horários — problema central do SAAP.
+end note
+
+note over NOTIF
+  O **NotificacaoService** gerencia o envio
+  de notificações de forma assíncrona,
+  respeitando a preferência de canal do
+  paciente e registrando status de entrega
+  (PENDING → SENT → DELIVERED → READ | FAILED).
+end note
+
+' ─────────────────────────────────────────
+' LEGENDA
+' ─────────────────────────────────────────
+
+legend bottom center
+  |= Tipo de mensagem |= Descrição |
+  | → (seta cheia)     | Chamada síncrona |
+  | ← (seta tracejada) | Retorno |
+  | →> (seta aberta)   | Chamada assíncrona |
+  | **alt**             | Fragmento combinado (if/else) |
+  | **opt**             | Fragmento opcional (condicional) |
+  | Self-call           | Invocação interna da própria entidade |
+endlegend
+
+footer \nSAAP — Modelagem Comportamental | UC02 — Agendar Atendimento | UML 2.5
+
+@enduml

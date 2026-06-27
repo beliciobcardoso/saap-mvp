@@ -1,0 +1,188 @@
+@startuml SAAP_Diagrama_Casos_de_Uso
+
+' ============================================================
+' SAAP — Sistema de Agendamento de Atendimentos Profissionais
+' Diagrama de Casos de Uso (UML 2.5)
+' ============================================================
+
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam shadowing false
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 12
+
+skinparam usecase {
+  BackgroundColor #F8F9FA
+  BorderColor #5F5E5A
+  FontColor #2C2C2A
+  StereotypeFontSize 10
+  StereotypeFontColor #888780
+  ArrowColor #5F5E5A
+}
+
+skinparam actor {
+  FontSize 11
+  FontStyle bold
+}
+
+skinparam rectangle {
+  BackgroundColor #FFFFFF
+  BorderColor #B4B2A9
+  RoundCorner 16
+  FontSize 14
+  FontStyle bold
+  StereotypeFontSize 10
+}
+
+' ─────────────────────────────────────────
+' FRONTEIRA DO SISTEMA
+' ─────────────────────────────────────────
+rectangle "SAAP — Sistema de Agendamento de Atendimentos Profissionais" as system {
+
+  ' ── CASOS DE USO PRINCIPAIS (UC01–UC07) ──
+  usecase "UC01\nManter cadastros" as UC01
+  usecase "UC02\nAgendar atendimento" as UC02
+  usecase "UC03\nConfirmar presença" as UC03
+  usecase "UC04\nRegistrar atendimento" as UC04
+  usecase "UC05\nGerenciar fila de espera" as UC05
+  usecase "UC06\nCancelar / remarcar" as UC06
+  usecase "UC07\nEmitir relatórios" as UC07
+
+  ' ── CASOS DE USO ESTENDIDOS (UC08–UC14) ──
+  usecase "UC08\nConsultar histórico\nde atendimentos" as UC08
+  usecase "UC09\nConsultar agenda" as UC09
+  usecase "UC10\nPreparar atendimento" as UC10
+  usecase "UC11\nGerenciar convênios\ne planos" as UC11
+  usecase "UC12\nGerenciar agenda\ndo profissional" as UC12
+  usecase "UC13\nAutenticar usuário" as UC13
+  usecase "UC14\nEnviar notificação\n(lembrete / confirmação)" as UC14
+}
+
+' ─────────────────────────────────────────
+' ATORES
+' ─────────────────────────────────────────
+
+' Atores primários (lado esquerdo)
+actor "Paciente" as PAC #0F6E56
+actor "Recepcionista" as REC #185FA5
+
+' Atores primários (lado direito)
+actor "Profissional\nde Saúde" as PROF #D85A30
+actor "Assistente" as ASSIST #D4537E
+actor "Administrador" as ADMIN #534AB7
+
+' Ator secundário (sistema)
+actor "<<sistema>>\nSistema\n(automático)" as SYS #888780
+
+' ─────────────────────────────────────────
+' GENERALIZAÇÃO DE ATORES
+' ─────────────────────────────────────────
+
+' O Assistente é uma especialização do Profissional
+' (compartilha acesso à agenda e preparação, mas
+'  não registra atendimento clínico)
+PROF <|-- ASSIST : generalização
+
+' ─────────────────────────────────────────
+' ASSOCIAÇÕES — PACIENTE
+' ─────────────────────────────────────────
+PAC -- UC02 : solicita
+PAC -- UC03 : valida presença
+PAC -- UC06 : altera agendamento
+PAC -- UC08 : consulta seu histórico
+
+' ─────────────────────────────────────────
+' ASSOCIAÇÕES — RECEPCIONISTA
+' ─────────────────────────────────────────
+REC -- UC02 : agenda para paciente
+REC -- UC05 : aloca pacientes
+REC -- UC06 : remarca/cancela
+REC -- UC12 : organiza horários
+
+' ─────────────────────────────────────────
+' ASSOCIAÇÕES — PROFISSIONAL DE SAÚDE
+' ─────────────────────────────────────────
+PROF -- UC04 : registra evolução
+PROF -- UC09 : verifica horários
+
+' ─────────────────────────────────────────
+' ASSOCIAÇÕES — ASSISTENTE
+' (herda UC09 do Profissional via generalização)
+' ─────────────────────────────────────────
+ASSIST -- UC10 : prepara materiais
+
+' ─────────────────────────────────────────
+' ASSOCIAÇÕES — ADMINISTRADOR
+' ─────────────────────────────────────────
+ADMIN -- UC01 : CRUD completo
+ADMIN -- UC07 : gera relatórios
+ADMIN -- UC11 : configura convênios
+
+' ─────────────────────────────────────────
+' ASSOCIAÇÕES — SISTEMA (ator secundário)
+' ─────────────────────────────────────────
+SYS -- UC14 : dispara automaticamente
+
+' ─────────────────────────────────────────
+' RELACIONAMENTOS «include»
+' ─────────────────────────────────────────
+
+' Todo agendamento exige verificação de horário
+UC02 ..> UC09 : <<include>>\nverifica disponibilidade
+
+' Cancelar/remarcar inclui lógica de agendamento
+UC06 ..> UC02 : <<include>>\nao remarcar
+
+' Agendar, confirmar e registrar incluem autenticação
+UC02 ..> UC13 : <<include>>
+UC04 ..> UC13 : <<include>>
+UC01 ..> UC13 : <<include>>
+
+' ─────────────────────────────────────────
+' RELACIONAMENTOS «extend»
+' ─────────────────────────────────────────
+
+' Notificação é disparada opcionalmente
+' após agendar, confirmar ou cancelar
+UC14 ..> UC02 : <<extend>>\nlembrete pós-agendamento
+UC14 ..> UC03 : <<extend>>\nconfirmação de presença
+UC14 ..> UC06 : <<extend>>\naviso de cancelamento
+
+' Fila de espera é acionada quando surge vaga
+UC05 ..> UC06 : <<extend>>\nquando há desistência
+
+' Registrar atendimento pode gerar entrada no prontuário
+UC04 ..> UC08 : <<extend>>\natualiza prontuário
+
+' ─────────────────────────────────────────
+' NOTAS EXPLICATIVAS
+' ─────────────────────────────────────────
+
+note right of UC13
+  Todos os atores humanos
+  passam por autenticação.
+  O <<include>> está explícito
+  apenas nos UCs principais
+  para manter o diagrama legível.
+end note
+
+note left of UC05
+  Quando um agendamento é
+  cancelado (UC06), o sistema
+  verifica a fila de espera e
+  notifica o próximo paciente.
+end note
+
+note right of UC11
+  Convênios definem tabelas
+  de preço diferenciadas por
+  serviço (relação N:N).
+end note
+
+note bottom of ASSIST
+  Herda "Consultar agenda"
+  (UC09) do Profissional
+  via generalização UML.
+end note
+
+@enduml
