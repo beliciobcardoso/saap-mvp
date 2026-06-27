@@ -10,5 +10,6 @@ public interface PatientRepository {
     Patient save(Patient patient);
     Optional<Patient> findById(UUID id);
     Optional<Patient> findByEmail(String email);
+    Optional<Patient> findByCpf(String cpf);
     List<Patient> findAll();
 }

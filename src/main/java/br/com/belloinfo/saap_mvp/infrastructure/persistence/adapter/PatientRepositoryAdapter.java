@@ -38,6 +38,11 @@ public class PatientRepositoryAdapter implements PatientRepository {
     }
 
     @Override
+    public Optional<Patient> findByCpf(String cpf) {
+        return jpaPatientRepository.findByCpf(cpf).map(mapper::toDomain);
+    }
+
+    @Override
     public List<Patient> findAll() {
         return jpaPatientRepository.findAll().stream()
                 .map(mapper::toDomain)
