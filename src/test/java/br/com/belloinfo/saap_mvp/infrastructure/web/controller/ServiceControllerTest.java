@@ -52,8 +52,16 @@ class ServiceControllerTest {
                 deactivateServiceUseCase,
                 mapper
         );
+
+        org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping handlerMapping = 
+                new org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping();
+        handlerMapping.setPathPrefixes(java.util.Map.of(
+                "/api/v1", c -> c.equals(ServiceController.class)
+        ));
+
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
                 .setControllerAdvice(new GlobalExceptionHandler())
+                .setCustomHandlerMapping(() -> handlerMapping)
                 .build();
     }
 
@@ -80,7 +88,7 @@ class ServiceControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/api/services")
+        mockMvc.perform(post("/api/v1/services")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isCreated())
@@ -102,7 +110,7 @@ class ServiceControllerTest {
 
         when(findServiceByIdUseCase.execute(id)).thenReturn(Optional.of(service));
 
-        mockMvc.perform(get("/api/services/" + id))
+        mockMvc.perform(get("/api/v1/services/" + id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(id.toString())))
                 .andExpect(jsonPath("$.name", is("Consulta Geral")));
@@ -113,7 +121,7 @@ class ServiceControllerTest {
         UUID id = UUID.randomUUID();
         when(findServiceByIdUseCase.execute(id)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/api/services/" + id))
+        mockMvc.perform(get("/api/v1/services/" + id))
                 .andExpect(status().isNotFound());
     }
 
@@ -123,7 +131,7 @@ class ServiceControllerTest {
         Service service = Service.builder().id(id).name("Consulta Geral").active(true).build();
         when(listActiveServicesUseCase.execute()).thenReturn(Collections.singletonList(service));
 
-        mockMvc.perform(get("/api/services"))
+        mockMvc.perform(get("/api/v1/services"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", is("Consulta Geral")));
@@ -152,7 +160,7 @@ class ServiceControllerTest {
                 }
                 """;
 
-        mockMvc.perform(put("/api/services/" + id)
+        mockMvc.perform(put("/api/v1/services/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isOk())
@@ -163,7 +171,7 @@ class ServiceControllerTest {
     void shouldDeactivateService() throws Exception {
         UUID id = UUID.randomUUID();
 
-        mockMvc.perform(delete("/api/services/" + id))
+        mockMvc.perform(delete("/api/v1/services/" + id))
                 .andExpect(status().isNoContent());
 
         verify(deactivateServiceUseCase, times(1)).execute(id);

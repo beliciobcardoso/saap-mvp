@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/patients")
+@RequestMapping("/patients")
 @RequiredArgsConstructor
 public class PatientController {
 

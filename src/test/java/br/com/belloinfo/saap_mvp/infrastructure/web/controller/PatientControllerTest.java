@@ -52,8 +52,16 @@ class PatientControllerTest {
                 deactivatePatientUseCase,
                 mapper
         );
+
+        org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping handlerMapping = 
+                new org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping();
+        handlerMapping.setPathPrefixes(java.util.Map.of(
+                "/api/v1", c -> c.equals(PatientController.class)
+        ));
+
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
                 .setControllerAdvice(new GlobalExceptionHandler())
+                .setCustomHandlerMapping(() -> handlerMapping)
                 .build();
     }
 
@@ -84,7 +92,7 @@ class PatientControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/api/patients")
+        mockMvc.perform(post("/api/v1/patients")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isCreated())
@@ -110,7 +118,7 @@ class PatientControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/api/patients")
+        mockMvc.perform(post("/api/v1/patients")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isConflict())
@@ -129,7 +137,7 @@ class PatientControllerTest {
 
         when(findPatientByIdUseCase.execute(id)).thenReturn(Optional.of(patient));
 
-        mockMvc.perform(get("/api/patients/" + id))
+        mockMvc.perform(get("/api/v1/patients/" + id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(id.toString())))
                 .andExpect(jsonPath("$.name", is("John Doe")));
@@ -140,7 +148,7 @@ class PatientControllerTest {
         UUID id = UUID.randomUUID();
         when(findPatientByIdUseCase.execute(id)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/api/patients/" + id))
+        mockMvc.perform(get("/api/v1/patients/" + id))
                 .andExpect(status().isNotFound());
     }
 
@@ -150,7 +158,7 @@ class PatientControllerTest {
         Patient patient = Patient.builder().id(id).name("John Doe").active(true).build();
         when(listActivePatientsUseCase.execute()).thenReturn(Collections.singletonList(patient));
 
-        mockMvc.perform(get("/api/patients"))
+        mockMvc.perform(get("/api/v1/patients"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", is("John Doe")));
@@ -179,7 +187,7 @@ class PatientControllerTest {
                 }
                 """;
 
-        mockMvc.perform(put("/api/patients/" + id)
+        mockMvc.perform(put("/api/v1/patients/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isOk())
@@ -190,7 +198,7 @@ class PatientControllerTest {
     void shouldDeactivatePatient() throws Exception {
         UUID id = UUID.randomUUID();
 
-        mockMvc.perform(delete("/api/patients/" + id))
+        mockMvc.perform(delete("/api/v1/patients/" + id))
                 .andExpect(status().isNoContent());
 
         verify(deactivatePatientUseCase, times(1)).execute(id);

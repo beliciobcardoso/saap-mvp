@@ -52,8 +52,16 @@ class UserControllerTest {
                 deactivateUserUseCase,
                 mapper
         );
+        
+        org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping handlerMapping = 
+                new org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping();
+        handlerMapping.setPathPrefixes(java.util.Map.of(
+                "/api/v1", c -> c.equals(UserController.class)
+        ));
+
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
                 .setControllerAdvice(new GlobalExceptionHandler())
+                .setCustomHandlerMapping(() -> handlerMapping)
                 .build();
     }
 
@@ -77,7 +85,7 @@ class UserControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/api/users")
+        mockMvc.perform(post("/api/v1/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isCreated())
@@ -100,7 +108,7 @@ class UserControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/api/users")
+        mockMvc.perform(post("/api/v1/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isConflict())
@@ -113,7 +121,7 @@ class UserControllerTest {
         User user = User.builder().id(id).email("user@example.com").active(true).build();
         when(findUserByIdUseCase.execute(id)).thenReturn(Optional.of(user));
 
-        mockMvc.perform(get("/api/users/" + id))
+        mockMvc.perform(get("/api/v1/users/" + id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email", is("user@example.com")));
     }
@@ -123,7 +131,7 @@ class UserControllerTest {
         UUID id = UUID.randomUUID();
         when(findUserByIdUseCase.execute(id)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/api/users/" + id))
+        mockMvc.perform(get("/api/v1/users/" + id))
                 .andExpect(status().isNotFound());
     }
 
@@ -133,7 +141,7 @@ class UserControllerTest {
         User user = User.builder().id(id).email("user@example.com").active(true).build();
         when(listActiveUsersUseCase.execute()).thenReturn(Collections.singletonList(user));
 
-        mockMvc.perform(get("/api/users"))
+        mockMvc.perform(get("/api/v1/users"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].email", is("user@example.com")));
@@ -153,7 +161,7 @@ class UserControllerTest {
                 }
                 """;
 
-        mockMvc.perform(put("/api/users/" + id)
+        mockMvc.perform(put("/api/v1/users/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isOk())
@@ -165,7 +173,7 @@ class UserControllerTest {
     void shouldDeactivateUser() throws Exception {
         UUID id = UUID.randomUUID();
 
-        mockMvc.perform(delete("/api/users/" + id))
+        mockMvc.perform(delete("/api/v1/users/" + id))
                 .andExpect(status().isNoContent());
 
         verify(deactivateUserUseCase, times(1)).execute(id);

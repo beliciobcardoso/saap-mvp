@@ -52,8 +52,16 @@ class ProfessionalControllerTest {
                 deactivateProfessionalUseCase,
                 mapper
         );
+
+        org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping handlerMapping = 
+                new org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping();
+        handlerMapping.setPathPrefixes(java.util.Map.of(
+                "/api/v1", c -> c.equals(ProfessionalController.class)
+        ));
+
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
                 .setControllerAdvice(new GlobalExceptionHandler())
+                .setCustomHandlerMapping(() -> handlerMapping)
                 .build();
     }
 
@@ -85,7 +93,7 @@ class ProfessionalControllerTest {
                 }
                 """, userId);
 
-        mockMvc.perform(post("/api/professionals")
+        mockMvc.perform(post("/api/v1/professionals")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isCreated())
@@ -112,7 +120,7 @@ class ProfessionalControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/api/professionals")
+        mockMvc.perform(post("/api/v1/professionals")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isConflict())
@@ -131,7 +139,7 @@ class ProfessionalControllerTest {
 
         when(findProfessionalByIdUseCase.execute(id)).thenReturn(Optional.of(professional));
 
-        mockMvc.perform(get("/api/professionals/" + id))
+        mockMvc.perform(get("/api/v1/professionals/" + id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(id.toString())))
                 .andExpect(jsonPath("$.name", is("Dr. House")));
@@ -142,7 +150,7 @@ class ProfessionalControllerTest {
         UUID id = UUID.randomUUID();
         when(findProfessionalByIdUseCase.execute(id)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/api/professionals/" + id))
+        mockMvc.perform(get("/api/v1/professionals/" + id))
                 .andExpect(status().isNotFound());
     }
 
@@ -152,7 +160,7 @@ class ProfessionalControllerTest {
         Professional professional = Professional.builder().id(id).name("Dr. House").active(true).build();
         when(listActiveProfessionalsUseCase.execute()).thenReturn(Collections.singletonList(professional));
 
-        mockMvc.perform(get("/api/professionals"))
+        mockMvc.perform(get("/api/v1/professionals"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", is("Dr. House")));
@@ -186,7 +194,7 @@ class ProfessionalControllerTest {
                 }
                 """, userId);
 
-        mockMvc.perform(put("/api/professionals/" + id)
+        mockMvc.perform(put("/api/v1/professionals/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isOk())
@@ -197,7 +205,7 @@ class ProfessionalControllerTest {
     void shouldDeactivateProfessional() throws Exception {
         UUID id = UUID.randomUUID();
 
-        mockMvc.perform(delete("/api/professionals/" + id))
+        mockMvc.perform(delete("/api/v1/professionals/" + id))
                 .andExpect(status().isNoContent());
 
         verify(deactivateProfessionalUseCase, times(1)).execute(id);
