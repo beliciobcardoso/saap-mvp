@@ -184,7 +184,7 @@ class AppointmentRepositoryIntegrationTest extends BaseIntegrationTest {
                 .service(service)
                 .dateTime(time) // Mesmo profissional e horário
                 .status(AppointmentStatus.CONFIRMED)
-                .paymentMethod(PaymentMethod.DINHEIRO)
+                .paymentMethod(PaymentMethod.CASH)
                 .priorityLevel(PriorityLevel.P5)
                 .build();
 

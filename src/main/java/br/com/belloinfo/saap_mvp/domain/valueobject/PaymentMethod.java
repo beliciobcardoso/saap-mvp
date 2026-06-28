@@ -1,9 +1,9 @@
 package br.com.belloinfo.saap_mvp.domain.valueobject;
 
 public enum PaymentMethod {
-    DINHEIRO,
-    CARTAO_CREDITO,
-    CARTAO_DEBITO,
+    CASH,
+    CREDIT_CARD,
+    DEBIT_CARD,
     PIX,
-    CONVENIO
+    INSURANCE
 }
