@@ -195,6 +195,79 @@ O processor gera `META-INF/spring-configuration-metadata.json` com os metadados 
 
 ---
 
+## ERR-006 · Colisão de CPF/E-mail de Teste (idx_usuario_email / idx_paciente_cpf)
+
+**Data:** 2026-06-28
+**Severidade:** 🟡 Média — falha de isolamento em testes de integração
+
+### Sintoma
+```
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "idx_usuario_email"
+  Detalhe: Key (email)=(receptionist@saap.com) already exists.
+```
+
+### Causa raiz
+Outras classes de teste de integração pré-existentes utilizavam e-mails (como `"receptionist@saap.com"`, `"doctor@saap.com"`) e CPFs fixos no setup. Ao rodar o build completo concurrentemente ou em sequência sem limpeza total de banco entre as classes de teste, a inserção de dados repetidos quebrava as restrições únicas.
+
+### Solução aplicada
+Ajustadas as strings de CPF e e-mail no setup de `PriorityAttendanceIntegrationTest.java` para valores exclusivos da classe de teste (ex.: `"receptionist_priority@saap.com"`, `"98765432100"`).
+
+### Verificação
+`./mvnw clean test` passou sem colisões.
+
+---
+
+## ERR-007 · Colisão de Nome de Serviço Ativo (idx_servico_name_active)
+
+**Data:** 2026-06-28
+**Severidade:** 🟡 Média — falha de isolamento em testes de integração
+
+### Sintoma
+```
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "idx_servico_name_active"
+  Detalhe: Key (name)=(Consulta Geral) already exists.
+```
+
+### Causa raiz
+O índice único parcial `idx_servico_name_active` proíbe mais de um serviço ativo com o mesmo nome. No setup de múltiplos testes de integração, o nome `"Consulta Geral"` era reutilizado, causando a colisão se um teste anterior deixasse resíduos ativos.
+
+### Solução aplicada
+Renomeado o serviço de teste para `"Consulta Prioridade Legal"` em `PriorityAttendanceIntegrationTest.java`.
+
+### Verificação
+`./mvnw clean test` passou com sucesso.
+
+---
+
+## ERR-008 · NullPointerException no SecurityContextHolder em Testes Unitários
+
+**Data:** 2026-06-28
+**Severidade:** 🟡 Média — quebra de testes de unidade pré-existentes
+
+### Sintoma
+```
+[ERROR]   UserControllerTest.shouldCreateUser:95 Status expected:<201> but was:<500>
+[ERROR]   PatientControllerTest.shouldCreatePatient:102 Status expected:<201> but was:<500>
+```
+A causa era `NullPointerException` interno nos controladores ao invocar `SecurityContextHolder.getContext().getAuthentication().getName()`.
+
+### Causa raiz
+Testes unitários standalone do Spring MockMvc não carregam o mecanismo completo de autenticação e filtros de segurança, o que faz com que `SecurityContextHolder.getContext().getAuthentication()` retorne `null`.
+
+### Solução aplicada
+Criado um método auxiliar privado `getAuthenticatedUserEmail()` em todos os controladores afetados. Ele realiza a verificação null-safe do contexto de segurança e retorna `"anonymous@saap.com"` como fallback seguro se a autenticação for nula:
+```java
+private String getAuthenticatedUserEmail() {
+    var auth = SecurityContextHolder.getContext().getAuthentication();
+    return (auth != null) ? auth.getName() : "anonymous@saap.com";
+}
+```
+
+### Verificação
+Todas as suítes de testes unitários passaram perfeitamente.
+
+---
+
 ## 🔖 Referências rápidas
 
 | Comando | Uso |

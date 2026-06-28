@@ -1,0 +1,184 @@
+### ==============================================================
+### SAAP MVP - Agendamentos e Fila Presencial
+### Base URL: http://localhost:8080/api/v1
+### Rota base: /appointments
+### ==============================================================
+
+@hostname = http://localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+@baseUrl = {{host}}/api/v1
+
+###
+@token = {{login_admin.response.body.token}}
+# @name login_admin
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "john.nobody@email.com",
+    "password": "SenhaForte123!"
+}
+
+###
+
+###
+@receptionistToken = {{login_receptionist.response.body.token}}
+# @name login_receptionist
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "ana.lima@saap.com",
+    "password": "Recepcao123!"
+}
+
+###
+
+###
+@professionalToken = {{login_professional.response.body.token}}
+# @name login_professional
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "dr.carlos@saap.com",
+    "password": "Medico123!"
+}
+
+###
+
+
+### ==============================================================
+### CADASTRO DE SERVIÇO AUXILIAR (ADMIN)
+### ==============================================================
+
+###
+@serviceId = {{create_service.response.body.id}}
+@patientId = d34e24f7-839f-4097-8281-1fc58c8a9d28
+@professionalId = 5134ffb1-6a1e-4d55-8abb-538ce717cfba
+# @name create_service
+# Cria o serviço de teste para podermos agendar
+POST {{baseUrl}}/services HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "Consulta Prioridade http",
+    "description": "Consulta de testes rest client",
+    "durationMinutes": 30,
+    "price": 100.00
+}
+
+
+### ==============================================================
+### OPERAÇÕES DE AGENDAMENTO
+### ==============================================================
+
+###
+@appointmentId = {{book_appointment.response.body.id}}
+# Agendar consulta (ADMIN/RECEPTIONIST/PATIENT)
+# Esperado: 201 Created com dados do agendamento
+# @name book_appointment
+POST {{baseUrl}}/appointments HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "patientId": "{{patientId}}",
+    "professionalId": "{{professionalId}}",
+    "serviceId": "{{serviceId}}",
+    "dateTime": "2026-06-28T16:00:00",
+    "paymentMethod": "PIX",
+    "declaredPriority": "P1"
+}
+
+
+###
+# Buscar agendamento por ID
+# Esperado: 200 OK
+GET {{baseUrl}}/appointments/{{appointmentId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# Listar agendamentos ativos
+# Esperado: 200 OK
+GET {{baseUrl}}/appointments?professionalId={{professionalId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# Confirmar consulta (ADMIN/RECEPTIONIST)
+# Esperado: 200 OK com status mudado para CONFIRMED
+PUT {{baseUrl}}/appointments/{{appointmentId}}/confirm HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+###
+# Realizar check-in presencial com validação documental de prioridade legal (RECEPTIONIST)
+# Esperado: 200 OK com status mudado para ARRIVED e priorityScore calculado
+PUT {{baseUrl}}/appointments/{{appointmentId}}/check-in HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+{
+    "verifiedLevel": "P1",
+    "notes": "Apresentação de carteirinha de PcD com TEA."
+}
+
+###
+# Chamar o próximo paciente da fila presencial (PROFESSIONAL)
+# Esperado: 200 OK com status do agendamento mudado para CALLING e auditoria gravada
+# @name call_next
+POST {{baseUrl}}/appointments/next HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# Iniciar consulta (PROFESSIONAL)
+# Esperado: 200 OK com status mudado para IN_PROGRESS
+PUT {{baseUrl}}/appointments/{{appointmentId}}/start HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# Concluir consulta (PROFESSIONAL)
+# Esperado: 200 OK com status mudado para COMPLETED
+PUT {{baseUrl}}/appointments/{{appointmentId}}/complete HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# Cancelar consulta (ADMIN/RECEPTIONIST/PATIENT)
+# Esperado: 200 OK com status mudado para CANCELLED
+# Nota: Só funciona em estados permitidos (ex: PENDING ou CONFIRMED). Para este teste isolado, crie outro agendamento antes.
+PUT {{baseUrl}}/appointments/d3c4e85e-2dec-43dc-b6e6-7249c713446e/cancel HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+### ==============================================================
+### TESTES DE SEGURANÇA
+### ==============================================================
+
+###
+# Acessar endpoint next sem a role PROFESSIONAL
+# Esperado: 403 Forbidden (ADMIN não tem permissão para acionar a chamada de médicos)
+POST {{baseUrl}}/appointments/next HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# Realizar check-in sem token
+# Esperado: 401 Unauthorized
+PUT {{baseUrl}}/appointments/{{appointmentId}}/check-in HTTP/1.1
+Content-Type: application/json
+
+{
+    "verifiedLevel": "P1",
+    "notes": "Tentativa sem token."
+}

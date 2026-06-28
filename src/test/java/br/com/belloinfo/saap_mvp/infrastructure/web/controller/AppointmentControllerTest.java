@@ -5,6 +5,9 @@ import br.com.belloinfo.saap_mvp.domain.model.Appointment;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
+import br.com.belloinfo.saap_mvp.domain.model.User;
+import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
+import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
 import br.com.belloinfo.saap_mvp.domain.valueobject.PaymentMethod;
 import br.com.belloinfo.saap_mvp.domain.valueobject.PriorityLevel;
@@ -16,11 +19,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.*;
@@ -56,6 +63,14 @@ class AppointmentControllerTest {
     private AcceptWaitlistOfferUseCase acceptWaitlistOfferUseCase;
     @Mock
     private DeclineWaitlistOfferUseCase declineWaitlistOfferUseCase;
+    @Mock
+    private CallNextPatientUseCase callNextPatientUseCase;
+    @Mock
+    private UserRepository userRepository;
+    @Mock
+    private ProfessionalRepository professionalRepository;
+    @Mock
+    private br.com.belloinfo.saap_mvp.application.service.AuditService auditService;
 
     private final WebMapper mapper = org.mapstruct.factory.Mappers.getMapper(WebMapper.class);
 
@@ -73,6 +88,10 @@ class AppointmentControllerTest {
                 actionTokenService,
                 acceptWaitlistOfferUseCase,
                 declineWaitlistOfferUseCase,
+                callNextPatientUseCase,
+                userRepository,
+                professionalRepository,
+                auditService,
                 mapper
         );
 
@@ -189,7 +208,7 @@ class AppointmentControllerTest {
                 .priorityScore(1000L)
                 .build();
 
-        when(checkInAppointmentUseCase.execute(eq(id), eq(PriorityLevel.P1), eq(receptionistId), eq("TEA")))
+        when(checkInAppointmentUseCase.execute(eq(id), eq(PriorityLevel.P1), eq(receptionistId), eq("TEA"), anyString()))
                 .thenReturn(appointment);
 
         String requestJson = String.format("""
@@ -226,5 +245,36 @@ class AppointmentControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(id.toString())));
+    }
+
+    @Test
+    void shouldCallNextPatient() throws Exception {
+        UUID userId = UUID.randomUUID();
+        UUID professionalId = UUID.randomUUID();
+        UUID appointmentId = UUID.randomUUID();
+        String email = "doc@example.com";
+
+        User user = User.builder().id(userId).email(email).build();
+        Professional professional = Professional.builder().id(professionalId).build();
+        Appointment appointment = Appointment.builder()
+                .id(appointmentId)
+                .status(AppointmentStatus.CALLING)
+                .build();
+
+        // Mock SecurityContext
+        Authentication authentication = mock(Authentication.class);
+        when(authentication.getName()).thenReturn(email);
+        SecurityContext securityContext = mock(SecurityContext.class);
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        SecurityContextHolder.setContext(securityContext);
+
+        when(userRepository.findByEmail(email)).thenReturn(Optional.of(user));
+        when(professionalRepository.findByUserId(userId)).thenReturn(Optional.of(professional));
+        when(callNextPatientUseCase.execute(eq(professionalId), eq(userId), anyString())).thenReturn(appointment);
+
+        mockMvc.perform(post("/api/v1/appointments/next"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(appointmentId.toString())))
+                .andExpect(jsonPath("$.status", is("CALLING")));
     }
 }

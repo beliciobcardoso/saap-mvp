@@ -6,12 +6,14 @@ import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.model.User;
 import br.com.belloinfo.saap_mvp.domain.model.WaitlistEntry;
+import br.com.belloinfo.saap_mvp.domain.model.AuditLog;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AppointmentEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.WaitlistEntryEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.PatientEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ProfessionalEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ServiceEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.UserEntity;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AuditLogEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -50,6 +52,15 @@ public interface CoreMapper {
     WaitlistEntry toDomain(WaitlistEntryEntity entity);
     WaitlistEntryEntity toEntity(WaitlistEntry domain);
 
+    // AuditLog Mapping
+    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "appointmentId", source = "appointment.id")
+    AuditLog toDomain(AuditLogEntity entity);
+
+    @Mapping(target = "user", expression = "java(mapUserIdToUserEntity(domain.getUserId()))")
+    @Mapping(target = "appointment", expression = "java(mapAppointmentIdToAppointmentEntity(domain.getAppointmentId()))")
+    AuditLogEntity toEntity(AuditLog domain);
+
     default UserEntity mapUserIdToUserEntity(UUID userId) {
         if (userId == null) {
             return null;
@@ -57,5 +68,14 @@ public interface CoreMapper {
         UserEntity user = new UserEntity();
         user.setId(userId);
         return user;
+    }
+
+    default AppointmentEntity mapAppointmentIdToAppointmentEntity(UUID appointmentId) {
+        if (appointmentId == null) {
+            return null;
+        }
+        AppointmentEntity appointment = new AppointmentEntity();
+        appointment.setId(appointmentId);
+        return appointment;
     }
 }

@@ -5,9 +5,9 @@
 ---
 
 ## 1. Controle do Documento
-* **Status:** Draft / Em Revisão
+* **Status:** Aprovado / Implementado (v1.1.0)
 * **Autor:** Antigravity (AI Coding Assistant)
-* **Data:** 27 de Junho de 2026
+* **Data:** 28 de Junho de 2026
 * **Versão:** 1.1.0
 * **Público-alvo:** Desenvolvedores, Engenheiros de Software e Product Owners
 
@@ -88,7 +88,7 @@ O sistema deve implementar Controle de Acesso Baseado em Papéis (RBAC) no níve
   * Caso aceite, o agendamento é gerado e ele é removido da fila.
   * Caso expire ou recuse, o sistema passa a vaga para o próximo paciente da lista. Este ciclo repete-se até o limite configurado em `waitlistMaxCycles`.
 
-### RF05: Atendimento Prioritário Legal (UC09)
+### RF05: Atendimento Prioritário Legal (UC09) `[Implementado - v1.1.0]`
 * **Descrição:** Gerenciamento da fila de atendimento presencial pós-check-in com base na Lei Federal 10.048/2000.
 * **Regras de Negócio:**
   * **Declaração vs. Validação:** O paciente pode declarar prioridade ao agendar. No entanto, no check-in presencial, a Recepcionista **deve obrigatoriamente validar física ou documentalmente** a condição de prioridade (ex: idade, laudo de TEA, carteira de PcD, comprovante de doação de sangue dentro de 120 dias).
@@ -119,10 +119,10 @@ O sistema deve implementar Controle de Acesso Baseado em Papéis (RBAC) no níve
 
 ## 5. Requisitos Não Funcionais (RNF)
 
-### RNF01: LGPD e Segurança de Dados
+### RNF01: LGPD e Segurança de Dados `[Implementado - v1.1.0]`
 * **Minimização de Dados:** Dados sensíveis de saúde (prontuários, diagnósticos, prescrições) devem ser armazenados de forma isolada (`MedicalRecordEntry`).
 * **Segurança:** Trânsito de dados protegido por TLS/HTTPS. Senhas criptografadas com BCrypt.
-* **Trilha de Auditoria (Audit Trail):** Toda inserção, alteração ou leitura de dados de prontuário e alterações de prioridade de fila devem ser registradas em uma tabela de log de auditoria imutável contendo: `data_hora`, `usuario_id`, `acao`, `recurso_afetado` e `ip_origem`.
+* **Trilha de Auditoria (Audit Trail):** Toda inserção, alteração ou leitura de dados de prontuário e alterações de prioridade de fila devem ser registradas em uma tabela de log de auditoria imutável contendo: `data_hora`, `usuario_id`, `acao`, `recurso_afetado` e `ip_origem`. Além disso, o sistema deve auditar todo cadastro, atualização, desativação (soft delete) e logins dos usuários.
 
 ### RNF02: Concorrência e Performance
 * **Tempo de Resposta:** Endpoints de leitura devem responder em menos de 100ms (p95) e de gravação em menos de 300ms.

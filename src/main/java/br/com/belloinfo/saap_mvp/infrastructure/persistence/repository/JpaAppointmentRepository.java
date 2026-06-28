@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntity, UUID> {
@@ -27,6 +28,13 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
     );
 
     List<AppointmentEntity> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(
+            AppointmentStatus status,
+            LocalDateTime start,
+            LocalDateTime end
+    );
+
+    Optional<AppointmentEntity> findFirstByProfessionalIdAndStatusAndDateTimeBetweenOrderByPriorityScoreAsc(
+            UUID professionalId,
             AppointmentStatus status,
             LocalDateTime start,
             LocalDateTime end

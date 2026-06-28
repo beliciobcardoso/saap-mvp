@@ -2,14 +2,20 @@ package br.com.belloinfo.saap_mvp.infrastructure.web.controller;
 
 import br.com.belloinfo.saap_mvp.application.usecase.*;
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
+import br.com.belloinfo.saap_mvp.domain.model.User;
+import br.com.belloinfo.saap_mvp.domain.model.Professional;
+import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
+import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.*;
 import br.com.belloinfo.saap_mvp.infrastructure.web.mapper.WebMapper;
 import jakarta.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -33,11 +39,22 @@ public class AppointmentController {
     private final br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
     private final AcceptWaitlistOfferUseCase acceptWaitlistOfferUseCase;
     private final DeclineWaitlistOfferUseCase declineWaitlistOfferUseCase;
+    private final CallNextPatientUseCase callNextPatientUseCase;
+    private final UserRepository userRepository;
+    private final ProfessionalRepository professionalRepository;
+    private final br.com.belloinfo.saap_mvp.application.service.AuditService auditService;
     private final WebMapper mapper;
+
+    private void logAudit(String action, UUID resourceId, HttpServletRequest httpRequest) {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated() && !"anonymousUser".equals(auth.getName())) {
+            auditService.log(action, resourceId, "APPOINTMENT", auth.getName(), httpRequest.getRemoteAddr());
+        }
+    }
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PATIENT')")
-    public ResponseEntity<AppointmentResponseDTO> book(@Valid @RequestBody BookAppointmentRequestDTO request) {
+    public ResponseEntity<AppointmentResponseDTO> book(@Valid @RequestBody BookAppointmentRequestDTO request, HttpServletRequest httpRequest) {
         Appointment appointment = bookAppointmentUseCase.execute(
                 request.patientId(),
                 request.professionalId(),
@@ -46,6 +63,7 @@ public class AppointmentController {
                 request.paymentMethod(),
                 request.declaredPriority()
         );
+        logAudit("CADASTRO_AGENDAMENTO", appointment.getId(), httpRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(appointment));
     }
 
@@ -74,15 +92,17 @@ public class AppointmentController {
 
     @PutMapping("/{id}/confirm")
     @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
-    public ResponseEntity<AppointmentResponseDTO> confirm(@PathVariable UUID id) {
+    public ResponseEntity<AppointmentResponseDTO> confirm(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = confirmAppointmentUseCase.execute(id);
+        logAudit("CONFIRMACAO_AGENDAMENTO", appointment.getId(), httpRequest);
         return ResponseEntity.ok(mapper.toResponse(appointment));
     }
 
     @PutMapping("/{id}/cancel")
     @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PATIENT')")
-    public ResponseEntity<AppointmentResponseDTO> cancel(@PathVariable UUID id) {
+    public ResponseEntity<AppointmentResponseDTO> cancel(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = cancelAppointmentUseCase.execute(id);
+        logAudit("CANCELAMENTO_AGENDAMENTO", appointment.getId(), httpRequest);
         return ResponseEntity.ok(mapper.toResponse(appointment));
     }
 
@@ -90,28 +110,61 @@ public class AppointmentController {
     @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
     public ResponseEntity<AppointmentResponseDTO> checkIn(
             @PathVariable UUID id,
-            @Valid @RequestBody CheckInRequestDTO request
+            @Valid @RequestBody CheckInRequestDTO request,
+            HttpServletRequest httpRequest
     ) {
+        UUID verifiedById = request.verifiedBy();
+        if (verifiedById == null) {
+            var auth = SecurityContextHolder.getContext().getAuthentication();
+            if (auth != null && !"anonymousUser".equals(auth.getName())) {
+                User user = userRepository.findByEmail(auth.getName())
+                        .orElseThrow(() -> new IllegalArgumentException("Usuário logado não encontrado"));
+                verifiedById = user.getId();
+            }
+        }
+
         Appointment appointment = checkInAppointmentUseCase.execute(
                 id,
                 request.verifiedLevel(),
-                request.verifiedBy(),
-                request.notes()
+                verifiedById,
+                request.notes(),
+                httpRequest.getRemoteAddr()
+        );
+        return ResponseEntity.ok(mapper.toResponse(appointment));
+    }
+
+    @PostMapping("/next")
+    @PreAuthorize("hasRole('PROFESSIONAL')")
+    public ResponseEntity<AppointmentResponseDTO> callNext(
+            HttpServletRequest httpRequest
+    ) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Usuário logado não encontrado"));
+        Professional professional = professionalRepository.findByUserId(user.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Profissional não cadastrado para o usuário logado"));
+
+        Appointment appointment = callNextPatientUseCase.execute(
+                professional.getId(),
+                user.getId(),
+                httpRequest.getRemoteAddr()
         );
         return ResponseEntity.ok(mapper.toResponse(appointment));
     }
 
     @PutMapping("/{id}/start")
     @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSIONAL')")
-    public ResponseEntity<AppointmentResponseDTO> start(@PathVariable UUID id) {
+    public ResponseEntity<AppointmentResponseDTO> start(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = startAppointmentUseCase.execute(id);
+        logAudit("INICIO_ATENDIMENTO", appointment.getId(), httpRequest);
         return ResponseEntity.ok(mapper.toResponse(appointment));
     }
 
     @PutMapping("/{id}/complete")
     @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSIONAL')")
-    public ResponseEntity<AppointmentResponseDTO> complete(@PathVariable UUID id) {
+    public ResponseEntity<AppointmentResponseDTO> complete(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = completeAppointmentUseCase.execute(id);
+        logAudit("FINALIZACAO_ATENDIMENTO", appointment.getId(), httpRequest);
         return ResponseEntity.ok(mapper.toResponse(appointment));
     }
 

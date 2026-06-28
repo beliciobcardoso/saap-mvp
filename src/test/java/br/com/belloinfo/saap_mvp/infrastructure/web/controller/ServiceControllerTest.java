@@ -40,6 +40,9 @@ class ServiceControllerTest {
     @Mock
     private DeactivateServiceUseCase deactivateServiceUseCase;
 
+    @Mock
+    private br.com.belloinfo.saap_mvp.application.service.AuditService auditService;
+
     private final WebMapper mapper = org.mapstruct.factory.Mappers.getMapper(WebMapper.class);
 
     @BeforeEach
@@ -50,6 +53,7 @@ class ServiceControllerTest {
                 listActiveServicesUseCase,
                 updateServiceUseCase,
                 deactivateServiceUseCase,
+                auditService,
                 mapper
         );
 

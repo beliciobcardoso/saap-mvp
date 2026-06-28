@@ -1,20 +1,24 @@
 package br.com.belloinfo.saap_mvp.infrastructure.web.controller;
 
+import br.com.belloinfo.saap_mvp.application.service.AuditService;
 import br.com.belloinfo.saap_mvp.application.usecase.*;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.PatientRequestDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.PatientResponseDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.mapper.WebMapper;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/patients")
 @RequiredArgsConstructor
@@ -26,12 +30,22 @@ public class PatientController {
     private final ListActivePatientsUseCase listActivePatientsUseCase;
     private final UpdatePatientUseCase updatePatientUseCase;
     private final DeactivatePatientUseCase deactivatePatientUseCase;
+    private final AuditService auditService;
     private final WebMapper mapper;
 
+    private String getAuthenticatedUserEmail() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        return (auth != null) ? auth.getName() : "anonymous@saap.com";
+    }
+
     @PostMapping
-    public ResponseEntity<PatientResponseDTO> create(@Valid @RequestBody PatientRequestDTO request) {
+    public ResponseEntity<PatientResponseDTO> create(@Valid @RequestBody PatientRequestDTO request, HttpServletRequest httpRequest) {
         Patient patient = mapper.toDomain(request);
         Patient saved = createPatientUseCase.execute(patient);
+
+        String email = getAuthenticatedUserEmail();
+        auditService.log("CADASTRO_PACIENTE", saved.getId(), "PATIENT", email, httpRequest.getRemoteAddr());
+
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(saved));
     }
 
@@ -52,15 +66,27 @@ public class PatientController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PatientResponseDTO> update(@PathVariable UUID id, @Valid @RequestBody PatientRequestDTO request) {
+    public ResponseEntity<PatientResponseDTO> update(
+            @PathVariable UUID id,
+            @Valid @RequestBody PatientRequestDTO request,
+            HttpServletRequest httpRequest
+    ) {
         Patient patient = mapper.toDomain(request);
         Patient updated = updatePatientUseCase.execute(id, patient);
+
+        String email = getAuthenticatedUserEmail();
+        auditService.log("ATUALIZACAO_PACIENTE", updated.getId(), "PATIENT", email, httpRequest.getRemoteAddr());
+
         return ResponseEntity.ok(mapper.toResponse(updated));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deactivate(@PathVariable UUID id) {
+    public ResponseEntity<Void> deactivate(@PathVariable UUID id, HttpServletRequest httpRequest) {
         deactivatePatientUseCase.execute(id);
+
+        String email = getAuthenticatedUserEmail();
+        auditService.log("DESATIVACAO_PACIENTE", id, "PATIENT", email, httpRequest.getRemoteAddr());
+
         return ResponseEntity.noContent().build();
     }
 }

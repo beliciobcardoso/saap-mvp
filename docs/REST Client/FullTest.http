@@ -226,8 +226,76 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "name": "Consulta Clínica Preventiva",
+    "name": "Consulta Clínica Preventiva 2",
     "description": "Consulta médica de rotina para avaliação geral do paciente.",
     "durationMinutes": 30,
     "price": 150.00
 }
+
+### ==============================================================
+### PASSO 8: Testar Agendamento e Fila Prioritária Presencial
+### ==============================================================
+
+###
+@serviceId = {{create_service.response.body.id}}
+@patientId = d34e24f7-839f-4097-8281-1fc58c8a9d28
+@professionalId = 5134ffb1-6a1e-4d55-8abb-538ce717cfba
+@appointmentId = {{book_appointment.response.body.id}}
+# Agendar consulta (ADMIN/RECEPTIONIST/PATIENT)
+# Esperado: 201 Created com dados do agendamento e priorityLevel "P1" declarado
+# @name book_appointment
+POST {{baseUrl}}/appointments HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "patientId": "{{patientId}}",
+    "professionalId": "{{professionalId}}",
+    "serviceId": "{{serviceId}}",
+    "dateTime": "2026-06-28T17:00:00",
+    "paymentMethod": "PIX",
+    "declaredPriority": "P1"
+}
+
+
+###
+# Confirmar consulta (RECEPTIONIST)
+# Esperado: 200 OK com status mudado para CONFIRMED
+PUT {{baseUrl}}/appointments/{{appointmentId}}/confirm HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+###
+# Realizar check-in presencial com validação documental de prioridade legal (RECEPTIONIST)
+# Esperado: 200 OK com status mudado para ARRIVED e priorityScore calculado
+PUT {{baseUrl}}/appointments/{{appointmentId}}/check-in HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+{
+    "verifiedLevel": "P1",
+    "notes": "Apresentação de carteirinha de PcD com TEA."
+}
+
+###
+# Chamar o próximo paciente da fila presencial (PROFESSIONAL)
+# Esperado: 200 OK com status mudado para CALLING e auditoria gravada
+# @name call_next
+POST {{baseUrl}}/appointments/next HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# Iniciar consulta (PROFESSIONAL)
+# Esperado: 200 OK com status mudado para IN_PROGRESS
+PUT {{baseUrl}}/appointments/{{appointmentId}}/start HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# Concluir consulta e finalizar atendimento (PROFESSIONAL)
+# Esperado: 200 OK com status mudado para COMPLETED
+PUT {{baseUrl}}/appointments/{{appointmentId}}/complete HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+

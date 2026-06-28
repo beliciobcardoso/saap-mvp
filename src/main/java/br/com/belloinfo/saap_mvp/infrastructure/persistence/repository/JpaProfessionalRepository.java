@@ -16,4 +16,6 @@ public interface JpaProfessionalRepository extends JpaRepository<ProfessionalEnt
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT p FROM ProfessionalEntity p WHERE p.id = :id")
     Optional<ProfessionalEntity> findByIdWithLock(@Param("id") UUID id);
+
+    Optional<ProfessionalEntity> findByUserId(UUID userId);
 }

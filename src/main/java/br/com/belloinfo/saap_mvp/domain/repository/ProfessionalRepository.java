@@ -11,6 +11,7 @@ public interface ProfessionalRepository {
     Optional<Professional> findById(UUID id);
     Optional<Professional> findByIdWithLock(UUID id);
     Optional<Professional> findByRegistrationNumber(String registrationNumber);
+    Optional<Professional> findByUserId(UUID userId);
     List<Professional> findAllActive();
     List<Professional> findAll();
 }

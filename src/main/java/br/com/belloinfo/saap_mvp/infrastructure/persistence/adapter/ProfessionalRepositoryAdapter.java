@@ -43,6 +43,11 @@ public class ProfessionalRepositoryAdapter implements ProfessionalRepository {
     }
 
     @Override
+    public Optional<Professional> findByUserId(UUID userId) {
+        return jpaProfessionalRepository.findByUserId(userId).map(mapper::toDomain);
+    }
+
+    @Override
     public List<Professional> findAllActive() {
         // As long as JpaProfessionalRepository is annotated with @SQLRestriction("is_active = true")
         // findAll() will automatically return only active ones.

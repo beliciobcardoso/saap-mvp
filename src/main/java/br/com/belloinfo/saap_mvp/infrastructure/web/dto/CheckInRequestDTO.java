@@ -9,7 +9,6 @@ public record CheckInRequestDTO(
     @NotNull(message = "O nível de prioridade validado é obrigatório")
     PriorityLevel verifiedLevel,
 
-    @NotNull(message = "O ID da recepcionista que validou a prioridade é obrigatório")
     UUID verifiedBy,
 
     String notes

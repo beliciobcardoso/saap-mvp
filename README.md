@@ -138,6 +138,17 @@ Todas as rotas REST são expostas automaticamente com o prefixo global `/api/v1`
 - `PUT /api/v1/services/{id}` - Atualiza dados do serviço.
 - `DELETE /api/v1/services/{id}` - Desativação lógica (soft delete).
 
+### 📅 Agendamentos e Fila Presencial (`/api/v1/appointments`)
+- `POST /api/v1/appointments` - Realiza a reserva de um slot (agendamento).
+- `GET /api/v1/appointments/{id}` - Busca agendamento por UUID.
+- `GET /api/v1/appointments` - Lista agendamentos filtrando por profissional, paciente e intervalo de tempo.
+- `PUT /api/v1/appointments/{id}/confirm` - Confirma a consulta (Recepção).
+- `PUT /api/v1/appointments/{id}/cancel` - Cancela a consulta (Recepção/Paciente).
+- `PUT /api/v1/appointments/{id}/check-in` - Realiza check-in presencial com validação documental de prioridade legal (Recepção).
+- `POST /api/v1/appointments/next` - Chama o próximo paciente da fila presencial com base no score de prioridades (Profissional).
+- `PUT /api/v1/appointments/{id}/start` - Inicia o atendimento do agendamento (Profissional).
+- `PUT /api/v1/appointments/{id}/complete` - Conclui a consulta e finaliza o atendimento (Profissional).
+
 ---
 
 ## 🛡️ Tratamento de Erros e Resposta

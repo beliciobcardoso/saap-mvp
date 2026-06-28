@@ -77,4 +77,14 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime start, LocalDateTime end) {
+        return jpaAppointmentRepository.findFirstByProfessionalIdAndStatusAndDateTimeBetweenOrderByPriorityScoreAsc(
+                professionalId,
+                AppointmentStatus.ARRIVED,
+                start,
+                end
+        ).map(mapper::toDomain);
+    }
 }

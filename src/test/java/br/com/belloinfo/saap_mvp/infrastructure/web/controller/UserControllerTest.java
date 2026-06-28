@@ -40,6 +40,9 @@ class UserControllerTest {
     @Mock
     private DeactivateUserUseCase deactivateUserUseCase;
 
+    @Mock
+    private br.com.belloinfo.saap_mvp.application.service.AuditService auditService;
+
     private final WebMapper mapper = org.mapstruct.factory.Mappers.getMapper(WebMapper.class);
 
     @BeforeEach
@@ -50,6 +53,7 @@ class UserControllerTest {
                 listActiveUsersUseCase,
                 updateUserUseCase,
                 deactivateUserUseCase,
+                auditService,
                 mapper
         );
         

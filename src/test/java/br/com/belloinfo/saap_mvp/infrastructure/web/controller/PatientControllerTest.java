@@ -40,6 +40,9 @@ class PatientControllerTest {
     @Mock
     private DeactivatePatientUseCase deactivatePatientUseCase;
 
+    @Mock
+    private br.com.belloinfo.saap_mvp.application.service.AuditService auditService;
+
     private final WebMapper mapper = org.mapstruct.factory.Mappers.getMapper(WebMapper.class);
 
     @BeforeEach
@@ -50,6 +53,7 @@ class PatientControllerTest {
                 listActivePatientsUseCase,
                 updatePatientUseCase,
                 deactivatePatientUseCase,
+                auditService,
                 mapper
         );
 
