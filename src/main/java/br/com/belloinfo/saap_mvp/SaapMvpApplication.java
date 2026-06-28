@@ -1,8 +1,10 @@
 package br.com.belloinfo.saap_mvp;
 
+import br.com.belloinfo.saap_mvp.infrastructure.config.ClinicSettings;
 import br.com.belloinfo.saap_mvp.infrastructure.database.DatabaseInitializerListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,6 +12,7 @@ import java.util.List;
 
 @SpringBootApplication
 @org.springframework.scheduling.annotation.EnableScheduling
+@EnableConfigurationProperties(ClinicSettings.class)
 public class SaapMvpApplication {
 
 	public static void main(String[] args) {

@@ -278,3 +278,41 @@ Todas as suítes de testes unitários passaram perfeitamente.
 | `./mvnw flyway:validate ...` | Confirmar consistência antes de subir servidor |
 | `./mvnw test -Dtest="FlywayMigrationSequenceTest"` | Validar sequência das migrations |
 | `./mvnw test` | Rodar todos os testes antes de commitar |
+
+---
+
+## ERR-009 · Violação de unique constraint em testes de integração com múltiplos métodos
+
+**Data:** 2026-06-28
+**Severidade:** 🟡 Média — testes falham por colisão de dados fixos
+
+### Sintoma
+```
+DataIntegrityViolationException: could not execute statement
+ERROR: duplicate key value violates unique constraint "profissional_registration_number_key"
+Key (registration_number)=(CRM-77777) already exists.
+```
+
+### Causa raiz
+O `@BeforeEach` usa valores fixos (ex: `CRM-77777`, CPF `77788899900`).
+Embora `@Transactional` reverta dados ao fim de cada teste, o TestContext reutiliza o mesmo contexto Spring entre testes do mesmo `@SpringBootTest`, e em alguns cenários a sequência de INSERT/ROLLBACK não é suficiente quando há restrições UNIQUE em colunas não-PK inseridas na mesma transação de teste.
+
+### Primeira resposta (errada)
+Adicionar `@DirtiesContext` por classe — funciona mas recria o contexto inteiro (Testcontainers + Flyway) para cada teste, tornando a suíte extremamente lenta.
+
+### Solução correta
+Gerar valores únicos por execução de `setUp()` usando `UUID.randomUUID()`:
+```java
+String uniqueSuffix = UUID.randomUUID().toString().substring(0, 8);
+String crm = "CRM-NOTIF-" + uniqueSuffix;
+String cpf = String.format("%011d", Math.abs(UUID.randomUUID().getMostSignificantBits() % 100_000_000_000L));
+```
+
+### Verificação
+```bash
+./mvnw test
+# Tests run: 102, Failures: 0, Errors: 0, Skipped: 0 → BUILD SUCCESS
+```
+
+### Lição
+**Nunca use valores fixos em `@BeforeEach` de testes de integração** quando a coluna tem `UNIQUE CONSTRAINT`. Sempre use UUID/random suffix ou sequências auto-incrementais nos identificadores.

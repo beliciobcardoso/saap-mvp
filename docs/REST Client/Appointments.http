@@ -182,3 +182,45 @@ Content-Type: application/json
     "verifiedLevel": "P1",
     "notes": "Tentativa sem token."
 }
+
+
+### ==============================================================
+### RF03 — FOLLOW-UP PROATIVO DE CONFIRMAÇÕES (UC14)
+### ==============================================================
+### Como obter os tokens de teste:
+###   1. Inicie o servidor: ./mvnw spring-boot:run
+###   2. Aguarde o scheduler rodar (ou ajuste saap.scheduler.follow-up.cron para
+###      um intervalo curto, ex: "*/30 * * * * *" para rodar a cada 30s)
+###   3. Consulte os logs do servidor — o ConsoleNotificationService exibirá os
+###      links completos de confirmação e cancelamento com os tokens JWT.
+###   4. Copie o token da query param ?token=... e use nas requisições abaixo.
+### ==============================================================
+
+# PASSO 1: (Opcional) Agendar uma consulta para amanhã com status PENDING
+# O scheduler detectará automaticamente e enviará a notificação.
+# Após o envio, o agendamento estará em status PENDING_RESPONSE.
+
+###
+# PASSO 2: Confirmar via link público (sem autenticação)
+# Esperado: 200 OK e status do agendamento mudado para CONFIRMED
+# Substitua o token pelo valor obtido nos logs do servidor
+@followUpConfirmToken = SUBSTITUA_PELO_TOKEN_DOS_LOGS
+GET {{baseUrl}}/appointments/public/confirm?token={{followUpConfirmToken}} HTTP/1.1
+
+###
+# PASSO 3: Cancelar via link público (sem autenticação)
+# Esperado: 200 OK e status do agendamento mudado para CANCELLED
+# Substitua o token pelo valor obtido nos logs do servidor
+@followUpCancelToken = SUBSTITUA_PELO_TOKEN_DOS_LOGS
+GET {{baseUrl}}/appointments/public/cancel?token={{followUpCancelToken}} HTTP/1.1
+
+###
+# TESTE: Token inválido
+# Esperado: 400 Bad Request
+GET {{baseUrl}}/appointments/public/confirm?token=token-invalido-aqui HTTP/1.1
+
+###
+# TESTE: Token válido mas agendamento em estado inválido (ex: já CONFIRMED)
+# Esperado: 409 Conflict
+# Gere um token para um agendamento já confirmado e use aqui
+GET {{baseUrl}}/appointments/public/confirm?token={{followUpConfirmToken}} HTTP/1.1

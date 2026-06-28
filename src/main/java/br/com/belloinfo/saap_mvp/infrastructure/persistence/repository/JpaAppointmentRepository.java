@@ -39,4 +39,21 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
             LocalDateTime start,
             LocalDateTime end
     );
+
+    @Query("SELECT a FROM AppointmentEntity a WHERE " +
+           "a.status = 'PENDING' AND " +
+           "a.followUpSentAt IS NULL AND " +
+           "a.dateTime >= :windowStart AND " +
+           "a.dateTime <= :windowEnd")
+    List<AppointmentEntity> findEligibleForFollowUp(
+            @Param("windowStart") LocalDateTime windowStart,
+            @Param("windowEnd") LocalDateTime windowEnd
+    );
+
+    @Query("SELECT a FROM AppointmentEntity a WHERE " +
+           "a.status = 'PENDING_RESPONSE' AND " +
+           "a.dateTime <= :deadline")
+    List<AppointmentEntity> findPendingResponsePastDeadline(
+            @Param("deadline") LocalDateTime deadline
+    );
 }

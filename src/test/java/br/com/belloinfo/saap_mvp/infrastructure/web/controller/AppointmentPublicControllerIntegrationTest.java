@@ -64,7 +64,7 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
     private Professional professional;
     private Service service;
     private User user;
-    private Appointment appointment;
+    private Appointment pendingResponseAppointment;
 
     @BeforeEach
     void setUp() {
@@ -74,7 +74,7 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
 
         user = User.builder()
                 .id(UUID.randomUUID())
-                .email("doctor_public@saap.com")
+                .email("doctor_public_v2@saap.com")
                 .password("pwd")
                 .role(UserRole.PROFESSIONAL)
                 .active(true)
@@ -83,10 +83,10 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
 
         professional = Professional.builder()
                 .id(UUID.randomUUID())
-                .name("Dr. Public")
-                .email("public@saap.com")
-                .phone("11988887777")
-                .registrationNumber("CRM-55555")
+                .name("Dr. Public v2")
+                .email("public_v2@saap.com")
+                .phone("11988887722")
+                .registrationNumber("CRM-44444")
                 .role(ProfessionalRole.PROFESSIONAL)
                 .userId(user.getId())
                 .active(true)
@@ -95,57 +95,60 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
 
         patient = Patient.builder()
                 .id(UUID.randomUUID())
-                .name("Public Patient")
-                .cpf("44455566677")
-                .phone("11977776666")
-                .birthDate(LocalDate.of(1995, 3, 15))
+                .name("Public Patient v2")
+                .cpf("55566677788")
+                .phone("11977776622")
+                .birthDate(LocalDate.of(1992, 5, 20))
                 .active(true)
                 .build();
         patientRepository.save(patient);
 
         service = Service.builder()
                 .id(UUID.randomUUID())
-                .name("Consulta Geral")
+                .name("Consulta Follow-up")
                 .durationMinutes(30)
-                .price(BigDecimal.valueOf(150.00))
+                .price(BigDecimal.valueOf(180.00))
                 .active(true)
                 .build();
         serviceRepository.save(service);
 
-        appointment = Appointment.builder()
+        // Appointment in PENDING_RESPONSE (notification already sent, awaiting patient response)
+        pendingResponseAppointment = Appointment.builder()
                 .id(UUID.randomUUID())
                 .patient(patient)
                 .professional(professional)
                 .service(service)
                 .dateTime(LocalDateTime.now().plusDays(1))
-                .status(AppointmentStatus.PENDING)
+                .status(AppointmentStatus.PENDING_RESPONSE)
                 .paymentMethod(PaymentMethod.PIX)
                 .priorityLevel(PriorityLevel.P5)
+                .followUpSent(true)
+                .followUpSentAt(LocalDateTime.now().minusHours(1))
                 .build();
-        appointmentRepository.save(appointment);
+        appointmentRepository.save(pendingResponseAppointment);
     }
 
     @Test
-    void shouldConfirmAppointmentPubliclyWithoutAuth() throws Exception {
-        String token = tokenService.generateToken(appointment.getId(), "confirm");
+    void shouldConfirmPendingResponseAppointmentPubliclyWithoutAuth() throws Exception {
+        String token = tokenService.generateToken(pendingResponseAppointment.getId(), "confirm");
 
         mockMvc.perform(get("/api/v1/appointments/public/confirm")
                         .param("token", token))
                 .andExpect(status().isOk());
 
-        Appointment updated = appointmentRepository.findById(appointment.getId()).orElseThrow();
+        Appointment updated = appointmentRepository.findById(pendingResponseAppointment.getId()).orElseThrow();
         assertEquals(AppointmentStatus.CONFIRMED, updated.getStatus());
     }
 
     @Test
-    void shouldCancelAppointmentPubliclyWithoutAuth() throws Exception {
-        String token = tokenService.generateToken(appointment.getId(), "cancel");
+    void shouldCancelPendingResponseAppointmentPubliclyWithoutAuth() throws Exception {
+        String token = tokenService.generateToken(pendingResponseAppointment.getId(), "cancel");
 
         mockMvc.perform(get("/api/v1/appointments/public/cancel")
                         .param("token", token))
                 .andExpect(status().isOk());
 
-        Appointment updated = appointmentRepository.findById(appointment.getId()).orElseThrow();
+        Appointment updated = appointmentRepository.findById(pendingResponseAppointment.getId()).orElseThrow();
         assertEquals(AppointmentStatus.CANCELLED, updated.getStatus());
     }
 
@@ -154,5 +157,27 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
         mockMvc.perform(get("/api/v1/appointments/public/confirm")
                         .param("token", "invalid-token"))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldReturnConflictWhenAppointmentIsNotInPendingResponseStatus() throws Exception {
+        // Create a CONFIRMED appointment (already past the follow-up flow)
+        Appointment confirmedAppointment = Appointment.builder()
+                .id(UUID.randomUUID())
+                .patient(patient)
+                .professional(professional)
+                .service(service)
+                .dateTime(LocalDateTime.now().plusDays(2))
+                .status(AppointmentStatus.CONFIRMED)
+                .paymentMethod(PaymentMethod.PIX)
+                .priorityLevel(PriorityLevel.P5)
+                .build();
+        appointmentRepository.save(confirmedAppointment);
+
+        String token = tokenService.generateToken(confirmedAppointment.getId(), "confirm");
+
+        mockMvc.perform(get("/api/v1/appointments/public/confirm")
+                        .param("token", token))
+                .andExpect(status().isConflict());
     }
 }

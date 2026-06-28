@@ -16,4 +16,16 @@ public interface AppointmentRepository {
     List<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime);
     List<Appointment> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(AppointmentStatus status, LocalDateTime startDateTime, LocalDateTime endDateTime);
     Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime start, LocalDateTime end);
+
+    /**
+     * Busca agendamentos elegíveis para receber notificação de follow-up:
+     * status = PENDING, followUpSentAt IS NULL e data dentro da janela [windowStart, windowEnd].
+     */
+    List<Appointment> findEligibleForFollowUp(LocalDateTime windowStart, LocalDateTime windowEnd);
+
+    /**
+     * Busca agendamentos em PENDING_RESPONSE cujo horário é <= deadline informado
+     * (ou seja, a consulta está próxima e o paciente ainda não respondeu).
+     */
+    List<Appointment> findPendingResponsePastDeadline(LocalDateTime deadline);
 }

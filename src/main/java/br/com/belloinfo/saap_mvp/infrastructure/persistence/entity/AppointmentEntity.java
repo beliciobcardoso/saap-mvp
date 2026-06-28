@@ -63,6 +63,12 @@ public class AppointmentEntity {
     @Column(name = "follow_up_sent", nullable = false)
     private boolean followUpSent = false;
 
+    @Column(name = "follow_up_sent_at")
+    private LocalDateTime followUpSentAt;
+
+    @Column(name = "follow_up_required", nullable = false)
+    private boolean followUpRequired = false;
+
     @Version
     @Column(nullable = false)
     private Long version;

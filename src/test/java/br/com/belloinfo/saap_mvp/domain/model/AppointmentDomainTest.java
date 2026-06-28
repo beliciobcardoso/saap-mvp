@@ -78,6 +78,46 @@ class AppointmentDomainTest {
     }
 
     @Test
+    void shouldAllowPendingToPendingResponseTransition() {
+        Appointment appointment = Appointment.builder()
+                .status(AppointmentStatus.PENDING)
+                .build();
+
+        appointment.transitionTo(AppointmentStatus.PENDING_RESPONSE);
+        assertEquals(AppointmentStatus.PENDING_RESPONSE, appointment.getStatus());
+    }
+
+    @Test
+    void shouldAllowPendingResponseToConfirmedTransition() {
+        Appointment appointment = Appointment.builder()
+                .status(AppointmentStatus.PENDING_RESPONSE)
+                .build();
+
+        appointment.transitionTo(AppointmentStatus.CONFIRMED);
+        assertEquals(AppointmentStatus.CONFIRMED, appointment.getStatus());
+    }
+
+    @Test
+    void shouldAllowPendingResponseToCancelledTransition() {
+        Appointment appointment = Appointment.builder()
+                .status(AppointmentStatus.PENDING_RESPONSE)
+                .build();
+
+        appointment.transitionTo(AppointmentStatus.CANCELLED);
+        assertEquals(AppointmentStatus.CANCELLED, appointment.getStatus());
+    }
+
+    @Test
+    void shouldThrowExceptionForInvalidTransitionFromPendingResponse() {
+        Appointment appointment = Appointment.builder()
+                .status(AppointmentStatus.PENDING_RESPONSE)
+                .build();
+
+        // PENDING_RESPONSE -> IN_PROGRESS is invalid
+        assertThrows(IllegalStateException.class, () -> appointment.transitionTo(AppointmentStatus.IN_PROGRESS));
+    }
+
+    @Test
     void shouldThrowExceptionForInvalidTransitions() {
         Appointment appointment = Appointment.builder()
                 .status(AppointmentStatus.PENDING)

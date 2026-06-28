@@ -2,6 +2,7 @@ package br.com.belloinfo.saap_mvp.domain.valueobject;
 
 public enum AppointmentStatus {
     PENDING,
+    PENDING_RESPONSE,
     CONFIRMED,
     ARRIVED,
     CALLING,

@@ -37,6 +37,8 @@ public class AppointmentController {
     private final ListAppointmentsUseCase listAppointmentsUseCase;
     private final FindAppointmentByIdUseCase findAppointmentByIdUseCase;
     private final br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
+    private final ConfirmAppointmentByTokenUseCase confirmAppointmentByTokenUseCase;
+    private final CancelAppointmentByTokenUseCase cancelAppointmentByTokenUseCase;
     private final AcceptWaitlistOfferUseCase acceptWaitlistOfferUseCase;
     private final DeclineWaitlistOfferUseCase declineWaitlistOfferUseCase;
     private final CallNextPatientUseCase callNextPatientUseCase;
@@ -170,22 +172,26 @@ public class AppointmentController {
 
     @GetMapping("/public/confirm")
     public ResponseEntity<String> publicConfirm(@RequestParam("token") String token) {
-        br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService.DecodedToken decoded = actionTokenService.validateToken(token);
-        if (!"confirm".equals(decoded.action())) {
-            return ResponseEntity.badRequest().body("Token de ação inválido");
+        try {
+            confirmAppointmentByTokenUseCase.execute(token);
+            return ResponseEntity.ok("Presença confirmada com sucesso!");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(org.springframework.http.HttpStatus.CONFLICT).body(e.getMessage());
         }
-        confirmAppointmentUseCase.execute(decoded.appointmentId());
-        return ResponseEntity.ok("Presença confirmada com sucesso!");
     }
 
     @GetMapping("/public/cancel")
     public ResponseEntity<String> publicCancel(@RequestParam("token") String token) {
-        br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService.DecodedToken decoded = actionTokenService.validateToken(token);
-        if (!"cancel".equals(decoded.action())) {
-            return ResponseEntity.badRequest().body("Token de ação inválido");
+        try {
+            cancelAppointmentByTokenUseCase.execute(token);
+            return ResponseEntity.ok("Consulta cancelada com sucesso!");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(org.springframework.http.HttpStatus.CONFLICT).body(e.getMessage());
         }
-        cancelAppointmentUseCase.execute(decoded.appointmentId());
-        return ResponseEntity.ok("Consulta cancelada com sucesso!");
     }
 
     @GetMapping("/public/waitlist/accept")

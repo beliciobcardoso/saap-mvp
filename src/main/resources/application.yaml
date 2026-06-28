@@ -7,6 +7,19 @@ api:
       secret: "${JWT_SECRET:default_secret}"
       expiration: "${JWT_EXPIRATION:86400000}"
 
+saap:
+  app:
+    base-url: "${APP_BASE_URL:http://localhost:8080}"
+  scheduler:
+    follow-up:
+      cron: "${FOLLOW_UP_CRON:0 0 * * * *}"
+
+clinic:
+  settings:
+    confirmation-window-hours: "${CLINIC_CONFIRMATION_WINDOW_HOURS:48}"
+    follow-up-deadline-hours: "${CLINIC_FOLLOW_UP_DEADLINE_HOURS:24}"
+    auto-cancel-after-no-response: "${CLINIC_AUTO_CANCEL:true}"
+
 spring:
   application:
     name: saap-mvp

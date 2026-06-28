@@ -30,6 +30,8 @@ public class Appointment {
     private String priorityNotes;
     
     private boolean followUpSent;
+    private LocalDateTime followUpSentAt;
+    private boolean followUpRequired;
     
     private Long version;
     private LocalDateTime createdAt;
@@ -42,6 +44,11 @@ public class Appointment {
         boolean valid = false;
         switch (this.status) {
             case PENDING:
+                valid = (newStatus == AppointmentStatus.CONFIRMED
+                        || newStatus == AppointmentStatus.CANCELLED
+                        || newStatus == AppointmentStatus.PENDING_RESPONSE);
+                break;
+            case PENDING_RESPONSE:
                 valid = (newStatus == AppointmentStatus.CONFIRMED || newStatus == AppointmentStatus.CANCELLED);
                 break;
             case CONFIRMED:

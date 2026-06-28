@@ -87,4 +87,18 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
                 end
         ).map(mapper::toDomain);
     }
+
+    @Override
+    public List<Appointment> findEligibleForFollowUp(LocalDateTime windowStart, LocalDateTime windowEnd) {
+        return jpaAppointmentRepository.findEligibleForFollowUp(windowStart, windowEnd).stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Appointment> findPendingResponsePastDeadline(LocalDateTime deadline) {
+        return jpaAppointmentRepository.findPendingResponsePastDeadline(deadline).stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+    }
 }

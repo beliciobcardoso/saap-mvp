@@ -60,6 +60,10 @@ class AppointmentControllerTest {
     @Mock
     private br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
     @Mock
+    private ConfirmAppointmentByTokenUseCase confirmAppointmentByTokenUseCase;
+    @Mock
+    private CancelAppointmentByTokenUseCase cancelAppointmentByTokenUseCase;
+    @Mock
     private AcceptWaitlistOfferUseCase acceptWaitlistOfferUseCase;
     @Mock
     private DeclineWaitlistOfferUseCase declineWaitlistOfferUseCase;
@@ -86,6 +90,8 @@ class AppointmentControllerTest {
                 listAppointmentsUseCase,
                 findAppointmentByIdUseCase,
                 actionTokenService,
+                confirmAppointmentByTokenUseCase,
+                cancelAppointmentByTokenUseCase,
                 acceptWaitlistOfferUseCase,
                 declineWaitlistOfferUseCase,
                 callNextPatientUseCase,
