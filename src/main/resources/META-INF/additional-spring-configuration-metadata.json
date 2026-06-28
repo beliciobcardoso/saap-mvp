@@ -9,6 +9,21 @@
       "name": "api.security.token.expiration",
       "type": "java.lang.Long",
       "description": "Expiration time in milliseconds for JWT tokens."
+    },
+    {
+      "name": "saap.app.base-url",
+      "type": "java.lang.String",
+      "description": "Base URL of the application."
+    },
+    {
+      "name": "saap.scheduler.follow-up.cron",
+      "type": "java.lang.String",
+      "description": "Cron expression for the follow-up notifications scheduler."
+    },
+    {
+      "name": "saap.scheduler.waitlist.cron",
+      "type": "java.lang.String",
+      "description": "Cron expression for the waitlist timeout scheduler."
     }
   ]
 }
