@@ -1,6 +1,12 @@
 server:
   port: "${PORT:8080}"
 
+api:
+  security:
+    token:
+      secret: "${JWT_SECRET:default_secret}"
+      expiration: "${JWT_EXPIRATION:86400000}"
+
 spring:
   application:
     name: saap-mvp

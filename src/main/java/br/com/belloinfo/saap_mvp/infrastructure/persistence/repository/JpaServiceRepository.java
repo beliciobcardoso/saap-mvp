@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface JpaServiceRepository extends JpaRepository<ServiceEntity, UUID> {
+    java.util.Optional<ServiceEntity> findByName(String name);
 }

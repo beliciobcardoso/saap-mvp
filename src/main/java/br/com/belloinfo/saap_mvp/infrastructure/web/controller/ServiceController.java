@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/services")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ADMIN')")
 public class ServiceController {
 
     private final CreateServiceUseCase createServiceUseCase;
@@ -35,6 +37,7 @@ public class ServiceController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
     public ResponseEntity<ServiceResponseDTO> findById(@PathVariable UUID id) {
         return findServiceByIdUseCase.execute(id)
                 .map(mapper::toResponse)
@@ -43,6 +46,7 @@ public class ServiceController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
     public ResponseEntity<List<ServiceResponseDTO>> listAllActive() {
         List<ServiceResponseDTO> responses = listActiveServicesUseCase.execute().stream()
                 .map(mapper::toResponse)

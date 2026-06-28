@@ -9,6 +9,7 @@ import java.util.UUID;
 public interface ServiceRepository {
     Service save(Service service);
     Optional<Service> findById(UUID id);
+    Optional<Service> findByName(String name);
     List<Service> findAllActive();
     List<Service> findAll();
 }

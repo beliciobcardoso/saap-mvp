@@ -33,6 +33,11 @@ public class ServiceRepositoryAdapter implements ServiceRepository {
     }
 
     @Override
+    public Optional<Service> findByName(String name) {
+        return jpaServiceRepository.findByName(name).map(mapper::toDomain);
+    }
+
+    @Override
     public List<Service> findAllActive() {
         return jpaServiceRepository.findAll().stream()
                 .map(mapper::toDomain)

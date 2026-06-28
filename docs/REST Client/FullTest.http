@@ -1,0 +1,233 @@
+### ==============================================================
+### SAAP MVP - Full Test (Fluxo End-to-End Completo)
+### Base URL: http://localhost:8080/api/v1
+###
+### DADOS DE TESTE CRIADOS NO BANCO LOCAL:
+###
+###   ADMIN:
+###     Email : john.nobody@email.com
+###     Senha : SenhaForte123!
+###
+###   RECEPTIONIST:
+###     Email : ana.lima@saap.com
+###     Senha : Recepcao123!
+###
+###   PROFESSIONAL (médico):
+###     Email : dr.carlos@saap.com
+###     Senha : Medico123!
+###
+###   PACIENTE:
+###     Nome  : Maria da Silva
+###     CPF   : 697.028.342-95
+###
+### NOTA: O CPF pode ser enviado com ou sem formatação.
+###   O servidor normaliza automaticamente antes de salvar.
+###   ✅ Aceito: "697.028.342-95" ou "69702834295"
+### ==============================================================
+
+@hostname = http://localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+@baseUrl = {{host}}/api/v1
+@token = {{login_admin.response.body.token}}
+
+
+### ==============================================================
+### PASSO 1: Autenticar como ADMIN
+### ==============================================================
+
+###
+# @name login_admin
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "john.nobody@email.com",
+    "password": "SenhaForte123!"
+}
+
+### ==============================================================
+### PASSO 2: Verificar dados criados no banco
+### ==============================================================
+
+###
+# Listar usuários → deve retornar 3 (admin + receptionist + professional)
+# Esperado: 200 OK
+GET {{baseUrl}}/users HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# Listar profissionais → deve retornar 1 (Dr. Carlos Mendes)
+# Esperado: 200 OK
+GET {{baseUrl}}/professionals HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# Listar pacientes → deve retornar 1 (Maria da Silva)
+# Esperado: 200 OK
+GET {{baseUrl}}/patients HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# Buscar paciente por ID
+# Esperado: 200 OK com dados da Maria
+GET {{baseUrl}}/patients/d34e24f7-839f-4097-8281-1fc58c8a9d28 HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# Buscar profissional por ID
+# Esperado: 200 OK com dados do Dr. Carlos
+GET {{baseUrl}}/professionals/5134ffb1-6a1e-4d55-8abb-538ce717cfba HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### ==============================================================
+### PASSO 3: Testar login com cada role
+### ==============================================================
+
+###
+@receptionistToken = {{login_receptionist.response.body.token}}
+# @name login_receptionist
+# Esperado: 200 OK — recepcionista consegue autenticar
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "ana.lima@saap.com",
+    "password": "Recepcao123!"
+}
+
+###
+@professionalToken = {{login_professional.response.body.token}}
+# @name login_professional
+# Esperado: 200 OK — médico consegue autenticar
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "dr.carlos@saap.com",
+    "password": "Medico123!"
+}
+
+### ==============================================================
+### PASSO 4: Testar permissões — RECEPTIONIST
+### ==============================================================
+
+###
+# ✅ RECEPTIONIST pode listar pacientes
+# Esperado: 200 OK
+GET {{baseUrl}}/patients HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+###
+# ✅ RECEPTIONIST pode listar profissionais
+# Esperado: 200 OK
+GET {{baseUrl}}/professionals HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+###
+# ❌ RECEPTIONIST não pode listar usuários (apenas ADMIN)
+# Esperado: 403 Forbidden
+GET {{baseUrl}}/users HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+###
+# ❌ RECEPTIONIST não pode criar profissionais
+# Esperado: 403 Forbidden
+POST {{baseUrl}}/professionals HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+{
+    "name": "Tentativa Negada",
+    "email": "negado@saap.com",
+    "phone": "(11) 90000-0000",
+    "registrationNumber": "CRM/SP 000001",
+    "role": "PROFESSIONAL"
+}
+
+### ==============================================================
+### PASSO 5: Testar permissões — PROFESSIONAL
+### ==============================================================
+
+###
+# ❌ PROFESSIONAL não pode listar usuários
+# Esperado: 403 Forbidden
+GET {{baseUrl}}/users HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# ❌ PROFESSIONAL não pode criar pacientes
+# Esperado: 403 Forbidden
+POST {{baseUrl}}/patients HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "name": "Paciente Negado",
+    "cpf": "69702834295",
+    "phone": "(11) 90000-0000",
+    "birthDate": "2000-01-01"
+}
+
+### ==============================================================
+### PASSO 6: Testar acesso sem token
+### ==============================================================
+
+###
+# ❌ Sem token — qualquer endpoint protegido
+# Esperado: 401 Unauthorized
+GET {{baseUrl}}/users HTTP/1.1
+Content-Type: application/json
+
+###
+# ❌ Token inválido/expirado
+# Esperado: 401 Unauthorized
+GET {{baseUrl}}/patients HTTP/1.1
+Authorization: Bearer token_invalido_aqui
+Content-Type: application/json
+
+### ==============================================================
+### PASSO 7 (Opcional): Criar novos dados se necessário
+### ==============================================================
+
+###
+# Criar novo paciente adicional (ADMIN)
+# Esperado: 201 Created
+# Nota: CPF deve ser enviado sem formatação (somente dígitos)
+# @name create_patient_extra
+POST {{baseUrl}}/patients HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "João Pereira",
+    "cpf": "98765432100",
+    "email": "joao.pereira@email.com",
+    "phone": "(21) 91234-5678",
+    "birthDate": "1990-07-10"
+}
+
+###
+# Criar novo serviço (ADMIN)
+# Esperado: 201 Created
+# @name create_service
+POST {{baseUrl}}/services HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "Consulta Clínica Preventiva",
+    "description": "Consulta médica de rotina para avaliação geral do paciente.",
+    "durationMinutes": 30,
+    "price": 150.00
+}

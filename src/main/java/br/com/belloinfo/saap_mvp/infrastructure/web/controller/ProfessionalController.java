@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/professionals")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ADMIN')")
 public class ProfessionalController {
 
     private final CreateProfessionalUseCase createProfessionalUseCase;
@@ -35,6 +37,7 @@ public class ProfessionalController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
     public ResponseEntity<ProfessionalResponseDTO> findById(@PathVariable UUID id) {
         return findProfessionalByIdUseCase.execute(id)
                 .map(mapper::toResponse)
@@ -43,6 +46,7 @@ public class ProfessionalController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
     public ResponseEntity<List<ProfessionalResponseDTO>> listAllActive() {
         List<ProfessionalResponseDTO> responses = listActiveProfessionalsUseCase.execute().stream()
                 .map(mapper::toResponse)

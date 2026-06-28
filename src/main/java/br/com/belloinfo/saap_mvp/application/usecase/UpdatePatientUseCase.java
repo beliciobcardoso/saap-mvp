@@ -17,7 +17,12 @@ public class UpdatePatientUseCase {
         Patient existing = patientRepository.findById(id)
                 .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Paciente não encontrado"));
 
-        if (updated.getCpf() != null && !updated.getCpf().equals(existing.getCpf()) 
+        // Normaliza o CPF: remove formatação antes de comparar e persistir
+        if (updated.getCpf() != null) {
+            updated.setCpf(updated.getCpf().replaceAll("\\D", ""));
+        }
+
+        if (updated.getCpf() != null && !updated.getCpf().equals(existing.getCpf())
             && patientRepository.findByCpf(updated.getCpf()).isPresent()) {
             throw new IllegalArgumentException("CPF já cadastrado por outro paciente");
         }

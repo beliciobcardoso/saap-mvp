@@ -16,6 +16,11 @@ public class UpdateServiceUseCase {
         Service existing = serviceRepository.findById(id)
                 .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Serviço não encontrado"));
 
+        if (updated.getName() != null && !updated.getName().equals(existing.getName())
+            && serviceRepository.findByName(updated.getName()).isPresent()) {
+            throw new IllegalArgumentException("Serviço com este nome já cadastrado");
+        }
+
         existing.setName(updated.getName());
         existing.setDescription(updated.getDescription());
         existing.setDurationMinutes(updated.getDurationMinutes());

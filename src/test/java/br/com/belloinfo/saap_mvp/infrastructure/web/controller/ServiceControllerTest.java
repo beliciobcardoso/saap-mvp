@@ -176,4 +176,47 @@ class ServiceControllerTest {
 
         verify(deactivateServiceUseCase, times(1)).execute(id);
     }
+
+    @Test
+    void shouldReturnConflictWhenServiceWithNameAlreadyExists() throws Exception {
+        when(createServiceUseCase.execute(any(Service.class)))
+                .thenThrow(new IllegalArgumentException("Serviço com este nome já cadastrado"));
+
+        String requestJson = """
+                {
+                  "name": "Consulta Geral Duplicada",
+                  "durationMinutes": 30,
+                  "price": 150.00
+                }
+                """;
+
+        mockMvc.perform(post("/api/v1/services")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestJson))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.error", is("Conflict")))
+                .andExpect(jsonPath("$.message", is("Serviço com este nome já cadastrado")));
+    }
+
+    @Test
+    void shouldReturnConflictWhenUpdatingToExistingServiceName() throws Exception {
+        UUID id = UUID.randomUUID();
+        when(updateServiceUseCase.execute(eq(id), any(Service.class)))
+                .thenThrow(new IllegalArgumentException("Serviço com este nome já cadastrado"));
+
+        String requestJson = """
+                {
+                  "name": "Consulta Geral Existente",
+                  "durationMinutes": 30,
+                  "price": 150.00
+                }
+                """;
+
+        mockMvc.perform(put("/api/v1/services/" + id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestJson))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.error", is("Conflict")))
+                .andExpect(jsonPath("$.message", is("Serviço com este nome já cadastrado")));
+    }
 }

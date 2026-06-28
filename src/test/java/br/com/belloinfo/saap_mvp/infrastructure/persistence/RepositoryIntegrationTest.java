@@ -150,4 +150,51 @@ class RepositoryIntegrationTest extends BaseIntegrationTest {
         List<Service> all = serviceRepository.findAllActive();
         assertTrue(all.stream().noneMatch(s -> s.getId().equals(saved.getId())));
     }
+
+    @Test
+    void shouldFindServiceByName() {
+        Service svc = Service.builder()
+                .id(UUID.randomUUID())
+                .name("Exame Ultrassom")
+                .description("Ultrassonografia geral")
+                .durationMinutes(45)
+                .price(BigDecimal.valueOf(250.00))
+                .active(true)
+                .build();
+
+        serviceRepository.save(svc);
+
+        Optional<Service> found = serviceRepository.findByName("Exame Ultrassom");
+        assertTrue(found.isPresent());
+        assertEquals(svc.getId(), found.get().getId());
+
+        Optional<Service> notFound = serviceRepository.findByName("Exame Inexistente");
+        assertFalse(notFound.isPresent());
+    }
+
+    @Test
+    void shouldFailToSaveServiceWithDuplicateActiveName() {
+        Service svc1 = Service.builder()
+                .id(UUID.randomUUID())
+                .name("Consulta Pediatria")
+                .durationMinutes(30)
+                .price(BigDecimal.valueOf(150.00))
+                .active(true)
+                .build();
+        serviceRepository.save(svc1);
+
+        Service svc2 = Service.builder()
+                .id(UUID.randomUUID())
+                .name("Consulta Pediatria") // Mesmo nome
+                .durationMinutes(40)
+                .price(BigDecimal.valueOf(180.00))
+                .active(true)
+                .build();
+
+        // Deve lançar DataIntegrityViolationException devido à restrição do banco de dados (Índice único)
+        assertThrows(org.springframework.dao.DataIntegrityViolationException.class, () -> {
+            serviceRepository.save(svc2);
+            jpaServiceRepository.flush(); // força gravação para disparar a constraint
+        });
+    }
 }

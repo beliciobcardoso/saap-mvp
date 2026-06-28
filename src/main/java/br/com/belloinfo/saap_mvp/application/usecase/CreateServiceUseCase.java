@@ -12,6 +12,9 @@ public class CreateServiceUseCase {
     }
 
     public Service execute(Service service) {
+        if (service.getName() != null && serviceRepository.findByName(service.getName()).isPresent()) {
+            throw new IllegalArgumentException("Serviço com este nome já cadastrado");
+        }
         service.activate();
         return serviceRepository.save(service);
     }
