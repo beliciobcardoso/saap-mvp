@@ -17,6 +17,7 @@ docs/REST Client/
 ├── Professionals.http  # CRUD /professionals (ADMIN / ADMIN+RECEPTIONIST p/ leitura)
 ├── Services.http       # CRUD /services  (ADMIN / ADMIN+RECEPTIONIST p/ leitura)
 ├── Appointments.http   # Fluxos /appointments (ADMIN, RECEPTIONIST, PROFESSIONAL, PATIENT)
+├── AuditLogs.http      # Logs /audit-logs (ADMIN)
 └── REST_CLIENT.md      # Este guia
 ```
 
@@ -165,9 +166,9 @@ Isso elimina a necessidade de copiar e colar manualmente IDs e tokens entre as r
 | PUT    | `/appointments/{id}/check-in`| ADMIN, RECEPTIONIST               |
 | POST   | `/appointments/next`        | PROFESSIONAL                      |
 | PUT    | `/appointments/{id}/start`   | ADMIN, PROFESSIONAL               |
-| PUT    | `/appointments/{id}/complete`| ADMIN, PROFESSIONAL               |
 | GET    | `/appointments/public/confirm` | Pública (sem autenticação)     |
 | GET    | `/appointments/public/cancel`  | Pública (sem autenticação)     |
+| GET    | `/audit-logs`                  | ADMIN                             |
 
 ---
 

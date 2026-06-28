@@ -130,4 +130,49 @@ class AuditIntegrationTest extends BaseIntegrationTest {
         assertThat(loginLog.getRecursoTipo()).isEqualTo("USER");
         assertThat(loginLog.getUserId()).isEqualTo(adminUser.getId());
     }
+
+    @Test
+    void shouldAllowAdminToViewAuditLogs() throws Exception {
+        // Trigger a log entry by performing login
+        br.com.belloinfo.saap_mvp.infrastructure.web.dto.LoginRequestDTO loginRequest = 
+                new br.com.belloinfo.saap_mvp.infrastructure.web.dto.LoginRequestDTO("audit_admin@saap.com", "adminPass123");
+        mockMvc.perform(post("/api/v1/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(loginRequest)))
+                .andExpect(status().isOk());
+
+        // Get audit logs
+        mockMvc.perform(get("/api/v1/audit-logs")
+                        .header("Authorization", "Bearer " + adminToken))
+                .andExpect(status().isOk())
+                .andExpect(result -> {
+                    String body = result.getResponse().getContentAsString();
+                    assertThat(body).contains("LOGIN_USUARIO");
+                    assertThat(body).contains("audit_admin@saap.com");
+                });
+    }
+
+    @Test
+    void shouldDenyReceptionistFromViewingAuditLogs() throws Exception {
+        User receptionist = User.builder()
+                .id(UUID.randomUUID())
+                .email("receptionist_audit@saap.com")
+                .password("pwd")
+                .role(UserRole.RECEPTIONIST)
+                .active(true)
+                .build();
+        userRepository.save(receptionist);
+
+        String receptionistToken = generateTestToken("receptionist_audit@saap.com", UserRole.RECEPTIONIST);
+
+        mockMvc.perform(get("/api/v1/audit-logs")
+                        .header("Authorization", "Bearer " + receptionistToken))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void shouldReturnUnauthorizedWhenAccessingAuditLogsWithoutToken() throws Exception {
+        mockMvc.perform(get("/api/v1/audit-logs"))
+                .andExpect(status().isUnauthorized());
+    }
 }

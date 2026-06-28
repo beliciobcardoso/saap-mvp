@@ -50,4 +50,11 @@ public class AuditLogRepositoryAdapter implements AuditLogRepository {
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<AuditLog> findAllOrderByTimestampDesc() {
+        return jpaAuditLogRepository.findAllByOrderByTimestampDesc().stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+    }
 }

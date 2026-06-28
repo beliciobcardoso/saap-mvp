@@ -32,4 +32,15 @@ public interface WebMapper {
 
     // Appointment
     AppointmentResponseDTO toResponse(Appointment domain);
+
+    // AuditLog
+    @org.mapstruct.Mapping(target = "id", source = "log.id")
+    @org.mapstruct.Mapping(target = "timestamp", source = "log.timestamp")
+    @org.mapstruct.Mapping(target = "userId", source = "log.userId")
+    @org.mapstruct.Mapping(target = "userEmail", source = "userEmail")
+    @org.mapstruct.Mapping(target = "action", source = "log.action")
+    @org.mapstruct.Mapping(target = "recursoId", source = "log.recursoId")
+    @org.mapstruct.Mapping(target = "recursoTipo", source = "log.recursoTipo")
+    @org.mapstruct.Mapping(target = "ipAddress", source = "log.ipAddress")
+    AuditLogResponseDTO toResponse(br.com.belloinfo.saap_mvp.application.usecase.ListAuditLogsUseCase.AuditLogWithEmail domain);
 }

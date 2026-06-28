@@ -10,4 +10,5 @@ public interface AuditLogRepository {
     AuditLog save(AuditLog auditLog);
     Optional<AuditLog> findById(UUID id);
     List<AuditLog> findAll();
+    List<AuditLog> findAllOrderByTimestampDesc();
 }
