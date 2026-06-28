@@ -60,12 +60,14 @@ public class AppointmentEntity {
     @Column(name = "priority_notes")
     private String priorityNotes;
 
+    @Builder.Default
     @Column(name = "follow_up_sent", nullable = false)
     private boolean followUpSent = false;
 
     @Column(name = "follow_up_sent_at")
     private LocalDateTime followUpSentAt;
 
+    @Builder.Default
     @Column(name = "follow_up_required", nullable = false)
     private boolean followUpRequired = false;
 
