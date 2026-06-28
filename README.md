@@ -149,6 +149,21 @@ Todas as rotas REST são expostas automaticamente com o prefixo global `/api/v1`
 - `PUT /api/v1/appointments/{id}/start` - Inicia o atendimento do agendamento (Profissional).
 - `PUT /api/v1/appointments/{id}/complete` - Conclui a consulta e finaliza o atendimento (Profissional).
 
+### 🕵️ Auditoria (`/api/v1/audit-logs`)
+- `GET /api/v1/audit-logs` - Lista todos os logs de auditoria ordenados por data decrescente (Exclusivo ADMIN).
+
+---
+
+## 📖 Documentação da API (Swagger UI)
+
+A documentação interativa de todas as rotas REST está disponível via **Swagger UI** quando a aplicação está rodando localmente:
+
+- **URL de Acesso:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+- **Autenticação:** O Swagger suporta o esquema de segurança Bearer JWT (botão **"Authorize"**). Para testar endpoints seguros:
+  1. Chame o endpoint `/api/v1/auth/login` informando as credenciais de teste no painel.
+  2. Copie o token de retorno.
+  3. Clique em **Authorize** no topo do Swagger, cole o token no campo e confirme.
+
 ---
 
 ## 🛡️ Tratamento de Erros e Resposta
