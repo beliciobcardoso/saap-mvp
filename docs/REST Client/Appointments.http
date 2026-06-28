@@ -67,7 +67,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "name": "Consulta Prioridade http",
+    "name": "Consulta Prioridade http 2",
     "description": "Consulta de testes rest client",
     "durationMinutes": 30,
     "price": 100.00
