@@ -36,7 +36,6 @@ public class AppointmentController {
     private final CompleteAppointmentUseCase completeAppointmentUseCase;
     private final ListAppointmentsUseCase listAppointmentsUseCase;
     private final FindAppointmentByIdUseCase findAppointmentByIdUseCase;
-    private final br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
     private final ConfirmAppointmentByTokenUseCase confirmAppointmentByTokenUseCase;
     private final CancelAppointmentByTokenUseCase cancelAppointmentByTokenUseCase;
     private final AcceptWaitlistOfferUseCase acceptWaitlistOfferUseCase;
