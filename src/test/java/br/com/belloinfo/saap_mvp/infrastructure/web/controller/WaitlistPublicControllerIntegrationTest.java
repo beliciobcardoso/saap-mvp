@@ -15,8 +15,6 @@ import br.com.belloinfo.saap_mvp.domain.repository.ServiceRepository;
 import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
 import br.com.belloinfo.saap_mvp.domain.repository.WaitlistEntryRepository;
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
-import br.com.belloinfo.saap_mvp.domain.valueobject.PaymentMethod;
-import br.com.belloinfo.saap_mvp.domain.valueobject.PriorityLevel;
 import br.com.belloinfo.saap_mvp.domain.valueobject.ProfessionalRole;
 import br.com.belloinfo.saap_mvp.domain.valueobject.UserRole;
 import br.com.belloinfo.saap_mvp.domain.valueobject.WaitlistStatus;
