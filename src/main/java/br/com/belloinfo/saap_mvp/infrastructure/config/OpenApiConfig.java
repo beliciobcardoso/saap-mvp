@@ -1,0 +1,35 @@
+package br.com.belloinfo.saap_mvp.infrastructure.config;
+
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * Configuração geral do Springdoc OpenAPI (Swagger).
+ * Configura metadados do projeto e o esquema global de autenticação Bearer JWT.
+ */
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("SAAP - Sistema de Apoio ao Atendimento ao Paciente")
+                        .version("1.0.0")
+                        .description("Documentação interativa das APIs REST do projeto SAAP-MVP."))
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth",
+                                new SecurityScheme()
+                                        .name("bearerAuth")
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")
+                                        .description("Insira o token JWT retornado pelo endpoint de login para acessar rotas protegidas.")));
+    }
+}
