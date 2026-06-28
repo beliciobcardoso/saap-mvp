@@ -25,4 +25,10 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
             @Param("start") LocalDateTime start,
             @Param("end") LocalDateTime end
     );
+
+    List<AppointmentEntity> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(
+            AppointmentStatus status,
+            LocalDateTime start,
+            LocalDateTime end
+    );
 }

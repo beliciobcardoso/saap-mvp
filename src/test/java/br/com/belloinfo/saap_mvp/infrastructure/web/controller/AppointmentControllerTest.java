@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.*;
@@ -51,6 +50,8 @@ class AppointmentControllerTest {
     private ListAppointmentsUseCase listAppointmentsUseCase;
     @Mock
     private FindAppointmentByIdUseCase findAppointmentByIdUseCase;
+    @Mock
+    private br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
 
     private final WebMapper mapper = org.mapstruct.factory.Mappers.getMapper(WebMapper.class);
 
@@ -65,6 +66,7 @@ class AppointmentControllerTest {
                 completeAppointmentUseCase,
                 listAppointmentsUseCase,
                 findAppointmentByIdUseCase,
+                actionTokenService,
                 mapper
         );
 

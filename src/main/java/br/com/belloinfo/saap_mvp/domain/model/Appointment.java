@@ -29,6 +29,8 @@ public class Appointment {
     private UUID priorityVerifiedBy;
     private String priorityNotes;
     
+    private boolean followUpSent;
+    
     private Long version;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

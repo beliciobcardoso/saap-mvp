@@ -29,7 +29,8 @@ public class AppointmentController {
     private final StartAppointmentUseCase startAppointmentUseCase;
     private final CompleteAppointmentUseCase completeAppointmentUseCase;
     private final ListAppointmentsUseCase listAppointmentsUseCase;
-    private final FindAppointmentByIdUseCase findAppointmentByIdUseCase; // Let's make sure we implement this or use Jpa directly. Wait, we should implement FindAppointmentByIdUseCase! Let's check.
+    private final FindAppointmentByIdUseCase findAppointmentByIdUseCase;
+    private final br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
     private final WebMapper mapper;
 
     @PostMapping
@@ -110,5 +111,25 @@ public class AppointmentController {
     public ResponseEntity<AppointmentResponseDTO> complete(@PathVariable UUID id) {
         Appointment appointment = completeAppointmentUseCase.execute(id);
         return ResponseEntity.ok(mapper.toResponse(appointment));
+    }
+
+    @GetMapping("/public/confirm")
+    public ResponseEntity<String> publicConfirm(@RequestParam("token") String token) {
+        br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService.DecodedToken decoded = actionTokenService.validateToken(token);
+        if (!"confirm".equals(decoded.action())) {
+            return ResponseEntity.badRequest().body("Token de ação inválido");
+        }
+        confirmAppointmentUseCase.execute(decoded.appointmentId());
+        return ResponseEntity.ok("Presença confirmada com sucesso!");
+    }
+
+    @GetMapping("/public/cancel")
+    public ResponseEntity<String> publicCancel(@RequestParam("token") String token) {
+        br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService.DecodedToken decoded = actionTokenService.validateToken(token);
+        if (!"cancel".equals(decoded.action())) {
+            return ResponseEntity.badRequest().body("Token de ação inválido");
+        }
+        cancelAppointmentUseCase.execute(decoded.appointmentId());
+        return ResponseEntity.ok("Consulta cancelada com sucesso!");
     }
 }

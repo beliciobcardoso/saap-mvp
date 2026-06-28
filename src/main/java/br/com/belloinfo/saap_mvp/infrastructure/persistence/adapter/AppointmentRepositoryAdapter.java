@@ -70,4 +70,11 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Appointment> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(AppointmentStatus status, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return jpaAppointmentRepository.findByStatusAndDateTimeBetweenAndFollowUpSentFalse(status, startDateTime, endDateTime).stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+    }
 }

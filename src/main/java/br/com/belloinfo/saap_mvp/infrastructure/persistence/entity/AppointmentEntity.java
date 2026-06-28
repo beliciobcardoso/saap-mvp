@@ -60,6 +60,9 @@ public class AppointmentEntity {
     @Column(name = "priority_notes")
     private String priorityNotes;
 
+    @Column(name = "follow_up_sent", nullable = false)
+    private boolean followUpSent = false;
+
     @Version
     @Column(nullable = false)
     private Long version;
