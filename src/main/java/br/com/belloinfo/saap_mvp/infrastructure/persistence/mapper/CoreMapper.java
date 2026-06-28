@@ -1,9 +1,11 @@
 package br.com.belloinfo.saap_mvp.infrastructure.persistence.mapper;
 
+import br.com.belloinfo.saap_mvp.domain.model.Appointment;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.model.User;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AppointmentEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.PatientEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ProfessionalEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ServiceEntity;
@@ -37,6 +39,10 @@ public interface CoreMapper {
 
     @Mapping(target = "user", expression = "java(mapUserIdToUserEntity(domain.getUserId()))")
     ProfessionalEntity toEntity(Professional domain);
+
+    // Appointment Mapping
+    Appointment toDomain(AppointmentEntity entity);
+    AppointmentEntity toEntity(Appointment domain);
 
     default UserEntity mapUserIdToUserEntity(UUID userId) {
         if (userId == null) {

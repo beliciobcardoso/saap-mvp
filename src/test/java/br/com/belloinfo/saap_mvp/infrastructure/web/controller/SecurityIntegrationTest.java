@@ -67,6 +67,15 @@ class SecurityIntegrationTest extends BaseIntegrationTest {
                 .active(true)
                 .build();
         userRepository.save(receptionistUser);
+
+        User patientUser = User.builder()
+                .id(UUID.randomUUID())
+                .email("patient@saap.com")
+                .password(passwordEncoder.encode("patientPass123"))
+                .role(UserRole.PATIENT)
+                .active(true)
+                .build();
+        userRepository.save(patientUser);
     }
 
     @Test
@@ -114,5 +123,25 @@ class SecurityIntegrationTest extends BaseIntegrationTest {
         mockMvc.perform(get("/api/v1/users")
                         .header("Authorization", "Bearer " + token))
                 .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void shouldReturnForbiddenWhenPatientTriesToConfirmAppointment() throws Exception {
+        String token = generateTestToken("patient@saap.com", UserRole.PATIENT);
+        UUID appointmentId = UUID.randomUUID();
+
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/v1/appointments/" + appointmentId + "/confirm")
+                        .header("Authorization", "Bearer " + token))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void shouldAllowReceptionistToConfirmAppointmentButFailUsecase() throws Exception {
+        String token = generateTestToken("recep@saap.com", UserRole.RECEPTIONIST);
+        UUID appointmentId = UUID.randomUUID();
+
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/v1/appointments/" + appointmentId + "/confirm")
+                        .header("Authorization", "Bearer " + token))
+                .andExpect(status().isBadRequest()); // Expassed security (which expects role RECEP), failed in usecase (400 Bad Request / IllegalArgumentException)
     }
 }

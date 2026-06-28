@@ -33,6 +33,11 @@ public class ProfessionalRepositoryAdapter implements ProfessionalRepository {
     }
 
     @Override
+    public Optional<Professional> findByIdWithLock(UUID id) {
+        return jpaProfessionalRepository.findByIdWithLock(id).map(mapper::toDomain);
+    }
+
+    @Override
     public Optional<Professional> findByRegistrationNumber(String registrationNumber) {
         return jpaProfessionalRepository.findByRegistrationNumber(registrationNumber).map(mapper::toDomain);
     }

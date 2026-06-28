@@ -9,6 +9,7 @@ import java.util.UUID;
 public interface ProfessionalRepository {
     Professional save(Professional professional);
     Optional<Professional> findById(UUID id);
+    Optional<Professional> findByIdWithLock(UUID id);
     Optional<Professional> findByRegistrationNumber(String registrationNumber);
     List<Professional> findAllActive();
     List<Professional> findAll();

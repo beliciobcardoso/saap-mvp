@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.infrastructure.web.mapper;
 
+import br.com.belloinfo.saap_mvp.domain.model.Appointment;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
@@ -28,4 +29,7 @@ public interface WebMapper {
     // Service
     Service toDomain(ServiceRequestDTO request);
     ServiceResponseDTO toResponse(Service domain);
+
+    // Appointment
+    AppointmentResponseDTO toResponse(Appointment domain);
 }
