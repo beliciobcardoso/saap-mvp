@@ -166,6 +166,8 @@ Isso elimina a necessidade de copiar e colar manualmente IDs e tokens entre as r
 | POST   | `/appointments/next`        | PROFESSIONAL                      |
 | PUT    | `/appointments/{id}/start`   | ADMIN, PROFESSIONAL               |
 | PUT    | `/appointments/{id}/complete`| ADMIN, PROFESSIONAL               |
+| GET    | `/appointments/public/confirm` | Pública (sem autenticação)     |
+| GET    | `/appointments/public/cancel`  | Pública (sem autenticação)     |
 
 ---
 
