@@ -52,6 +52,10 @@ class AppointmentControllerTest {
     private FindAppointmentByIdUseCase findAppointmentByIdUseCase;
     @Mock
     private br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
+    @Mock
+    private AcceptWaitlistOfferUseCase acceptWaitlistOfferUseCase;
+    @Mock
+    private DeclineWaitlistOfferUseCase declineWaitlistOfferUseCase;
 
     private final WebMapper mapper = org.mapstruct.factory.Mappers.getMapper(WebMapper.class);
 
@@ -67,6 +71,8 @@ class AppointmentControllerTest {
                 listAppointmentsUseCase,
                 findAppointmentByIdUseCase,
                 actionTokenService,
+                acceptWaitlistOfferUseCase,
+                declineWaitlistOfferUseCase,
                 mapper
         );
 

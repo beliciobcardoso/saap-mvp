@@ -5,7 +5,9 @@ import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.model.User;
+import br.com.belloinfo.saap_mvp.domain.model.WaitlistEntry;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AppointmentEntity;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.WaitlistEntryEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.PatientEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ProfessionalEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ServiceEntity;
@@ -43,6 +45,10 @@ public interface CoreMapper {
     // Appointment Mapping
     Appointment toDomain(AppointmentEntity entity);
     AppointmentEntity toEntity(Appointment domain);
+
+    // WaitlistEntry Mapping
+    WaitlistEntry toDomain(WaitlistEntryEntity entity);
+    WaitlistEntryEntity toEntity(WaitlistEntry domain);
 
     default UserEntity mapUserIdToUserEntity(UUID userId) {
         if (userId == null) {

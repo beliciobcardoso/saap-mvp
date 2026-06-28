@@ -14,6 +14,10 @@ import java.util.UUID;
 public class CancelAppointmentUseCase {
 
     private final AppointmentRepository appointmentRepository;
+    private final ProcessWaitlistSlotOfferUseCase processWaitlistSlotOfferUseCase;
+
+    @org.springframework.beans.factory.annotation.Value("${saap.waitlist.auto-fill:true}")
+    private boolean waitlistAutoFill = true;
 
     @Transactional
     public Appointment execute(UUID appointmentId) {
@@ -21,6 +25,16 @@ public class CancelAppointmentUseCase {
                 .orElseThrow(() -> new IllegalArgumentException("Agendamento não encontrado"));
 
         appointment.transitionTo(AppointmentStatus.CANCELLED);
-        return appointmentRepository.save(appointment);
+        Appointment savedAppointment = appointmentRepository.save(appointment);
+
+        if (waitlistAutoFill) {
+            processWaitlistSlotOfferUseCase.execute(
+                    savedAppointment.getProfessional().getId(),
+                    savedAppointment.getService().getId(),
+                    savedAppointment.getDateTime()
+            );
+        }
+
+        return savedAppointment;
     }
 }

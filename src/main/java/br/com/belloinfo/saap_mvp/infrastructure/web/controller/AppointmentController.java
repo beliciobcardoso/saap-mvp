@@ -31,6 +31,8 @@ public class AppointmentController {
     private final ListAppointmentsUseCase listAppointmentsUseCase;
     private final FindAppointmentByIdUseCase findAppointmentByIdUseCase;
     private final br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService actionTokenService;
+    private final AcceptWaitlistOfferUseCase acceptWaitlistOfferUseCase;
+    private final DeclineWaitlistOfferUseCase declineWaitlistOfferUseCase;
     private final WebMapper mapper;
 
     @PostMapping
@@ -131,5 +133,17 @@ public class AppointmentController {
         }
         cancelAppointmentUseCase.execute(decoded.appointmentId());
         return ResponseEntity.ok("Consulta cancelada com sucesso!");
+    }
+
+    @GetMapping("/public/waitlist/accept")
+    public ResponseEntity<String> publicWaitlistAccept(@RequestParam("token") String token) {
+        acceptWaitlistOfferUseCase.execute(token);
+        return ResponseEntity.ok("Vaga da fila de espera aceita e agendamento confirmado com sucesso!");
+    }
+
+    @GetMapping("/public/waitlist/decline")
+    public ResponseEntity<String> publicWaitlistDecline(@RequestParam("token") String token) {
+        declineWaitlistOfferUseCase.execute(token);
+        return ResponseEntity.ok("Vaga da fila de espera recusada com sucesso.");
     }
 }

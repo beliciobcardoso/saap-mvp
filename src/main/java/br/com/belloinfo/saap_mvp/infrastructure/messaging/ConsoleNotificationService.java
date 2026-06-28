@@ -25,4 +25,19 @@ public class ConsoleNotificationService implements NotificationService {
         log.info("Cancelar consulta: {}", cancelLink);
         log.info("=============================");
     }
+
+    @Override
+    public void sendWaitlistOfferNotification(br.com.belloinfo.saap_mvp.domain.model.WaitlistEntry entry, String acceptLink, String declineLink) {
+        log.info("=== [NOTIFICAÇÃO DE FILA DE ESPERA] ===");
+        log.info("Para: {}", entry.getPatient().getEmail());
+        log.info("Assunto: Vaga Liberada - SAAP");
+        log.info("Olá, {}, um horário com o profissional {} para o serviço {} se liberou.", 
+                entry.getPatient().getName(), 
+                entry.getProfessional().getName(),
+                entry.getService().getName());
+        log.info("Você tem 30 minutos para responder. Aceite ou recuse nos links abaixo:");
+        log.info("Aceitar vaga: {}", acceptLink);
+        log.info("Recusar vaga: {}", declineLink);
+        log.info("=======================================");
+    }
 }
