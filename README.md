@@ -147,7 +147,13 @@ Todas as rotas REST são expostas automaticamente com o prefixo global `/api/v1`
 - `PUT /api/v1/appointments/{id}/check-in` - Realiza check-in presencial com validação documental de prioridade legal (Recepção).
 - `POST /api/v1/appointments/next` - Chama o próximo paciente da fila presencial com base no score de prioridades (Profissional).
 - `PUT /api/v1/appointments/{id}/start` - Inicia o atendimento do agendamento (Profissional).
-- `PUT /api/v1/appointments/{id}/complete` - Conclui a consulta e finaliza o atendimento (Profissional).
+- `PUT /api/v1/appointments/{id}/complete` - Conclui a consulta e finaliza o atendimento; exige evolução clínica preenchida (Profissional).
+
+### 🩺 Prontuário e Registro Clínico (`/api/v1/medical-records`)
+Acesso exclusivo de usuários com `ROLE_PROFESSIONAL`. Toda leitura e escrita é auditada (RNF01).
+- `GET /api/v1/medical-records/patients/{patientId}` - Consulta o prontuário do paciente com as evoluções ordenadas da mais recente para a mais antiga.
+- `POST /api/v1/medical-records/entries` - Registra a evolução clínica de um agendamento `IN_PROGRESS` (cria o prontuário do paciente sob demanda). Somente o profissional do atendimento.
+- `PUT /api/v1/medical-records/entries/{entryId}` - Edita a evolução enquanto o agendamento estiver `IN_PROGRESS`; após `COMPLETED` a entrada é imutável (HTTP 409).
 
 ### 🕵️ Auditoria (`/api/v1/audit-logs`)
 - `GET /api/v1/audit-logs` - Lista todos os logs de auditoria ordenados por data decrescente (Exclusivo ADMIN).

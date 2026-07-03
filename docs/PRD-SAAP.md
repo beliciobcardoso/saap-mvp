@@ -5,10 +5,10 @@
 ---
 
 ## 1. Controle do Documento
-* **Status:** Aprovado / Implementado (v1.1.0)
+* **Status:** Aprovado / Implementado (v1.2.0)
 * **Autor:** Antigravity (AI Coding Assistant)
-* **Data:** 28 de Junho de 2026
-* **Versão:** 1.1.0
+* **Data:** 03 de Julho de 2026
+* **Versão:** 1.2.0
 * **Público-alvo:** Desenvolvedores, Engenheiros de Software e Product Owners
 
 ---
@@ -108,7 +108,7 @@ O sistema deve implementar Controle de Acesso Baseado em Papéis (RBAC) no níve
     
     *Em Java, o cálculo do score e a ordenação devem suportar precisão de inteiros longos (`BigInt`/`Long` no JPA, `BigInteger` ou `long` convencional no código Java). O tie-breaker é natural através da ordenação do timestamp (FIFO para mesma prioridade).*
 
-### RF06: Registro Clínico e Prontuário (UC04 / UC08)
+### RF06: Registro Clínico e Prontuário (UC04 / UC08) `[Implementado - v1.2.0]`
 * **Descrição:** Abertura e preenchimento de evolução clínica durante a consulta.
 * **Regras de Negócio:**
   * Um prontuário (`MedicalRecord`) é 1:1 com o `Paciente`.

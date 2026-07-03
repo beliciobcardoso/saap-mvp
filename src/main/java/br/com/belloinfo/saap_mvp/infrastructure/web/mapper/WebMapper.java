@@ -33,6 +33,10 @@ public interface WebMapper {
     // Appointment
     AppointmentResponseDTO toResponse(Appointment domain);
 
+    // MedicalRecord
+    MedicalRecordResponseDTO toResponse(br.com.belloinfo.saap_mvp.domain.model.MedicalRecord domain);
+    MedicalRecordEntryResponseDTO toResponse(br.com.belloinfo.saap_mvp.domain.model.MedicalRecordEntry domain);
+
     // AuditLog
     @org.mapstruct.Mapping(target = "id", source = "log.id")
     @org.mapstruct.Mapping(target = "timestamp", source = "log.timestamp")

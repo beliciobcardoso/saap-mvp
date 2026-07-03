@@ -67,6 +67,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(errorResponse);
     }
 
+    @ExceptionHandler(br.com.belloinfo.saap_mvp.domain.exception.MedicalRecordConflictException.class)
+    public ResponseEntity<ErrorResponse> handleMedicalRecordConflictException(
+            br.com.belloinfo.saap_mvp.domain.exception.MedicalRecordConflictException ex, HttpServletRequest request) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.CONFLICT.value(),
+                "Conflict",
+                ex.getMessage(),
+                request.getRequestURI(),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponse> handleDataIntegrityViolationException(DataIntegrityViolationException ex, HttpServletRequest request) {
         ErrorResponse errorResponse = new ErrorResponse(

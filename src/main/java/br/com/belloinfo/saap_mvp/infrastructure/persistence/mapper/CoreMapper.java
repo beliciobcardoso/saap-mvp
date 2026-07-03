@@ -7,7 +7,11 @@ import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.model.User;
 import br.com.belloinfo.saap_mvp.domain.model.WaitlistEntry;
 import br.com.belloinfo.saap_mvp.domain.model.AuditLog;
+import br.com.belloinfo.saap_mvp.domain.model.MedicalRecord;
+import br.com.belloinfo.saap_mvp.domain.model.MedicalRecordEntry;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AppointmentEntity;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.MedicalRecordEntity;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.MedicalRecordEntryEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.WaitlistEntryEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.PatientEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ProfessionalEntity;
@@ -60,6 +64,52 @@ public interface CoreMapper {
     @Mapping(target = "user", expression = "java(mapUserIdToUserEntity(domain.getUserId()))")
     @Mapping(target = "appointment", expression = "java(mapAppointmentIdToAppointmentEntity(domain.getAppointmentId()))")
     AuditLogEntity toEntity(AuditLog domain);
+
+    // MedicalRecord Mapping
+    @Mapping(target = "patientId", source = "patient.id")
+    MedicalRecord toDomain(MedicalRecordEntity entity);
+
+    @Mapping(target = "patient", expression = "java(mapPatientIdToPatientEntity(domain.getPatientId()))")
+    @Mapping(target = "entries", ignore = true)
+    MedicalRecordEntity toEntity(MedicalRecord domain);
+
+    // MedicalRecordEntry Mapping
+    @Mapping(target = "medicalRecordId", source = "medicalRecord.id")
+    @Mapping(target = "appointmentId", source = "appointment.id")
+    @Mapping(target = "professionalId", source = "professional.id")
+    MedicalRecordEntry toDomain(MedicalRecordEntryEntity entity);
+
+    @Mapping(target = "medicalRecord", expression = "java(mapMedicalRecordIdToMedicalRecordEntity(domain.getMedicalRecordId()))")
+    @Mapping(target = "appointment", expression = "java(mapAppointmentIdToAppointmentEntity(domain.getAppointmentId()))")
+    @Mapping(target = "professional", expression = "java(mapProfessionalIdToProfessionalEntity(domain.getProfessionalId()))")
+    MedicalRecordEntryEntity toEntity(MedicalRecordEntry domain);
+
+    default MedicalRecordEntity mapMedicalRecordIdToMedicalRecordEntity(UUID medicalRecordId) {
+        if (medicalRecordId == null) {
+            return null;
+        }
+        MedicalRecordEntity medicalRecord = new MedicalRecordEntity();
+        medicalRecord.setId(medicalRecordId);
+        return medicalRecord;
+    }
+
+    default PatientEntity mapPatientIdToPatientEntity(UUID patientId) {
+        if (patientId == null) {
+            return null;
+        }
+        PatientEntity patient = new PatientEntity();
+        patient.setId(patientId);
+        return patient;
+    }
+
+    default ProfessionalEntity mapProfessionalIdToProfessionalEntity(UUID professionalId) {
+        if (professionalId == null) {
+            return null;
+        }
+        ProfessionalEntity professional = new ProfessionalEntity();
+        professional.setId(professionalId);
+        return professional;
+    }
 
     default UserEntity mapUserIdToUserEntity(UUID userId) {
         if (userId == null) {

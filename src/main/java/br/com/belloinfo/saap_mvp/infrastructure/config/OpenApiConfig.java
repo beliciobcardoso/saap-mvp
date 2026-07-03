@@ -20,7 +20,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("SAAP - Sistema de Agendamento e Atendimento de Pacientes")
-                        .version("1.0.0")
+                        .version("1.2.0")
                         .description("Documentação interativa das APIs REST do projeto SAAP-MVP."))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(new Components()
