@@ -17,6 +17,7 @@ class AppointmentActionTokenServiceTest {
     void setUp() {
         properties = new SecurityProperties();
         properties.getSecurity().getToken().setSecret("super-secret-key-that-is-at-least-256-bits-long-for-hmac-sha-256");
+        properties.getSecurity().getActionToken().setSecret("super-action-token-secret-key-that-is-at-least-256-bits-long-for-hmac-sha-256");
         tokenService = new AppointmentActionTokenService(properties);
     }
 
@@ -48,7 +49,7 @@ class AppointmentActionTokenServiceTest {
         String token = tokenService.generateToken(appointmentId, "confirm");
 
         // Set different secret on properties
-        properties.getSecurity().getToken().setSecret("another-different-key-that-is-at-least-256-bits-long-for-hmac-sha-256");
+        properties.getSecurity().getActionToken().setSecret("another-different-key-that-is-at-least-256-bits-long-for-hmac-sha-256");
 
         assertThrows(IllegalArgumentException.class, () -> tokenService.validateToken(token));
     }

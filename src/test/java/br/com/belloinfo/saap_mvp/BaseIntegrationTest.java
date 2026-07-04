@@ -41,5 +41,9 @@ public abstract class BaseIntegrationTest {
         registry.add("spring.datasource.username", postgres::getUsername);
         registry.add("spring.datasource.password", postgres::getPassword);
         registry.add("spring.jpa.hibernate.ddl-auto", () -> "validate");
+        registry.add("api.security.token.secret", () -> "test-jwt-secret-key-must-be-at-least-32-characters-long");
+        registry.add("api.security.token.expiration", () -> "86400000");
+        registry.add("api.security.action-token.secret", () -> "test-action-token-secret-key-must-be-at-least-32-chars");
+        registry.add("api.security.action-token.expiration", () -> "86400000");
     }
 }
