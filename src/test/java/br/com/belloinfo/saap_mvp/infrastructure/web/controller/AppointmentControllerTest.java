@@ -241,13 +241,13 @@ class AppointmentControllerTest {
                 .priorityLevel(PriorityLevel.P5)
                 .build();
 
-        when(listAppointmentsUseCase.execute(any(), any(), any(), any()))
-                .thenReturn(Collections.singletonList(appointment));
+        when(listAppointmentsUseCase.execute(any(), any(), any(), any(), anyInt(), anyInt()))
+                .thenReturn(new br.com.belloinfo.saap_mvp.domain.model.PageResult<>(Collections.singletonList(appointment), 0, 20, 1, 1));
 
         mockMvc.perform(get("/api/v1/appointments"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].id", is(id.toString())));
+                .andExpect(jsonPath("$.content", hasSize(1)))
+                .andExpect(jsonPath("$.content[0].id", is(id.toString())));
     }
 
     @Test

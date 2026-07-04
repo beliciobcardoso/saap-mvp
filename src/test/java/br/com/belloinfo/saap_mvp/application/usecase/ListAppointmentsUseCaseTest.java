@@ -1,6 +1,7 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.repository.AppointmentRepository;
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,23 +39,25 @@ class ListAppointmentsUseCaseTest {
         UUID patientId = UUID.randomUUID();
         LocalDateTime start = LocalDateTime.of(2026, 7, 1, 0, 0);
         LocalDateTime end = LocalDateTime.of(2026, 7, 31, 23, 59);
-        List<Appointment> expected = List.of(
-                Appointment.builder().id(UUID.randomUUID()).status(AppointmentStatus.CONFIRMED).build());
-        when(appointmentRepository.findByFilters(professionalId, patientId, start, end)).thenReturn(expected);
+        PageResult<Appointment> expected = new PageResult<>(
+                List.of(Appointment.builder().id(UUID.randomUUID()).status(AppointmentStatus.CONFIRMED).build()),
+                0, 20, 1, 1);
+        when(appointmentRepository.findByFilters(professionalId, patientId, start, end, 0, 20)).thenReturn(expected);
 
-        List<Appointment> result = useCase.execute(professionalId, patientId, start, end);
+        PageResult<Appointment> result = useCase.execute(professionalId, patientId, start, end, 0, 20);
 
         assertEquals(expected, result);
-        verify(appointmentRepository).findByFilters(professionalId, patientId, start, end);
+        verify(appointmentRepository).findByFilters(professionalId, patientId, start, end, 0, 20);
     }
 
     @Test
-    @DisplayName("retorna lista vazia quando nenhum agendamento corresponde aos filtros")
-    void execute_noMatches_returnsEmptyList() {
-        when(appointmentRepository.findByFilters(any(), any(), any(), any())).thenReturn(Collections.emptyList());
+    @DisplayName("retorna PageResult vazio quando nenhum agendamento corresponde aos filtros")
+    void execute_noMatches_returnsEmptyPageResult() {
+        when(appointmentRepository.findByFilters(any(), any(), any(), any(), anyInt(), anyInt()))
+                .thenReturn(new PageResult<>(Collections.emptyList(), 0, 20, 0, 0));
 
-        List<Appointment> result = useCase.execute(null, null, null, null);
+        PageResult<Appointment> result = useCase.execute(null, null, null, null, 0, 20);
 
-        assertTrue(result.isEmpty());
+        assertTrue(result.content().isEmpty());
     }
 }

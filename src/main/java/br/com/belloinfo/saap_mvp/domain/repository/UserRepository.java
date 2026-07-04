@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.domain.repository;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.User;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface UserRepository {
     Optional<User> findById(UUID id);
     Optional<User> findByEmail(String email);
     List<User> findAll();
+    PageResult<User> findActive(int page, int size);
 }

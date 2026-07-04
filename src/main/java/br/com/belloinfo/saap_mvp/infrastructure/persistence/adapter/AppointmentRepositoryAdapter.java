@@ -1,7 +1,9 @@
 package br.com.belloinfo.saap_mvp.infrastructure.persistence.adapter;
 
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.repository.AppointmentRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.PaginationSupport;
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AppointmentEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.mapper.CoreMapper;
@@ -65,10 +67,11 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
     }
 
     @Override
-    public List<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        return jpaAppointmentRepository.findByFilters(professionalId, patientId, startDateTime, endDateTime).stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
+    public PageResult<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime, int page, int size) {
+        return PaginationSupport.toPageResult(
+                jpaAppointmentRepository.findByFilters(professionalId, patientId, startDateTime, endDateTime, PaginationSupport.of(page, size)),
+                mapper::toDomain
+        );
     }
 
     @Override

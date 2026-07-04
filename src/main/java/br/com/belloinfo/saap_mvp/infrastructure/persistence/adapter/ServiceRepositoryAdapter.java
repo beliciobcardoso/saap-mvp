@@ -1,7 +1,9 @@
 package br.com.belloinfo.saap_mvp.infrastructure.persistence.adapter;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.repository.ServiceRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.PaginationSupport;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ServiceEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.mapper.CoreMapper;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.repository.JpaServiceRepository;
@@ -38,10 +40,11 @@ public class ServiceRepositoryAdapter implements ServiceRepository {
     }
 
     @Override
-    public List<Service> findAllActive() {
-        return jpaServiceRepository.findAll().stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
+    public PageResult<Service> findActive(int page, int size) {
+        return PaginationSupport.toPageResult(
+                jpaServiceRepository.findAll(PaginationSupport.of(page, size)),
+                mapper::toDomain
+        );
     }
 
     @Override

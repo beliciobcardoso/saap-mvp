@@ -162,12 +162,13 @@ class ProfessionalControllerTest {
     void shouldListActiveProfessionals() throws Exception {
         UUID id = UUID.randomUUID();
         Professional professional = Professional.builder().id(id).name("Dr. House").active(true).build();
-        when(listActiveProfessionalsUseCase.execute()).thenReturn(Collections.singletonList(professional));
+        when(listActiveProfessionalsUseCase.execute(0, 20))
+                .thenReturn(new br.com.belloinfo.saap_mvp.domain.model.PageResult<>(Collections.singletonList(professional), 0, 20, 1, 1));
 
         mockMvc.perform(get("/api/v1/professionals"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name", is("Dr. House")));
+                .andExpect(jsonPath("$.content", hasSize(1)))
+                .andExpect(jsonPath("$.content[0].name", is("Dr. House")));
     }
 
     @Test

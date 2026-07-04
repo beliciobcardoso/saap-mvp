@@ -1,9 +1,9 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
 public class ListActiveProfessionalsUseCase {
@@ -13,7 +13,7 @@ public class ListActiveProfessionalsUseCase {
         this.professionalRepository = professionalRepository;
     }
 
-    public List<Professional> execute() {
-        return professionalRepository.findAllActive();
+    public PageResult<Professional> execute(int page, int size) {
+        return professionalRepository.findActive(page, size);
     }
 }

@@ -1,9 +1,9 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.User;
 import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
 public class ListActiveUsersUseCase {
@@ -13,9 +13,7 @@ public class ListActiveUsersUseCase {
         this.userRepository = userRepository;
     }
 
-    public List<User> execute() {
-        return userRepository.findAll().stream()
-                .filter(User::isActive)
-                .collect(java.util.stream.Collectors.toList());
+    public PageResult<User> execute(int page, int size) {
+        return userRepository.findActive(page, size);
     }
 }

@@ -3,6 +3,7 @@ package br.com.belloinfo.saap_mvp.infrastructure.web.controller;
 import br.com.belloinfo.saap_mvp.application.service.AuditService;
 import br.com.belloinfo.saap_mvp.application.usecase.*;
 import br.com.belloinfo.saap_mvp.domain.model.User;
+import br.com.belloinfo.saap_mvp.infrastructure.web.dto.PageResponseDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.UserRequestDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.UserResponseDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.mapper.WebMapper;
@@ -15,9 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/users")
@@ -58,11 +57,10 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserResponseDTO>> listAllActive() {
-        List<UserResponseDTO> responses = listActiveUsersUseCase.execute().stream()
-                .map(mapper::toResponse)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(responses);
+    public ResponseEntity<PageResponseDTO<UserResponseDTO>> listAllActive(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size) {
+        return ResponseEntity.ok(PageResponseDTO.from(listActiveUsersUseCase.execute(page, size), mapper::toResponse));
     }
 
     @PutMapping("/{id}")

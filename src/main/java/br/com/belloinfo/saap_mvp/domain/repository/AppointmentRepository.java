@@ -1,6 +1,7 @@
 package br.com.belloinfo.saap_mvp.domain.repository;
 
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ public interface AppointmentRepository {
     Optional<Appointment> findById(UUID id);
     List<Appointment> findAll();
     boolean existsByProfessionalIdAndDateTimeAndStatusNotIn(UUID professionalId, LocalDateTime dateTime, List<AppointmentStatus> statuses);
-    List<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime);
+    PageResult<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime, int page, int size);
     List<Appointment> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(AppointmentStatus status, LocalDateTime startDateTime, LocalDateTime endDateTime);
     Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime start, LocalDateTime end);
 

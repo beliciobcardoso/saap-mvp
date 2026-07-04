@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.domain.repository;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public interface ProfessionalRepository {
     Optional<Professional> findByIdWithLock(UUID id);
     Optional<Professional> findByRegistrationNumber(String registrationNumber);
     Optional<Professional> findByUserId(UUID userId);
-    List<Professional> findAllActive();
+    PageResult<Professional> findActive(int page, int size);
     List<Professional> findAll();
 }

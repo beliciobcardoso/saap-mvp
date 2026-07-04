@@ -19,9 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/appointments")
@@ -79,16 +77,16 @@ public class AppointmentController {
 
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PROFESSIONAL', 'PATIENT')")
-    public ResponseEntity<List<AppointmentResponseDTO>> list(
+    public ResponseEntity<PageResponseDTO<AppointmentResponseDTO>> list(
             @RequestParam(required = false) UUID professionalId,
             @RequestParam(required = false) UUID patientId,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size
     ) {
-        List<AppointmentResponseDTO> responseList = listAppointmentsUseCase.execute(professionalId, patientId, start, end).stream()
-                .map(mapper::toResponse)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(responseList);
+        return ResponseEntity.ok(PageResponseDTO.from(
+                listAppointmentsUseCase.execute(professionalId, patientId, start, end, page, size), mapper::toResponse));
     }
 
     @PutMapping("/{id}/confirm")

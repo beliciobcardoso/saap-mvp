@@ -1,8 +1,8 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.repository.ServiceRepository;
-import java.util.List;
 
 @org.springframework.stereotype.Service
 public class ListActiveServicesUseCase {
@@ -12,7 +12,7 @@ public class ListActiveServicesUseCase {
         this.serviceRepository = serviceRepository;
     }
 
-    public List<Service> execute() {
-        return serviceRepository.findAllActive();
+    public PageResult<Service> execute(int page, int size) {
+        return serviceRepository.findActive(page, size);
     }
 }

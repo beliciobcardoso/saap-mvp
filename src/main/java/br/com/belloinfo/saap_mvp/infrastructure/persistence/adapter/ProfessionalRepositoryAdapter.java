@@ -1,7 +1,9 @@
 package br.com.belloinfo.saap_mvp.infrastructure.persistence.adapter;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.PaginationSupport;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.ProfessionalEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.mapper.CoreMapper;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.repository.JpaProfessionalRepository;
@@ -48,12 +50,13 @@ public class ProfessionalRepositoryAdapter implements ProfessionalRepository {
     }
 
     @Override
-    public List<Professional> findAllActive() {
+    public PageResult<Professional> findActive(int page, int size) {
         // As long as JpaProfessionalRepository is annotated with @SQLRestriction("is_active = true")
         // findAll() will automatically return only active ones.
-        return jpaProfessionalRepository.findAll().stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
+        return PaginationSupport.toPageResult(
+                jpaProfessionalRepository.findAll(PaginationSupport.of(page, size)),
+                mapper::toDomain
+        );
     }
 
     @Override

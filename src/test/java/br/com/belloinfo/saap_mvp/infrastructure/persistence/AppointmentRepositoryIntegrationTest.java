@@ -2,6 +2,7 @@ package br.com.belloinfo.saap_mvp.infrastructure.persistence;
 
 import br.com.belloinfo.saap_mvp.BaseIntegrationTest;
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
@@ -223,22 +224,24 @@ class AppointmentRepositoryIntegrationTest extends BaseIntegrationTest {
         appointmentRepository.save(app2);
 
         // Filter by professional
-        List<Appointment> filtered = appointmentRepository.findByFilters(
+        PageResult<Appointment> filtered = appointmentRepository.findByFilters(
                 professional.getId(),
                 null,
                 baseTime.minusHours(1),
-                baseTime.plusHours(1)
+                baseTime.plusHours(1),
+                0, 20
         );
-        assertEquals(1, filtered.size());
-        assertEquals(app1.getId(), filtered.get(0).getId());
+        assertEquals(1, filtered.content().size());
+        assertEquals(app1.getId(), filtered.content().get(0).getId());
 
         // Filter by patient
-        List<Appointment> filtered2 = appointmentRepository.findByFilters(
+        PageResult<Appointment> filtered2 = appointmentRepository.findByFilters(
                 null,
                 patient.getId(),
                 baseTime.minusHours(1),
-                baseTime.plusDays(2)
+                baseTime.plusDays(2),
+                0, 20
         );
-        assertEquals(2, filtered2.size());
+        assertEquals(2, filtered2.content().size());
     }
 }

@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.repository.PatientRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,38 +34,27 @@ class ListActivePatientsUseCaseTest {
     }
 
     @Test
-    @DisplayName("retorna apenas pacientes ativos, filtrando os inativos")
-    void execute_mixedPatients_returnsOnlyActiveOnes() {
+    @DisplayName("delega paginação ao repositório e retorna o PageResult obtido")
+    void execute_delegatesToRepositoryWithPageAndSize() {
         Patient active1 = patient("Maria Silva", true);
-        Patient inactive = patient("João Souza", false);
         Patient active2 = patient("Ana Costa", true);
-        when(patientRepository.findAll()).thenReturn(List.of(active1, inactive, active2));
+        PageResult<Patient> expected = new PageResult<>(List.of(active1, active2), 0, 20, 2, 1);
+        when(patientRepository.findActive(0, 20)).thenReturn(expected);
 
-        List<Patient> result = useCase.execute();
+        PageResult<Patient> result = useCase.execute(0, 20);
 
-        assertEquals(2, result.size());
-        assertTrue(result.contains(active1));
-        assertTrue(result.contains(active2));
-        assertFalse(result.contains(inactive));
+        assertEquals(expected, result);
+        verify(patientRepository).findActive(0, 20);
     }
 
     @Test
-    @DisplayName("retorna lista vazia quando não há pacientes cadastrados")
-    void execute_noPatients_returnsEmptyList() {
-        when(patientRepository.findAll()).thenReturn(List.of());
+    @DisplayName("retorna PageResult vazio quando não há pacientes cadastrados")
+    void execute_noPatients_returnsEmptyPageResult() {
+        PageResult<Patient> expected = new PageResult<>(List.of(), 0, 20, 0, 0);
+        when(patientRepository.findActive(0, 20)).thenReturn(expected);
 
-        List<Patient> result = useCase.execute();
+        PageResult<Patient> result = useCase.execute(0, 20);
 
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
-    @DisplayName("retorna lista vazia quando todos os pacientes estão inativos")
-    void execute_allInactivePatients_returnsEmptyList() {
-        when(patientRepository.findAll()).thenReturn(List.of(patient("Maria Silva", false), patient("João Souza", false)));
-
-        List<Patient> result = useCase.execute();
-
-        assertTrue(result.isEmpty());
+        assertTrue(result.content().isEmpty());
     }
 }

@@ -121,7 +121,7 @@ class RepositoryIntegrationTest extends BaseIntegrationTest {
         assertFalse(foundActive.isPresent());
 
         // Verify it still exists in DB as inactive
-        List<Professional> all = professionalRepository.findAllActive();
+        List<Professional> all = professionalRepository.findActive(0, 20).content();
         assertTrue(all.stream().noneMatch(p -> p.getId().equals(saved.getId())));
     }
 
@@ -147,7 +147,7 @@ class RepositoryIntegrationTest extends BaseIntegrationTest {
         assertFalse(foundActive.isPresent());
 
         // List active should be empty
-        List<Service> all = serviceRepository.findAllActive();
+        List<Service> all = serviceRepository.findActive(0, 20).content();
         assertTrue(all.stream().noneMatch(s -> s.getId().equals(saved.getId())));
     }
 

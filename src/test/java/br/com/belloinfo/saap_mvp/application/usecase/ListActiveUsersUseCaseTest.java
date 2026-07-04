@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.User;
 import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
 import br.com.belloinfo.saap_mvp.domain.valueobject.UserRole;
@@ -34,41 +35,27 @@ class ListActiveUsersUseCaseTest {
     }
 
     @Test
-    @DisplayName("retorna apenas usuários ativos, filtrando os inativos")
-    void execute_mixedUsers_returnsOnlyActiveOnes() {
+    @DisplayName("delega paginação ao repositório e retorna o PageResult obtido")
+    void execute_delegatesToRepositoryWithPageAndSize() {
         User active1 = user("admin@email.com", UserRole.ADMIN, true);
-        User inactive = user("inactive@email.com", UserRole.RECEPTIONIST, false);
         User active2 = user("pro@email.com", UserRole.PROFESSIONAL, true);
-        when(userRepository.findAll()).thenReturn(List.of(active1, inactive, active2));
+        PageResult<User> expected = new PageResult<>(List.of(active1, active2), 0, 20, 2, 1);
+        when(userRepository.findActive(0, 20)).thenReturn(expected);
 
-        List<User> result = useCase.execute();
+        PageResult<User> result = useCase.execute(0, 20);
 
-        assertEquals(2, result.size());
-        assertTrue(result.contains(active1));
-        assertTrue(result.contains(active2));
-        assertFalse(result.contains(inactive));
+        assertEquals(expected, result);
+        verify(userRepository).findActive(0, 20);
     }
 
     @Test
-    @DisplayName("retorna lista vazia quando não há usuários cadastrados")
-    void execute_noUsers_returnsEmptyList() {
-        when(userRepository.findAll()).thenReturn(List.of());
+    @DisplayName("retorna PageResult vazio quando não há usuários cadastrados")
+    void execute_noUsers_returnsEmptyPageResult() {
+        PageResult<User> expected = new PageResult<>(List.of(), 0, 20, 0, 0);
+        when(userRepository.findActive(0, 20)).thenReturn(expected);
 
-        List<User> result = useCase.execute();
+        PageResult<User> result = useCase.execute(0, 20);
 
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
-    @DisplayName("retorna lista vazia quando todos os usuários estão inativos")
-    void execute_allInactiveUsers_returnsEmptyList() {
-        when(userRepository.findAll()).thenReturn(List.of(
-                user("a@email.com", UserRole.ADMIN, false),
-                user("b@email.com", UserRole.PATIENT, false)
-        ));
-
-        List<User> result = useCase.execute();
-
-        assertTrue(result.isEmpty());
+        assertTrue(result.content().isEmpty());
     }
 }

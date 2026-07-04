@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,25 +31,27 @@ class ListActiveProfessionalsUseCaseTest {
     }
 
     @Test
-    @DisplayName("retorna lista de profissionais ativos quando existem registros")
-    void execute_withActiveProfessionals_returnsList() {
+    @DisplayName("retorna PageResult de profissionais ativos quando existem registros")
+    void execute_withActiveProfessionals_returnsPageResult() {
         Professional first = Professional.builder().name("Dra. Marina Costa").active(true).build();
         Professional second = Professional.builder().name("Dr. Rafael Nunes").active(true).build();
-        when(professionalRepository.findAllActive()).thenReturn(List.of(first, second));
+        PageResult<Professional> expected = new PageResult<>(List.of(first, second), 0, 20, 2, 1);
+        when(professionalRepository.findActive(0, 20)).thenReturn(expected);
 
-        List<Professional> result = useCase.execute();
+        PageResult<Professional> result = useCase.execute(0, 20);
 
-        assertEquals(2, result.size());
-        assertTrue(result.containsAll(List.of(first, second)));
+        assertEquals(2, result.content().size());
+        assertTrue(result.content().containsAll(List.of(first, second)));
+        verify(professionalRepository).findActive(0, 20);
     }
 
     @Test
-    @DisplayName("retorna lista vazia quando não há profissionais ativos")
-    void execute_withoutActiveProfessionals_returnsEmptyList() {
-        when(professionalRepository.findAllActive()).thenReturn(Collections.emptyList());
+    @DisplayName("retorna PageResult vazio quando não há profissionais ativos")
+    void execute_withoutActiveProfessionals_returnsEmptyPageResult() {
+        when(professionalRepository.findActive(0, 20)).thenReturn(new PageResult<>(Collections.emptyList(), 0, 20, 0, 0));
 
-        List<Professional> result = useCase.execute();
+        PageResult<Professional> result = useCase.execute(0, 20);
 
-        assertTrue(result.isEmpty());
+        assertTrue(result.content().isEmpty());
     }
 }

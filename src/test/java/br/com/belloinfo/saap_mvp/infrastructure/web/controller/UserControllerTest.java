@@ -143,12 +143,13 @@ class UserControllerTest {
     void shouldListActiveUsers() throws Exception {
         UUID id = UUID.randomUUID();
         User user = User.builder().id(id).email("user@example.com").active(true).build();
-        when(listActiveUsersUseCase.execute()).thenReturn(Collections.singletonList(user));
+        when(listActiveUsersUseCase.execute(0, 20))
+                .thenReturn(new br.com.belloinfo.saap_mvp.domain.model.PageResult<>(Collections.singletonList(user), 0, 20, 1, 1));
 
         mockMvc.perform(get("/api/v1/users"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].email", is("user@example.com")));
+                .andExpect(jsonPath("$.content", hasSize(1)))
+                .andExpect(jsonPath("$.content[0].email", is("user@example.com")));
     }
 
     @Test

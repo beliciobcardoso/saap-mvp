@@ -1,7 +1,9 @@
 package br.com.belloinfo.saap_mvp.infrastructure.persistence.adapter;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.User;
 import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.PaginationSupport;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.UserEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.mapper.CoreMapper;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.repository.JpaUserRepository;
@@ -42,5 +44,13 @@ public class UserRepositoryAdapter implements UserRepository {
         return jpaUserRepository.findAll().stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public PageResult<User> findActive(int page, int size) {
+        return PaginationSupport.toPageResult(
+                jpaUserRepository.findByActiveTrue(PaginationSupport.of(page, size)),
+                mapper::toDomain
+        );
     }
 }

@@ -160,12 +160,14 @@ class PatientControllerTest {
     void shouldListActivePatients() throws Exception {
         UUID id = UUID.randomUUID();
         Patient patient = Patient.builder().id(id).name("John Doe").active(true).build();
-        when(listActivePatientsUseCase.execute()).thenReturn(Collections.singletonList(patient));
+        when(listActivePatientsUseCase.execute(0, 20))
+                .thenReturn(new br.com.belloinfo.saap_mvp.domain.model.PageResult<>(Collections.singletonList(patient), 0, 20, 1, 1));
 
         mockMvc.perform(get("/api/v1/patients"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name", is("John Doe")));
+                .andExpect(jsonPath("$.content", hasSize(1)))
+                .andExpect(jsonPath("$.content[0].name", is("John Doe")))
+                .andExpect(jsonPath("$.totalElements", is(1)));
     }
 
     @Test

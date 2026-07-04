@@ -133,12 +133,13 @@ class ServiceControllerTest {
     void shouldListActiveServices() throws Exception {
         UUID id = UUID.randomUUID();
         Service service = Service.builder().id(id).name("Consulta Geral").active(true).build();
-        when(listActiveServicesUseCase.execute()).thenReturn(Collections.singletonList(service));
+        when(listActiveServicesUseCase.execute(0, 20))
+                .thenReturn(new br.com.belloinfo.saap_mvp.domain.model.PageResult<>(Collections.singletonList(service), 0, 20, 1, 1));
 
         mockMvc.perform(get("/api/v1/services"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name", is("Consulta Geral")));
+                .andExpect(jsonPath("$.content", hasSize(1)))
+                .andExpect(jsonPath("$.content[0].name", is("Consulta Geral")));
     }
 
     @Test

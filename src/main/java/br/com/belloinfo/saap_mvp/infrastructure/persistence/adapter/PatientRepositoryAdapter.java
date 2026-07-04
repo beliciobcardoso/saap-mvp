@@ -1,17 +1,17 @@
 package br.com.belloinfo.saap_mvp.infrastructure.persistence.adapter;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.repository.PatientRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.PaginationSupport;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.PatientEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.mapper.CoreMapper;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.repository.JpaPatientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -43,9 +43,10 @@ public class PatientRepositoryAdapter implements PatientRepository {
     }
 
     @Override
-    public List<Patient> findAll() {
-        return jpaPatientRepository.findAll().stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
+    public PageResult<Patient> findActive(int page, int size) {
+        return PaginationSupport.toPageResult(
+                jpaPatientRepository.findByActiveTrue(PaginationSupport.of(page, size)),
+                mapper::toDomain
+        );
     }
 }

@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.repository.ServiceRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,27 +30,28 @@ class ListActiveServicesUseCaseTest {
     }
 
     @Test
-    @DisplayName("retorna lista de serviços ativos")
-    void execute_withActiveServices_returnsList() {
+    @DisplayName("retorna PageResult de serviços ativos")
+    void execute_withActiveServices_returnsPageResult() {
         List<Service> activeServices = List.of(
                 Service.builder().name("Consulta").active(true).build(),
                 Service.builder().name("Exame").active(true).build()
         );
-        when(serviceRepository.findAllActive()).thenReturn(activeServices);
+        PageResult<Service> expected = new PageResult<>(activeServices, 0, 20, 2, 1);
+        when(serviceRepository.findActive(0, 20)).thenReturn(expected);
 
-        List<Service> result = useCase.execute();
+        PageResult<Service> result = useCase.execute(0, 20);
 
-        assertEquals(2, result.size());
-        assertEquals(activeServices, result);
+        assertEquals(2, result.content().size());
+        assertEquals(activeServices, result.content());
     }
 
     @Test
-    @DisplayName("retorna lista vazia quando não há serviços ativos")
-    void execute_withNoActiveServices_returnsEmptyList() {
-        when(serviceRepository.findAllActive()).thenReturn(Collections.emptyList());
+    @DisplayName("retorna PageResult vazio quando não há serviços ativos")
+    void execute_withNoActiveServices_returnsEmptyPageResult() {
+        when(serviceRepository.findActive(0, 20)).thenReturn(new PageResult<>(Collections.emptyList(), 0, 20, 0, 0));
 
-        List<Service> result = useCase.execute();
+        PageResult<Service> result = useCase.execute(0, 20);
 
-        assertTrue(result.isEmpty());
+        assertTrue(result.content().isEmpty());
     }
 }

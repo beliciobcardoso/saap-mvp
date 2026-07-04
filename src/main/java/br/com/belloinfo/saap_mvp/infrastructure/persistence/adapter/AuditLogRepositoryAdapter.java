@@ -1,7 +1,9 @@
 package br.com.belloinfo.saap_mvp.infrastructure.persistence.adapter;
 
 import br.com.belloinfo.saap_mvp.domain.model.AuditLog;
+import br.com.belloinfo.saap_mvp.domain.model.PageResult;
 import br.com.belloinfo.saap_mvp.domain.repository.AuditLogRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.persistence.PaginationSupport;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AuditLogEntity;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.mapper.CoreMapper;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.repository.JpaAuditLogRepository;
@@ -52,9 +54,10 @@ public class AuditLogRepositoryAdapter implements AuditLogRepository {
     }
 
     @Override
-    public List<AuditLog> findAllOrderByTimestampDesc() {
-        return jpaAuditLogRepository.findAllByOrderByTimestampDesc().stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
+    public PageResult<AuditLog> findAllOrderByTimestampDesc(int page, int size) {
+        return PaginationSupport.toPageResult(
+                jpaAuditLogRepository.findAllByOrderByTimestampDesc(PaginationSupport.of(page, size)),
+                mapper::toDomain
+        );
     }
 }
