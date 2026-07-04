@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!-- Logger raiz: nivel INFO padrao -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- ──────────────────────────────────────────────────────
+         Hibernate 7 - constraint violations (duplicate key)
+         sao tratadas via DataIntegrityViolationException.
+         Suprimimos o WARN para evitar poluicao nos logs.
+         ────────────────────────────────────────────────────── -->
+    <logger name="org.hibernate.orm.jdbc.error" level="ERROR"/>
+
+    <!-- ──────────────────────────────────────────────────────
+         Spring / Flyway / Tomcat
+         ────────────────────────────────────────────────────── -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.flywaydb" level="INFO"/>
+    <logger name="org.apache.tomcat" level="WARN"/>
+
+    <!-- ══════════════════════════════════════════════════════
+         Profile: dev - verbose, com Hibernate SQL
+         ══════════════════════════════════════════════════════ -->
+    <springProfile name="dev">
+        <logger name="br.com.belloinfo.saap_mvp" level="DEBUG"/>
+        <logger name="org.springframework.web" level="INFO"/>
+        <logger name="org.hibernate.SQL" level="DEBUG"/>
+        <logger name="org.hibernate.orm.jdbc.bind" level="TRACE"/>
+    </springProfile>
+
+    <!-- ══════════════════════════════════════════════════════
+         Profile: prod - silencioso, apenas WARN/ERROR
+         ══════════════════════════════════════════════════════ -->
+    <springProfile name="prod">
+        <root level="WARN"/>
+        <logger name="br.com.belloinfo.saap_mvp" level="INFO"/>
+        <logger name="org.hibernate.SQL" level="OFF"/>
+        <logger name="org.hibernate.orm.jdbc.bind" level="OFF"/>
+    </springProfile>
+
+</configuration>
