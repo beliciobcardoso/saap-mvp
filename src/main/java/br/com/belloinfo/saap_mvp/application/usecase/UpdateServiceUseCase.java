@@ -14,7 +14,7 @@ public class UpdateServiceUseCase {
 
     public Service execute(UUID id, Service updated) {
         Service existing = serviceRepository.findById(id)
-                .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Serviço não encontrado"));
+                .orElseThrow(() -> new br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException("Serviço não encontrado"));
 
         if (updated.getName() != null && !updated.getName().equals(existing.getName())
             && serviceRepository.findByName(updated.getName()).isPresent()) {

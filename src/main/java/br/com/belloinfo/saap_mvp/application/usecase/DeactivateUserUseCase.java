@@ -15,7 +15,7 @@ public class DeactivateUserUseCase {
 
     public void execute(UUID id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Usuário não encontrado"));
+                .orElseThrow(() -> new br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException("Usuário não encontrado"));
         user.deactivate();
         userRepository.save(user);
     }

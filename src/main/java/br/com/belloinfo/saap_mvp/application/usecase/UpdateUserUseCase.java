@@ -18,7 +18,7 @@ public class UpdateUserUseCase {
 
     public User execute(UUID id, User updatedUser) {
         User existing = userRepository.findById(id)
-                .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Usuário não encontrado"));
+                .orElseThrow(() -> new br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException("Usuário não encontrado"));
 
         if (!existing.getEmail().equals(updatedUser.getEmail()) 
             && userRepository.findByEmail(updatedUser.getEmail()).isPresent()) {

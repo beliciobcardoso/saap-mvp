@@ -5,10 +5,14 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.core.env.ConfigurableEnvironment;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.regex.Pattern;
 
 public class DatabaseInitializerListener implements ApplicationListener<ApplicationEnvironmentPreparedEvent> {
+
+    private static final Pattern VALID_DB_NAME = Pattern.compile("[a-zA-Z_][a-zA-Z0-9_]*");
 
     @Override
     public void onApplicationEvent(ApplicationEnvironmentPreparedEvent event) {
@@ -30,7 +34,12 @@ public class DatabaseInitializerListener implements ApplicationListener<Applicat
             if (dbName.contains("?")) {
                 dbName = dbName.substring(0, dbName.indexOf('?'));
             }
-            
+
+            if (!VALID_DB_NAME.matcher(dbName).matches()) {
+                System.err.println("Aviso: nome de banco de dados invalido ('" + dbName + "'), criacao automatica ignorada.");
+                return;
+            }
+
             // Connect to default 'postgres' database to check/create target db
             String baseUrl = url.substring(0, lastSlash + 1) + "postgres";
             if (url.contains("?")) {
@@ -40,8 +49,9 @@ public class DatabaseInitializerListener implements ApplicationListener<Applicat
             
             try (Connection conn = DriverManager.getConnection(baseUrl, username, password)) {
                 boolean dbExists = false;
-                try (Statement stmt = conn.createStatement()) {
-                    try (ResultSet rs = stmt.executeQuery("SELECT 1 FROM pg_database WHERE datname = '" + dbName + "'")) {
+                try (PreparedStatement ps = conn.prepareStatement("SELECT 1 FROM pg_database WHERE datname = ?")) {
+                    ps.setString(1, dbName);
+                    try (ResultSet rs = ps.executeQuery()) {
                         if (rs.next()) {
                             dbExists = true;
                         }

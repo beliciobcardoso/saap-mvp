@@ -67,6 +67,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(errorResponse);
     }
 
+    @ExceptionHandler(br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(
+            br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException ex, HttpServletRequest request) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.NOT_FOUND.value(),
+                "Not Found",
+                ex.getMessage(),
+                request.getRequestURI(),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
     @ExceptionHandler(br.com.belloinfo.saap_mvp.domain.exception.MedicalRecordConflictException.class)
     public ResponseEntity<ErrorResponse> handleMedicalRecordConflictException(
             br.com.belloinfo.saap_mvp.domain.exception.MedicalRecordConflictException ex, HttpServletRequest request) {

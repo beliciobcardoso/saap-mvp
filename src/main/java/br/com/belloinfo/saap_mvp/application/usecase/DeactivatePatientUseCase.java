@@ -15,7 +15,7 @@ public class DeactivatePatientUseCase {
 
     public void execute(UUID id) {
         Patient patient = patientRepository.findById(id)
-                .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Paciente não encontrado"));
+                .orElseThrow(() -> new br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException("Paciente não encontrado"));
         patient.deactivate();
         patientRepository.save(patient);
     }

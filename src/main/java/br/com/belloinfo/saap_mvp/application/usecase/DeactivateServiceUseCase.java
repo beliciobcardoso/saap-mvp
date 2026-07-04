@@ -14,7 +14,7 @@ public class DeactivateServiceUseCase {
 
     public void execute(UUID id) {
         Service service = serviceRepository.findById(id)
-                .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Serviço não encontrado"));
+                .orElseThrow(() -> new br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException("Serviço não encontrado"));
         service.deactivate();
         serviceRepository.save(service);
     }

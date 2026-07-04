@@ -15,7 +15,7 @@ public class UpdatePatientUseCase {
 
     public Patient execute(UUID id, Patient updated) {
         Patient existing = patientRepository.findById(id)
-                .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Paciente não encontrado"));
+                .orElseThrow(() -> new br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException("Paciente não encontrado"));
 
         // Normaliza o CPF: remove formatação antes de comparar e persistir
         if (updated.getCpf() != null) {

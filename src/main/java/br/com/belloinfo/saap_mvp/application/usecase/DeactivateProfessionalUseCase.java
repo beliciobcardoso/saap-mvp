@@ -15,7 +15,7 @@ public class DeactivateProfessionalUseCase {
 
     public void execute(UUID id) {
         Professional professional = professionalRepository.findById(id)
-                .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("Profissional não encontrado"));
+                .orElseThrow(() -> new br.com.belloinfo.saap_mvp.domain.exception.ResourceNotFoundException("Profissional não encontrado"));
         professional.deactivate();
         professionalRepository.save(professional);
     }
