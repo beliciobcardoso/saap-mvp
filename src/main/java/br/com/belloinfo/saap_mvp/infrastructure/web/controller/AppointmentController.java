@@ -195,13 +195,25 @@ public class AppointmentController {
 
     @GetMapping("/public/waitlist/accept")
     public ResponseEntity<String> publicWaitlistAccept(@RequestParam("token") String token) {
-        acceptWaitlistOfferUseCase.execute(token);
-        return ResponseEntity.ok("Vaga da fila de espera aceita e agendamento confirmado com sucesso!");
+        try {
+            acceptWaitlistOfferUseCase.execute(token);
+            return ResponseEntity.ok("Vaga da fila de espera aceita e agendamento confirmado com sucesso!");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(org.springframework.http.HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 
     @GetMapping("/public/waitlist/decline")
     public ResponseEntity<String> publicWaitlistDecline(@RequestParam("token") String token) {
-        declineWaitlistOfferUseCase.execute(token);
-        return ResponseEntity.ok("Vaga da fila de espera recusada com sucesso.");
+        try {
+            declineWaitlistOfferUseCase.execute(token);
+            return ResponseEntity.ok("Vaga da fila de espera recusada com sucesso.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(org.springframework.http.HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 }

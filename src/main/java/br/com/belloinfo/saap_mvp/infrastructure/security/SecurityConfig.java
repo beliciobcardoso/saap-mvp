@@ -74,6 +74,12 @@ public class SecurityConfig {
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write("{\"message\": \"Não autorizado: token ausente ou inválido\"}");
                 })
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    response.setStatus(jakarta.servlet.http.HttpServletResponse.SC_FORBIDDEN);
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write("{\"message\": \"Acesso negado: você não tem permissão para acessar este recurso\"}");
+                })
             )
             .addFilterBefore(loginRateLimitFilter, UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

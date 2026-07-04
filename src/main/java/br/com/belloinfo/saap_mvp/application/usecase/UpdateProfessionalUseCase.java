@@ -28,7 +28,9 @@ public class UpdateProfessionalUseCase {
         existing.setPhone(updated.getPhone());
         existing.setRegistrationNumber(updated.getRegistrationNumber());
         existing.setRole(updated.getRole());
-        existing.setUserId(updated.getUserId());
+        if (updated.getUserId() != null) {
+            existing.setUserId(updated.getUserId());
+        }
         return professionalRepository.save(existing);
     }
 }
