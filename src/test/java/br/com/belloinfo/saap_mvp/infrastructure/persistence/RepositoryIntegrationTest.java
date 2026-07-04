@@ -88,6 +88,56 @@ class RepositoryIntegrationTest extends BaseIntegrationTest {
     }
 
     @Test
+    void shouldExcludeInactivePatientFromFindActive() {
+        Patient patient = Patient.builder()
+                .id(UUID.randomUUID())
+                .name("Paciente Inativo")
+                .cpf("11122233396")
+                .email("inativo@saap.com")
+                .phone("11966665555")
+                .birthDate(LocalDate.of(1990, 1, 1))
+                .active(true)
+                .build();
+        Patient saved = patientRepository.save(patient);
+
+        saved.deactivate();
+        patientRepository.save(saved);
+
+        // findById continua encontrando (Patient não usa @SQLRestriction)
+        Optional<Patient> found = patientRepository.findById(saved.getId());
+        assertTrue(found.isPresent());
+        assertFalse(found.get().isActive());
+
+        // mas findActive (usado pela listagem paginada) deve excluí-lo
+        List<Patient> activeOnly = patientRepository.findActive(0, 20).content();
+        assertTrue(activeOnly.stream().noneMatch(p -> p.getId().equals(saved.getId())));
+    }
+
+    @Test
+    void shouldExcludeInactiveUserFromFindActive() {
+        User user = User.builder()
+                .id(UUID.randomUUID())
+                .email("inativo_user@saap.com")
+                .password("securePassword")
+                .role(UserRole.RECEPTIONIST)
+                .active(true)
+                .build();
+        User saved = userRepository.save(user);
+
+        saved.deactivate();
+        userRepository.save(saved);
+
+        // findById continua encontrando (User não usa @SQLRestriction)
+        Optional<User> found = userRepository.findById(saved.getId());
+        assertTrue(found.isPresent());
+        assertFalse(found.get().isActive());
+
+        // mas findActive (usado pela listagem paginada) deve excluí-lo
+        List<User> activeOnly = userRepository.findActive(0, 20).content();
+        assertTrue(activeOnly.stream().noneMatch(u -> u.getId().equals(saved.getId())));
+    }
+
+    @Test
     void shouldSoftDeleteProfessional() {
         // First create user for foreign key constraint
         User user = User.builder()

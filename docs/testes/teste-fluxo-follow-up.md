@@ -32,7 +32,7 @@ FOLLOW_UP_CRON=*/30 * * * * *
 
 - **Admin:** `john.nobody@email.com` / `SenhaForte123!`
 - **Recepcionista:** `ana.lima@saap.com` / `Recepcao123!`
-- **Profissional:** Dr. Carlos Mendes (`5134ffb1-6a1e-4d55-8abb-538ce717cfba`)
+- **Profissional:** Dr. Carlos Mendes (`5134ffb1-6a1e-4d55-8abb-538ce717cfba`) — login `dr.carlos@saap.com` / `Medico123!`
 - **Paciente:** Carlos Augusto Teste (`3ae569b4-5883-4b07-8d21-4790d28963b8`)
 - **Serviço:** Consulta Clínica Geral (`07800639-bfdb-45e6-94d2-fb98bc7495ea`)
 
@@ -293,7 +293,7 @@ Authorization: Bearer <professional-token>
 ```
 PENDING ──→ CONFIRMED ──→ ARRIVED ──→ CALLING ──→ IN_PROGRESS ──→ COMPLETED
     │             │            │            │              │        
-    └──→ CANCELLED ←──────────┴────────────┴──────────────┴──→ CANCELLED
+    └──→ CANCELLED ←───────────┴────────────┴──────────────┴──→ CANCELLED
                                    ↗
                           PENDING_RESPONSE
 ```
@@ -334,3 +334,47 @@ public Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime 
 3. **Issuer:** O issuer dos tokens de ação é `saap-action-token` (diferente de `saap-api` usado nos tokens de autenticação).
 4. **Cron:** Em desenvolvimento, usar `*/30 * * * * *` para testar rapidamente. Em produção, ajustar para `0 0 * * * *` (a cada hora).
 5. **Fila do dia:** O `CallNextPatientUseCase` busca apenas agendamentos do dia atual. Agendamentos futuros entram na fila no próprio dia da consulta após o check-in.
+
+---
+
+## ✅ Execução de Validação Real (04/07/2026)
+
+Fluxo reexecutado ponta a ponta contra a instância da aplicação em execução (porta 8080, banco `postgis`), confirmando os dois fluxos (RF03 e RF06) sem regressões.
+
+### Correção de Documentação
+
+- **Login:** o endpoint real é `POST /api/v1/auth/login` (não `/auth/login`).
+
+### RF03 — Follow-up
+
+| Cenário | Agendamento | Resultado |
+|---------|-------------|-----------|
+| Confirmar (token válido) | `8d90ad04-3e5e-4ce1-90f4-01280df8a0a3` | ✅ `200 OK` → `CONFIRMED` |
+| Confirmar (token inválido) | — | ✅ `400 Bad Request` |
+| Confirmar (status incorreto, já `CONFIRMED`) | `8d90ad04-...` | ✅ `409 Conflict` |
+| Cancelar (token válido) | `5ba216cf-7890-41e2-8e71-d7978365b519` | ✅ `200 OK` → `CANCELLED` |
+| Cancelar (token inválido) | — | ✅ `400 Bad Request` |
+| Cancelar (status incorreto, já `CANCELLED`) | `5ba216cf-...` | ✅ `409 Conflict` |
+
+> **Nota:** como o scheduler não seria aguardado em tempo real, os tokens de ação (`confirm`/`cancel`) foram gerados manualmente com PyJWT (HS256, `iss=saap-action-token`, `sub=<appointmentId>`, `exp=+24h`) usando o `ACTION_TOKEN_SECRET` do `.env` — payload idêntico ao produzido por `AppointmentActionTokenService`.
+
+### RF06 — Check-in e Atendimento
+
+| Etapa | Agendamento `1a555782-b3ed-49ab-8bd1-f94214ddf3e1` | Resultado |
+|-------|-----------------------------------------------------|-----------|
+| Confirmar (Admin) | `PENDING → CONFIRMED` | ✅ `200 OK` |
+| Check-in (Recepcionista) | `CONFIRMED → ARRIVED` | ✅ `200 OK` |
+| Chamar próximo (Profissional) | `ARRIVED → CALLING` | ✅ `200 OK` |
+| Iniciar consulta (Profissional) | `CALLING → IN_PROGRESS` | ✅ `200 OK` |
+| Preencher evolução clínica | — | ✅ `201 Created` |
+| Concluir consulta (Profissional) | `IN_PROGRESS → COMPLETED` | ✅ `200 OK` |
+
+### Guarda de Negócio Confirmada
+
+Agendamento `e46adac5-5ef1-4217-a3aa-fd97252e0200` levado até `IN_PROGRESS` e finalizado **sem** preencher evolução clínica:
+
+```json
+{"status":409,"error":"Conflict","message":"Não é possível finalizar o atendimento sem a evolução clínica preenchida"}
+```
+
+✅ Bloqueio confirmado — `MedicalRecordConflictException` disparada corretamente.
