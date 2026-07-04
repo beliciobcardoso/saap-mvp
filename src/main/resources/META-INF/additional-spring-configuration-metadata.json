@@ -24,6 +24,11 @@
       "name": "saap.scheduler.waitlist.cron",
       "type": "java.lang.String",
       "description": "Cron expression for the waitlist timeout scheduler."
+    },
+    {
+      "name": "saap.cors.allowed-origins",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Comma-separated list of origins allowed by CORS."
     }
   ]
 }

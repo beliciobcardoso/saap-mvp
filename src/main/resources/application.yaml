@@ -4,8 +4,11 @@ server:
 api:
   security:
     token:
-      secret: "${JWT_SECRET:default_secret}"
+      secret: "${JWT_SECRET}"
       expiration: "${JWT_EXPIRATION:86400000}"
+    action-token:
+      secret: "${ACTION_TOKEN_SECRET}"
+      expiration: "${ACTION_TOKEN_EXPIRATION:86400000}"
 
 saap:
   app:
