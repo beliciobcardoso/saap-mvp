@@ -7,12 +7,15 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * Configuração geral do Springdoc OpenAPI (Swagger).
  * Configura metadados do projeto e o esquema global de autenticação Bearer JWT.
+ * Habilitado apenas no profile "dev" para evitar exposição em produção.
  */
 @Configuration
+@Profile("dev")
 public class OpenApiConfig {
 
     @Bean
