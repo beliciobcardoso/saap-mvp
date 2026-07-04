@@ -26,7 +26,7 @@ clinic:
     auto-cancel-after-no-response: "${CLINIC_AUTO_CANCEL:true}"
 
 # Habilita o endpoint /actuator/logfile: informa ao Spring Boot onde o arquivo de log esta.
-# O RollingFileAppender no logback-spring.xml (profile prod) usa o mesmo padrao.
+# O RollingFileAppender no logback-spring.xml (profile prod) usa o mesmo padrão.
 logging:
   file:
     name: "${LOG_DIR:logs}/${LOG_FILE:saap-mvp}.log"
