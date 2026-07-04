@@ -191,6 +191,11 @@ class MedicalRecordControllerIntegrationTest extends BaseIntegrationTest {
                 .priorityLevel(PriorityLevel.P5)
                 .build();
         appointmentRepository.save(appointment);
+
+        // Isolamento: força sincronização com o banco e limpa o contexto de persistência
+        // para simular uma fronteira de request HTTP real, evitando 403 intermitente
+        // quando executado após outras classes de teste de integração.
+        flushAndClear();
     }
 
     private String createEntryJson() throws Exception {
