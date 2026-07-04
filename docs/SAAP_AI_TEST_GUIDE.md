@@ -22,7 +22,7 @@ Documento único para IA ler e testar **toda a aplicação SAAP MVP** via fronte
 ### 1.1 Verificar que está Rodando
 
 ```bash
-curl http://localhost:8080/swagger-ui.html
+curl http://localhost:8080/swagger-ui/index.html
 # Deve retornar HTML do Swagger UI
 
 curl http://localhost:8080/actuator/health
