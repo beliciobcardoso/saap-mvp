@@ -12,7 +12,11 @@ import br.com.belloinfo.saap_mvp.domain.valueobject.UserRole;
 import br.com.belloinfo.saap_mvp.infrastructure.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@SpringBootTest
+@SpringBootTest(properties = {
+        // Suprime logs WARN de constraint violations esperadas em testes de integração
+        // logger real em Hibernate 7: org.hibernate.orm.jdbc.error
+        "logging.level.org.hibernate.orm.jdbc.error=OFF"
+})
 @Testcontainers
 @ActiveProfiles("test")
 public abstract class BaseIntegrationTest {
