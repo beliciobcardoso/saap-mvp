@@ -20,7 +20,7 @@ public class AppointmentActionTokenService {
     }
 
     public String generateToken(UUID appointmentId, String action) {
-        Algorithm algorithm = Algorithm.HMAC256(securityProperties.getSecurity().getToken().getSecret());
+        Algorithm algorithm = Algorithm.HMAC256(securityProperties.getSecurity().getActionToken().getSecret());
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withSubject(appointmentId.toString())
@@ -31,7 +31,7 @@ public class AppointmentActionTokenService {
 
     public DecodedToken validateToken(String token) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(securityProperties.getSecurity().getToken().getSecret());
+            Algorithm algorithm = Algorithm.HMAC256(securityProperties.getSecurity().getActionToken().getSecret());
             DecodedJWT jwt = JWT.require(algorithm)
                     .withIssuer(ISSUER)
                     .build()
