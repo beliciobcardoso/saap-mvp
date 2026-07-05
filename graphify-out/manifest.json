@@ -1,0 +1,1842 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1783242428.2224622,
+    "ast_hash": "1e5bfb5eb323df1ea5a7a762e21e6916",
+    "semantic_hash": "1e5bfb5eb323df1ea5a7a762e21e6916"
+  },
+  ".opencode/package.json": {
+    "mtime": 1783243943.0194914,
+    "ast_hash": "393ac037c904e2e7e5ae8b9aa3c54a49",
+    "semantic_hash": "393ac037c904e2e7e5ae8b9aa3c54a49"
+  },
+  "mvnw": {
+    "mtime": 1782556534.0,
+    "ast_hash": "ab50dd89da7da2346b28003352eeeeeb",
+    "semantic_hash": "ab50dd89da7da2346b28003352eeeeeb"
+  },
+  "pom.xml": {
+    "mtime": 1783130271.1776137,
+    "ast_hash": "8d795024b8afd07655d764498ad1de0c",
+    "semantic_hash": "8d795024b8afd07655d764498ad1de0c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/SaapMvpApplication.java": {
+    "mtime": 1782666212.8815072,
+    "ast_hash": "71aecab33c54299c6f35dc961b295775",
+    "semantic_hash": "71aecab33c54299c6f35dc961b295775"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/ServletInitializer.java": {
+    "mtime": 1782556534.0,
+    "ast_hash": "4b2b7eed353380fe719071d0e9458e05",
+    "semantic_hash": "4b2b7eed353380fe719071d0e9458e05"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/service/AppointmentActionTokenService.java": {
+    "mtime": 1783140516.0969863,
+    "ast_hash": "39904ee8271a10307a906bafeebe11e9",
+    "semantic_hash": "39904ee8271a10307a906bafeebe11e9"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/service/AuditService.java": {
+    "mtime": 1782658759.016063,
+    "ast_hash": "43224016ac8ededbf7716992571386fc",
+    "semantic_hash": "43224016ac8ededbf7716992571386fc"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/service/NotificationService.java": {
+    "mtime": 1782617613.6440809,
+    "ast_hash": "a494c1f9e36ade224b7faa59891a863e",
+    "semantic_hash": "a494c1f9e36ade224b7faa59891a863e"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/AcceptWaitlistOfferUseCase.java": {
+    "mtime": 1782617649.453622,
+    "ast_hash": "3043b469b2abd80a9c000f9ce9ecf596",
+    "semantic_hash": "3043b469b2abd80a9c000f9ce9ecf596"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/BookAppointmentUseCase.java": {
+    "mtime": 1782615778.8287332,
+    "ast_hash": "0c3892651e4b690a2f74663d339d5eee",
+    "semantic_hash": "0c3892651e4b690a2f74663d339d5eee"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CallNextPatientUseCase.java": {
+    "mtime": 1782657974.3129652,
+    "ast_hash": "b375bbb5deafb50d83a4d65723c713b8",
+    "semantic_hash": "b375bbb5deafb50d83a4d65723c713b8"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CancelAppointmentByTokenUseCase.java": {
+    "mtime": 1782662648.5553372,
+    "ast_hash": "b0bdf82d40d0924e39c7bb173d635d1e",
+    "semantic_hash": "b0bdf82d40d0924e39c7bb173d635d1e"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CancelAppointmentUseCase.java": {
+    "mtime": 1782617634.5078137,
+    "ast_hash": "ea82d86bed2b13a023521d844c596b12",
+    "semantic_hash": "ea82d86bed2b13a023521d844c596b12"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CheckInAppointmentUseCase.java": {
+    "mtime": 1782657950.0399814,
+    "ast_hash": "a1d789281e4ef18d9cde9116a59db918",
+    "semantic_hash": "a1d789281e4ef18d9cde9116a59db918"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CompleteAppointmentUseCase.java": {
+    "mtime": 1783050707.0253406,
+    "ast_hash": "0e12bad9eb021c1e143121541a35dc45",
+    "semantic_hash": "0e12bad9eb021c1e143121541a35dc45"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ConfirmAppointmentByTokenUseCase.java": {
+    "mtime": 1782662639.77073,
+    "ast_hash": "16ab8ef84314e040dc3a7cb58de05b72",
+    "semantic_hash": "16ab8ef84314e040dc3a7cb58de05b72"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ConfirmAppointmentUseCase.java": {
+    "mtime": 1782615782.399679,
+    "ast_hash": "029bc45eaff65d17d25f134d25dab15a",
+    "semantic_hash": "029bc45eaff65d17d25f134d25dab15a"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CreateMedicalRecordEntryUseCase.java": {
+    "mtime": 1783038920.8136652,
+    "ast_hash": "1f6d5376626e6a32bf75d950cb53b3a2",
+    "semantic_hash": "1f6d5376626e6a32bf75d950cb53b3a2"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CreatePatientUseCase.java": {
+    "mtime": 1782606330.0116107,
+    "ast_hash": "3bda0cb33ddec6c05c85445bb024e31c",
+    "semantic_hash": "3bda0cb33ddec6c05c85445bb024e31c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CreateProfessionalUseCase.java": {
+    "mtime": 1782566054.884779,
+    "ast_hash": "eb0b4663fd843063612abd791295a51e",
+    "semantic_hash": "eb0b4663fd843063612abd791295a51e"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CreateServiceUseCase.java": {
+    "mtime": 1782611675.9301314,
+    "ast_hash": "51db8e2f274cc21fc15b0dff114cba51",
+    "semantic_hash": "51db8e2f274cc21fc15b0dff114cba51"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CreateUserUseCase.java": {
+    "mtime": 1782565962.8326967,
+    "ast_hash": "bc599a90a6934f2aaee92c7f0751fe44",
+    "semantic_hash": "bc599a90a6934f2aaee92c7f0751fe44"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivatePatientUseCase.java": {
+    "mtime": 1783135788.1524515,
+    "ast_hash": "4c7328d73e4711ed9d18ee73bcacb234",
+    "semantic_hash": "4c7328d73e4711ed9d18ee73bcacb234"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivateProfessionalUseCase.java": {
+    "mtime": 1783135799.1663756,
+    "ast_hash": "c7682f98835bb5a6b764f33f4141106f",
+    "semantic_hash": "c7682f98835bb5a6b764f33f4141106f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivateServiceUseCase.java": {
+    "mtime": 1783135778.784515,
+    "ast_hash": "a3caf875f5e76375a2d0644b1ac2b064",
+    "semantic_hash": "a3caf875f5e76375a2d0644b1ac2b064"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivateUserUseCase.java": {
+    "mtime": 1783135810.4522965,
+    "ast_hash": "81c5cd40ff278b856f435e2bb9773479",
+    "semantic_hash": "81c5cd40ff278b856f435e2bb9773479"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/DeclineWaitlistOfferUseCase.java": {
+    "mtime": 1782617654.7215545,
+    "ast_hash": "5e41a088ba2a41c7d1844924738b8729",
+    "semantic_hash": "5e41a088ba2a41c7d1844924738b8729"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/FindAppointmentByIdUseCase.java": {
+    "mtime": 1782615905.399837,
+    "ast_hash": "0ed513e3128aef37c5bb5efdcb19cb2a",
+    "semantic_hash": "0ed513e3128aef37c5bb5efdcb19cb2a"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/FindPatientByIdUseCase.java": {
+    "mtime": 1782566025.906073,
+    "ast_hash": "076daa487e48f7a30b97a11236e95204",
+    "semantic_hash": "076daa487e48f7a30b97a11236e95204"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/FindProfessionalByIdUseCase.java": {
+    "mtime": 1782566059.289734,
+    "ast_hash": "6f9597bdbf12cf7b0644af0967c9a235",
+    "semantic_hash": "6f9597bdbf12cf7b0644af0967c9a235"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/FindServiceByIdUseCase.java": {
+    "mtime": 1782566085.82746,
+    "ast_hash": "f3b3b121d1bd9aa2cd59eee4a32ca979",
+    "semantic_hash": "f3b3b121d1bd9aa2cd59eee4a32ca979"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/FindUserByIdUseCase.java": {
+    "mtime": 1782565966.817658,
+    "ast_hash": "9c76362bf4e7bc78fd6492197b00628c",
+    "semantic_hash": "9c76362bf4e7bc78fd6492197b00628c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/GetMedicalRecordByPatientUseCase.java": {
+    "mtime": 1783038931.3386073,
+    "ast_hash": "24b7c72c1268eb6a9f9e95d3bad61ae6",
+    "semantic_hash": "24b7c72c1268eb6a9f9e95d3bad61ae6"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListActivePatientsUseCase.java": {
+    "mtime": 1783199558.212237,
+    "ast_hash": "d3b215e8c12e2ecdfc9f50dc3fea6ec6",
+    "semantic_hash": "d3b215e8c12e2ecdfc9f50dc3fea6ec6"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListActiveProfessionalsUseCase.java": {
+    "mtime": 1783199842.6350563,
+    "ast_hash": "d36923c358ba6f1603e37026bc2aa143",
+    "semantic_hash": "d36923c358ba6f1603e37026bc2aa143"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListActiveServicesUseCase.java": {
+    "mtime": 1783199711.2546403,
+    "ast_hash": "cd6953c1e2538d0aece55cc99275a0c6",
+    "semantic_hash": "cd6953c1e2538d0aece55cc99275a0c6"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListActiveUsersUseCase.java": {
+    "mtime": 1783199958.0065823,
+    "ast_hash": "29ff091c4691591dc1eb930886d08ca0",
+    "semantic_hash": "29ff091c4691591dc1eb930886d08ca0"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListAppointmentsUseCase.java": {
+    "mtime": 1783200302.9640365,
+    "ast_hash": "38b2f6b22cc9d4bc395146611edde9cb",
+    "semantic_hash": "38b2f6b22cc9d4bc395146611edde9cb"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListAuditLogsUseCase.java": {
+    "mtime": 1783200127.1573598,
+    "ast_hash": "7316869b31c76bb96cdf5311ea16849d",
+    "semantic_hash": "7316869b31c76bb96cdf5311ea16849d"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ProcessMissedDeadlinesUseCase.java": {
+    "mtime": 1782662629.6341898,
+    "ast_hash": "39d211ce860f35f3f3a155d5b1a46dfd",
+    "semantic_hash": "39d211ce860f35f3f3a155d5b1a46dfd"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ProcessWaitlistSlotOfferUseCase.java": {
+    "mtime": 1782617626.039922,
+    "ast_hash": "d7b184b5c59d676345e1d2711e819ec3",
+    "semantic_hash": "d7b184b5c59d676345e1d2711e819ec3"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/StartAppointmentUseCase.java": {
+    "mtime": 1782615792.1325312,
+    "ast_hash": "477b4564606c090801f4cbe7bcc1a99d",
+    "semantic_hash": "477b4564606c090801f4cbe7bcc1a99d"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/TriggerFollowUpUseCase.java": {
+    "mtime": 1782662617.0947688,
+    "ast_hash": "e97f35654a0cd204c1f7990b946a93a8",
+    "semantic_hash": "e97f35654a0cd204c1f7990b946a93a8"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateMedicalRecordEntryUseCase.java": {
+    "mtime": 1783038929.9896147,
+    "ast_hash": "d891644bac442467c6bb536a7aae3fa3",
+    "semantic_hash": "d891644bac442467c6bb536a7aae3fa3"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/UpdatePatientUseCase.java": {
+    "mtime": 1783135782.8194878,
+    "ast_hash": "f4fa58d6ec2b9c5912ae393cc4988136",
+    "semantic_hash": "f4fa58d6ec2b9c5912ae393cc4988136"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateProfessionalUseCase.java": {
+    "mtime": 1783194655.1543708,
+    "ast_hash": "badee008b8cce14ccaac24b0b99c9301",
+    "semantic_hash": "badee008b8cce14ccaac24b0b99c9301"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateServiceUseCase.java": {
+    "mtime": 1783135774.4845438,
+    "ast_hash": "133d74f50bf30101c4aec7fb3896e478",
+    "semantic_hash": "133d74f50bf30101c4aec7fb3896e478"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateUserUseCase.java": {
+    "mtime": 1783135804.5283382,
+    "ast_hash": "a77a976e7a0bb0118e1f128bb8193532",
+    "semantic_hash": "a77a976e7a0bb0118e1f128bb8193532"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/exception/MedicalRecordConflictException.java": {
+    "mtime": 1783038841.5720537,
+    "ast_hash": "56625eb3ab37f2f84bd56b8b29623389",
+    "semantic_hash": "56625eb3ab37f2f84bd56b8b29623389"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/exception/ResourceNotFoundException.java": {
+    "mtime": 1783135753.0996842,
+    "ast_hash": "ff28f670bb0c2f2460362a04a76c856f",
+    "semantic_hash": "ff28f670bb0c2f2460362a04a76c856f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/Appointment.java": {
+    "mtime": 1782662546.296641,
+    "ast_hash": "92a54508c9a1390a51b683a234e94e97",
+    "semantic_hash": "92a54508c9a1390a51b683a234e94e97"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/AuditLog.java": {
+    "mtime": 1782658730.88274,
+    "ast_hash": "85a685a7cc6e8bbaebad0f260fbe285d",
+    "semantic_hash": "85a685a7cc6e8bbaebad0f260fbe285d"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/MedicalRecord.java": {
+    "mtime": 1783038832.0910943,
+    "ast_hash": "d87a8a92aa88dbc8cc435bf9a253fe64",
+    "semantic_hash": "d87a8a92aa88dbc8cc435bf9a253fe64"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/MedicalRecordEntry.java": {
+    "mtime": 1783038834.8780825,
+    "ast_hash": "b6868417c0a176c72f4d886165877cca",
+    "semantic_hash": "b6868417c0a176c72f4d886165877cca"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/PageResult.java": {
+    "mtime": 1783199458.5538247,
+    "ast_hash": "7f8b284b91ba2b525e7bbfd13dfa5277",
+    "semantic_hash": "7f8b284b91ba2b525e7bbfd13dfa5277"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/Patient.java": {
+    "mtime": 1782563190.6009605,
+    "ast_hash": "90e34778f56c17583a6ca3480d7c1287",
+    "semantic_hash": "90e34778f56c17583a6ca3480d7c1287"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/Professional.java": {
+    "mtime": 1782563196.131887,
+    "ast_hash": "c4522aa4e216962d42b25b213588751c",
+    "semantic_hash": "c4522aa4e216962d42b25b213588751c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/Service.java": {
+    "mtime": 1782563202.849798,
+    "ast_hash": "fd32398ff505e1a8f71809ff34ddbf16",
+    "semantic_hash": "fd32398ff505e1a8f71809ff34ddbf16"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/User.java": {
+    "mtime": 1782563187.5690007,
+    "ast_hash": "e0179e98e9c5ac7993f8397918e2c2a4",
+    "semantic_hash": "e0179e98e9c5ac7993f8397918e2c2a4"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/model/WaitlistEntry.java": {
+    "mtime": 1782617552.5288622,
+    "ast_hash": "3b9d030b1bc19a3de51f04962828619a",
+    "semantic_hash": "3b9d030b1bc19a3de51f04962828619a"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/AppointmentRepository.java": {
+    "mtime": 1783200212.9480486,
+    "ast_hash": "e2a795fe5aeccf2b66ba46f83940a544",
+    "semantic_hash": "e2a795fe5aeccf2b66ba46f83940a544"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/AuditLogRepository.java": {
+    "mtime": 1783200044.2656827,
+    "ast_hash": "f76401a15c54ee6afb24de864b58272e",
+    "semantic_hash": "f76401a15c54ee6afb24de864b58272e"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/MedicalRecordEntryRepository.java": {
+    "mtime": 1783038838.905065,
+    "ast_hash": "d742043c921bf5b71a8a0e9c28de5616",
+    "semantic_hash": "d742043c921bf5b71a8a0e9c28de5616"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/MedicalRecordRepository.java": {
+    "mtime": 1783038836.6710749,
+    "ast_hash": "ec11e28b8a10048bf2ba9b76bb1e0c87",
+    "semantic_hash": "ec11e28b8a10048bf2ba9b76bb1e0c87"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/PatientRepository.java": {
+    "mtime": 1783199483.3075287,
+    "ast_hash": "ebec8421b16eccb38e96f63fbb3dd9c2",
+    "semantic_hash": "ebec8421b16eccb38e96f63fbb3dd9c2"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/ProfessionalRepository.java": {
+    "mtime": 1783199786.1007776,
+    "ast_hash": "7db1b773448e2b04392c3773dd24c1de",
+    "semantic_hash": "7db1b773448e2b04392c3773dd24c1de"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/ServiceRepository.java": {
+    "mtime": 1783199651.215475,
+    "ast_hash": "968466d327bcfbf9895eff47f1a3543b",
+    "semantic_hash": "968466d327bcfbf9895eff47f1a3543b"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/UserRepository.java": {
+    "mtime": 1783199900.0733182,
+    "ast_hash": "4d14e1861738e16cd21eee71c382236c",
+    "semantic_hash": "4d14e1861738e16cd21eee71c382236c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/WaitlistEntryRepository.java": {
+    "mtime": 1782617585.639439,
+    "ast_hash": "58c0edd7b47bebfd5f00870603ed2667",
+    "semantic_hash": "58c0edd7b47bebfd5f00870603ed2667"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/valueobject/AppointmentStatus.java": {
+    "mtime": 1782662537.0916345,
+    "ast_hash": "60a38bb93f768846ef3baf03a507be82",
+    "semantic_hash": "60a38bb93f768846ef3baf03a507be82"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/valueobject/PaymentMethod.java": {
+    "mtime": 1782616317.6679504,
+    "ast_hash": "4f01e2209503c2da45e61c0a63473358",
+    "semantic_hash": "4f01e2209503c2da45e61c0a63473358"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/valueobject/PriorityLevel.java": {
+    "mtime": 1782615695.692012,
+    "ast_hash": "cbdac682a26a994db39ae7eb1140451f",
+    "semantic_hash": "cbdac682a26a994db39ae7eb1140451f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/valueobject/ProfessionalRole.java": {
+    "mtime": 1782561329.1714468,
+    "ast_hash": "815711af4e929555a90f2fb12d38fdb3",
+    "semantic_hash": "815711af4e929555a90f2fb12d38fdb3"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/valueobject/UserRole.java": {
+    "mtime": 1782561326.2474833,
+    "ast_hash": "6b86eecdd782fd165ff03656223e2358",
+    "semantic_hash": "6b86eecdd782fd165ff03656223e2358"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/valueobject/WaitlistStatus.java": {
+    "mtime": 1782617548.7409105,
+    "ast_hash": "2d7c0ce625d0a3ea06dcf20c793557fe",
+    "semantic_hash": "2d7c0ce625d0a3ea06dcf20c793557fe"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/config/ClinicSettings.java": {
+    "mtime": 1782662584.8373387,
+    "ast_hash": "b7fb2de7bac82d24748ab807c2f905a2",
+    "semantic_hash": "b7fb2de7bac82d24748ab807c2f905a2"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/config/OpenApiConfig.java": {
+    "mtime": 1783140884.5744514,
+    "ast_hash": "9a29f5e4a0ed8110b8203a423c9130e7",
+    "semantic_hash": "9a29f5e4a0ed8110b8203a423c9130e7"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/config/SaapProperties.java": {
+    "mtime": 1782666206.2966006,
+    "ast_hash": "03c0c185cb6b6214ee9bcd680736935e",
+    "semantic_hash": "03c0c185cb6b6214ee9bcd680736935e"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/database/DatabaseInitializerListener.java": {
+    "mtime": 1783135910.0935442,
+    "ast_hash": "04ee5af2e1d94d302943a6974d9e41f4",
+    "semantic_hash": "04ee5af2e1d94d302943a6974d9e41f4"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/ConsoleNotificationService.java": {
+    "mtime": 1782617620.9489872,
+    "ast_hash": "8a3e9b7884538d343c083d43424ad149",
+    "semantic_hash": "8a3e9b7884538d343c083d43424ad149"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/PaginationSupport.java": {
+    "mtime": 1783199466.7047276,
+    "ast_hash": "1ecb4ed743523436fbcc69e7fbe59e31",
+    "semantic_hash": "1ecb4ed743523436fbcc69e7fbe59e31"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/AppointmentRepositoryAdapter.java": {
+    "mtime": 1783200285.8001442,
+    "ast_hash": "38e260d0cf2ce2618150624b369289e4",
+    "semantic_hash": "38e260d0cf2ce2618150624b369289e4"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/AuditLogRepositoryAdapter.java": {
+    "mtime": 1783200083.867106,
+    "ast_hash": "a259555702b71d7d53464502b8244297",
+    "semantic_hash": "a259555702b71d7d53464502b8244297"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/MedicalRecordEntryRepositoryAdapter.java": {
+    "mtime": 1783051406.7539492,
+    "ast_hash": "6776a82e363ac7713ed84e5b77b02da5",
+    "semantic_hash": "6776a82e363ac7713ed84e5b77b02da5"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/MedicalRecordRepositoryAdapter.java": {
+    "mtime": 1783051414.9338179,
+    "ast_hash": "99208fcfed19f47a9e7adaa57093dad0",
+    "semantic_hash": "99208fcfed19f47a9e7adaa57093dad0"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/PatientRepositoryAdapter.java": {
+    "mtime": 1783199513.0951703,
+    "ast_hash": "eba589b60511596162471909d5a18aec",
+    "semantic_hash": "eba589b60511596162471909d5a18aec"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/ProfessionalRepositoryAdapter.java": {
+    "mtime": 1783199819.8523476,
+    "ast_hash": "e6c7d0eedac6f67e0a9ffe2736e243af",
+    "semantic_hash": "e6c7d0eedac6f67e0a9ffe2736e243af"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/ServiceRepositoryAdapter.java": {
+    "mtime": 1783199680.8981047,
+    "ast_hash": "70e4b28b20a7edea219dac9a098a344e",
+    "semantic_hash": "70e4b28b20a7edea219dac9a098a344e"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/UserRepositoryAdapter.java": {
+    "mtime": 1783199942.197774,
+    "ast_hash": "b1842da20cc10a850eb46f1e92528f79",
+    "semantic_hash": "b1842da20cc10a850eb46f1e92528f79"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/WaitlistEntryRepositoryAdapter.java": {
+    "mtime": 1782617597.5932863,
+    "ast_hash": "a40b5c4bab46d35b66572a5cd9a6efd9",
+    "semantic_hash": "a40b5c4bab46d35b66572a5cd9a6efd9"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/AppointmentEntity.java": {
+    "mtime": 1782665306.388757,
+    "ast_hash": "3c3b757a3d84c85769b36a8c272bdd94",
+    "semantic_hash": "3c3b757a3d84c85769b36a8c272bdd94"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/AuditLogEntity.java": {
+    "mtime": 1782658745.4273853,
+    "ast_hash": "cb059d6302619c7496abbe0d480155e3",
+    "semantic_hash": "cb059d6302619c7496abbe0d480155e3"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/MedicalRecordEntity.java": {
+    "mtime": 1783038851.3430102,
+    "ast_hash": "805be0c01e74909274410dde547b9930",
+    "semantic_hash": "805be0c01e74909274410dde547b9930"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/MedicalRecordEntryEntity.java": {
+    "mtime": 1783038857.4679825,
+    "ast_hash": "81255a2d25fd636129096674ace2e601",
+    "semantic_hash": "81255a2d25fd636129096674ace2e601"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/PatientEntity.java": {
+    "mtime": 1782564345.9009922,
+    "ast_hash": "c0639e9c37630abb2d01a6a99046de17",
+    "semantic_hash": "c0639e9c37630abb2d01a6a99046de17"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/ProfessionalEntity.java": {
+    "mtime": 1782563222.0365434,
+    "ast_hash": "a7b12c2f9a57ff78d8a99baa934bc41c",
+    "semantic_hash": "a7b12c2f9a57ff78d8a99baa934bc41c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/ServiceEntity.java": {
+    "mtime": 1782563228.098463,
+    "ast_hash": "fd367bc38e881f0f84a5de87383ae662",
+    "semantic_hash": "fd367bc38e881f0f84a5de87383ae662"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/UserEntity.java": {
+    "mtime": 1782563209.1587143,
+    "ast_hash": "702628a507861e182e327a522fa79e61",
+    "semantic_hash": "702628a507861e182e327a522fa79e61"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/WaitlistEntryEntity.java": {
+    "mtime": 1782617557.1428032,
+    "ast_hash": "a54f0d8bc27cd4e8da8d5766117c245b",
+    "semantic_hash": "a54f0d8bc27cd4e8da8d5766117c245b"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/mapper/CoreMapper.java": {
+    "mtime": 1783038883.788857,
+    "ast_hash": "2246c64b018b236beb05a130b0962adc",
+    "semantic_hash": "2246c64b018b236beb05a130b0962adc"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaAppointmentRepository.java": {
+    "mtime": 1783200263.9845536,
+    "ast_hash": "0c9d81abf35d7b082fb8c4c4df231755",
+    "semantic_hash": "0c9d81abf35d7b082fb8c4c4df231755"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaAuditLogRepository.java": {
+    "mtime": 1783200078.0560043,
+    "ast_hash": "41f2984a6b14ff0cd4cc5a0c18dbe8ce",
+    "semantic_hash": "41f2984a6b14ff0cd4cc5a0c18dbe8ce"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaMedicalRecordEntryRepository.java": {
+    "mtime": 1783038861.9409618,
+    "ast_hash": "dd659871b5cc15f0fe46357a4fcee726",
+    "semantic_hash": "dd659871b5cc15f0fe46357a4fcee726"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaMedicalRecordRepository.java": {
+    "mtime": 1783038859.6949723,
+    "ast_hash": "379a86d45e1899f9de332b432b6a81ef",
+    "semantic_hash": "379a86d45e1899f9de332b432b6a81ef"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaPatientRepository.java": {
+    "mtime": 1783199525.999014,
+    "ast_hash": "cc3f531ee4bbaaee35510aceccbad547",
+    "semantic_hash": "cc3f531ee4bbaaee35510aceccbad547"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaProfessionalRepository.java": {
+    "mtime": 1782657922.9980166,
+    "ast_hash": "0d1f8460bc9db50b2175ce82af4f4603",
+    "semantic_hash": "0d1f8460bc9db50b2175ce82af4f4603"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaServiceRepository.java": {
+    "mtime": 1782611667.965233,
+    "ast_hash": "082e531d0b0ebdad6e373891ebde4763",
+    "semantic_hash": "082e531d0b0ebdad6e373891ebde4763"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaUserRepository.java": {
+    "mtime": 1783199914.6761298,
+    "ast_hash": "598b6916d593c34acd58adee70c5a8ac",
+    "semantic_hash": "598b6916d593c34acd58adee70c5a8ac"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaWaitlistEntryRepository.java": {
+    "mtime": 1782617589.390391,
+    "ast_hash": "3240df1b59c0becf7eb24051ecec4410",
+    "semantic_hash": "3240df1b59c0becf7eb24051ecec4410"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/scheduler/AppointmentFollowUpScheduler.java": {
+    "mtime": 1782662700.0231376,
+    "ast_hash": "8e62401c3bee04fa08b3f606f2b8bc66",
+    "semantic_hash": "8e62401c3bee04fa08b3f606f2b8bc66"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/scheduler/WaitlistTimeoutScheduler.java": {
+    "mtime": 1782617667.4623911,
+    "ast_hash": "ceeece82b84b6528bd925d936f930bdf",
+    "semantic_hash": "ceeece82b84b6528bd925d936f930bdf"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/JwtAuthenticationFilter.java": {
+    "mtime": 1783140516.0849864,
+    "ast_hash": "e08cb44dd73ff2e4bc1d197d09aad11b",
+    "semantic_hash": "e08cb44dd73ff2e4bc1d197d09aad11b"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/LoginRateLimitFilter.java": {
+    "mtime": 1783140884.5564516,
+    "ast_hash": "e6a3ff171275a7ac37a3443514769e99",
+    "semantic_hash": "e6a3ff171275a7ac37a3443514769e99"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/SecurityConfig.java": {
+    "mtime": 1783194644.2125347,
+    "ast_hash": "1f83fe51b9df688d68af9bc754ec5bf3",
+    "semantic_hash": "1f83fe51b9df688d68af9bc754ec5bf3"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/SecurityProperties.java": {
+    "mtime": 1783140472.6455212,
+    "ast_hash": "e4b35f60f139fe43c24a29e035c5a8c4",
+    "semantic_hash": "e4b35f60f139fe43c24a29e035c5a8c4"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/TokenBlacklistService.java": {
+    "mtime": 1783140487.4843385,
+    "ast_hash": "4aac562f4dea65ee019e17087848d70f",
+    "semantic_hash": "4aac562f4dea65ee019e17087848d70f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/TokenService.java": {
+    "mtime": 1782610486.6478522,
+    "ast_hash": "dc3e1f0ca656c061479124052def47a5",
+    "semantic_hash": "dc3e1f0ca656c061479124052def47a5"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/UserDetailsServiceImpl.java": {
+    "mtime": 1782582284.653479,
+    "ast_hash": "bfd5d82306f01e876d7c07c5ac41e8a0",
+    "semantic_hash": "bfd5d82306f01e876d7c07c5ac41e8a0"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/config/WebMvcConfig.java": {
+    "mtime": 1782573550.6557112,
+    "ast_hash": "70ab8df1e691b7044965b445127d1bf9",
+    "semantic_hash": "70ab8df1e691b7044965b445127d1bf9"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AppointmentController.java": {
+    "mtime": 1783200342.3315134,
+    "ast_hash": "94056bfd53961083af7127399ada2ac4",
+    "semantic_hash": "94056bfd53961083af7127399ada2ac4"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AuditLogController.java": {
+    "mtime": 1783200178.8936787,
+    "ast_hash": "edd025905feec954e5df828272e8149c",
+    "semantic_hash": "edd025905feec954e5df828272e8149c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AuthController.java": {
+    "mtime": 1783140533.9017673,
+    "ast_hash": "b67b2726502b8c0bc3778199fb5da1ec",
+    "semantic_hash": "b67b2726502b8c0bc3778199fb5da1ec"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/MedicalRecordController.java": {
+    "mtime": 1783050747.0890114,
+    "ast_hash": "63cd84d8c5af80d2d6a4133eafc763d3",
+    "semantic_hash": "63cd84d8c5af80d2d6a4133eafc763d3"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/PatientController.java": {
+    "mtime": 1783199597.0731454,
+    "ast_hash": "7acab51be961cc5028356ddd8ba8b199",
+    "semantic_hash": "7acab51be961cc5028356ddd8ba8b199"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/ProfessionalController.java": {
+    "mtime": 1783199870.2651446,
+    "ast_hash": "a1ab6f9ea4d0a016f27a6109daa4a358",
+    "semantic_hash": "a1ab6f9ea4d0a016f27a6109daa4a358"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/ServiceController.java": {
+    "mtime": 1783199750.6551783,
+    "ast_hash": "bb2f60a7f76ccea770d5676e5003ced8",
+    "semantic_hash": "bb2f60a7f76ccea770d5676e5003ced8"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/UserController.java": {
+    "mtime": 1783200006.8219652,
+    "ast_hash": "882870bcefac4a02f89751fd9c961129",
+    "semantic_hash": "882870bcefac4a02f89751fd9c961129"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/AppointmentResponseDTO.java": {
+    "mtime": 1782615834.4469573,
+    "ast_hash": "53fa085ca95d58cfaa4f6cd13e8ba54f",
+    "semantic_hash": "53fa085ca95d58cfaa4f6cd13e8ba54f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/AuditLogResponseDTO.java": {
+    "mtime": 1782667694.1075428,
+    "ast_hash": "f67bae1d6cf4a207ee82659b3d1789aa",
+    "semantic_hash": "f67bae1d6cf4a207ee82659b3d1789aa"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/BookAppointmentRequestDTO.java": {
+    "mtime": 1782615826.5152683,
+    "ast_hash": "72d0dd7fb16ab35639d501545fd73c4f",
+    "semantic_hash": "72d0dd7fb16ab35639d501545fd73c4f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/CheckInRequestDTO.java": {
+    "mtime": 1782660423.045078,
+    "ast_hash": "3dfa25e8fa2271a8f312709528fd9f08",
+    "semantic_hash": "3dfa25e8fa2271a8f312709528fd9f08"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/CreateMedicalRecordEntryRequestDTO.java": {
+    "mtime": 1783050716.0364227,
+    "ast_hash": "f16107eceb6d98354a0e562b1cb70d09",
+    "semantic_hash": "f16107eceb6d98354a0e562b1cb70d09"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/LoginRequestDTO.java": {
+    "mtime": 1782582358.6424139,
+    "ast_hash": "6450cac763806468136a0600e91972e3",
+    "semantic_hash": "6450cac763806468136a0600e91972e3"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/LoginResponseDTO.java": {
+    "mtime": 1782582362.9274068,
+    "ast_hash": "f60e2d6b4b7977ed8669a14d5d416074",
+    "semantic_hash": "f60e2d6b4b7977ed8669a14d5d416074"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/MedicalRecordEntryResponseDTO.java": {
+    "mtime": 1783050720.239367,
+    "ast_hash": "b68a77cefbd3cda646d707c62b518091",
+    "semantic_hash": "b68a77cefbd3cda646d707c62b518091"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/MedicalRecordResponseDTO.java": {
+    "mtime": 1783050722.1673415,
+    "ast_hash": "24eb9f42b4d3d7c5f4fe0a0693f162fb",
+    "semantic_hash": "24eb9f42b4d3d7c5f4fe0a0693f162fb"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/PageResponseDTO.java": {
+    "mtime": 1783199476.616609,
+    "ast_hash": "971417d53a93f2c8a20f84274424b0dd",
+    "semantic_hash": "971417d53a93f2c8a20f84274424b0dd"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/PatientRequestDTO.java": {
+    "mtime": 1782572085.6409166,
+    "ast_hash": "af47a6bb5d8557e56b6f251363f92ef1",
+    "semantic_hash": "af47a6bb5d8557e56b6f251363f92ef1"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/PatientResponseDTO.java": {
+    "mtime": 1782572089.9338589,
+    "ast_hash": "e4944ecfa46631a75861747577ecb0e7",
+    "semantic_hash": "e4944ecfa46631a75861747577ecb0e7"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/ProfessionalRequestDTO.java": {
+    "mtime": 1782572094.2078016,
+    "ast_hash": "4f7673506d7db342bffe283252c56e25",
+    "semantic_hash": "4f7673506d7db342bffe283252c56e25"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/ProfessionalResponseDTO.java": {
+    "mtime": 1782572098.565743,
+    "ast_hash": "05a0d7fd84119eec7f8963ffc6720ac9",
+    "semantic_hash": "05a0d7fd84119eec7f8963ffc6720ac9"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/ServiceRequestDTO.java": {
+    "mtime": 1782572103.2046807,
+    "ast_hash": "3aa6896e6fdd712ee803e699a9703286",
+    "semantic_hash": "3aa6896e6fdd712ee803e699a9703286"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/ServiceResponseDTO.java": {
+    "mtime": 1782572107.3349395,
+    "ast_hash": "5f680a85d8941830414961344c6639e6",
+    "semantic_hash": "5f680a85d8941830414961344c6639e6"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/UpdateMedicalRecordEntryRequestDTO.java": {
+    "mtime": 1783050717.892398,
+    "ast_hash": "f946c3057b92961f4519c34f70aba95c",
+    "semantic_hash": "f946c3057b92961f4519c34f70aba95c"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/UserRequestDTO.java": {
+    "mtime": 1782572076.6830368,
+    "ast_hash": "83fa8b887bd2501596dbf9fd5dc8d550",
+    "semantic_hash": "83fa8b887bd2501596dbf9fd5dc8d550"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/dto/UserResponseDTO.java": {
+    "mtime": 1782572081.1779764,
+    "ast_hash": "94e6fe18066f2ef8de5d18d7360d6eca",
+    "semantic_hash": "94e6fe18066f2ef8de5d18d7360d6eca"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/exception/ErrorResponse.java": {
+    "mtime": 1782566195.4462926,
+    "ast_hash": "5e0e1afff2ce24c3004fc11f78336a3d",
+    "semantic_hash": "5e0e1afff2ce24c3004fc11f78336a3d"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/exception/GlobalExceptionHandler.java": {
+    "mtime": 1783135760.2806377,
+    "ast_hash": "31ff8d7361eafc16ac5118f5de9336f4",
+    "semantic_hash": "31ff8d7361eafc16ac5118f5de9336f4"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/mapper/WebMapper.java": {
+    "mtime": 1783050724.8683057,
+    "ast_hash": "0536757f49dd81044a4ffb583131e61f",
+    "semantic_hash": "0536757f49dd81044a4ffb583131e61f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/validation/CPF.java": {
+    "mtime": 1782565922.3850834,
+    "ast_hash": "eb091ee118419dc27dce29140099feb0",
+    "semantic_hash": "eb091ee118419dc27dce29140099feb0"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/validation/CpfValidator.java": {
+    "mtime": 1782565935.5989583,
+    "ast_hash": "a4bd4ef727c99979c252a5cea347367c",
+    "semantic_hash": "a4bd4ef727c99979c252a5cea347367c"
+  },
+  "src/main/resources/META-INF/additional-spring-configuration-metadata.json": {
+    "mtime": 1783175791.0611444,
+    "ast_hash": "f2ab8725d5bba13b56ea45612737c3e9",
+    "semantic_hash": "f2ab8725d5bba13b56ea45612737c3e9"
+  },
+  "src/main/resources/db/migration/V10__inserir_usuario_admin_teste.sql": {
+    "mtime": 1783052435.8480415,
+    "ast_hash": "4ccec000518bca69c2f7bbcfc611d8ec",
+    "semantic_hash": "4ccec000518bca69c2f7bbcfc611d8ec"
+  },
+  "src/main/resources/db/migration/V1__criar_tabelas_core.sql": {
+    "mtime": 1782562628.4174712,
+    "ast_hash": "17fac09c61bd5243499fd2ed8b2bb2e0",
+    "semantic_hash": "17fac09c61bd5243499fd2ed8b2bb2e0"
+  },
+  "src/main/resources/db/migration/V2__criar_index_unico_servico_ativo.sql": {
+    "mtime": 1782612696.015805,
+    "ast_hash": "5942c6554df7802c295eb07484813af9",
+    "semantic_hash": "5942c6554df7802c295eb07484813af9"
+  },
+  "src/main/resources/db/migration/V3__criar_tabelas_agendamento.sql": {
+    "mtime": 1782615667.6953766,
+    "ast_hash": "4379972bc19ad81cbb3d00d62f3286ea",
+    "semantic_hash": "4379972bc19ad81cbb3d00d62f3286ea"
+  },
+  "src/main/resources/db/migration/V4__adicionar_coluna_follow_up_agendamento.sql": {
+    "mtime": 1782616859.133568,
+    "ast_hash": "503b2b47682253a679125d1c7da5a5d0",
+    "semantic_hash": "503b2b47682253a679125d1c7da5a5d0"
+  },
+  "src/main/resources/db/migration/V5__criar_tabela_fila_espera.sql": {
+    "mtime": 1782617538.6890981,
+    "ast_hash": "a7aaa9902f6bc48705649b63145fc112",
+    "semantic_hash": "a7aaa9902f6bc48705649b63145fc112"
+  },
+  "src/main/resources/db/migration/V6__criar_tabela_log_auditoria.sql": {
+    "mtime": 1782657848.0442247,
+    "ast_hash": "ab9bb86825d9e74105cd1c96df2a4448",
+    "semantic_hash": "ab9bb86825d9e74105cd1c96df2a4448"
+  },
+  "src/main/resources/db/migration/V7__tornar_auditoria_generica.sql": {
+    "mtime": 1782658716.0551124,
+    "ast_hash": "fb742eea422494001db69899ef041de0",
+    "semantic_hash": "fb742eea422494001db69899ef041de0"
+  },
+  "src/main/resources/db/migration/V8__adicionar_campos_follow_up_agendamento.sql": {
+    "mtime": 1782662519.9777417,
+    "ast_hash": "b2705683ae154ea9066cac49536d365d",
+    "semantic_hash": "b2705683ae154ea9066cac49536d365d"
+  },
+  "src/main/resources/db/migration/V9__criar_tabelas_prontuario.sql": {
+    "mtime": 1783038823.6411295,
+    "ast_hash": "ca8cca98639cd4e6c75929780ea27452",
+    "semantic_hash": "ca8cca98639cd4e6c75929780ea27452"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/BaseIntegrationTest.java": {
+    "mtime": 1783180857.4615164,
+    "ast_hash": "b951b0a63ed78dad99672389d60ed654",
+    "semantic_hash": "b951b0a63ed78dad99672389d60ed654"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/FlywayMigrationSequenceTest.java": {
+    "mtime": 1782614073.5237904,
+    "ast_hash": "8b73587e54302c3c37f85b84c719f7e4",
+    "semantic_hash": "8b73587e54302c3c37f85b84c719f7e4"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/SaapMvpApplicationTests.java": {
+    "mtime": 1782578907.9142358,
+    "ast_hash": "57f167052ed62b5aa02eb0d5e7a5cc71",
+    "semantic_hash": "57f167052ed62b5aa02eb0d5e7a5cc71"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/service/AppointmentActionTokenServiceTest.java": {
+    "mtime": 1783140652.8843029,
+    "ast_hash": "f566cbe6691d22fb17fb0eb58349f7d9",
+    "semantic_hash": "f566cbe6691d22fb17fb0eb58349f7d9"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/AcceptWaitlistOfferUseCaseTest.java": {
+    "mtime": 1783134410.9795535,
+    "ast_hash": "0ca7ae43f85fc5e28091f1111b81c70d",
+    "semantic_hash": "0ca7ae43f85fc5e28091f1111b81c70d"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/AppointmentConcurrencyIntegrationTest.java": {
+    "mtime": 1782616083.9422436,
+    "ast_hash": "9dd0f53071273a8667dd27e6c085b8d0",
+    "semantic_hash": "9dd0f53071273a8667dd27e6c085b8d0"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CancelAppointmentByTokenUseCaseTest.java": {
+    "mtime": 1783134373.6621823,
+    "ast_hash": "845057504bc5c322d3dcd4f8bd217ea2",
+    "semantic_hash": "845057504bc5c322d3dcd4f8bd217ea2"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CancelAppointmentUseCaseTest.java": {
+    "mtime": 1783173748.776446,
+    "ast_hash": "03283e7301235f03b767dd788e4ee094",
+    "semantic_hash": "03283e7301235f03b767dd788e4ee094"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CompleteAppointmentUseCaseTest.java": {
+    "mtime": 1783050939.098492,
+    "ast_hash": "dbd63ba6f9b2a74c6c08578c89966c6c",
+    "semantic_hash": "dbd63ba6f9b2a74c6c08578c89966c6c"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ConfirmAppointmentByTokenUseCaseTest.java": {
+    "mtime": 1783134359.698381,
+    "ast_hash": "7f371bd9d439a817cdf2c96e05b5f2f9",
+    "semantic_hash": "7f371bd9d439a817cdf2c96e05b5f2f9"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ConfirmAppointmentUseCaseTest.java": {
+    "mtime": 1783134345.093588,
+    "ast_hash": "13b7bd76afa4df90fa4e4490f0f3279f",
+    "semantic_hash": "13b7bd76afa4df90fa4e4490f0f3279f"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CreateMedicalRecordEntryUseCaseTest.java": {
+    "mtime": 1783050913.2148294,
+    "ast_hash": "dc10515151ae03a80951a0e107a47ad3",
+    "semantic_hash": "dc10515151ae03a80951a0e107a47ad3"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CreatePatientUseCaseTest.java": {
+    "mtime": 1783133915.946452,
+    "ast_hash": "e395c7630674fd2880e61a33adcd59f2",
+    "semantic_hash": "e395c7630674fd2880e61a33adcd59f2"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CreateProfessionalUseCaseTest.java": {
+    "mtime": 1783133919.2726104,
+    "ast_hash": "01a40bbb82ed5e1285f37875ec055a99",
+    "semantic_hash": "01a40bbb82ed5e1285f37875ec055a99"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CreateServiceUseCaseTest.java": {
+    "mtime": 1783133889.0107324,
+    "ast_hash": "206383dfa9a587b6f6c4ec7ecf1250e2",
+    "semantic_hash": "206383dfa9a587b6f6c4ec7ecf1250e2"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CreateUserUseCaseTest.java": {
+    "mtime": 1783133953.9519076,
+    "ast_hash": "887b2b8452d70d1bf1d217a219516560",
+    "semantic_hash": "887b2b8452d70d1bf1d217a219516560"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivatePatientUseCaseTest.java": {
+    "mtime": 1783135849.4660132,
+    "ast_hash": "651a41e9f768ec5a699e965841da375d",
+    "semantic_hash": "651a41e9f768ec5a699e965841da375d"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivateProfessionalUseCaseTest.java": {
+    "mtime": 1783135851.6039972,
+    "ast_hash": "c482e9e87bf87791ceb1594aa770ee0b",
+    "semantic_hash": "c482e9e87bf87791ceb1594aa770ee0b"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivateServiceUseCaseTest.java": {
+    "mtime": 1783135854.1399782,
+    "ast_hash": "d5ce58f05a4a9ec46678379df8c96daa",
+    "semantic_hash": "d5ce58f05a4a9ec46678379df8c96daa"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivateUserUseCaseTest.java": {
+    "mtime": 1783143251.016528,
+    "ast_hash": "293d05e5a88fec6572d99453c9f40f04",
+    "semantic_hash": "293d05e5a88fec6572d99453c9f40f04"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/DeclineWaitlistOfferUseCaseTest.java": {
+    "mtime": 1783134428.4379985,
+    "ast_hash": "e0854d798f031ec865c08fc0b46fa1e9",
+    "semantic_hash": "e0854d798f031ec865c08fc0b46fa1e9"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/FindAppointmentByIdUseCaseTest.java": {
+    "mtime": 1783133986.4144874,
+    "ast_hash": "3d8b70475783e5085bd0217e55b724a6",
+    "semantic_hash": "3d8b70475783e5085bd0217e55b724a6"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/FindPatientByIdUseCaseTest.java": {
+    "mtime": 1783133940.0590858,
+    "ast_hash": "489be6bdf9c82698374e581e6222a5c4",
+    "semantic_hash": "489be6bdf9c82698374e581e6222a5c4"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/FindProfessionalByIdUseCaseTest.java": {
+    "mtime": 1783133946.4955277,
+    "ast_hash": "e1476062c2e62abe43b594d1c6d82875",
+    "semantic_hash": "e1476062c2e62abe43b594d1c6d82875"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/FindServiceByIdUseCaseTest.java": {
+    "mtime": 1783133936.5021312,
+    "ast_hash": "b404899c3dce23f234066c5789eeaf54",
+    "semantic_hash": "b404899c3dce23f234066c5789eeaf54"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/FindUserByIdUseCaseTest.java": {
+    "mtime": 1783133973.2586582,
+    "ast_hash": "fbf0aee74accdf1c73f73c798adf576e",
+    "semantic_hash": "fbf0aee74accdf1c73f73c798adf576e"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ListActivePatientsUseCaseTest.java": {
+    "mtime": 1783200468.271834,
+    "ast_hash": "322703b8c4c658431c6b2663a72d282c",
+    "semantic_hash": "322703b8c4c658431c6b2663a72d282c"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ListActiveProfessionalsUseCaseTest.java": {
+    "mtime": 1783200489.6385481,
+    "ast_hash": "60f72b21ace842adb0480826979490a6",
+    "semantic_hash": "60f72b21ace842adb0480826979490a6"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ListActiveServicesUseCaseTest.java": {
+    "mtime": 1783200507.8903039,
+    "ast_hash": "e46f3bb2242568085912f25d41e2b64d",
+    "semantic_hash": "e46f3bb2242568085912f25d41e2b64d"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ListActiveUsersUseCaseTest.java": {
+    "mtime": 1783200530.439002,
+    "ast_hash": "0331fc779d929b2c99735e2b05f8c934",
+    "semantic_hash": "0331fc779d929b2c99735e2b05f8c934"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ListAppointmentsUseCaseTest.java": {
+    "mtime": 1783200553.5007093,
+    "ast_hash": "c7c07d47ef1c4bf29b7ddd60ff026101",
+    "semantic_hash": "c7c07d47ef1c4bf29b7ddd60ff026101"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/PriorityAttendanceIntegrationTest.java": {
+    "mtime": 1782658236.5744183,
+    "ast_hash": "046064de6c93d4a908713c0c1810c842",
+    "semantic_hash": "046064de6c93d4a908713c0c1810c842"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/ProcessMissedDeadlinesUseCaseIntegrationTest.java": {
+    "mtime": 1782662963.6280954,
+    "ast_hash": "3677149bffbdb4048007760eea3ef267",
+    "semantic_hash": "3677149bffbdb4048007760eea3ef267"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/SendFollowUpNotificationsUseCaseIntegrationTest.java": {
+    "mtime": 1782662948.4688666,
+    "ast_hash": "2840af34480fdd682f7d63ce2535e737",
+    "semantic_hash": "2840af34480fdd682f7d63ce2535e737"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/StartAppointmentUseCaseTest.java": {
+    "mtime": 1783133982.299541,
+    "ast_hash": "8375afed9850b9cd74b5b282ac0b0c8d",
+    "semantic_hash": "8375afed9850b9cd74b5b282ac0b0c8d"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateMedicalRecordEntryUseCaseTest.java": {
+    "mtime": 1783050927.7176402,
+    "ast_hash": "e89f3dce44c87247dc4616fe8dd00003",
+    "semantic_hash": "e89f3dce44c87247dc4616fe8dd00003"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/UpdatePatientUseCaseTest.java": {
+    "mtime": 1783135856.714959,
+    "ast_hash": "c5f1d9a72334c044bb9d3ea7885ad563",
+    "semantic_hash": "c5f1d9a72334c044bb9d3ea7885ad563"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateProfessionalUseCaseTest.java": {
+    "mtime": 1783135859.2659397,
+    "ast_hash": "c93f648f888e4cbdb8a0133ef2e1fd82",
+    "semantic_hash": "c93f648f888e4cbdb8a0133ef2e1fd82"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateServiceUseCaseTest.java": {
+    "mtime": 1783135864.4559002,
+    "ast_hash": "5d2e779a91c5fc72b3c646eeabf3331a",
+    "semantic_hash": "5d2e779a91c5fc72b3c646eeabf3331a"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/UpdateUserUseCaseTest.java": {
+    "mtime": 1783135865.0428958,
+    "ast_hash": "beaef6f041fea3b642657c03017563e3",
+    "semantic_hash": "beaef6f041fea3b642657c03017563e3"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/WaitlistIntegrationTest.java": {
+    "mtime": 1782669660.9620512,
+    "ast_hash": "9a3fc22734c76349e1dcca01726085ec",
+    "semantic_hash": "9a3fc22734c76349e1dcca01726085ec"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/domain/model/AppointmentDomainTest.java": {
+    "mtime": 1782662845.554742,
+    "ast_hash": "646ddb85a3f0d3fc1e0bf96f32b2875d",
+    "semantic_hash": "646ddb85a3f0d3fc1e0bf96f32b2875d"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/domain/model/DomainEntitiesTest.java": {
+    "mtime": 1782563232.7104018,
+    "ast_hash": "cdd64910a617d985798ea30f8e5b18cc",
+    "semantic_hash": "cdd64910a617d985798ea30f8e5b18cc"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/database/DatabaseInitializerListenerIT.java": {
+    "mtime": 1783133959.276839,
+    "ast_hash": "edbbc7b7582afc426236e4cf594da4b5",
+    "semantic_hash": "edbbc7b7582afc426236e4cf594da4b5"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/database/DatabaseInitializerListenerTest.java": {
+    "mtime": 1783135941.8022864,
+    "ast_hash": "cab3d63bdd282dd145b6bb836febdfb0",
+    "semantic_hash": "cab3d63bdd282dd145b6bb836febdfb0"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/AppointmentRepositoryIntegrationTest.java": {
+    "mtime": 1783200704.7310045,
+    "ast_hash": "b80c1a0c6264ded18342baa402ab0103",
+    "semantic_hash": "b80c1a0c6264ded18342baa402ab0103"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/RepositoryIntegrationTest.java": {
+    "mtime": 1783201992.0282226,
+    "ast_hash": "16d634efe45e3ae4f30b70fe0f07314a",
+    "semantic_hash": "16d634efe45e3ae4f30b70fe0f07314a"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/security/LoginRateLimitFilterTest.java": {
+    "mtime": 1783142160.4041336,
+    "ast_hash": "38b16e28931410792cf4903f6b0e5fc0",
+    "semantic_hash": "38b16e28931410792cf4903f6b0e5fc0"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/security/TokenBlacklistServiceTest.java": {
+    "mtime": 1783143040.9395566,
+    "ast_hash": "e65f6251c5e7cc4f2e207c6aa028d48f",
+    "semantic_hash": "e65f6251c5e7cc4f2e207c6aa028d48f"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/security/TokenServiceTest.java": {
+    "mtime": 1782610409.3852274,
+    "ast_hash": "02af0a2daa12250a095481c22c1256b9",
+    "semantic_hash": "02af0a2daa12250a095481c22c1256b9"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AppointmentControllerTest.java": {
+    "mtime": 1783200654.8200693,
+    "ast_hash": "5fe42b68e8104c6dbce2efb0966e1ed2",
+    "semantic_hash": "5fe42b68e8104c6dbce2efb0966e1ed2"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AppointmentPublicControllerIntegrationTest.java": {
+    "mtime": 1782662769.0134397,
+    "ast_hash": "5aab370165ded326adab14ca445e8462",
+    "semantic_hash": "5aab370165ded326adab14ca445e8462"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AuditIntegrationTest.java": {
+    "mtime": 1782667780.0766754,
+    "ast_hash": "e3bf5c7ff9033545d1862d17bb5a6f1e",
+    "semantic_hash": "e3bf5c7ff9033545d1862d17bb5a6f1e"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/MedicalRecordControllerIntegrationTest.java": {
+    "mtime": 1783179467.5774603,
+    "ast_hash": "e4e118e5bc37a23d37d2ab32d7a9ba36",
+    "semantic_hash": "e4e118e5bc37a23d37d2ab32d7a9ba36"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/PatientControllerTest.java": {
+    "mtime": 1783200575.568397,
+    "ast_hash": "93ca7fc71797f4ac226323742c8f6655",
+    "semantic_hash": "93ca7fc71797f4ac226323742c8f6655"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/ProfessionalControllerTest.java": {
+    "mtime": 1783200595.0892591,
+    "ast_hash": "db5003dd0366324f3065a9627b238db2",
+    "semantic_hash": "db5003dd0366324f3065a9627b238db2"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/SecurityIntegrationTest.java": {
+    "mtime": 1782616037.5509098,
+    "ast_hash": "ada77138b5bf6be6fd92fffbc58d6940",
+    "semantic_hash": "ada77138b5bf6be6fd92fffbc58d6940"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/ServiceControllerTest.java": {
+    "mtime": 1783200617.7852848,
+    "ast_hash": "33a535fd85536fb883e57e79f1cc7a49",
+    "semantic_hash": "33a535fd85536fb883e57e79f1cc7a49"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/UserControllerTest.java": {
+    "mtime": 1783200634.856047,
+    "ast_hash": "35685eaf1428c6540eea9674a715daa0",
+    "semantic_hash": "35685eaf1428c6540eea9674a715daa0"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/WaitlistPublicControllerIntegrationTest.java": {
+    "mtime": 1782667943.9361434,
+    "ast_hash": "436af164b7a4a08855648bb52d15f2ae",
+    "semantic_hash": "436af164b7a4a08855648bb52d15f2ae"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/mapper/WebMapperTest.java": {
+    "mtime": 1783163278.504377,
+    "ast_hash": "f282a4bc6ce44e11e39509256d53ed99",
+    "semantic_hash": "f282a4bc6ce44e11e39509256d53ed99"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/validation/CpfValidatorTest.java": {
+    "mtime": 1782566531.133452,
+    "ast_hash": "1944f981294e6be7b7d6dc62c1552fb5",
+    "semantic_hash": "1944f981294e6be7b7d6dc62c1552fb5"
+  },
+  ".agent/skills/openspec-apply-change/SKILL.md": {
+    "mtime": 1782558128.7823122,
+    "ast_hash": "ef62fef14cd5c347e2be60d2af4ea59f",
+    "semantic_hash": "ef62fef14cd5c347e2be60d2af4ea59f"
+  },
+  ".agent/skills/openspec-archive-change/SKILL.md": {
+    "mtime": 1782558128.784474,
+    "ast_hash": "a853b3ce25149061a7f13f05b127350c",
+    "semantic_hash": "a853b3ce25149061a7f13f05b127350c"
+  },
+  ".agent/skills/openspec-continue-change/SKILL.md": {
+    "mtime": 1782558128.7813613,
+    "ast_hash": "2f94797a9d8e395b9beeba7ea9a43288",
+    "semantic_hash": "2f94797a9d8e395b9beeba7ea9a43288"
+  },
+  ".agent/skills/openspec-explore/SKILL.md": {
+    "mtime": 1782558128.7793255,
+    "ast_hash": "61496eebbad91c2af8b3e5bf7fc9d256",
+    "semantic_hash": "61496eebbad91c2af8b3e5bf7fc9d256"
+  },
+  ".agent/skills/openspec-new-change/SKILL.md": {
+    "mtime": 1782558128.780387,
+    "ast_hash": "a391aba5d8946da580904fe3782e190d",
+    "semantic_hash": "a391aba5d8946da580904fe3782e190d"
+  },
+  ".agent/skills/openspec-onboard/SKILL.md": {
+    "mtime": 1782558128.7872748,
+    "ast_hash": "310fc85a6f93383a1ec59e0cfe24e211",
+    "semantic_hash": "310fc85a6f93383a1ec59e0cfe24e211"
+  },
+  ".agent/skills/openspec-propose/SKILL.md": {
+    "mtime": 1782558128.7884002,
+    "ast_hash": "5fe13ada44751b3ff94f56c22c383749",
+    "semantic_hash": "5fe13ada44751b3ff94f56c22c383749"
+  },
+  ".agent/skills/openspec-sync-specs/SKILL.md": {
+    "mtime": 1782558128.7832935,
+    "ast_hash": "211bc14ef7cb2d1e24b6b73e878d8509",
+    "semantic_hash": "211bc14ef7cb2d1e24b6b73e878d8509"
+  },
+  ".agent/skills/openspec-verify-change/SKILL.md": {
+    "mtime": 1782558128.7861898,
+    "ast_hash": "2baab6b815515578795441106d2d5abd",
+    "semantic_hash": "2baab6b815515578795441106d2d5abd"
+  },
+  ".agent/workflows/opsx-apply.md": {
+    "mtime": 1782558128.793814,
+    "ast_hash": "89abdeb8c8e25b52a3340e4678088a55",
+    "semantic_hash": "89abdeb8c8e25b52a3340e4678088a55"
+  },
+  ".agent/workflows/opsx-archive.md": {
+    "mtime": 1782558128.7955132,
+    "ast_hash": "1f9890b42c4ba455e3f4cce71cc853e0",
+    "semantic_hash": "1f9890b42c4ba455e3f4cce71cc853e0"
+  },
+  ".agent/workflows/opsx-continue.md": {
+    "mtime": 1782558128.7919598,
+    "ast_hash": "687c461152a68adf416bdfd62b69b68c",
+    "semantic_hash": "687c461152a68adf416bdfd62b69b68c"
+  },
+  ".agent/workflows/opsx-explore.md": {
+    "mtime": 1782558128.7907977,
+    "ast_hash": "504f171861fb21f1d6356d38d7ab6141",
+    "semantic_hash": "504f171861fb21f1d6356d38d7ab6141"
+  },
+  ".agent/workflows/opsx-new.md": {
+    "mtime": 1782558128.7909598,
+    "ast_hash": "2fc5c94df5b371e29ac1b00c4d11fed1",
+    "semantic_hash": "2fc5c94df5b371e29ac1b00c4d11fed1"
+  },
+  ".agent/workflows/opsx-onboard.md": {
+    "mtime": 1782558128.7972085,
+    "ast_hash": "cad5a57909c1dbb9bddd719d14906c71",
+    "semantic_hash": "cad5a57909c1dbb9bddd719d14906c71"
+  },
+  ".agent/workflows/opsx-propose.md": {
+    "mtime": 1782558128.7982767,
+    "ast_hash": "e9d53404d4d960e7e6e709a56d9811fa",
+    "semantic_hash": "e9d53404d4d960e7e6e709a56d9811fa"
+  },
+  ".agent/workflows/opsx-sync.md": {
+    "mtime": 1782558128.7946177,
+    "ast_hash": "034b2efe617d9b72f862a1e1c2163a25",
+    "semantic_hash": "034b2efe617d9b72f862a1e1c2163a25"
+  },
+  ".agent/workflows/opsx-verify.md": {
+    "mtime": 1782558128.7963595,
+    "ast_hash": "0f734c75c785d6a872253b6d8e088112",
+    "semantic_hash": "0f734c75c785d6a872253b6d8e088112"
+  },
+  ".claude/commands/opsx/apply.md": {
+    "mtime": 1782558128.8150964,
+    "ast_hash": "449ed654939d2179ce62e0845707ab35",
+    "semantic_hash": "449ed654939d2179ce62e0845707ab35"
+  },
+  ".claude/commands/opsx/archive.md": {
+    "mtime": 1782558128.81642,
+    "ast_hash": "18594057d0fa5e17fb78e48493553625",
+    "semantic_hash": "18594057d0fa5e17fb78e48493553625"
+  },
+  ".claude/commands/opsx/continue.md": {
+    "mtime": 1782558128.8143518,
+    "ast_hash": "c26284d2b34fcd13b033d7cba2c79ccd",
+    "semantic_hash": "c26284d2b34fcd13b033d7cba2c79ccd"
+  },
+  ".claude/commands/opsx/explore.md": {
+    "mtime": 1782558128.8127878,
+    "ast_hash": "c5bdf374bfb2bb1902b3a4aacdc3b898",
+    "semantic_hash": "c5bdf374bfb2bb1902b3a4aacdc3b898"
+  },
+  ".claude/commands/opsx/new.md": {
+    "mtime": 1782558128.8135,
+    "ast_hash": "c3c5532c954fdef210d4c9fa5be48fa1",
+    "semantic_hash": "c3c5532c954fdef210d4c9fa5be48fa1"
+  },
+  ".claude/commands/opsx/onboard.md": {
+    "mtime": 1782558128.8179646,
+    "ast_hash": "0e2ea5c4099be23cb94ded26c05a909e",
+    "semantic_hash": "0e2ea5c4099be23cb94ded26c05a909e"
+  },
+  ".claude/commands/opsx/propose.md": {
+    "mtime": 1782558128.818793,
+    "ast_hash": "43622af941f4617cc53b12af14d6b355",
+    "semantic_hash": "43622af941f4617cc53b12af14d6b355"
+  },
+  ".claude/commands/opsx/sync.md": {
+    "mtime": 1782558128.8157506,
+    "ast_hash": "7a91922fe8b344d562aa9b5dbeb970e6",
+    "semantic_hash": "7a91922fe8b344d562aa9b5dbeb970e6"
+  },
+  ".claude/commands/opsx/verify.md": {
+    "mtime": 1782558128.8171163,
+    "ast_hash": "c0b3914b313644601577f3671b206226",
+    "semantic_hash": "c0b3914b313644601577f3671b206226"
+  },
+  ".claude/skills/openspec-apply-change/SKILL.md": {
+    "mtime": 1782558128.8054273,
+    "ast_hash": "ef62fef14cd5c347e2be60d2af4ea59f",
+    "semantic_hash": "ef62fef14cd5c347e2be60d2af4ea59f"
+  },
+  ".claude/skills/openspec-archive-change/SKILL.md": {
+    "mtime": 1782558128.8074157,
+    "ast_hash": "a853b3ce25149061a7f13f05b127350c",
+    "semantic_hash": "a853b3ce25149061a7f13f05b127350c"
+  },
+  ".claude/skills/openspec-continue-change/SKILL.md": {
+    "mtime": 1782558128.8044355,
+    "ast_hash": "2f94797a9d8e395b9beeba7ea9a43288",
+    "semantic_hash": "2f94797a9d8e395b9beeba7ea9a43288"
+  },
+  ".claude/skills/openspec-explore/SKILL.md": {
+    "mtime": 1782558128.8026576,
+    "ast_hash": "61496eebbad91c2af8b3e5bf7fc9d256",
+    "semantic_hash": "61496eebbad91c2af8b3e5bf7fc9d256"
+  },
+  ".claude/skills/openspec-new-change/SKILL.md": {
+    "mtime": 1782558128.8034368,
+    "ast_hash": "a391aba5d8946da580904fe3782e190d",
+    "semantic_hash": "a391aba5d8946da580904fe3782e190d"
+  },
+  ".claude/skills/openspec-onboard/SKILL.md": {
+    "mtime": 1782558128.8095028,
+    "ast_hash": "310fc85a6f93383a1ec59e0cfe24e211",
+    "semantic_hash": "310fc85a6f93383a1ec59e0cfe24e211"
+  },
+  ".claude/skills/openspec-propose/SKILL.md": {
+    "mtime": 1782558128.810403,
+    "ast_hash": "5fe13ada44751b3ff94f56c22c383749",
+    "semantic_hash": "5fe13ada44751b3ff94f56c22c383749"
+  },
+  ".claude/skills/openspec-sync-specs/SKILL.md": {
+    "mtime": 1782558128.8064432,
+    "ast_hash": "211bc14ef7cb2d1e24b6b73e878d8509",
+    "semantic_hash": "211bc14ef7cb2d1e24b6b73e878d8509"
+  },
+  ".claude/skills/openspec-verify-change/SKILL.md": {
+    "mtime": 1782558128.8084614,
+    "ast_hash": "2baab6b815515578795441106d2d5abd",
+    "semantic_hash": "2baab6b815515578795441106d2d5abd"
+  },
+  ".gemini/skills/openspec-apply-change/SKILL.md": {
+    "mtime": 1782558128.8389592,
+    "ast_hash": "ef62fef14cd5c347e2be60d2af4ea59f",
+    "semantic_hash": "ef62fef14cd5c347e2be60d2af4ea59f"
+  },
+  ".gemini/skills/openspec-archive-change/SKILL.md": {
+    "mtime": 1782558128.840959,
+    "ast_hash": "a853b3ce25149061a7f13f05b127350c",
+    "semantic_hash": "a853b3ce25149061a7f13f05b127350c"
+  },
+  ".gemini/skills/openspec-continue-change/SKILL.md": {
+    "mtime": 1782558128.837959,
+    "ast_hash": "2f94797a9d8e395b9beeba7ea9a43288",
+    "semantic_hash": "2f94797a9d8e395b9beeba7ea9a43288"
+  },
+  ".gemini/skills/openspec-explore/SKILL.md": {
+    "mtime": 1782558128.8359592,
+    "ast_hash": "61496eebbad91c2af8b3e5bf7fc9d256",
+    "semantic_hash": "61496eebbad91c2af8b3e5bf7fc9d256"
+  },
+  ".gemini/skills/openspec-new-change/SKILL.md": {
+    "mtime": 1782558128.8369591,
+    "ast_hash": "a391aba5d8946da580904fe3782e190d",
+    "semantic_hash": "a391aba5d8946da580904fe3782e190d"
+  },
+  ".gemini/skills/openspec-onboard/SKILL.md": {
+    "mtime": 1782558128.8429592,
+    "ast_hash": "310fc85a6f93383a1ec59e0cfe24e211",
+    "semantic_hash": "310fc85a6f93383a1ec59e0cfe24e211"
+  },
+  ".gemini/skills/openspec-propose/SKILL.md": {
+    "mtime": 1782558128.8429592,
+    "ast_hash": "5fe13ada44751b3ff94f56c22c383749",
+    "semantic_hash": "5fe13ada44751b3ff94f56c22c383749"
+  },
+  ".gemini/skills/openspec-sync-specs/SKILL.md": {
+    "mtime": 1782558128.8399591,
+    "ast_hash": "211bc14ef7cb2d1e24b6b73e878d8509",
+    "semantic_hash": "211bc14ef7cb2d1e24b6b73e878d8509"
+  },
+  ".gemini/skills/openspec-verify-change/SKILL.md": {
+    "mtime": 1782558128.841959,
+    "ast_hash": "2baab6b815515578795441106d2d5abd",
+    "semantic_hash": "2baab6b815515578795441106d2d5abd"
+  },
+  ".opencode/commands/opsx-apply.md": {
+    "mtime": 1782558128.831479,
+    "ast_hash": "43612ae8ffdcce031feaa4079d4a5dcd",
+    "semantic_hash": "43612ae8ffdcce031feaa4079d4a5dcd"
+  },
+  ".opencode/commands/opsx-archive.md": {
+    "mtime": 1782558128.832717,
+    "ast_hash": "6e97176b00322accd70c0449de52d0c5",
+    "semantic_hash": "6e97176b00322accd70c0449de52d0c5"
+  },
+  ".opencode/commands/opsx-continue.md": {
+    "mtime": 1782558128.8308327,
+    "ast_hash": "81beec773fb38bc223134f2062e5705a",
+    "semantic_hash": "81beec773fb38bc223134f2062e5705a"
+  },
+  ".opencode/commands/opsx-explore.md": {
+    "mtime": 1782558128.8296065,
+    "ast_hash": "52269c126732fd32d2cce0769ada2870",
+    "semantic_hash": "52269c126732fd32d2cce0769ada2870"
+  },
+  ".opencode/commands/opsx-new.md": {
+    "mtime": 1782558128.8302598,
+    "ast_hash": "1d07e8e58515345dae63329e6c8c8469",
+    "semantic_hash": "1d07e8e58515345dae63329e6c8c8469"
+  },
+  ".opencode/commands/opsx-onboard.md": {
+    "mtime": 1782558128.8339584,
+    "ast_hash": "7b76249065d02b1563c27432fb826f75",
+    "semantic_hash": "7b76249065d02b1563c27432fb826f75"
+  },
+  ".opencode/commands/opsx-propose.md": {
+    "mtime": 1782558128.8345814,
+    "ast_hash": "d2415ea5329320b825b4e3dd44b48634",
+    "semantic_hash": "d2415ea5329320b825b4e3dd44b48634"
+  },
+  ".opencode/commands/opsx-sync.md": {
+    "mtime": 1782558128.8320193,
+    "ast_hash": "0a1256ea2b7e172a968644f2e0caf1b6",
+    "semantic_hash": "0a1256ea2b7e172a968644f2e0caf1b6"
+  },
+  ".opencode/commands/opsx-verify.md": {
+    "mtime": 1782558128.8332357,
+    "ast_hash": "a31717d12290837954447e65d00b73be",
+    "semantic_hash": "a31717d12290837954447e65d00b73be"
+  },
+  ".opencode/skills/openspec-apply-change/SKILL.md": {
+    "mtime": 1782558128.8239594,
+    "ast_hash": "0c644086b9d1191f7639324aa9d90557",
+    "semantic_hash": "0c644086b9d1191f7639324aa9d90557"
+  },
+  ".opencode/skills/openspec-archive-change/SKILL.md": {
+    "mtime": 1782558128.8249593,
+    "ast_hash": "a853b3ce25149061a7f13f05b127350c",
+    "semantic_hash": "a853b3ce25149061a7f13f05b127350c"
+  },
+  ".opencode/skills/openspec-continue-change/SKILL.md": {
+    "mtime": 1782558128.8229594,
+    "ast_hash": "2f94797a9d8e395b9beeba7ea9a43288",
+    "semantic_hash": "2f94797a9d8e395b9beeba7ea9a43288"
+  },
+  ".opencode/skills/openspec-explore/SKILL.md": {
+    "mtime": 1782558128.8209593,
+    "ast_hash": "b50d65377c6c7fe4c9591e114ff77f5f",
+    "semantic_hash": "b50d65377c6c7fe4c9591e114ff77f5f"
+  },
+  ".opencode/skills/openspec-new-change/SKILL.md": {
+    "mtime": 1782558128.8219593,
+    "ast_hash": "a391aba5d8946da580904fe3782e190d",
+    "semantic_hash": "a391aba5d8946da580904fe3782e190d"
+  },
+  ".opencode/skills/openspec-onboard/SKILL.md": {
+    "mtime": 1782558128.8269594,
+    "ast_hash": "230b8a8e316d76ffcc4f972ef8ea1425",
+    "semantic_hash": "230b8a8e316d76ffcc4f972ef8ea1425"
+  },
+  ".opencode/skills/openspec-propose/SKILL.md": {
+    "mtime": 1782558128.8269594,
+    "ast_hash": "40b0eb2c1f2d14397b5ad856cd9cbc23",
+    "semantic_hash": "40b0eb2c1f2d14397b5ad856cd9cbc23"
+  },
+  ".opencode/skills/openspec-sync-specs/SKILL.md": {
+    "mtime": 1782558128.8239594,
+    "ast_hash": "211bc14ef7cb2d1e24b6b73e878d8509",
+    "semantic_hash": "211bc14ef7cb2d1e24b6b73e878d8509"
+  },
+  ".opencode/skills/openspec-verify-change/SKILL.md": {
+    "mtime": 1782558128.8259592,
+    "ast_hash": "2baab6b815515578795441106d2d5abd",
+    "semantic_hash": "2baab6b815515578795441106d2d5abd"
+  },
+  ".serena/project.local.yml": {
+    "mtime": 1782670086.7105412,
+    "ast_hash": "f136e7d47205d9a758913615074760e5",
+    "semantic_hash": "f136e7d47205d9a758913615074760e5"
+  },
+  ".serena/project.yml": {
+    "mtime": 1783126767.9577563,
+    "ast_hash": "a1347d39ced92eb7179a62bad7ee8f76",
+    "semantic_hash": "a1347d39ced92eb7179a62bad7ee8f76"
+  },
+  "CLAUDE.md": {
+    "mtime": 1783266706.5708973,
+    "ast_hash": "e677e790d919040e01b4ae6b157bcf2b",
+    "semantic_hash": ""
+  },
+  "GEMINI.md": {
+    "mtime": 1782614210.099278,
+    "ast_hash": "d7a5d15d128a1e846f5a9d3efa654d95",
+    "semantic_hash": "d7a5d15d128a1e846f5a9d3efa654d95"
+  },
+  "HELP.md": {
+    "mtime": 1782556534.0,
+    "ast_hash": "8d240bfd6f6c19dc543e7118a31deaad",
+    "semantic_hash": "8d240bfd6f6c19dc543e7118a31deaad"
+  },
+  "README.md": {
+    "mtime": 1783051668.4029021,
+    "ast_hash": "1e2030a5d8718615b4c3763ac7137771",
+    "semantic_hash": "1e2030a5d8718615b4c3763ac7137771"
+  },
+  "docs/ERROS-E-SOLUCOES.md": {
+    "mtime": 1782663027.038879,
+    "ast_hash": "d5769c635d922a91e651ab7d51e737a3",
+    "semantic_hash": "d5769c635d922a91e651ab7d51e737a3"
+  },
+  "docs/FrontEnd/DESIGN_SYSTEM.md": {
+    "mtime": 1782673670.7634482,
+    "ast_hash": "bfbef4861a0a345af885e0b7a06e9fca",
+    "semantic_hash": "bfbef4861a0a345af885e0b7a06e9fca"
+  },
+  "docs/PRD-SAAP.md": {
+    "mtime": 1783051671.4888558,
+    "ast_hash": "d1cbb2187ecba0400ac7178e9fbb60a8",
+    "semantic_hash": "d1cbb2187ecba0400ac7178e9fbb60a8"
+  },
+  "docs/REST Client/REST_CLIENT.md": {
+    "mtime": 1782667768.2067966,
+    "ast_hash": "9777acd77a5a2111be6f516719a98b5e",
+    "semantic_hash": "9777acd77a5a2111be6f516719a98b5e"
+  },
+  "docs/SAAP_AI_TEST_GUIDE.md": {
+    "mtime": 1783184755.0785177,
+    "ast_hash": "f241c508a2f0aa5f33e6d9a94493649f",
+    "semantic_hash": "f241c508a2f0aa5f33e6d9a94493649f"
+  },
+  "docs/proposta_do_projeto.md": {
+    "mtime": 1782557725.6428337,
+    "ast_hash": "3d3cf681db521dd1407bfe1d49e40f5e",
+    "semantic_hash": "3d3cf681db521dd1407bfe1d49e40f5e"
+  },
+  "docs/rascunho.md": {
+    "mtime": 1782557725.6434927,
+    "ast_hash": "5aa5115fd7a8cb90fc80a4fada15b3d8",
+    "semantic_hash": "5aa5115fd7a8cb90fc80a4fada15b3d8"
+  },
+  "docs/testes/gaps-pendentes.md": {
+    "mtime": 1783202224.1115716,
+    "ast_hash": "e68a9dd5fbc92b94e08ec893cc11c85d",
+    "semantic_hash": "e68a9dd5fbc92b94e08ec893cc11c85d"
+  },
+  "docs/testes/teste-fluxo-follow-up.md": {
+    "mtime": 1783203646.3630037,
+    "ast_hash": "8ce68ae435b0203a7d53a04b46ab0f9f",
+    "semantic_hash": "8ce68ae435b0203a7d53a04b46ab0f9f"
+  },
+  "docs/testes/teste-fluxo-outros-fluxos.md": {
+    "mtime": 1783203551.588277,
+    "ast_hash": "02093ff16db43023f0e94668c7945f51",
+    "semantic_hash": "02093ff16db43023f0e94668c7945f51"
+  },
+  "openspec/changes/archive/2026-06-27-api-rest-entidades-core/.openspec.yaml": {
+    "mtime": 1782565525.5164578,
+    "ast_hash": "9765f2c9197beec902d61226135a85e7",
+    "semantic_hash": "9765f2c9197beec902d61226135a85e7"
+  },
+  "openspec/changes/archive/2026-06-27-api-rest-entidades-core/design.md": {
+    "mtime": 1782565579.4887173,
+    "ast_hash": "37718d2925295949a0c6511f49db491b",
+    "semantic_hash": "37718d2925295949a0c6511f49db491b"
+  },
+  "openspec/changes/archive/2026-06-27-api-rest-entidades-core/proposal.md": {
+    "mtime": 1782565547.4482508,
+    "ast_hash": "eca6b02538be729fbb5a0f779c6325e0",
+    "semantic_hash": "eca6b02538be729fbb5a0f779c6325e0"
+  },
+  "openspec/changes/archive/2026-06-27-api-rest-entidades-core/specs/core-entities/spec.md": {
+    "mtime": 1782579858.4085896,
+    "ast_hash": "e27388a07ae5711e533be009236cb05f",
+    "semantic_hash": "e27388a07ae5711e533be009236cb05f"
+  },
+  "openspec/changes/archive/2026-06-27-api-rest-entidades-core/tasks.md": {
+    "mtime": 1782566261.335567,
+    "ast_hash": "9ccd8efc5cc66d0ba14c3560f1a6e473",
+    "semantic_hash": "9ccd8efc5cc66d0ba14c3560f1a6e473"
+  },
+  "openspec/changes/archive/2026-06-27-inicializar-entidades-core/.openspec.yaml": {
+    "mtime": 1782560852.871361,
+    "ast_hash": "9765f2c9197beec902d61226135a85e7",
+    "semantic_hash": "9765f2c9197beec902d61226135a85e7"
+  },
+  "openspec/changes/archive/2026-06-27-inicializar-entidades-core/design.md": {
+    "mtime": 1782563961.2138047,
+    "ast_hash": "80af86a81ed2f956f17f73893ac8b43f",
+    "semantic_hash": "80af86a81ed2f956f17f73893ac8b43f"
+  },
+  "openspec/changes/archive/2026-06-27-inicializar-entidades-core/proposal.md": {
+    "mtime": 1782561002.0965228,
+    "ast_hash": "0ff7cc0b25dc3910cba50aa9905e70a0",
+    "semantic_hash": "0ff7cc0b25dc3910cba50aa9905e70a0"
+  },
+  "openspec/changes/archive/2026-06-27-inicializar-entidades-core/specs/core-entities/spec.md": {
+    "mtime": 1782562584.6800618,
+    "ast_hash": "f281d05beb9769935e98ac032ddd3800",
+    "semantic_hash": "f281d05beb9769935e98ac032ddd3800"
+  },
+  "openspec/changes/archive/2026-06-27-inicializar-entidades-core/tasks.md": {
+    "mtime": 1782562694.59458,
+    "ast_hash": "fda732833ebe10d890c1d23c252ced8b",
+    "semantic_hash": "fda732833ebe10d890c1d23c252ced8b"
+  },
+  "openspec/changes/archive/2026-06-28-fila-espera-inteligente/.openspec.yaml": {
+    "mtime": 1782617371.818453,
+    "ast_hash": "aa6db2eaf8f605159d974c0bba1bf50a",
+    "semantic_hash": "aa6db2eaf8f605159d974c0bba1bf50a"
+  },
+  "openspec/changes/archive/2026-06-28-fila-espera-inteligente/design.md": {
+    "mtime": 1782617451.5952537,
+    "ast_hash": "08693b7d0c8c0345f0ed701490109ffb",
+    "semantic_hash": "08693b7d0c8c0345f0ed701490109ffb"
+  },
+  "openspec/changes/archive/2026-06-28-fila-espera-inteligente/proposal.md": {
+    "mtime": 1782617437.8765576,
+    "ast_hash": "ace025a530b0b0c5dcbf08fee7279d10",
+    "semantic_hash": "ace025a530b0b0c5dcbf08fee7279d10"
+  },
+  "openspec/changes/archive/2026-06-28-fila-espera-inteligente/specs/waitlist/spec.md": {
+    "mtime": 1782617430.6459208,
+    "ast_hash": "5eb705eeca21bbeb5b67dec46b76de32",
+    "semantic_hash": "5eb705eeca21bbeb5b67dec46b76de32"
+  },
+  "openspec/changes/archive/2026-06-28-fila-espera-inteligente/tasks.md": {
+    "mtime": 1782617729.8075905,
+    "ast_hash": "5f690e2c1d6ee6a6cafe0f0eef910f91",
+    "semantic_hash": "5f690e2c1d6ee6a6cafe0f0eef910f91"
+  },
+  "openspec/changes/archive/2026-06-28-follow-up-confirmacoes/.openspec.yaml": {
+    "mtime": 1782616685.902905,
+    "ast_hash": "aa6db2eaf8f605159d974c0bba1bf50a",
+    "semantic_hash": "aa6db2eaf8f605159d974c0bba1bf50a"
+  },
+  "openspec/changes/archive/2026-06-28-follow-up-confirmacoes/design.md": {
+    "mtime": 1782616750.245035,
+    "ast_hash": "98633775eb4490e2bb89683e07618fb8",
+    "semantic_hash": "98633775eb4490e2bb89683e07618fb8"
+  },
+  "openspec/changes/archive/2026-06-28-follow-up-confirmacoes/proposal.md": {
+    "mtime": 1782616726.2823586,
+    "ast_hash": "4d52bf7422ba7f61de52560c0c33ff13",
+    "semantic_hash": "4d52bf7422ba7f61de52560c0c33ff13"
+  },
+  "openspec/changes/archive/2026-06-28-follow-up-confirmacoes/specs/appointment-follow-up/spec.md": {
+    "mtime": 1782616717.5584767,
+    "ast_hash": "dba8cb1b3ee95d9e655be676ecf5afea",
+    "semantic_hash": "dba8cb1b3ee95d9e655be676ecf5afea"
+  },
+  "openspec/changes/archive/2026-06-28-follow-up-confirmacoes/tasks.md": {
+    "mtime": 1782617182.5860872,
+    "ast_hash": "ddbb7625b6e2f40d47988f59a49c8c14",
+    "semantic_hash": "ddbb7625b6e2f40d47988f59a49c8c14"
+  },
+  "openspec/changes/archive/2026-06-28-implementar-autenticacao-jwt/.openspec.yaml": {
+    "mtime": 1782581806.4969563,
+    "ast_hash": "9765f2c9197beec902d61226135a85e7",
+    "semantic_hash": "9765f2c9197beec902d61226135a85e7"
+  },
+  "openspec/changes/archive/2026-06-28-implementar-autenticacao-jwt/design.md": {
+    "mtime": 1782581891.6098323,
+    "ast_hash": "d7a30bd4842923239e52ec28cd64e19e",
+    "semantic_hash": "d7a30bd4842923239e52ec28cd64e19e"
+  },
+  "openspec/changes/archive/2026-06-28-implementar-autenticacao-jwt/proposal.md": {
+    "mtime": 1782581861.6872272,
+    "ast_hash": "b0633067153501b1cb2e6fea0ebc60ae",
+    "semantic_hash": "b0633067153501b1cb2e6fea0ebc60ae"
+  },
+  "openspec/changes/archive/2026-06-28-implementar-autenticacao-jwt/specs/user-auth/spec.md": {
+    "mtime": 1782581875.9210393,
+    "ast_hash": "918dea8997859c4c7f58ac81a6efc933",
+    "semantic_hash": "918dea8997859c4c7f58ac81a6efc933"
+  },
+  "openspec/changes/archive/2026-06-28-implementar-autenticacao-jwt/tasks.md": {
+    "mtime": 1782582817.7461953,
+    "ast_hash": "041d6336af1404d2d50bf17dabc47fa3",
+    "semantic_hash": "041d6336af1404d2d50bf17dabc47fa3"
+  },
+  "openspec/changes/archive/2026-06-28-motor-agendamento-sincronizado/.openspec.yaml": {
+    "mtime": 1782615471.1086435,
+    "ast_hash": "aa6db2eaf8f605159d974c0bba1bf50a",
+    "semantic_hash": "aa6db2eaf8f605159d974c0bba1bf50a"
+  },
+  "openspec/changes/archive/2026-06-28-motor-agendamento-sincronizado/design.md": {
+    "mtime": 1782615502.9475234,
+    "ast_hash": "920aa0b0df81a4e0ddc5333314b6d12a",
+    "semantic_hash": "920aa0b0df81a4e0ddc5333314b6d12a"
+  },
+  "openspec/changes/archive/2026-06-28-motor-agendamento-sincronizado/proposal.md": {
+    "mtime": 1782615482.131458,
+    "ast_hash": "0d15fc537417db882414449532ee6c24",
+    "semantic_hash": "0d15fc537417db882414449532ee6c24"
+  },
+  "openspec/changes/archive/2026-06-28-motor-agendamento-sincronizado/specs/scheduling-engine/spec.md": {
+    "mtime": 1782615493.3482702,
+    "ast_hash": "bd4fe819c2195052ab8eb2739647c205",
+    "semantic_hash": "bd4fe819c2195052ab8eb2739647c205"
+  },
+  "openspec/changes/archive/2026-06-28-motor-agendamento-sincronizado/tasks.md": {
+    "mtime": 1782616115.433794,
+    "ast_hash": "c7207cf373e567a20d659001d2c918a8",
+    "semantic_hash": "c7207cf373e567a20d659001d2c918a8"
+  },
+  "openspec/changes/archive/2026-06-28-rf05-atendimento-prioritario-legal/.openspec.yaml": {
+    "mtime": 1782653297.7590683,
+    "ast_hash": "aa6db2eaf8f605159d974c0bba1bf50a",
+    "semantic_hash": "aa6db2eaf8f605159d974c0bba1bf50a"
+  },
+  "openspec/changes/archive/2026-06-28-rf05-atendimento-prioritario-legal/design.md": {
+    "mtime": 1782653452.3561633,
+    "ast_hash": "d56c7714f5b1182c157793018b477205",
+    "semantic_hash": "d56c7714f5b1182c157793018b477205"
+  },
+  "openspec/changes/archive/2026-06-28-rf05-atendimento-prioritario-legal/proposal.md": {
+    "mtime": 1782653340.9995365,
+    "ast_hash": "31dbb959897405472a720bd009abe4b2",
+    "semantic_hash": "31dbb959897405472a720bd009abe4b2"
+  },
+  "openspec/changes/archive/2026-06-28-rf05-atendimento-prioritario-legal/specs/priority-attendance/spec.md": {
+    "mtime": 1782653354.0693755,
+    "ast_hash": "58d7a284305bb72531d33ebb228989fb",
+    "semantic_hash": "58d7a284305bb72531d33ebb228989fb"
+  },
+  "openspec/changes/archive/2026-06-28-rf05-atendimento-prioritario-legal/tasks.md": {
+    "mtime": 1782658271.7835371,
+    "ast_hash": "1ad63230cfe9208c6b48c45a22317252",
+    "semantic_hash": "1ad63230cfe9208c6b48c45a22317252"
+  },
+  "openspec/changes/rf03-follow-up-confirmacoes/.openspec.yaml": {
+    "mtime": 1782662148.8532426,
+    "ast_hash": "aa6db2eaf8f605159d974c0bba1bf50a",
+    "semantic_hash": "aa6db2eaf8f605159d974c0bba1bf50a"
+  },
+  "openspec/changes/rf03-follow-up-confirmacoes/design.md": {
+    "mtime": 1782662253.029499,
+    "ast_hash": "d0bf20e9c09abe3e2748f0f5699db66e",
+    "semantic_hash": "d0bf20e9c09abe3e2748f0f5699db66e"
+  },
+  "openspec/changes/rf03-follow-up-confirmacoes/proposal.md": {
+    "mtime": 1782662204.9218376,
+    "ast_hash": "78d4f175e4f4cf60153043048bf79910",
+    "semantic_hash": "78d4f175e4f4cf60153043048bf79910"
+  },
+  "openspec/changes/rf03-follow-up-confirmacoes/specs/appointment-follow-up/spec.md": {
+    "mtime": 1782662291.3122354,
+    "ast_hash": "97a2dba1670cac3ff00d098cb921572b",
+    "semantic_hash": "97a2dba1670cac3ff00d098cb921572b"
+  },
+  "openspec/changes/rf03-follow-up-confirmacoes/specs/confirmation-follow-up/spec.md": {
+    "mtime": 1782662273.4583578,
+    "ast_hash": "dbafd95e263871caf3401940cbafa107",
+    "semantic_hash": "dbafd95e263871caf3401940cbafa107"
+  },
+  "openspec/changes/rf03-follow-up-confirmacoes/specs/scheduling-engine/spec.md": {
+    "mtime": 1782662302.5391588,
+    "ast_hash": "7465bba5e85ed6183d9ebec1720dd262",
+    "semantic_hash": "7465bba5e85ed6183d9ebec1720dd262"
+  },
+  "openspec/changes/rf03-follow-up-confirmacoes/tasks.md": {
+    "mtime": 1782662341.663895,
+    "ast_hash": "1488bcde88a4fbdd503ef6d4fca89c93",
+    "semantic_hash": "1488bcde88a4fbdd503ef6d4fca89c93"
+  },
+  "openspec/changes/rf06-registro-clinico-prontuario/.openspec.yaml": {
+    "mtime": 1783035422.1290805,
+    "ast_hash": "7f48377552c3f516e4e868cb6ea8d4f2",
+    "semantic_hash": "7f48377552c3f516e4e868cb6ea8d4f2"
+  },
+  "openspec/changes/rf06-registro-clinico-prontuario/design.md": {
+    "mtime": 1783038806.9035506,
+    "ast_hash": "dbf5950831655c82456eda19872e58a6",
+    "semantic_hash": "dbf5950831655c82456eda19872e58a6"
+  },
+  "openspec/changes/rf06-registro-clinico-prontuario/proposal.md": {
+    "mtime": 1783038806.902196,
+    "ast_hash": "52ac80037d3cd1621545443575f33063",
+    "semantic_hash": "52ac80037d3cd1621545443575f33063"
+  },
+  "openspec/changes/rf06-registro-clinico-prontuario/specs/medical-record/spec.md": {
+    "mtime": 1783038806.904215,
+    "ast_hash": "a52860aed710fab06a23a67f4b371ba0",
+    "semantic_hash": "a52860aed710fab06a23a67f4b371ba0"
+  },
+  "openspec/changes/rf06-registro-clinico-prontuario/specs/scheduling-engine/spec.md": {
+    "mtime": 1783036236.5480583,
+    "ast_hash": "19d5e174e325d5814ea288a71a653a22",
+    "semantic_hash": "19d5e174e325d5814ea288a71a653a22"
+  },
+  "openspec/changes/rf06-registro-clinico-prontuario/tasks.md": {
+    "mtime": 1783051713.5961382,
+    "ast_hash": "8e5748951a663abb533e3fffd30cc533",
+    "semantic_hash": "8e5748951a663abb533e3fffd30cc533"
+  },
+  "openspec/config.yaml": {
+    "mtime": 1782558128.8544023,
+    "ast_hash": "9e3e7672b387a282583011181ab35f9a",
+    "semantic_hash": "9e3e7672b387a282583011181ab35f9a"
+  },
+  "openspec/specs/appointment-follow-up/spec.md": {
+    "mtime": 1782617220.894081,
+    "ast_hash": "0256a8ba7f3b33c4cfdca006b6cafa9c",
+    "semantic_hash": "0256a8ba7f3b33c4cfdca006b6cafa9c"
+  },
+  "openspec/specs/core-entities/spec.md": {
+    "mtime": 1782580568.4989228,
+    "ast_hash": "e81a9d4ede123f94c02347933f1e5bd4",
+    "semantic_hash": "e81a9d4ede123f94c02347933f1e5bd4"
+  },
+  "openspec/specs/priority-attendance/spec.md": {
+    "mtime": 1782659587.4812198,
+    "ast_hash": "506ed087e2796590e3eadff1d3ad1b50",
+    "semantic_hash": "506ed087e2796590e3eadff1d3ad1b50"
+  },
+  "openspec/specs/scheduling-engine/spec.md": {
+    "mtime": 1782616227.7564688,
+    "ast_hash": "d46c24f7427ff6fa24b749c62db85498",
+    "semantic_hash": "d46c24f7427ff6fa24b749c62db85498"
+  },
+  "openspec/specs/user-auth/spec.md": {
+    "mtime": 1782615416.2465801,
+    "ast_hash": "d70c1ea715e0b4a90818340d399a40fe",
+    "semantic_hash": "d70c1ea715e0b4a90818340d399a40fe"
+  },
+  "openspec/specs/waitlist/spec.md": {
+    "mtime": 1782617805.8024511,
+    "ast_hash": "841f92f8b5f04eb0a362490148aae540",
+    "semantic_hash": "841f92f8b5f04eb0a362490148aae540"
+  },
+  "src/main/resources/application.yaml": {
+    "mtime": 1783184873.7564263,
+    "ast_hash": "57c2b41fc184c3316c3177a0d98a8c71",
+    "semantic_hash": "57c2b41fc184c3316c3177a0d98a8c71"
+  },
+  "docs/assets/img/Diagrama_Casos_Uso.jpg": {
+    "mtime": 1782557725.6300807,
+    "ast_hash": "986e24e3c49296675d8491697523abb2",
+    "semantic_hash": "986e24e3c49296675d8491697523abb2"
+  },
+  "docs/assets/img/Diagrama_Classes_Conceituais_SAAP.png": {
+    "mtime": 1782557725.631016,
+    "ast_hash": "eb5847825dbd0aafcaf8bf9770d1980f",
+    "semantic_hash": "eb5847825dbd0aafcaf8bf9770d1980f"
+  },
+  "docs/assets/img/Diagrama_Sequ\u00eancia.png": {
+    "mtime": 1782557725.6319945,
+    "ast_hash": "e07ba30bde836553d49b170fd09c544f",
+    "semantic_hash": "e07ba30bde836553d49b170fd09c544f"
+  },
+  "docs/assets/img/Diagrama_atual.png": {
+    "mtime": 1782557725.6328602,
+    "ast_hash": "d8e01ef1df0abf4724ae61f79500ccc9",
+    "semantic_hash": "d8e01ef1df0abf4724ae61f79500ccc9"
+  },
+  "docs/assets/img/image.png": {
+    "mtime": 1782557725.6348603,
+    "ast_hash": "bd85a9fdf0e31726412141d55159736a",
+    "semantic_hash": "bd85a9fdf0e31726412141d55159736a"
+  },
+  "docs/assets/img/schema final.png": {
+    "mtime": 1782557725.6358602,
+    "ast_hash": "0bc7fc511b3db58abbed8e83f0e80339",
+    "semantic_hash": "0bc7fc511b3db58abbed8e83f0e80339"
+  },
+  "docs/PRD-Fluxo-Medico.md": {
+    "mtime": 1783267230.7028897,
+    "ast_hash": "91189d5fdd18b1a8dae26010bddf97f3",
+    "semantic_hash": ""
+  },
+  "docs/PRD-Fluxo-Recepcionista.md": {
+    "mtime": 1783268009.7523246,
+    "ast_hash": "44b7666d759cd40c95aa45e79fbd47e1",
+    "semantic_hash": ""
+  }
+}

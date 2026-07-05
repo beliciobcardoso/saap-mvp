@@ -1,0 +1,20 @@
+/home/bello/Projetos/saap-mvp/.opencode/skills/openspec-propose/SKILL.md
+/home/bello/Projetos/saap-mvp/.opencode/skills/openspec-sync-specs/SKILL.md
+/home/bello/Projetos/saap-mvp/.opencode/skills/openspec-verify-change/SKILL.md
+/home/bello/Projetos/saap-mvp/.serena/project.local.yml
+/home/bello/Projetos/saap-mvp/.serena/project.yml
+/home/bello/Projetos/saap-mvp/CLAUDE.md
+/home/bello/Projetos/saap-mvp/GEMINI.md
+/home/bello/Projetos/saap-mvp/HELP.md
+/home/bello/Projetos/saap-mvp/README.md
+/home/bello/Projetos/saap-mvp/docs/ERROS-E-SOLUCOES.md
+/home/bello/Projetos/saap-mvp/docs/FrontEnd/DESIGN_SYSTEM.md
+/home/bello/Projetos/saap-mvp/docs/PRD-SAAP.md
+/home/bello/Projetos/saap-mvp/docs/REST Client/REST_CLIENT.md
+/home/bello/Projetos/saap-mvp/docs/SAAP_AI_TEST_GUIDE.md
+/home/bello/Projetos/saap-mvp/docs/proposta_do_projeto.md
+/home/bello/Projetos/saap-mvp/docs/rascunho.md
+/home/bello/Projetos/saap-mvp/docs/testes/gaps-pendentes.md
+/home/bello/Projetos/saap-mvp/docs/testes/teste-fluxo-follow-up.md
+/home/bello/Projetos/saap-mvp/docs/testes/teste-fluxo-outros-fluxos.md
+/home/bello/Projetos/saap-mvp/openspec/changes/archive/2026-06-27-api-rest-entidades-core/.openspec.yaml
