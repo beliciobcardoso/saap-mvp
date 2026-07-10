@@ -9,6 +9,8 @@ api:
     action-token:
       secret: "${ACTION_TOKEN_SECRET}"
       expiration: "${ACTION_TOKEN_EXPIRATION:86400000}"
+    login:
+      trusted-proxies: "${LOGIN_TRUSTED_PROXIES:}"
 
 saap:
   app:
@@ -58,9 +60,3 @@ spring:
 
   flyway:
     enabled: "${FLYWAY_ENABLED:true}"
-
-springdoc:
-  swagger-ui:
-    enabled: false
-  api-docs:
-    enabled: false
