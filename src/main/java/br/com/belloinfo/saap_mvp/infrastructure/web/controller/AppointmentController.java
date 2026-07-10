@@ -52,7 +52,7 @@ public class AppointmentController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PATIENT')")
+    @PreAuthorize("hasAnyRole('RECEPTIONIST', 'PATIENT')")
     public ResponseEntity<AppointmentResponseDTO> book(@Valid @RequestBody BookAppointmentRequestDTO request, HttpServletRequest httpRequest) {
         Appointment appointment = bookAppointmentUseCase.execute(
                 request.patientId(),
@@ -67,7 +67,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PROFESSIONAL', 'PATIENT')")
+    @PreAuthorize("hasAnyRole('RECEPTIONIST', 'PROFESSIONAL')")
     public ResponseEntity<AppointmentResponseDTO> findById(@PathVariable UUID id) {
         return findAppointmentByIdUseCase.execute(id)
                 .map(mapper::toResponse)
@@ -76,7 +76,7 @@ public class AppointmentController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PROFESSIONAL', 'PATIENT')")
+    @PreAuthorize("hasAnyRole('RECEPTIONIST', 'PROFESSIONAL')")
     public ResponseEntity<PageResponseDTO<AppointmentResponseDTO>> list(
             @RequestParam(required = false) UUID professionalId,
             @RequestParam(required = false) UUID patientId,
@@ -90,7 +90,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/confirm")
-    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('RECEPTIONIST')")
     public ResponseEntity<AppointmentResponseDTO> confirm(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = confirmAppointmentUseCase.execute(id);
         logAudit("CONFIRMACAO_AGENDAMENTO", appointment.getId(), httpRequest);
@@ -98,7 +98,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/cancel")
-    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PATIENT')")
+    @PreAuthorize("hasAnyRole('RECEPTIONIST')")
     public ResponseEntity<AppointmentResponseDTO> cancel(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = cancelAppointmentUseCase.execute(id);
         logAudit("CANCELAMENTO_AGENDAMENTO", appointment.getId(), httpRequest);
@@ -106,7 +106,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/check-in")
-    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('RECEPTIONIST')")
     public ResponseEntity<AppointmentResponseDTO> checkIn(
             @PathVariable UUID id,
             @Valid @RequestBody CheckInRequestDTO request,
@@ -152,7 +152,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/start")
-    @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSIONAL')")
+    @PreAuthorize("hasAnyRole('PROFESSIONAL')")
     public ResponseEntity<AppointmentResponseDTO> start(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = startAppointmentUseCase.execute(id);
         logAudit("INICIO_ATENDIMENTO", appointment.getId(), httpRequest);
@@ -160,7 +160,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/complete")
-    @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSIONAL')")
+    @PreAuthorize("hasAnyRole('PROFESSIONAL')")
     public ResponseEntity<AppointmentResponseDTO> complete(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = completeAppointmentUseCase.execute(id);
         logAudit("FINALIZACAO_ATENDIMENTO", appointment.getId(), httpRequest);
