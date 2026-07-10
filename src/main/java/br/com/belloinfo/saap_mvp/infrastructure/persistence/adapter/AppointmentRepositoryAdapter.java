@@ -92,6 +92,15 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
     }
 
     @Override
+    public Optional<Appointment> findNextInQueueWithLock(UUID professionalId, LocalDateTime start, LocalDateTime end) {
+        return jpaAppointmentRepository.findNextInQueueWithLock(
+                professionalId,
+                start,
+                end
+        ).map(mapper::toDomain);
+    }
+
+    @Override
     public List<Appointment> findEligibleForFollowUp(LocalDateTime windowStart, LocalDateTime windowEnd) {
         return jpaAppointmentRepository.findEligibleForFollowUp(windowStart, windowEnd).stream()
                 .map(mapper::toDomain)
@@ -103,10 +112,5 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
         return jpaAppointmentRepository.findPendingResponsePastDeadline(deadline).stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId) {
-        return jpaAppointmentRepository.existsByPatientIdAndProfessionalId(patientId, professionalId);
     }
 }

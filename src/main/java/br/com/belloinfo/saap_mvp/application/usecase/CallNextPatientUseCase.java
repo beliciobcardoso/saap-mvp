@@ -26,7 +26,7 @@ public class CallNextPatientUseCase {
         LocalDateTime startOfDay = LocalDate.now().atStartOfDay();
         LocalDateTime endOfDay = LocalDate.now().atTime(LocalTime.MAX);
 
-        Appointment appointment = appointmentRepository.findNextInQueue(professionalId, startOfDay, endOfDay)
+        Appointment appointment = appointmentRepository.findNextInQueueWithLock(professionalId, startOfDay, endOfDay)
                 .orElseThrow(() -> new IllegalStateException("A fila de atendimento está vazia"));
 
         appointment.transitionTo(AppointmentStatus.CALLING);

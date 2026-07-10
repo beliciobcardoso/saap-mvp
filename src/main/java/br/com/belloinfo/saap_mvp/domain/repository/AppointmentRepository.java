@@ -19,6 +19,12 @@ public interface AppointmentRepository {
     Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime start, LocalDateTime end);
 
     /**
+     * Busca o próximo agendamento na fila com lock pessimista para evitar race conditions.
+     * Trava o agendamento encontrado para impedir que múltiplas requisições simultâneas peguem o mesmo paciente.
+     */
+    Optional<Appointment> findNextInQueueWithLock(UUID professionalId, LocalDateTime start, LocalDateTime end);
+
+    /**
      * Busca agendamentos elegíveis para receber notificação de follow-up:
      * status = PENDING, followUpSentAt IS NULL e data dentro da janela [windowStart, windowEnd].
      */
@@ -29,10 +35,4 @@ public interface AppointmentRepository {
      * (ou seja, a consulta está próxima e o paciente ainda não respondeu).
      */
     List<Appointment> findPendingResponsePastDeadline(LocalDateTime deadline);
-
-    /**
-     * Verifica se existe algum agendamento onde o paciente e o profissional correspondem aos IDs fornecidos.
-     * Usado para validar se um profissional tem acesso ao prontuário de um paciente.
-     */
-    boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId);
 }
