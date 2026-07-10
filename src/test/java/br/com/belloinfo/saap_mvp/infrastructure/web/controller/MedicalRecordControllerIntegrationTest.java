@@ -270,9 +270,30 @@ class MedicalRecordControllerIntegrationTest extends BaseIntegrationTest {
     @Test
     @DisplayName("404 para paciente sem prontuário")
     void shouldReturnNotFoundForPatientWithoutRecord() throws Exception {
+        // Cria agendamento para que o profissional tenha acesso ao paciente
+        Service service = serviceRepository.save(Service.builder()
+                .id(UUID.randomUUID())
+                .name("Serviço Teste")
+                .durationMinutes(30)
+                .price(BigDecimal.valueOf(150.00))
+                .active(true)
+                .build());
+
+        Appointment newAppointment = Appointment.builder()
+                .patient(patient)
+                .professional(professional)
+                .service(service)
+                .dateTime(LocalDateTime.now().plusDays(1))
+                .status(AppointmentStatus.PENDING)
+                .paymentMethod(PaymentMethod.CASH)
+                .priorityLevel(PriorityLevel.P3)
+                .build();
+        appointmentRepository.save(newAppointment);
+        flushAndClear();
+
         String token = generateTestToken(PROFESSIONAL_EMAIL, UserRole.PROFESSIONAL);
 
-        mockMvc.perform(get("/api/v1/medical-records/patients/" + UUID.randomUUID())
+        mockMvc.perform(get("/api/v1/medical-records/patients/" + patient.getId())
                         .header("Authorization", "Bearer " + token))
                 .andExpect(status().isNotFound());
     }
@@ -401,5 +422,28 @@ class MedicalRecordControllerIntegrationTest extends BaseIntegrationTest {
                 "esperava auditoria MEDICAL_RECORD_ENTRY_CREATED, ações: " + actions);
         assertTrue(actions.contains("MEDICAL_RECORD_READ"),
                 "esperava auditoria MEDICAL_RECORD_READ, ações: " + actions);
+    }
+
+    // --- 7.6 Validação de Acesso ---
+
+    @Test
+    @DisplayName("403 quando profissional não tem acesso ao paciente")
+    void shouldReturnForbiddenWhenProfessionalHasNoAccessToPatient() throws Exception {
+        // Cria outro paciente que o profissional não tem agendamentos com
+        Patient otherPatient = patientRepository.save(Patient.builder()
+                .id(UUID.randomUUID())
+                .name("Outro Paciente")
+                .cpf("98765432100")
+                .phone("11988881111")
+                .birthDate(LocalDate.of(1990, 1, 1))
+                .active(true)
+                .build());
+        flushAndClear();
+
+        String token = generateTestToken(PROFESSIONAL_EMAIL, UserRole.PROFESSIONAL);
+
+        mockMvc.perform(get("/api/v1/medical-records/patients/" + otherPatient.getId())
+                        .header("Authorization", "Bearer " + token))
+                .andExpect(status().isForbidden());
     }
 }

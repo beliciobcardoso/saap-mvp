@@ -57,7 +57,7 @@ public class MedicalRecordController {
 
     @GetMapping("/patients/{patientId}")
     public ResponseEntity<MedicalRecordResponseDTO> getByPatient(@PathVariable UUID patientId, HttpServletRequest httpRequest) {
-        MedicalRecord medicalRecord = getMedicalRecordByPatientUseCase.execute(patientId);
+        MedicalRecord medicalRecord = getMedicalRecordByPatientUseCase.execute(patientId, currentProfessional().getId());
         logAudit("MEDICAL_RECORD_READ", medicalRecord.getId(), httpRequest);
         return ResponseEntity.ok(mapper.toResponse(medicalRecord));
     }

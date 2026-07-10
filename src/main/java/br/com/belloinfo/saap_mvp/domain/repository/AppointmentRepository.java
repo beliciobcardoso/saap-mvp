@@ -29,4 +29,10 @@ public interface AppointmentRepository {
      * (ou seja, a consulta está próxima e o paciente ainda não respondeu).
      */
     List<Appointment> findPendingResponsePastDeadline(LocalDateTime deadline);
+
+    /**
+     * Verifica se existe algum agendamento onde o paciente e o profissional correspondem aos IDs fornecidos.
+     * Usado para validar se um profissional tem acesso ao prontuário de um paciente.
+     */
+    boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId);
 }

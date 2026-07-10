@@ -104,4 +104,9 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId) {
+        return jpaAppointmentRepository.existsByPatientIdAndProfessionalId(patientId, professionalId);
+    }
 }
