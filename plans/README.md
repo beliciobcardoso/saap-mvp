@@ -9,7 +9,7 @@ Executar **em ordem** abaixo. Cada plano é independente, mas todos os 8 devem s
 | # | Título | Prioridade | Esforço | Status | Notas |
 |---|--------|-----------|---------|--------|-------|
 | 001 | Remove hardcoded admin credentials from V10 migration | P1 | S | ✅ DONE | Deleta migração + cria script manual dev-only |
-| 002 | Gate Swagger/OpenAPI documentation by profile | P1 | S | TODO | Adiciona config `springdoc.*.enabled` + `application-dev.yaml` |
+| 002 | Gate Swagger/OpenAPI documentation by profile | P1 | S | ✅ DONE | Adiciona config `springdoc.*.enabled` + `application-dev.yaml` |
 | 003 | Add professional ownership check to medical record read | P1 | S | TODO | Enforcement LGPD/audit, valida se profissional tem acesso |
 | 004 | Fix generic exception handler leaking raw error messages | P1 | S | TODO | Remove `ex.getMessage()` de 500 responses, sanitiza output |
 | 005 | Add pessimistic lock to CallNextPatientUseCase | P1 | M | TODO | Previne race condition na fila de atendimento |
