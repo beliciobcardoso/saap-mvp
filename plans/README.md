@@ -27,7 +27,7 @@ Começar DEPOIS que Lote 1 = DONE. Executar em ordem.
 
 | # | Título | Prioridade | Esforço | Status | Notas |
 |---|--------|-----------|---------|--------|-------|
-| 009 | Move action tokens from GET query string to POST body | P2 | M | TODO | Previne logging de tokens |
+| 009 | Move action tokens from GET query string to POST body | P2 | M | ✅ DONE | Previne logging de tokens |
 | 010 | Add Redis-backed token blacklist for production | P2 | L | TODO | Multi-instance safety |
 | 011 | Paginate ListAuditLogsUseCase to avoid full user table scans | P2 | S | TODO | findByIdIn() instead of findAll() |
 | 012 | Fix CoreMapper asymmetric medical record entries mapping | P2 | S | TODO | Lazy collection bloat |
