@@ -9,6 +9,7 @@
     <property name="LOG_MAX_HISTORY" value="${LOG_MAX_HISTORY:-30}"/>
     <property name="LOG_MAX_SIZE" value="${LOG_MAX_SIZE:-50MB}"/>
     <property name="LOG_TOTAL_SIZE_CAP" value="${LOG_TOTAL_SIZE_CAP:-2GB}"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] %-5level [%thread] %logger{36} - %msg%n"/>
 
     <!-- Logger raiz: nivel INFO padrao -->
     <root level="INFO">
@@ -56,7 +57,7 @@
             </rollingPolicy>
 
             <encoder>
-                <pattern>${FILE_LOG_PATTERN:-%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n}</pattern>
+                <pattern>${LOG_PATTERN}</pattern>
             </encoder>
         </appender>
 

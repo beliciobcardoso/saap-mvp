@@ -60,6 +60,13 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
     }
 
     @Override
+    public List<Appointment> findAll() {
+        return jpaAppointmentRepository.findAll().stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public PageResult<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime, int page, int size) {
         return PaginationSupport.toPageResult(
                 jpaAppointmentRepository.findByFilters(professionalId, patientId, startDateTime, endDateTime, PaginationSupport.of(page, size)),

@@ -12,6 +12,7 @@ import java.util.UUID;
 public interface AppointmentRepository {
     Appointment save(Appointment appointment);
     Optional<Appointment> findById(UUID id);
+    List<Appointment> findAll();
     boolean existsByProfessionalIdAndDateTimeAndStatusNotIn(UUID professionalId, LocalDateTime dateTime, List<AppointmentStatus> statuses);
     PageResult<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime, int page, int size);
 
