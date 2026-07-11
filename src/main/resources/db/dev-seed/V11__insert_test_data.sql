@@ -3,7 +3,7 @@ INSERT INTO "usuario" (id, email, password, role, is_active, created_at, updated
 VALUES (
   '550e8400-e29b-41d4-a716-446655440001',
   'admin@saap.com',
-  '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/F0m',
+  '$2a$10$QLewVA97Pq/ymBSvsIGyC.Yc3bFIqanQQrGE6MvpRTJ1hnYPN3NyS',
   'ADMIN',
   true,
   NOW(),
@@ -15,7 +15,7 @@ INSERT INTO "usuario" (id, email, password, role, is_active, created_at, updated
 VALUES (
   '550e8400-e29b-41d4-a716-446655440002',
   'recep@saap.com',
-  '$2a$10$Yw3XN.aGwpMdPpyMPCf1veOqP.rKyp7HflPYJpx2.i8yMCp8K2yWu',
+  '$2a$10$sabC9OA2oW6F.n2.AyrU7.jlDN2mzMcX2q7LELZO1wMIQV.riziRq',
   'RECEPTIONIST',
   true,
   NOW(),
@@ -23,12 +23,13 @@ VALUES (
 ) ON CONFLICT DO NOTHING;
 
 -- Paciente de teste
-INSERT INTO "paciente" (id, name, cpf, phone, email, is_active, created_at, updated_at)
+INSERT INTO "paciente" (id, name, cpf, phone, birth_date, email, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440010',
   'João Silva',
   '12345678901',
   '11999999999',
+  '1990-01-01',
   'patient@example.com',
   true,
   NOW(),
@@ -36,10 +37,13 @@ VALUES (
 ) ON CONFLICT DO NOTHING;
 
 -- Profissional de teste
-INSERT INTO "profissional" (id, name, role, is_active, created_at, updated_at)
+INSERT INTO "profissional" (id, name, email, phone, registration_number, role, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440020',
   'Dr. Pedro',
+  'dr.pedro@saap.com',
+  '11988888888',
+  'CRM-12345',
   'PROFESSIONAL',
   true,
   NOW(),

@@ -3,7 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
 
-    <!-- Propriedades padrao (podem ser sobrescritas via variaveis de ambiente) -->
+    <!-- Propriedades padrão (podem ser sobrescritas via variáveis de ambiente) -->
     <property name="LOG_DIR" value="${LOG_DIR:-logs}"/>
     <property name="LOG_FILE" value="${LOG_FILE:-saap-mvp}"/>
     <property name="LOG_MAX_HISTORY" value="${LOG_MAX_HISTORY:-30}"/>
@@ -11,7 +11,7 @@
     <property name="LOG_TOTAL_SIZE_CAP" value="${LOG_TOTAL_SIZE_CAP:-2GB}"/>
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] %-5level [%thread] %logger{36} - %msg%n"/>
 
-    <!-- Logger raiz: nivel INFO padrao -->
+    <!-- Logger raiz: nível INFO padrão -->
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
@@ -19,7 +19,7 @@
     <!-- ──────────────────────────────────────────────────────
          Hibernate 7 - constraint violations (duplicate key)
          sao tratadas via DataIntegrityViolationException.
-         Suprimimos o WARN para evitar poluicao nos logs.
+         Suprimimos o WARN para evitar poluição nos logs.
          ────────────────────────────────────────────────────── -->
     <logger name="org.hibernate.orm.jdbc.error" level="ERROR"/>
 

@@ -29,6 +29,31 @@
       "name": "saap.cors.allowed-origins",
       "type": "java.util.List<java.lang.String>",
       "description": "Comma-separated list of origins allowed by CORS."
+    },
+    {
+      "name": "api.security.redis.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Flag to enable or disable Redis for token storage."
+    },
+    {
+      "name": "oci",
+      "type": "java.util.Properties",
+      "description": "OCI cloud configuration properties."
+    },
+    {
+      "name": "spring.flyway.ignore-missing-migrations",
+      "type": "java.lang.Boolean",
+      "description": "Whether to ignore missing migration scripts during validation."
+    },
+    {
+      "name": "app",
+      "type": "java.util.Properties",
+      "description": "Application-specific configuration properties."
+    },
+    {
+      "name": "app.admin.email",
+      "type": "java.lang.String",
+      "description": "E-mail address of the administrator user for password management."
     }
   ]
 }
