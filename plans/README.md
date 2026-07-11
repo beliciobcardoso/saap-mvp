@@ -15,7 +15,7 @@ Executar **em ordem** abaixo. Cada plano é independente, mas todos os 8 devem s
 | 005 | Add pessimistic lock to CallNextPatientUseCase | P1 | M | ✅ DONE | Previne race condition na fila de atendimento |
 | 006 | Fix LoginRateLimitFilter to validate trusted proxies | P1 | M | ✅ DONE | Bloqueia X-Forwarded-For spoofing de taxa de login |
 | 007 | Add GitHub Actions CI pipeline | P1 | M | ✅ DONE | `.github/workflows/test.yml` com `./mvnw clean verify` gate |
-| 008 | Fix Testcontainers and Jackson version mismatch | P1 | S | TODO | Alinha Testcontainers 1.19.7 e Jackson 2.x, exclui 3.x |
+| 008 | Fix Testcontainers and Jackson version mismatch | P1 | S | ✅ DONE | Alinha Testcontainers 1.19.7 e Jackson 2.x, exclui 3.x |
 
 ### Status values
 - **TODO** — não iniciado
