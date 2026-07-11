@@ -68,6 +68,8 @@ spring:
     enabled: "${FLYWAY_ENABLED:true}"
 
 oci:
+  config-path: "${OCI_CONFIG_PATH:~/.oci/config}"
+  profile: "${OCI_PROFILE:DEFAULT}"
   email:
     compartment-id: "${OCI_EMAIL_COMPARTMENT_ID:}"
 
