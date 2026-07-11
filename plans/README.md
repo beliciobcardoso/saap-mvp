@@ -1,6 +1,6 @@
 # Implementation Plans — Todos os Lotes
 
-Gerados pela auditoria `improve` em 2026-07-10, commit `a5a9a5a`.
+Gerados pela auditoria `improve` em 2026-07-10, commit `a5a9a5a`. Última execução: commit `89ea01a` (2026-07-10).
 
 ---
 
@@ -46,7 +46,7 @@ Começar DEPOIS que Lote 2 = DONE.
 |---|--------|-----------|---------|--------|-------|
 | 017 | Remove hardcoded database password from docs | P2 | S | ✅ DONE | docs/ERROS-E-SOLUCOES.md |
 | 018 | Remove unused repository port methods | P3 | S | ✅ DONE | Dead code cleanup (3 métodos) |
-| 019 | Replace Thread.sleep in tests with injectable Clock | P3 | S | BLOQUEADO | Test instável (10ms sleep insufficient); requer Clock injection |
+| 019 | Replace Thread.sleep in tests with injectable Clock | P3 | S | BLOQUEADO | Arquiteural: findNextInQueueWithLock retorna 2 resultados ao invés de 1; Clock injection requere refactor wholesale de todos os testes |
 | 020 | Add Spotless code formatting and linting | P3 | M | PULADO | Muito complexo (reformata todo código) |
 | 021 | Document required JWT_SECRET and ACTION_TOKEN_SECRET | P3 | S | ✅ DONE | .env.example + README |
 | 022 | Add correlation/trace IDs to logging via MDC | P3 | M | ✅ DONE | TraceIdFilter + logback-spring.xml pattern |
