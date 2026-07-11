@@ -14,4 +14,5 @@ public interface WaitlistEntryRepository {
     List<WaitlistEntry> findActiveByProfessionalAndServiceOrderByCreatedAtAsc(UUID professionalId, UUID serviceId);
     List<WaitlistEntry> findActiveOffersExpired(LocalDateTime now);
     List<WaitlistEntry> findByStatusAndOfferedAppointmentTimeAndActiveTrue(WaitlistStatus status, LocalDateTime offeredAppointmentTime);
+    Optional<WaitlistEntry> findMostRecentOfferedByPatientPhone(String phone);
 }

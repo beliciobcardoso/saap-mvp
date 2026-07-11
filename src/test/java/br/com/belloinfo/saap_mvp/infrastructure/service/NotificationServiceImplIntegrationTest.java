@@ -7,7 +7,10 @@ import br.com.belloinfo.saap_mvp.domain.model.Service;
 import br.com.belloinfo.saap_mvp.domain.model.WaitlistEntry;
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
 import br.com.belloinfo.saap_mvp.domain.valueobject.ProfessionalRole;
+import br.com.belloinfo.saap_mvp.infrastructure.messaging.EmailNotificationService;
+import br.com.belloinfo.saap_mvp.infrastructure.messaging.WhatsAppNotificationService;
 import br.com.belloinfo.saap_mvp.infrastructure.messaging.NotificationOrchestrator;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,7 +35,8 @@ class NotificationServiceImplIntegrationTest {
     @BeforeEach
     void setUp() {
         orchestrator = new NotificationOrchestrator(new ArrayList<>());
-        notificationService = new NotificationServiceImpl(orchestrator);
+        notificationService = new NotificationServiceImpl(
+            orchestrator, new WhatsAppNotificationService(), new EmailNotificationService(new JavaMailSenderImpl()));
 
         testPatient = Patient.builder()
             .id(UUID.randomUUID())

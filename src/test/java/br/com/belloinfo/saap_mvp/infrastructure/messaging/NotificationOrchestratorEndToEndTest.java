@@ -1,6 +1,5 @@
 package br.com.belloinfo.saap_mvp.infrastructure.messaging;
 
-import br.com.belloinfo.saap_mvp.infrastructure.service.NotificationServiceImpl;
 import com.icegreen.greenmail.junit5.GreenMailExtension;
 import com.icegreen.greenmail.util.ServerSetupTest;
 import jakarta.mail.Message;
@@ -22,7 +21,6 @@ class NotificationOrchestratorEndToEndTest {
 
     private NotificationOrchestrator orchestrator;
     private EmailNotificationService emailService;
-    private NotificationServiceImpl notificationService;
 
     @BeforeEach
     void setUp() {
@@ -33,7 +31,6 @@ class NotificationOrchestratorEndToEndTest {
 
         emailService = new EmailNotificationService(mailSender);
         orchestrator = new NotificationOrchestrator(Arrays.asList(emailService));
-        notificationService = new NotificationServiceImpl(orchestrator);
     }
 
     @Test

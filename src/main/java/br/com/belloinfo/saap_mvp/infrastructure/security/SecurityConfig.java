@@ -60,6 +60,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
                 .requestMatchers("/api/v1/appointments/public/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/v1/notifications/whatsapp/webhook").permitAll()
                 .requestMatchers("/api/v1/medical-records/**").hasRole("PROFESSIONAL")
                 .requestMatchers("/actuator/health", "/actuator/info").permitAll()
                 .requestMatchers("/actuator/**").hasRole("ADMIN")

@@ -167,10 +167,10 @@ public class AppointmentController {
         return ResponseEntity.ok(mapper.toResponse(appointment));
     }
 
-    @PostMapping("/public/confirm")
-    public ResponseEntity<String> publicConfirm(@RequestBody ActionTokenRequestDTO request) {
+    @GetMapping("/public/confirm")
+    public ResponseEntity<String> publicConfirm(@RequestParam String token) {
         try {
-            confirmAppointmentByTokenUseCase.execute(request.token());
+            confirmAppointmentByTokenUseCase.execute(token);
             return ResponseEntity.ok("Presença confirmada com sucesso!");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -179,10 +179,10 @@ public class AppointmentController {
         }
     }
 
-    @PostMapping("/public/cancel")
-    public ResponseEntity<String> publicCancel(@RequestBody ActionTokenRequestDTO request) {
+    @GetMapping("/public/cancel")
+    public ResponseEntity<String> publicCancel(@RequestParam String token) {
         try {
-            cancelAppointmentByTokenUseCase.execute(request.token());
+            cancelAppointmentByTokenUseCase.execute(token);
             return ResponseEntity.ok("Consulta cancelada com sucesso!");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -191,10 +191,10 @@ public class AppointmentController {
         }
     }
 
-    @PostMapping("/public/waitlist/accept")
-    public ResponseEntity<String> publicWaitlistAccept(@RequestBody ActionTokenRequestDTO request) {
+    @GetMapping("/public/waitlist/accept")
+    public ResponseEntity<String> publicWaitlistAccept(@RequestParam String token) {
         try {
-            acceptWaitlistOfferUseCase.execute(request.token());
+            acceptWaitlistOfferUseCase.execute(token);
             return ResponseEntity.ok("Vaga da fila de espera aceita e agendamento confirmado com sucesso!");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -203,10 +203,10 @@ public class AppointmentController {
         }
     }
 
-    @PostMapping("/public/waitlist/decline")
-    public ResponseEntity<String> publicWaitlistDecline(@RequestBody ActionTokenRequestDTO request) {
+    @GetMapping("/public/waitlist/decline")
+    public ResponseEntity<String> publicWaitlistDecline(@RequestParam String token) {
         try {
-            declineWaitlistOfferUseCase.execute(request.token());
+            declineWaitlistOfferUseCase.execute(token);
             return ResponseEntity.ok("Vaga da fila de espera recusada com sucesso.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -9,9 +9,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.util.Date;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @ConditionalOnProperty(name = "api.security.redis.enabled", havingValue = "true")
@@ -34,7 +33,7 @@ public class RedisTokenBlacklistService implements TokenBlacklistServiceInterfac
             if (expirationDate != null) {
                 long ttl = expirationDate.getTime() - System.currentTimeMillis();
                 if (ttl > 0) {
-                    redisTemplate.opsForValue().set(BLACKLIST_PREFIX + token, "true", ttl, TimeUnit.MILLISECONDS);
+                    redisTemplate.opsForValue().set(BLACKLIST_PREFIX + token, "true", Duration.ofMillis(ttl));
                 }
             }
         } catch (JWTDecodeException e) {

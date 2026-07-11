@@ -30,11 +30,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import br.com.belloinfo.saap_mvp.infrastructure.web.dto.ActionTokenRequestDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Transactional
@@ -62,8 +59,6 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private AppointmentActionTokenService tokenService;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private Patient patient;
     private Professional professional;
@@ -137,10 +132,8 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
     void shouldConfirmPendingResponseAppointmentPubliclyWithoutAuth() throws Exception {
         String token = tokenService.generateToken(pendingResponseAppointment.getId(), "confirm");
 
-        var request = new ActionTokenRequestDTO(token);
-        mockMvc.perform(post("/api/v1/appointments/public/confirm")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(get("/api/v1/appointments/public/confirm")
+                        .param("token", token))
                 .andExpect(status().isOk());
 
         Appointment updated = appointmentRepository.findById(pendingResponseAppointment.getId()).orElseThrow();
@@ -151,10 +144,8 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
     void shouldCancelPendingResponseAppointmentPubliclyWithoutAuth() throws Exception {
         String token = tokenService.generateToken(pendingResponseAppointment.getId(), "cancel");
 
-        var request = new ActionTokenRequestDTO(token);
-        mockMvc.perform(post("/api/v1/appointments/public/cancel")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(get("/api/v1/appointments/public/cancel")
+                        .param("token", token))
                 .andExpect(status().isOk());
 
         Appointment updated = appointmentRepository.findById(pendingResponseAppointment.getId()).orElseThrow();
@@ -163,10 +154,8 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
 
     @Test
     void shouldReturnBadRequestWhenTokenIsInvalid() throws Exception {
-        var request = new ActionTokenRequestDTO("invalid-token");
-        mockMvc.perform(post("/api/v1/appointments/public/confirm")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(get("/api/v1/appointments/public/confirm")
+                        .param("token", "invalid-token"))
                 .andExpect(status().isBadRequest());
     }
 
@@ -187,10 +176,8 @@ class AppointmentPublicControllerIntegrationTest extends BaseIntegrationTest {
 
         String token = tokenService.generateToken(confirmedAppointment.getId(), "confirm");
 
-        var request = new ActionTokenRequestDTO(token);
-        mockMvc.perform(post("/api/v1/appointments/public/confirm")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(get("/api/v1/appointments/public/confirm")
+                        .param("token", token))
                 .andExpect(status().isConflict());
     }
 }
