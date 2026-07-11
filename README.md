@@ -73,6 +73,19 @@ src/main/java/br/com/belloinfo/saap_mvp/
    > [!TIP]
    > **Criação Automática do Banco:** Você não precisa rodar comandos SQL no PostgreSQL para criar o banco de dados. Na primeira inicialização, um Listener do Spring (`DatabaseInitializerListener`) criará automaticamente o banco de dados especificado em `DB_NAME` caso ele não exista no servidor.
 
+4. Configure as chaves de segurança (obrigatório):
+   - `JWT_SECRET`: segredo para assinatura de tokens JWT. Gere com:
+     ```bash
+     openssl rand -hex 32
+     ```
+   - `ACTION_TOKEN_SECRET`: segredo separado para tokens de ação (confirmação/cancelamento por e-mail). **DEVE ser diferente do JWT_SECRET**. Gere com:
+     ```bash
+     openssl rand -hex 32
+     ```
+   
+   > [!IMPORTANT]
+   > Ambas as variáveis devem ter **no mínimo 32 caracteres** e ser diferentes uma da outra. Nunca compartilhe ou faça commit desses valores.
+
 ---
 
 ## 🏃 Como Executar a Aplicação

@@ -55,13 +55,6 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
     }
 
     @Override
-    public List<Appointment> findAll() {
-        return jpaAppointmentRepository.findAll().stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public boolean existsByProfessionalIdAndDateTimeAndStatusNotIn(UUID professionalId, LocalDateTime dateTime, List<AppointmentStatus> statuses) {
         return jpaAppointmentRepository.existsByProfessionalIdAndDateTimeAndStatusNotIn(professionalId, dateTime, statuses);
     }
@@ -72,23 +65,6 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
                 jpaAppointmentRepository.findByFilters(professionalId, patientId, startDateTime, endDateTime, PaginationSupport.of(page, size)),
                 mapper::toDomain
         );
-    }
-
-    @Override
-    public List<Appointment> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(AppointmentStatus status, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        return jpaAppointmentRepository.findByStatusAndDateTimeBetweenAndFollowUpSentFalse(status, startDateTime, endDateTime).stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime start, LocalDateTime end) {
-        return jpaAppointmentRepository.findFirstByProfessionalIdAndStatusAndDateTimeBetweenOrderByPriorityScoreAsc(
-                professionalId,
-                AppointmentStatus.ARRIVED,
-                start,
-                end
-        ).map(mapper::toDomain);
     }
 
     @Override

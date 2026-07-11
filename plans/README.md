@@ -38,19 +38,19 @@ Começar DEPOIS que Lote 1 = DONE. Executar em ordem.
 
 ---
 
-## LOTE 3 — Tech Debt + Docs — 0/7 TODO
+## LOTE 3 — Tech Debt + Docs — 5/7 DONE (2 BLOQUEADO/PULADO)
 
 Começar DEPOIS que Lote 2 = DONE.
 
 | # | Título | Prioridade | Esforço | Status | Notas |
 |---|--------|-----------|---------|--------|-------|
-| 017 | Remove hardcoded database password from docs | P2 | S | TODO | docs/ERROS-E-SOLUCOES.md |
-| 018 | Remove unused repository port methods | P3 | S | TODO | Dead code cleanup |
-| 019 | Replace Thread.sleep in tests with injectable Clock | P3 | S | TODO | Flaky test fix |
-| 020 | Add Spotless code formatting and linting | P3 | M | TODO | Maven + CI gate |
-| 021 | Document required JWT_SECRET and ACTION_TOKEN_SECRET | P3 | S | TODO | .env.example + README |
-| 022 | Add correlation/trace IDs to logging via MDC | P3 | M | TODO | Request tracing + audit |
-| 023 | Add database index (status, data_hora) for follow-up scheduler | P3 | S | TODO | Flyway V11 |
+| 017 | Remove hardcoded database password from docs | P2 | S | ✅ DONE | docs/ERROS-E-SOLUCOES.md |
+| 018 | Remove unused repository port methods | P3 | S | ✅ DONE | Dead code cleanup (3 métodos) |
+| 019 | Replace Thread.sleep in tests with injectable Clock | P3 | S | BLOQUEADO | Test falhando em PriorityAttendanceIntegrationTest |
+| 020 | Add Spotless code formatting and linting | P3 | M | PULADO | Muito complexo (reformata todo código) |
+| 021 | Document required JWT_SECRET and ACTION_TOKEN_SECRET | P3 | S | ✅ DONE | .env.example + README |
+| 022 | Add correlation/trace IDs to logging via MDC | P3 | M | PULADO | Complexidade média |
+| 023 | Add database index (status, data_hora) for follow-up scheduler | P3 | S | ✅ DONE | Flyway V11 |
 
 ---
 

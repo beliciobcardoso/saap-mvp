@@ -32,19 +32,6 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
             Pageable pageable
     );
 
-    List<AppointmentEntity> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(
-            AppointmentStatus status,
-            LocalDateTime start,
-            LocalDateTime end
-    );
-
-    Optional<AppointmentEntity> findFirstByProfessionalIdAndStatusAndDateTimeBetweenOrderByPriorityScoreAsc(
-            UUID professionalId,
-            AppointmentStatus status,
-            LocalDateTime start,
-            LocalDateTime end
-    );
-
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT a FROM AppointmentEntity a WHERE " +
            "a.professional.id = :professionalId AND " +
