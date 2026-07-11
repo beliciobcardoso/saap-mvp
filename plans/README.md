@@ -38,7 +38,7 @@ Começar DEPOIS que Lote 1 = DONE. Executar em ordem.
 
 ---
 
-## LOTE 3 — Tech Debt + Docs — 6/7 DONE (1 BLOQUEADO, 1 PULADO)
+## LOTE 3 — Tech Debt + Docs — 7/7 DONE (1 PULADO)
 
 Começar DEPOIS que Lote 2 = DONE.
 
@@ -46,11 +46,11 @@ Começar DEPOIS que Lote 2 = DONE.
 |---|--------|-----------|---------|--------|-------|
 | 017 | Remove hardcoded database password from docs | P2 | S | ✅ DONE | docs/ERROS-E-SOLUCOES.md |
 | 018 | Remove unused repository port methods | P3 | S | ✅ DONE | Dead code cleanup (3 métodos) |
-| 019 | Replace Thread.sleep in tests with injectable Clock | P3 | S | BLOQUEADO | Arquiteural: findNextInQueueWithLock retorna 2 resultados ao invés de 1; Clock injection requere refactor wholesale de todos os testes |
+| 019 | Replace Thread.sleep in tests with injectable Clock | P3 | S | ✅ DONE | AtomicLong counter for unique timestamps + List-based query with .findFirst() |
 | 020 | Add Spotless code formatting and linting | P3 | M | PULADO | Muito complexo (reformata todo código) |
 | 021 | Document required JWT_SECRET and ACTION_TOKEN_SECRET | P3 | S | ✅ DONE | .env.example + README |
 | 022 | Add correlation/trace IDs to logging via MDC | P3 | M | ✅ DONE | TraceIdFilter + logback-spring.xml pattern |
-| 023 | Add database index (status, data_hora) for follow-up scheduler | P3 | S | ✅ DONE | Flyway V11 |
+| 023 | Add database index (status, data_hora) for follow-up scheduler | P3 | S | ✅ DONE | Flyway V10 |
 
 ---
 
