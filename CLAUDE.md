@@ -108,19 +108,31 @@ Transição inválida lança `IllegalStateException`. Qualquer novo fluxo de sta
 - ✅ **Lote 1 (010-016)**: Unique timestamps, repository fixes, correlation tracing, Redis token blacklist, security hardening
 - ✅ **Lote 2 (017-020)**: State machine, medical records access control, waitlist timeout scheduler
 - ✅ **Lote 3 (021-024)**: Clinic configuration, follow-up scheduler, priority scoring, check-in
-- ✅ **Plan 025**: Notification channels (Email SMTP, WhatsApp/SMS via Twilio, NotificationOrchestrator)
+- ✅ **Plan 025**: Notification channels (Email SMTP, WhatsApp via Twilio, NotificationOrchestrator)
+- ✅ **Plan 025 - Extensão**: Botões interativos de WhatsApp (Content API) para fila de espera, com webhook de resposta e paridade de mensagens entre e-mail/WhatsApp/links públicos
 
 ## Plan 025 - Notificações Reais
 
 Implementado suporte multi-canal para notificações:
 
-- **EmailNotificationService**: Spring Mail com SMTP (compatível com OCI Email Delivery)
-- **WhatsAppNotificationService**: Twilio WhatsApp Business API
-- **SmsNotificationService**: Twilio SMS
-- **NotificationOrchestrator**: Coordenador de canais com fallback gracioso
-- **NotificationServiceImpl**: Implementa contrato de domínio com templates de follow-up e waitlist
-- Configuração: `app.notifications.enabled`, `MAIL_HOST/PORT/USERNAME/PASSWORD`, variáveis Twilio
-- Validação de recipients null, logging, operações @Async
+- **EmailNotificationService**: Spring Mail com SMTP (compatível com OCI Email Delivery); `sendHtml()` para e-mails HTML ricos (botões estilizados "Aceitar"/"Recusar" na oferta de fila de espera)
+- **WhatsAppNotificationService**: Twilio WhatsApp Business API; `sendQuickReply()` para envio de Content Templates com botões interativos via Content API
+- **NotificationOrchestrator**: Coordenador de canais com fallback gracioso; identifica canais via `AopUtils.getTargetClass(channel).getSimpleName()` (necessário porque `@Async` faz o Spring envolver o bean em proxy — usar `channel.getClass()` direto retornava o nome da classe proxy, não da classe real); `notifyVia(channelName, ...)` permite disparo para um canal específico por nome
+- **NotificationServiceImpl**: Implementa contrato de domínio com templates de follow-up e waitlist, incluindo o HTML da oferta de fila de espera e o roteamento por canal (email → `sendHtml`, WhatsApp → `sendQuickReply` quando há Content SID configurado, senão texto simples via orquestrador)
+- Configuração: `app.notifications.enabled`, `MAIL_HOST/PORT/USERNAME/PASSWORD`, variáveis Twilio (`TWILIO_ACCOUNT_SID/AUTH_TOKEN/FROM_NUMBER/WAITLIST_CONTENT_SID/WEBHOOK_BASE_URL/WEBHOOK_VALIDATE_SIGNATURE`)
+- Validação de recipients null, logging, operações `@Async`
+- **Canal SMS removido** (`SmsNotificationService` excluído): o WhatsApp com Content Templates/botões cobre o mesmo caso de uso com melhor experiência (botão clicável em vez de responder SMS em texto livre)
+
+### Extensão: Botões Interativos de WhatsApp para Fila de Espera
+
+Feature completa de resposta a ofertas de fila de espera diretamente por clique em botão do WhatsApp (Aceitar/Recusar), sem precisar abrir o link de e-mail:
+
+- **`WhatsAppWebhookController`** (`POST /api/v1/notifications/whatsapp/webhook`, `permitAll` no `SecurityConfig`): recebe `From` + `ButtonPayload` do Twilio, valida a assinatura da requisição (`com.twilio.security.RequestValidator`), identifica a oferta de fila de espera ativa mais recente pelo telefone do remetente, gera um action token interno e reaproveita `AcceptWaitlistOfferUseCase`/`DeclineWaitlistOfferUseCase` — garantindo que a resposta por botão produza o mesmo efeito e a mesma mensagem de confirmação que o link público de e-mail. Responde em TwiML.
+- **`WaitlistEntryRepository.findMostRecentOfferedByPatientPhone`**: nova consulta (interface de domínio + `WaitlistEntryRepositoryAdapter` + `JpaWaitlistEntryRepository.findFirstByPatientPhoneAndStatusAndActiveTrueOrderByOfferedAppointmentTimeDesc`) usada pelo webhook para resolver qual oferta o clique se refere.
+- **Correção de bug**: os endpoints públicos de magic-link (`GET /api/v1/appointments/public/confirm|cancel|waitlist/accept|waitlist/decline`) haviam sido convertidos incorretamente para `POST` com token no corpo; revertidos para `GET` com token na query string, pois são links clicáveis de e-mail/WhatsApp (não podem exigir corpo de requisição). `ActionTokenRequestDTO` (usado só pela variante POST) removido por não ter mais uso.
+- **Troubleshooting de assinatura Twilio (documentado em `docs/twilio.md`)**: erro 11200 do Twilio causado por `TWILIO_WEBHOOK_BASE_URL` desatualizado (apontando para túnel Cloudflare já encerrado), fazendo a assinatura calculada localmente não bater com a enviada pelo Twilio → `403`. Distinto do erro 11210 (DNS/túnel morto). Fix: manter `TWILIO_WEBHOOK_BASE_URL` sincronizado com a URL do túnel ativo e reiniciar o servidor após qualquer mudança.
+- Testado ponta a ponta com cliques reais em botões do WhatsApp (Aceitar e Recusar), confirmando mensagem de resposta e efeito no banco (`WaitlistStatus`, `is_active`) via API real do Twilio (Messages API) — nenhum mock usado.
+- Ver `docs/twilio.md` (setup, Content Templates, variáveis, troubleshooting) e `docs/NOTIFICATION_TESTING.md` (protocolo de teste passo a passo, incluindo geração de oferta nova para testar botões de uso único).
 
 # Testes
 
