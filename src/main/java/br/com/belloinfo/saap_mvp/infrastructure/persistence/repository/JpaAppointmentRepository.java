@@ -73,4 +73,6 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
     List<AppointmentEntity> findPendingResponsePastDeadline(
             @Param("deadline") LocalDateTime deadline
     );
+
+    boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId);
 }

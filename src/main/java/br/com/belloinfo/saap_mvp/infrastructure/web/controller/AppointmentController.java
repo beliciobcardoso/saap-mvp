@@ -6,6 +6,7 @@ import br.com.belloinfo.saap_mvp.domain.model.User;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
 import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.security.SecurityUtils;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.*;
 import br.com.belloinfo.saap_mvp.infrastructure.web.mapper.WebMapper;
 import jakarta.validation.Valid;
@@ -15,7 +16,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -45,9 +45,9 @@ public class AppointmentController {
     private final WebMapper mapper;
 
     private void logAudit(String action, UUID resourceId, HttpServletRequest httpRequest) {
-        var auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null && auth.isAuthenticated() && !"anonymousUser".equals(auth.getName())) {
-            auditService.log(action, resourceId, "APPOINTMENT", auth.getName(), httpRequest.getRemoteAddr());
+        String userEmail = SecurityUtils.getAuthenticatedUserEmail();
+        if (!"anonymous@saap.com".equals(userEmail)) {
+            auditService.log(action, resourceId, "APPOINTMENT", userEmail, httpRequest.getRemoteAddr());
         }
     }
 
@@ -114,9 +114,9 @@ public class AppointmentController {
     ) {
         UUID verifiedById = request.verifiedBy();
         if (verifiedById == null) {
-            var auth = SecurityContextHolder.getContext().getAuthentication();
-            if (auth != null && !"anonymousUser".equals(auth.getName())) {
-                User user = userRepository.findByEmail(auth.getName())
+            String userEmail = SecurityUtils.getAuthenticatedUserEmail();
+            if (!"anonymous@saap.com".equals(userEmail)) {
+                User user = userRepository.findByEmail(userEmail)
                         .orElseThrow(() -> new IllegalArgumentException("Usuário logado não encontrado"));
                 verifiedById = user.getId();
             }
@@ -137,7 +137,7 @@ public class AppointmentController {
     public ResponseEntity<AppointmentResponseDTO> callNext(
             HttpServletRequest httpRequest
     ) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        String email = SecurityUtils.getAuthenticatedUserEmail();
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário logado não encontrado"));
         Professional professional = professionalRepository.findByUserId(user.getId())

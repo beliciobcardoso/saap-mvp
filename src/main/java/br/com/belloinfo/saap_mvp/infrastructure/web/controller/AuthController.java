@@ -1,8 +1,8 @@
 package br.com.belloinfo.saap_mvp.infrastructure.web.controller;
 
 import br.com.belloinfo.saap_mvp.application.service.AuditService;
+import br.com.belloinfo.saap_mvp.application.usecase.LoginUseCase;
 import br.com.belloinfo.saap_mvp.domain.model.User;
-import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
 import br.com.belloinfo.saap_mvp.infrastructure.security.SecurityProperties;
 import br.com.belloinfo.saap_mvp.infrastructure.security.TokenBlacklistService;
 import br.com.belloinfo.saap_mvp.infrastructure.security.TokenService;
@@ -10,6 +10,7 @@ import br.com.belloinfo.saap_mvp.infrastructure.web.dto.LoginRequestDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.LoginResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,36 +23,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
-    private final UserRepository userRepository;
     private final SecurityProperties securityProperties;
     private final AuditService auditService;
     private final TokenBlacklistService tokenBlacklistService;
-
-    public AuthController(AuthenticationManager authenticationManager, TokenService tokenService, 
-                          UserRepository userRepository, SecurityProperties securityProperties,
-                          AuditService auditService, TokenBlacklistService tokenBlacklistService) {
-        this.authenticationManager = authenticationManager;
-        this.tokenService = tokenService;
-        this.userRepository = userRepository;
-        this.securityProperties = securityProperties;
-        this.auditService = auditService;
-        this.tokenBlacklistService = tokenBlacklistService;
-    }
+    private final LoginUseCase loginUseCase;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO loginRequest, HttpServletRequest httpRequest) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(loginRequest.email(), loginRequest.password());
         Authentication auth = this.authenticationManager.authenticate(usernamePassword);
 
-        org.springframework.security.core.userdetails.User principal = 
+        org.springframework.security.core.userdetails.User principal =
                 (org.springframework.security.core.userdetails.User) auth.getPrincipal();
 
-        User user = userRepository.findByEmail(principal.getUsername())
-                .orElseThrow(() -> new RuntimeException("Usuário autenticado não encontrado no banco de dados"));
+        User user = loginUseCase.execute(principal.getUsername());
 
         String token = tokenService.generateToken(user);
 

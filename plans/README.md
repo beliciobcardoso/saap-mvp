@@ -21,7 +21,7 @@ Executar em ordem. Cada plano é independente mas todos devem ser completados an
 
 ---
 
-## LOTE 2 — Performance + Tech Debt Moderado — 0/8 TODO
+## LOTE 2 — Performance + Tech Debt Moderado — 8/8 DONE ✅
 
 Começar DEPOIS que Lote 1 = DONE. Executar em ordem.
 
@@ -29,12 +29,12 @@ Começar DEPOIS que Lote 1 = DONE. Executar em ordem.
 |---|--------|-----------|---------|--------|-------|
 | 009 | Move action tokens from GET query string to POST body | P2 | M | ✅ DONE | Previne logging de tokens |
 | 010 | Add Redis-backed token blacklist for production | P2 | L | ✅ DONE | Multi-instance safety |
-| 011 | Paginate ListAuditLogsUseCase to avoid full user table scans | P2 | S | TODO | findByIdIn() instead of findAll() |
-| 012 | Fix CoreMapper asymmetric medical record entries mapping | P2 | S | TODO | Lazy collection bloat |
-| 013 | Replace string-matching exception handling with typed exceptions | P2 | S | TODO | ScheduleConflictException instead of message check |
-| 014 | Refactor AuthController to follow Controller→UseCase convention | P2 | M | TODO | Cria LoginUseCase |
-| 015 | Extract getAuthenticatedUserEmail helper to avoid duplication | P2 | S | TODO | SecurityUtils |
-| 016 | Archive completed openspec/changes/rf03-follow-up-confirmacoes | P2 | S | TODO | Move para archive/ |
+| 011 | Paginate ListAuditLogsUseCase to avoid full user table scans | P2 | S | ✅ DONE | findByIdIn() instead of findAll() |
+| 012 | Fix CoreMapper asymmetric medical record entries mapping | P2 | S | ✅ DONE | Lazy collection bloat |
+| 013 | Replace string-matching exception handling with typed exceptions | P2 | S | ✅ DONE | ScheduleConflictException instead of message check |
+| 014 | Refactor AuthController to follow Controller→UseCase convention | P2 | M | ✅ DONE | Cria LoginUseCase |
+| 015 | Extract getAuthenticatedUserEmail helper to avoid duplication | P2 | S | ✅ DONE | SecurityUtils |
+| 016 | Archive completed openspec/changes/rf03-follow-up-confirmacoes | P2 | S | ✅ DONE | Move para archive/ |
 
 ---
 

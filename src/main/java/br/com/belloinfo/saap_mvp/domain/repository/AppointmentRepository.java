@@ -35,4 +35,9 @@ public interface AppointmentRepository {
      * (ou seja, a consulta está próxima e o paciente ainda não respondeu).
      */
     List<Appointment> findPendingResponsePastDeadline(LocalDateTime deadline);
+
+    /**
+     * Verifica se existe agendamento com paciente e profissional específicos.
+     */
+    boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId);
 }

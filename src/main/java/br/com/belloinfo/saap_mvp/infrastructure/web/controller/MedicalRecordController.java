@@ -10,6 +10,7 @@ import br.com.belloinfo.saap_mvp.domain.model.Professional;
 import br.com.belloinfo.saap_mvp.domain.model.User;
 import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
 import br.com.belloinfo.saap_mvp.domain.repository.UserRepository;
+import br.com.belloinfo.saap_mvp.infrastructure.security.SecurityUtils;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.CreateMedicalRecordEntryRequestDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.MedicalRecordEntryResponseDTO;
 import br.com.belloinfo.saap_mvp.infrastructure.web.dto.MedicalRecordResponseDTO;
@@ -21,7 +22,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -41,14 +41,14 @@ public class MedicalRecordController {
     private final WebMapper mapper;
 
     private void logAudit(String action, UUID resourceId, HttpServletRequest httpRequest) {
-        var auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null && auth.isAuthenticated() && !"anonymousUser".equals(auth.getName())) {
-            auditService.log(action, resourceId, "MEDICAL_RECORD", auth.getName(), httpRequest.getRemoteAddr());
+        String userEmail = SecurityUtils.getAuthenticatedUserEmail();
+        if (!"anonymous@saap.com".equals(userEmail)) {
+            auditService.log(action, resourceId, "MEDICAL_RECORD", userEmail, httpRequest.getRemoteAddr());
         }
     }
 
     private Professional currentProfessional() {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        String email = SecurityUtils.getAuthenticatedUserEmail();
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário logado não encontrado"));
         return professionalRepository.findByUserId(user.getId())

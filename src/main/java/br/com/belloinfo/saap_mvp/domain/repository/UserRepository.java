@@ -12,5 +12,6 @@ public interface UserRepository {
     Optional<User> findById(UUID id);
     Optional<User> findByEmail(String email);
     List<User> findAll();
+    List<User> findByIdIn(List<UUID> ids);
     PageResult<User> findActive(int page, int size);
 }

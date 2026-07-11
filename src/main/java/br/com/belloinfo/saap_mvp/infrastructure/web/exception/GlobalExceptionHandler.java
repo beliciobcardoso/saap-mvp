@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.infrastructure.web.exception;
 
+import br.com.belloinfo.saap_mvp.domain.exception.ScheduleConflictException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -139,23 +140,32 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
     }
 
-    @ExceptionHandler(IllegalStateException.class)
-    public ResponseEntity<ErrorResponse> handleIllegalStateException(IllegalStateException ex, HttpServletRequest request) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
-        String message = ex.getMessage();
-        if (message != null && message.contains("Horário indisponível")) {
-            status = HttpStatus.CONFLICT;
-        }
+    @ExceptionHandler(ScheduleConflictException.class)
+    public ResponseEntity<ErrorResponse> handleScheduleConflict(ScheduleConflictException ex, HttpServletRequest request) {
+        logger.warn("Schedule conflict: {}", ex.getMessage());
 
         ErrorResponse errorResponse = new ErrorResponse(
                 LocalDateTime.now(),
-                status.value(),
-                status.getReasonPhrase(),
-                message,
+                HttpStatus.CONFLICT.value(),
+                "Conflict",
+                "O horário solicitado não está disponível. Tente outro horário.",
                 request.getRequestURI(),
                 null
         );
-        return ResponseEntity.status(status).body(errorResponse);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ErrorResponse> handleIllegalStateException(IllegalStateException ex, HttpServletRequest request) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(Exception.class)

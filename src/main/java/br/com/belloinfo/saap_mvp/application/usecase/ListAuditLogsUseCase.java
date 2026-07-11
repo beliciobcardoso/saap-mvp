@@ -26,8 +26,13 @@ public class ListAuditLogsUseCase {
     public PageResult<AuditLogWithEmail> execute(int page, int size) {
         PageResult<AuditLog> logs = auditLogRepository.findAllOrderByTimestampDesc(page, size);
 
-        // Mapeia todos os usuários cadastrados em memória por ID -> Email para evitar N+1 queries no banco
-        Map<UUID, String> userIdToEmail = userRepository.findAll().stream()
+        // Busca apenas os usuários presente nos logs para evitar carregar a tabela inteira
+        var userIds = logs.content().stream()
+                .map(AuditLog::getUserId)
+                .distinct()
+                .toList();
+
+        Map<UUID, String> userIdToEmail = userRepository.findByIdIn(userIds).stream()
                 .collect(Collectors.toMap(User::getId, User::getEmail, (e1, e2) -> e1));
 
         return new PageResult<>(

@@ -47,6 +47,13 @@ public class UserRepositoryAdapter implements UserRepository {
     }
 
     @Override
+    public List<User> findByIdIn(List<UUID> ids) {
+        return jpaUserRepository.findByIdIn(ids).stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public PageResult<User> findActive(int page, int size) {
         return PaginationSupport.toPageResult(
                 jpaUserRepository.findByActiveTrue(PaginationSupport.of(page, size)),
