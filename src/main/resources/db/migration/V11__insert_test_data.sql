@@ -23,12 +23,13 @@ VALUES (
 ) ON CONFLICT DO NOTHING;
 
 -- Paciente de teste
-INSERT INTO "paciente" (id, name, email, cpf, is_active, created_at, updated_at)
+INSERT INTO "paciente" (id, name, cpf, phone, email, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440010',
   'João Silva',
-  'patient@example.com',
   '12345678901',
+  '11999999999',
+  'patient@example.com',
   true,
   NOW(),
   NOW()
