@@ -9,8 +9,8 @@ api:
     action-token:
       secret: "${ACTION_TOKEN_SECRET}"
       expiration: "${ACTION_TOKEN_EXPIRATION:86400000}"
-    login:
-      trusted-proxies: "${LOGIN_TRUSTED_PROXIES:}"
+    redis:
+      enabled: "${REDIS_ENABLED:false}"
 
 saap:
   app:
@@ -44,6 +44,12 @@ management:
 spring:
   application:
     name: saap-mvp
+
+  redis:
+    host: "${REDIS_HOST:localhost}"
+    port: "${REDIS_PORT:6379}"
+    password: "${REDIS_PASSWORD:}"
+    timeout: "${REDIS_TIMEOUT:2000}"
 
   datasource:
     url: "${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:saap_db}}"
