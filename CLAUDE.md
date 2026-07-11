@@ -103,9 +103,29 @@ Transição inválida lança `IllegalStateException`. Qualquer novo fluxo de sta
 - `LoginRateLimitFilter` limita tentativas de login; `TokenBlacklistService` invalida tokens (logout).
 - CPF validado por `@CPF` (`CpfValidator`) com verificação real dos dígitos verificadores, não só formato.
 
+# Planos Concluídos
+
+- ✅ **Lote 1 (010-016)**: Unique timestamps, repository fixes, correlation tracing, Redis token blacklist, security hardening
+- ✅ **Lote 2 (017-020)**: State machine, medical records access control, waitlist timeout scheduler
+- ✅ **Lote 3 (021-024)**: Clinic configuration, follow-up scheduler, priority scoring, check-in
+- ✅ **Plan 025**: Notification channels (Email SMTP, WhatsApp/SMS via Twilio, NotificationOrchestrator)
+
+## Plan 025 - Notificações Reais
+
+Implementado suporte multi-canal para notificações:
+
+- **EmailNotificationService**: Spring Mail com SMTP (compatível com OCI Email Delivery)
+- **WhatsAppNotificationService**: Twilio WhatsApp Business API
+- **SmsNotificationService**: Twilio SMS
+- **NotificationOrchestrator**: Coordenador de canais com fallback gracioso
+- **NotificationServiceImpl**: Implementa contrato de domínio com templates de follow-up e waitlist
+- Configuração: `app.notifications.enabled`, `MAIL_HOST/PORT/USERNAME/PASSWORD`, variáveis Twilio
+- Validação de recipients null, logging, operações @Async
+
 # Testes
 
 - `BaseIntegrationTest` sobe um `PostgreSQLContainer` (Testcontainers, `postgres:16-alpine`) real e usa perfil `test`; toda classe de teste de integração deve estendê-la. Docker precisa estar rodando.
 - `ddl-auto=validate` nos testes de integração — o schema vem das migrações Flyway reais, não do Hibernate; alterar entidade sem migração correspondente quebra os testes de integração.
 - Convenção: `*UseCaseTest` (unitário, mocka repositórios) vs `*IntegrationTest`/`*IT` (sobe contexto Spring completo + Testcontainers).
 - Cobertura mínima de 80% de linhas verificada pelo JaCoCo no `mvnw verify` (falha o build se abaixo).
+- **Status atual**: 274/274 testes passando, 80%+ de cobertura JaCoCo
