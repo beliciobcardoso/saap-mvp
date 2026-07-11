@@ -37,8 +37,8 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
            "a.professional.id = :professionalId AND " +
            "a.status = 'ARRIVED' AND " +
            "a.dateTime >= :startOfDay AND a.dateTime < :endOfDay " +
-           "ORDER BY a.priorityScore ASC, a.dateTime ASC")
-    Optional<AppointmentEntity> findNextInQueueWithLock(
+           "ORDER BY a.priorityScore ASC, a.dateTime ASC, a.id ASC")
+    List<AppointmentEntity> findNextInQueueWithLock(
             @Param("professionalId") UUID professionalId,
             @Param("startOfDay") LocalDateTime startOfDay,
             @Param("endOfDay") LocalDateTime endOfDay

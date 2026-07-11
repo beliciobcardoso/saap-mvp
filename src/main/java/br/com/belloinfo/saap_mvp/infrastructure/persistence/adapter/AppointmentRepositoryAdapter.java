@@ -80,7 +80,7 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
                 professionalId,
                 start,
                 end
-        ).map(mapper::toDomain);
+        ).stream().findFirst().map(mapper::toDomain);
     }
 
     @Override
