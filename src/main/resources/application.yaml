@@ -88,6 +88,7 @@ oci:
 
 app:
   notifications:
+    enabled: "${APP_NOTIFICATIONS_ENABLED:true}"
     email:
       from: "${MAIL_FROM:noreply@saap.local}"
     twilio:

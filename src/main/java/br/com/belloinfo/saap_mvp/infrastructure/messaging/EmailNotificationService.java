@@ -21,6 +21,11 @@ public class EmailNotificationService implements NotificationChannel {
     @Override
     @Async
     public void send(String recipient, String message) {
+        if (recipient == null || recipient.isBlank()) {
+            log.warn("Cannot send email: recipient is null or blank");
+            return;
+        }
+
         try {
             SimpleMailMessage mail = new SimpleMailMessage();
             mail.setFrom(fromEmail);

@@ -26,6 +26,11 @@ public class SmsNotificationService implements NotificationChannel {
     @Override
     @Async
     public void send(String recipient, String message) {
+        if (recipient == null || recipient.isBlank()) {
+            log.warn("Cannot send SMS: recipient is null or blank");
+            return;
+        }
+
         if (!isConfigured()) {
             log.warn("SMS service not configured (missing credentials)");
             return;

@@ -4,9 +4,11 @@ import br.com.belloinfo.saap_mvp.application.service.NotificationService;
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 @Service
+@ConditionalOnProperty(name = "app.notifications.console-enabled", havingValue = "true", matchIfMissing = false)
 public class ConsoleNotificationService implements NotificationService {
 
     private static final Logger log = LoggerFactory.getLogger(ConsoleNotificationService.class);

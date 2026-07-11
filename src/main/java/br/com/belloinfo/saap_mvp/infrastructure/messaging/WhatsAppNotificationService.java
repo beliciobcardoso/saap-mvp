@@ -26,6 +26,11 @@ public class WhatsAppNotificationService implements NotificationChannel {
     @Override
     @Async
     public void send(String recipient, String message) {
+        if (recipient == null || recipient.isBlank()) {
+            log.warn("Cannot send WhatsApp message: recipient is null or blank");
+            return;
+        }
+
         if (!isConfigured()) {
             log.warn("WhatsApp service not configured (missing credentials)");
             return;
