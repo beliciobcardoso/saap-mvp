@@ -45,6 +45,19 @@ spring:
   application:
     name: saap-mvp
 
+  mail:
+    host: "${MAIL_HOST:localhost}"
+    port: "${MAIL_PORT:587}"
+    username: "${MAIL_USERNAME:}"
+    password: "${MAIL_PASSWORD:}"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
   redis:
     host: "${REDIS_HOST:localhost}"
     port: "${REDIS_PORT:6379}"
