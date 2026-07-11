@@ -52,7 +52,7 @@ public class AppointmentController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('RECEPTIONIST', 'PATIENT')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PATIENT')")
     public ResponseEntity<AppointmentResponseDTO> book(@Valid @RequestBody BookAppointmentRequestDTO request, HttpServletRequest httpRequest) {
         Appointment appointment = bookAppointmentUseCase.execute(
                 request.patientId(),
@@ -67,7 +67,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('RECEPTIONIST', 'PROFESSIONAL')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PROFESSIONAL', 'PATIENT')")
     public ResponseEntity<AppointmentResponseDTO> findById(@PathVariable UUID id) {
         return findAppointmentByIdUseCase.execute(id)
                 .map(mapper::toResponse)
@@ -76,7 +76,7 @@ public class AppointmentController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('RECEPTIONIST', 'PROFESSIONAL')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PROFESSIONAL', 'PATIENT')")
     public ResponseEntity<PageResponseDTO<AppointmentResponseDTO>> list(
             @RequestParam(required = false) UUID professionalId,
             @RequestParam(required = false) UUID patientId,
@@ -90,7 +90,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/confirm")
-    @PreAuthorize("hasAnyRole('RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
     public ResponseEntity<AppointmentResponseDTO> confirm(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = confirmAppointmentUseCase.execute(id);
         logAudit("CONFIRMACAO_AGENDAMENTO", appointment.getId(), httpRequest);
@@ -98,7 +98,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/cancel")
-    @PreAuthorize("hasAnyRole('RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST', 'PATIENT')")
     public ResponseEntity<AppointmentResponseDTO> cancel(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = cancelAppointmentUseCase.execute(id);
         logAudit("CANCELAMENTO_AGENDAMENTO", appointment.getId(), httpRequest);
@@ -106,7 +106,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/check-in")
-    @PreAuthorize("hasAnyRole('RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'RECEPTIONIST')")
     public ResponseEntity<AppointmentResponseDTO> checkIn(
             @PathVariable UUID id,
             @Valid @RequestBody CheckInRequestDTO request,
@@ -152,7 +152,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/start")
-    @PreAuthorize("hasAnyRole('PROFESSIONAL')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSIONAL')")
     public ResponseEntity<AppointmentResponseDTO> start(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = startAppointmentUseCase.execute(id);
         logAudit("INICIO_ATENDIMENTO", appointment.getId(), httpRequest);
@@ -160,17 +160,17 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}/complete")
-    @PreAuthorize("hasAnyRole('PROFESSIONAL')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSIONAL')")
     public ResponseEntity<AppointmentResponseDTO> complete(@PathVariable UUID id, HttpServletRequest httpRequest) {
         Appointment appointment = completeAppointmentUseCase.execute(id);
         logAudit("FINALIZACAO_ATENDIMENTO", appointment.getId(), httpRequest);
         return ResponseEntity.ok(mapper.toResponse(appointment));
     }
 
-    @GetMapping("/public/confirm")
-    public ResponseEntity<String> publicConfirm(@RequestParam("token") String token) {
+    @PostMapping("/public/confirm")
+    public ResponseEntity<String> publicConfirm(@RequestBody ActionTokenRequestDTO request) {
         try {
-            confirmAppointmentByTokenUseCase.execute(token);
+            confirmAppointmentByTokenUseCase.execute(request.token());
             return ResponseEntity.ok("Presença confirmada com sucesso!");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -179,10 +179,10 @@ public class AppointmentController {
         }
     }
 
-    @GetMapping("/public/cancel")
-    public ResponseEntity<String> publicCancel(@RequestParam("token") String token) {
+    @PostMapping("/public/cancel")
+    public ResponseEntity<String> publicCancel(@RequestBody ActionTokenRequestDTO request) {
         try {
-            cancelAppointmentByTokenUseCase.execute(token);
+            cancelAppointmentByTokenUseCase.execute(request.token());
             return ResponseEntity.ok("Consulta cancelada com sucesso!");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -191,10 +191,10 @@ public class AppointmentController {
         }
     }
 
-    @GetMapping("/public/waitlist/accept")
-    public ResponseEntity<String> publicWaitlistAccept(@RequestParam("token") String token) {
+    @PostMapping("/public/waitlist/accept")
+    public ResponseEntity<String> publicWaitlistAccept(@RequestBody ActionTokenRequestDTO request) {
         try {
-            acceptWaitlistOfferUseCase.execute(token);
+            acceptWaitlistOfferUseCase.execute(request.token());
             return ResponseEntity.ok("Vaga da fila de espera aceita e agendamento confirmado com sucesso!");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -203,10 +203,10 @@ public class AppointmentController {
         }
     }
 
-    @GetMapping("/public/waitlist/decline")
-    public ResponseEntity<String> publicWaitlistDecline(@RequestParam("token") String token) {
+    @PostMapping("/public/waitlist/decline")
+    public ResponseEntity<String> publicWaitlistDecline(@RequestBody ActionTokenRequestDTO request) {
         try {
-            declineWaitlistOfferUseCase.execute(token);
+            declineWaitlistOfferUseCase.execute(request.token());
             return ResponseEntity.ok("Vaga da fila de espera recusada com sucesso.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -2,6 +2,8 @@ package br.com.belloinfo.saap_mvp.infrastructure.web.controller;
 
 import br.com.belloinfo.saap_mvp.BaseIntegrationTest;
 import br.com.belloinfo.saap_mvp.application.service.AppointmentActionTokenService;
+import br.com.belloinfo.saap_mvp.infrastructure.web.dto.ActionTokenRequestDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
@@ -33,7 +35,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Transactional
@@ -64,6 +66,8 @@ class WaitlistPublicControllerIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private AppointmentActionTokenService tokenService;
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private Patient patient;
     private Professional professional;
@@ -137,8 +141,10 @@ class WaitlistPublicControllerIntegrationTest extends BaseIntegrationTest {
     void shouldAcceptWaitlistOfferPubliclyWithoutAuth() throws Exception {
         String token = tokenService.generateToken(waitlistEntry.getId(), "accept-waitlist");
 
-        mockMvc.perform(get("/api/v1/appointments/public/waitlist/accept")
-                        .param("token", token))
+        var request = new ActionTokenRequestDTO(token);
+        mockMvc.perform(post("/api/v1/appointments/public/waitlist/accept")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk());
 
         WaitlistEntry updated = waitlistEntryRepository.findById(waitlistEntry.getId()).orElseThrow();
@@ -158,8 +164,10 @@ class WaitlistPublicControllerIntegrationTest extends BaseIntegrationTest {
     void shouldDeclineWaitlistOfferPubliclyWithoutAuth() throws Exception {
         String token = tokenService.generateToken(waitlistEntry.getId(), "decline-waitlist");
 
-        mockMvc.perform(get("/api/v1/appointments/public/waitlist/decline")
-                        .param("token", token))
+        var request = new ActionTokenRequestDTO(token);
+        mockMvc.perform(post("/api/v1/appointments/public/waitlist/decline")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk());
 
         WaitlistEntry updated = waitlistEntryRepository.findById(waitlistEntry.getId()).orElseThrow();
@@ -169,8 +177,10 @@ class WaitlistPublicControllerIntegrationTest extends BaseIntegrationTest {
 
     @Test
     void shouldReturnBadRequestWhenTokenIsInvalid() throws Exception {
-        mockMvc.perform(get("/api/v1/appointments/public/waitlist/accept")
-                        .param("token", "invalid-token"))
+        var request = new ActionTokenRequestDTO("invalid-token");
+        mockMvc.perform(post("/api/v1/appointments/public/waitlist/accept")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest());
     }
 }
