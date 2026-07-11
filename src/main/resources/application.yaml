@@ -79,6 +79,9 @@ spring:
 
   flyway:
     enabled: "${FLYWAY_ENABLED:true}"
+    out-of-order: true
+    ignore-missing-migrations: true
+    validate-on-migrate: false
 
 oci:
   config-path: "${OCI_CONFIG_PATH:~/.oci/config}"
