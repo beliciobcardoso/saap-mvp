@@ -1,5 +1,5 @@
 -- Usuário admin de teste (senha: adminPass123)
-INSERT INTO "usuario" (id, email, password, role, ativo, criado_em, atualizado_em)
+INSERT INTO "usuario" (id, email, password, role, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440001',
   'admin@saap.com',
@@ -11,7 +11,7 @@ VALUES (
 ) ON CONFLICT DO NOTHING;
 
 -- Usuário recepcionista de teste (senha: password123)
-INSERT INTO "usuario" (id, email, password, role, ativo, criado_em, atualizado_em)
+INSERT INTO "usuario" (id, email, password, role, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440002',
   'recep@saap.com',
@@ -23,28 +23,30 @@ VALUES (
 ) ON CONFLICT DO NOTHING;
 
 -- Paciente de teste
-INSERT INTO "paciente" (id, nome, email, cpf, criado_em, atualizado_em)
+INSERT INTO "paciente" (id, name, email, cpf, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440010',
   'João Silva',
   'patient@example.com',
   '12345678901',
+  true,
   NOW(),
   NOW()
 ) ON CONFLICT DO NOTHING;
 
 -- Profissional de teste
-INSERT INTO "profissional" (id, nome, role, criado_em, atualizado_em)
+INSERT INTO "profissional" (id, name, role, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440020',
   'Dr. Pedro',
   'PROFESSIONAL',
+  true,
   NOW(),
   NOW()
 ) ON CONFLICT DO NOTHING;
 
 -- Serviço de teste
-INSERT INTO "servico" (id, nome, descricao, duracao_minutos, preco, ativo, criado_em, atualizado_em)
+INSERT INTO "servico" (id, name, description, duration_minutes, price, is_active, created_at, updated_at)
 VALUES (
   '550e8400-e29b-41d4-a716-446655440030',
   'Consulta Geral',
