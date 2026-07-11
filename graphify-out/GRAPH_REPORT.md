@@ -1,1302 +1,1452 @@
-# Graph Report - saap-mvp  (2026-07-05)
+# Graph Report - .  (2026-07-11)
 
 ## Corpus Check
-- 349 files · ~238,503 words
+- 101 files · ~270,871 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3373 nodes · 6543 edges · 390 communities (292 shown, 98 thin omitted)
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 431 edges (avg confidence: 0.8)
-- Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `a5a9a5af`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
+- 3706 nodes · 7020 edges · 401 communities (303 shown, 98 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 447 edges (avg confidence: 0.8)
+- Token cost: 404,094 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Execute Java Setup|Execute Java Setup]]
-- [[_COMMUNITY_Java Uuid Localdatetime|Java Uuid Localdatetime]]
-- [[_COMMUNITY_String Java Blacklist|String Java Blacklist]]
-- [[_COMMUNITY_Mappscorrectly Toresponse Java|Mappscorrectly Toresponse Java]]
-- [[_COMMUNITY_Java Uuid String|Java Uuid String]]
-- [[_COMMUNITY_Onapplicationevent Java Applicationenvironmentpreparedevent|Onapplicationevent Java Applicationenvironmentpreparedevent]]
-- [[_COMMUNITY_Java Transactional Acceptwaitlistofferusecase|Java Transactional Acceptwaitlistofferusecase]]
-- [[_COMMUNITY_Java String Uuid|Java String Uuid]]
-- [[_COMMUNITY_Java String Component|Java String Component]]
-- [[_COMMUNITY_Java Uuid Requiredargsconstructor|Java Uuid Requiredargsconstructor]]
-- [[_COMMUNITY_Cancelappointmentbytokenusecase Java String|Cancelappointmentbytokenusecase Java String]]
-- [[_COMMUNITY_Java String Servicecontroller|Java String Servicecontroller]]
-- [[_COMMUNITY_Java String Patientcontroller|Java String Patientcontroller]]
-- [[_COMMUNITY_Java String Uuid|Java String Uuid]]
-- [[_COMMUNITY_Java Uuid Auditlog|Java Uuid Auditlog]]
-- [[_COMMUNITY_String Updatemedicalrecordentryrequestdto Java|String Updatemedicalrecordentryrequestdto Java]]
-- [[_COMMUNITY_Professionalentity Java String|Professionalentity Java String]]
-- [[_COMMUNITY_Java Cpfvalidator Constraintvalidatorcontext|Java Cpfvalidator Constraintvalidatorcontext]]
-- [[_COMMUNITY_Errorresponse Java Globalexceptionhandler|Errorresponse Java Globalexceptionhandler]]
-- [[_COMMUNITY_Serviceentity Java String|Serviceentity Java String]]
-- [[_COMMUNITY_Java Uuid Confirmappointmentusecase|Java Uuid Confirmappointmentusecase]]
-- [[_COMMUNITY_Test Beforeeach Transactional|Test Beforeeach Transactional]]
-- [[_COMMUNITY_Java Uuid Getmedicalrecordbypatientusecase|Java Uuid Getmedicalrecordbypatientusecase]]
-- [[_COMMUNITY_Waitlistentryentity Java Localdatetime|Waitlistentryentity Java Localdatetime]]
-- [[_COMMUNITY_Java Createserviceusecase Execute|Java Createserviceusecase Execute]]
-- [[_COMMUNITY_Professional Java String|Professional Java String]]
-- [[_COMMUNITY_Medicalrecordentryentity Java Uuid|Medicalrecordentryentity Java Uuid]]
-- [[_COMMUNITY_Loginrequestdto Java Securityintegrationtest|Loginrequestdto Java Securityintegrationtest]]
-- [[_COMMUNITY_Java Execute Transactional|Java Execute Transactional]]
-- [[_COMMUNITY_Dofilter Loginratelimitfiltertest Passesthrough|Dofilter Loginratelimitfiltertest Passesthrough]]
-- [[_COMMUNITY_Securityproperties Getexpiration Getsecret|Securityproperties Getexpiration Getsecret]]
-- [[_COMMUNITY_Execute Updateprofessionalusecase Java|Execute Updateprofessionalusecase Java]]
-- [[_COMMUNITY_User Java String|User Java String]]
-- [[_COMMUNITY_Waitlistentry Java Localdatetime|Waitlistentry Java Localdatetime]]
-- [[_COMMUNITY_Java Deactivateuserusecase Execute|Java Deactivateuserusecase Execute]]
-- [[_COMMUNITY_Java Paginationsupport Listauditlogsusecase|Java Paginationsupport Listauditlogsusecase]]
-- [[_COMMUNITY_Java Auditlogcontroller List|Java Auditlogcontroller List]]
-- [[_COMMUNITY_Execute Acceptwaitlistofferusecasetest Throwsexception|Execute Acceptwaitlistofferusecasetest Throwsexception]]
-- [[_COMMUNITY_Createpatientusecase Java Updatepatientusecase|Createpatientusecase Java Updatepatientusecase]]
-- [[_COMMUNITY_Saapproperties Getcron Setcron|Saapproperties Getcron Setcron]]
-- [[_COMMUNITY_Medicalrecordentity Java Uuid|Medicalrecordentity Java Uuid]]
-- [[_COMMUNITY_Execute Startappointmentusecase Java|Execute Startappointmentusecase Java]]
-- [[_COMMUNITY_Medicalrecordentry Java Uuid|Medicalrecordentry Java Uuid]]
-- [[_COMMUNITY_Createprofessionalusecase Java Execute|Createprofessionalusecase Java Execute]]
-- [[_COMMUNITY_Java Uuid Patient|Java Uuid Patient]]
-- [[_COMMUNITY_Tokenservice Java Tokenservicetest|Tokenservice Java Tokenservicetest]]
-- [[_COMMUNITY_Servicecontrollertest Illegalargumentexception Java|Servicecontrollertest Illegalargumentexception Java]]
-- [[_COMMUNITY_Appointmentactiontokenservice Java Appointmentactiontokenservicetest|Appointmentactiontokenservice Java Appointmentactiontokenservicetest]]
-- [[_COMMUNITY_Createuserusecase Execute Java|Createuserusecase Execute Java]]
-- [[_COMMUNITY_Execute Deactivatepatientusecase Java|Execute Deactivatepatientusecase Java]]
-- [[_COMMUNITY_Findprofessionalbyidusecase Execute Java|Findprofessionalbyidusecase Execute Java]]
-- [[_COMMUNITY_Finduserbyidusecase Execute Java|Finduserbyidusecase Execute Java]]
-- [[_COMMUNITY_Execute Listappointmentsusecase Java|Execute Listappointmentsusecase Java]]
-- [[_COMMUNITY_Professionalrepositoryadapter Java Component|Professionalrepositoryadapter Java Component]]
-- [[_COMMUNITY_Authcontroller Java Loginresponsedto|Authcontroller Java Loginresponsedto]]
-- [[_COMMUNITY_Execute Declinewaitlistofferusecasetest Throwsexception|Execute Declinewaitlistofferusecasetest Throwsexception]]
-- [[_COMMUNITY_Java Localdatetime Bookappointmentusecase|Java Localdatetime Bookappointmentusecase]]
-- [[_COMMUNITY_Callnextpatientusecase Java Execute|Callnextpatientusecase Java Execute]]
-- [[_COMMUNITY_Save Coremapper Java|Save Coremapper Java]]
-- [[_COMMUNITY_Execute Cancelappointmentbytokenusecasetest Throwsexception|Execute Cancelappointmentbytokenusecasetest Throwsexception]]
-- [[_COMMUNITY_Execute Confirmappointmentbytokenusecasetest Throwsexception|Execute Confirmappointmentbytokenusecasetest Throwsexception]]
-- [[_COMMUNITY_Execute Updatemedicalrecordentryusecasetest Java|Execute Updatemedicalrecordentryusecasetest Java]]
-- [[_COMMUNITY_Auditintegrationtest Java Setup|Auditintegrationtest Java Setup]]
-- [[_COMMUNITY_Execute Listactivepatientsusecase Java|Execute Listactivepatientsusecase Java]]
-- [[_COMMUNITY_Transitionto Appointmentdomaintest Shouldallowcancellationfrompendingandconfirmedandarrived|Transitionto Appointmentdomaintest Shouldallowcancellationfrompendingandconfirmedandarrived]]
-- [[_COMMUNITY_Userrepositoryadapter Java Component|Userrepositoryadapter Java Component]]
-- [[_COMMUNITY_Waitlistentryrepositoryadapter Java Component|Waitlistentryrepositoryadapter Java Component]]
-- [[_COMMUNITY_Patientcontrollertest Java Beforeeach|Patientcontrollertest Java Beforeeach]]
-- [[_COMMUNITY_Professionalcontrollertest Java Beforeeach|Professionalcontrollertest Java Beforeeach]]
-- [[_COMMUNITY_Usercontrollertest Java Beforeeach|Usercontrollertest Java Beforeeach]]
-- [[_COMMUNITY_Baseintegrationtest Java Saapmvpapplicationtests|Baseintegrationtest Java Saapmvpapplicationtests]]
-- [[_COMMUNITY_Agendamento Convenio Convenioservico|Agendamento Convenio Convenioservico]]
-- [[_COMMUNITY_Infraestrutura Entidade Banco|Infraestrutura Entidade Banco]]
-- [[_COMMUNITY_Patientrepositoryadapter Java Component|Patientrepositoryadapter Java Component]]
-- [[_COMMUNITY_Servicerepositoryadapter Java Component|Servicerepositoryadapter Java Component]]
-- [[_COMMUNITY_Execute Confirmappointmentusecasetest Confirmssuccessfully|Execute Confirmappointmentusecasetest Confirmssuccessfully]]
-- [[_COMMUNITY_Execute Createpatientusecasetest Java|Execute Createpatientusecasetest Java]]
-- [[_COMMUNITY_Appointmentcontrollertest Java Setup|Appointmentcontrollertest Java Setup]]
-- [[_COMMUNITY_Findpatientbyidusecase Findpatientbyidusecasetest Execute|Findpatientbyidusecase Findpatientbyidusecasetest Execute]]
-- [[_COMMUNITY_Execute Deactivateserviceusecasetest Getvalue|Execute Deactivateserviceusecasetest Getvalue]]
-- [[_COMMUNITY_Execute Completeappointmentusecasetest Throwsconflict|Execute Completeappointmentusecasetest Throwsconflict]]
-- [[_COMMUNITY_Execute Createprofessionalusecasetest Java|Execute Createprofessionalusecasetest Java]]
-- [[_COMMUNITY_Execute Createserviceusecasetest Java|Execute Createserviceusecasetest Java]]
-- [[_COMMUNITY_Execute Deactivateprofessionalusecasetest Activeprofessional|Execute Deactivateprofessionalusecasetest Activeprofessional]]
-- [[_COMMUNITY_Execute Deactivateuserusecasetest Java|Execute Deactivateuserusecasetest Java]]
-- [[_COMMUNITY_Repositoryintegrationtest Java Test|Repositoryintegrationtest Java Test]]
-- [[_COMMUNITY_Appointmentpubliccontrollerintegrationtest Java Setup|Appointmentpubliccontrollerintegrationtest Java Setup]]
-- [[_COMMUNITY_Waitlistpubliccontrollerintegrationtest Java Beforeeach|Waitlistpubliccontrollerintegrationtest Java Beforeeach]]
-- [[_COMMUNITY_Listactiveusersusecasetest Execute Java|Listactiveusersusecasetest Execute Java]]
-- [[_COMMUNITY_Processwaitlistslotofferusecase Java Component|Processwaitlistslotofferusecase Java Component]]
-- [[_COMMUNITY_Medicalrecordentryrepositoryadapter Java Component|Medicalrecordentryrepositoryadapter Java Component]]
-- [[_COMMUNITY_Medicalrecordrepositoryadapter Java Component|Medicalrecordrepositoryadapter Java Component]]
-- [[_COMMUNITY_Findappointmentbyidusecasetest Execute Java|Findappointmentbyidusecasetest Execute Java]]
-- [[_COMMUNITY_Findservicebyidusecasetest Execute Java|Findservicebyidusecasetest Execute Java]]
-- [[_COMMUNITY_Appointmentconcurrencyintegrationtest Aftereach Java|Appointmentconcurrencyintegrationtest Aftereach Java]]
-- [[_COMMUNITY_Declinewaitlistofferusecase Java Execute|Declinewaitlistofferusecase Java Execute]]
-- [[_COMMUNITY_Waitlisttimeoutscheduler Expire Java|Waitlisttimeoutscheduler Expire Java]]
-- [[_COMMUNITY_Listactiveprofessionalsusecasetest Execute Java|Listactiveprofessionalsusecasetest Execute Java]]
-- [[_COMMUNITY_Listactiveservicesusecasetest Execute Java|Listactiveservicesusecasetest Execute Java]]
-- [[_COMMUNITY_Confirmappointmentbytokenusecase Illegalstateexception Java|Confirmappointmentbytokenusecase Illegalstateexception Java]]
-- [[_COMMUNITY_Processmisseddeadlinesusecase Java Component|Processmisseddeadlinesusecase Java Component]]
-- [[_COMMUNITY_Flywaymigrationsequencetest Java Migrationfilesshouldfollownamingconvention|Flywaymigrationsequencetest Java Migrationfilesshouldfollownamingconvention]]
-- [[_COMMUNITY_Openapiconfig Openapi Profile|Openapiconfig Openapi Profile]]
-- [[_COMMUNITY_Webmvcconfig Pathmatchconfigurer Java|Webmvcconfig Pathmatchconfigurer Java]]
-- [[_COMMUNITY_Servletinitializer Springapplicationbuilder Springbootservletinitializer|Servletinitializer Springapplicationbuilder Springbootservletinitializer]]
-- [[_COMMUNITY_Cancelappointmentusecase Java Execute|Cancelappointmentusecase Java Execute]]
-- [[_COMMUNITY_Findservicebyidusecase Java Execute|Findservicebyidusecase Java Execute]]
-- [[_COMMUNITY_Completeappointmentusecase Medical Record|Completeappointmentusecase Medical Record]]
-- [[_COMMUNITY_Audit Trail Table|Audit Trail Table]]
-- [[_COMMUNITY_Deactivateserviceusecase Java Execute|Deactivateserviceusecase Java Execute]]
-- [[_COMMUNITY_Openspec Change Apply|Openspec Change Apply]]
-- [[_COMMUNITY_Plugin Package Json|Plugin Package Json]]
-- [[_COMMUNITY_Authcontroller User Auth|Authcontroller User Auth]]
-- [[_COMMUNITY_Appointment Entity Appointmentstatus|Appointment Entity Appointmentstatus]]
-- [[_COMMUNITY_Confirmation Follow Capability|Confirmation Follow Capability]]
-- [[_COMMUNITY_Quina Estados Transi|Quina Estados Transi]]
-- [[_COMMUNITY_Webmapper Java Mapper|Webmapper Java Mapper]]
-- [[_COMMUNITY_Openspec Propose Explore|Openspec Propose Explore]]
-- [[_COMMUNITY_Design System Saap|Design System Saap]]
-- [[_COMMUNITY_Appointmentfollowupscheduler Background Scheduler|Appointmentfollowupscheduler Background Scheduler]]
-- [[_COMMUNITY_Waitlist Flow Testing|Waitlist Flow Testing]]
-- [[_COMMUNITY_Bookappointmentusecase Double Booking|Bookappointmentusecase Double Booking]]
-- [[_COMMUNITY_Appointment Follow Capability|Appointment Follow Capability]]
-- [[_COMMUNITY_Createmedicalrecordentryusecase Lazy Medical|Createmedicalrecordentryusecase Lazy Medical]]
-- [[_COMMUNITY_Endpoints Blicos Confirma|Endpoints Blicos Confirma]]
-- [[_COMMUNITY_Autentica Security Config|Autentica Security Config]]
-- [[_COMMUNITY_Opsx Sync|Opsx Sync]]
-- [[_COMMUNITY_Opsx Verify|Opsx Verify]]
-- [[_COMMUNITY_Openspec Explore|Openspec Explore]]
-- [[_COMMUNITY_Openspec Change|Openspec Change]]
-- [[_COMMUNITY_Openspec Onboard|Openspec Onboard]]
-- [[_COMMUNITY_Openspec Propose|Openspec Propose]]
-- [[_COMMUNITY_Openspec Verify Change|Openspec Verify Change]]
-- [[_COMMUNITY_Openspec Apply Change|Openspec Apply Change]]
-- [[_COMMUNITY_Openspec Archive Change|Openspec Archive Change]]
-- [[_COMMUNITY_Openspec Continue Change|Openspec Continue Change]]
-- [[_COMMUNITY_Openspec Explore|Openspec Explore]]
-- [[_COMMUNITY_Openspec Change|Openspec Change]]
-- [[_COMMUNITY_Openspec Onboard|Openspec Onboard]]
-- [[_COMMUNITY_Openspec Propose|Openspec Propose]]
-- [[_COMMUNITY_Openspec Sync Specs|Openspec Sync Specs]]
-- [[_COMMUNITY_Openspec Verify Change|Openspec Verify Change]]
-- [[_COMMUNITY_Openspec Onboard|Openspec Onboard]]
-- [[_COMMUNITY_Openspec Apply Change|Openspec Apply Change]]
-- [[_COMMUNITY_Openspec Archive Change|Openspec Archive Change]]
-- [[_COMMUNITY_Opsx Apply|Opsx Apply]]
-- [[_COMMUNITY_Opsx Archive|Opsx Archive]]
-- [[_COMMUNITY_Opsx Continue|Opsx Continue]]
-- [[_COMMUNITY_Opsx Explore|Opsx Explore]]
-- [[_COMMUNITY_Opsx|Opsx]]
-- [[_COMMUNITY_Serena Local Config|Serena Local Config]]
-- [[_COMMUNITY_Serena Config|Serena Config]]
-- [[_COMMUNITY_Claude Instructions|Claude Instructions]]
-- [[_COMMUNITY_Diagrama Atual|Diagrama Atual]]
-- [[_COMMUNITY_Diagrama Casos|Diagrama Casos]]
-- [[_COMMUNITY_Sequence Diagram|Sequence Diagram]]
-- [[_COMMUNITY_Image Asset|Image Asset]]
-- [[_COMMUNITY_Project Proposal|Project Proposal]]
-- [[_COMMUNITY_Design Principles Saap|Design Principles Saap]]
-- [[_COMMUNITY_Rest Client|Rest Client]]
-- [[_COMMUNITY_Test Guide|Test Guide]]
-- [[_COMMUNITY_Appointmentactiontokenservice|Appointmentactiontokenservice]]
-- [[_COMMUNITY_Custom Validator|Custom Validator]]
-- [[_COMMUNITY_Globalexceptionhandler|Globalexceptionhandler]]
-- [[_COMMUNITY_Domain Entity Separation|Domain Entity Separation]]
-- [[_COMMUNITY_Soft Delete Strategy|Soft Delete Strategy]]
-- [[_COMMUNITY_Bcryptpasswordencoder|Bcryptpasswordencoder]]
-- [[_COMMUNITY_Auth0 Java Library|Auth0 Java Library]]
-- [[_COMMUNITY_Processmisseddeadlinesusecase|Processmisseddeadlinesusecase]]
-- [[_COMMUNITY_Scheduled Workers Separation|Scheduled Workers Separation]]
-- [[_COMMUNITY_Medical Record Persistence|Medical Record Persistence]]
-- [[_COMMUNITY_Spec Driven Schema|Spec Driven Schema]]
-- [[_COMMUNITY_Processamento Worker Para|Processamento Worker Para]]
-- [[_COMMUNITY_Cadastro Paciente Patient|Cadastro Paciente Patient]]
-- [[_COMMUNITY_Cadastro Profissional Professional|Cadastro Profissional Professional]]
-- [[_COMMUNITY_Cadastro Servi Service|Cadastro Servi Service]]
-- [[_COMMUNITY_Cadastro User|Cadastro User]]
-- [[_COMMUNITY_Lculo Score Prioridade|Lculo Score Prioridade]]
-- [[_COMMUNITY_Chamada Ximo Paciente|Chamada Ximo Paciente]]
-- [[_COMMUNITY_Valida Documental Prioridade|Valida Documental Prioridade]]
-- [[_COMMUNITY_Preven Conflito Rios|Preven Conflito Rios]]
-- [[_COMMUNITY_Autoriza Rotas Http|Autoriza Rotas Http]]
-- [[_COMMUNITY_Disparo Autom Tico|Disparo Autom Tico]]
-- [[_COMMUNITY_Registro Fila Espera|Registro Fila Espera]]
-- [[_COMMUNITY_Belloinfo Saap|Belloinfo Saap]]
-- [[_COMMUNITY_Project Readme|Project Readme]]
-- [[_COMMUNITY_Spring Datasource Config|Spring Datasource Config]]
-- [[_COMMUNITY_✅ Parte 5 Roteiro Completo de Testes (Checklist)|✅ Parte 5: Roteiro Completo de Testes (Checklist)]]
-- [[_COMMUNITY_📋 Detalhamento das Etapas|📋 Detalhamento das Etapas]]
-- [[_COMMUNITY_ADDED Requirements|ADDED Requirements]]
-- [[_COMMUNITY_Requirements|Requirements]]
-- [[_COMMUNITY_Requirement Autenticação de Usuário via JWT|Requirement: Autenticação de Usuário via JWT]]
-- [[_COMMUNITY_SKILL|SKILL.md]]
-- [[_COMMUNITY_SKILL|SKILL.md]]
-- [[_COMMUNITY_SAAP — Design System & Frontend Architecture|SAAP — Design System & Frontend Architecture]]
-- [[_COMMUNITY_0. Bootstrap — Criar a Aplicação|0. Bootstrap — Criar a Aplicação]]
-- [[_COMMUNITY_18. Checklist de Implementação|18. Checklist de Implementação]]
-- [[_COMMUNITY_Modelagem Comportamental (Diagramas de Sequência)|Modelagem Comportamental (Diagramas de Sequência)]]
-- [[_COMMUNITY_4.5 AGENDAMENTOS (`apiv1appointments`)|4.5 AGENDAMENTOS (`/api/v1/appointments`)]]
-- [[_COMMUNITY_SKILL|SKILL.md]]
-- [[_COMMUNITY_SKILL|SKILL.md]]
-- [[_COMMUNITY_Decisions|Decisions]]
-- [[_COMMUNITY_Tasks rf06-registro-clinico-prontuario|Tasks: rf06-registro-clinico-prontuario]]
-- [[_COMMUNITY_Requirement Endpoints Públicos de Confirmação e Cancelamento por Link|Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link]]
-- [[_COMMUNITY_opsx-explore|opsx-explore.md]]
-- [[_COMMUNITY_explore|explore.md]]
-- [[_COMMUNITY_Regras do Projeto SAAP-MVP|Regras do Projeto SAAP-MVP]]
-- [[_COMMUNITY_Guia de Testes com REST Client — SAAP MVP|Guia de Testes com REST Client — SAAP MVP]]
-- [[_COMMUNITY_opsx-explore|opsx-explore.md]]
-- [[_COMMUNITY_ADDED Requirements|ADDED Requirements]]
-- [[_COMMUNITY_Requirement Autenticação de Usuário via JWT|Requirement: Autenticação de Usuário via JWT]]
-- [[_COMMUNITY_ADDED Requirements|ADDED Requirements]]
-- [[_COMMUNITY_Requirement Endpoints Públicos de Confirmação e Cancelamento por Link|Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_ProcessMissedDeadlinesUseCaseIntegrationTest.java|ProcessMissedDeadlinesUseCaseIntegrationTest.java]]
-- [[_COMMUNITY_MedicalRecordEntryResponseDTO|MedicalRecordEntryResponseDTO]]
-- [[_COMMUNITY_10. Páginas — Especificações|10. Páginas — Especificações]]
-- [[_COMMUNITY_🔎 Parte 7 Referência Rápida de Endpoints|🔎 Parte 7: Referência Rápida de Endpoints]]
-- [[_COMMUNITY_Teste do Fluxo de Follow-up (RF03)|Teste do Fluxo de Follow-up (RF03)]]
-- [[_COMMUNITY_🔎 Fechamento dos Gaps Pendentes (04072026, continuação)|🔎 Fechamento dos Gaps Pendentes (04/07/2026, continuação)]]
-- [[_COMMUNITY_Decisions|Decisions]]
-- [[_COMMUNITY_Decisions|Decisions]]
-- [[_COMMUNITY_Requirement Endpoints Públicos de Confirmação e Cancelamento por Link|Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link]]
-- [[_COMMUNITY_Decisions|Decisions]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_design|design.md]]
-- [[_COMMUNITY_design|design.md]]
-- [[_COMMUNITY_design|design.md]]
-- [[_COMMUNITY_design|design.md]]
-- [[_COMMUNITY_Proposal rf06-registro-clinico-prontuario|Proposal: rf06-registro-clinico-prontuario]]
-- [[_COMMUNITY_Requirement Máquina de Estados e Transições do Agendamento|Requirement: Máquina de Estados e Transições do Agendamento]]
-- [[_COMMUNITY_ERR-001 · Lacuna na sequência de migrações Flyway (V1 → V3 sem V2)|ERR-001 · Lacuna na sequência de migrações Flyway (V1 → V3 sem V2)]]
-- [[_COMMUNITY_ERR-009 · Violação de unique constraint em testes de integração com múltiplos métodos|ERR-009 · Violação de unique constraint em testes de integração com múltiplos métodos]]
-- [[_COMMUNITY_Justificativa da Abordagem Orientada a Objetos|Justificativa da Abordagem Orientada a Objetos]]
-- [[_COMMUNITY_Algoritmo de Fila Prioritária (UC09)|Algoritmo de Fila Prioritária (UC09)]]
-- [[_COMMUNITY_📊 Parte 4 Entidades e Fluxo CRUD Completo|📊 Parte 4: Entidades e Fluxo CRUD Completo]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_proposal|proposal.md]]
-- [[_COMMUNITY_CancelAppointmentByTokenUseCase|CancelAppointmentByTokenUseCase]]
-- [[_COMMUNITY_📋 Registro de Erros e Soluções — SAAP-MVP|📋 Registro de Erros e Soluções — SAAP-MVP]]
-- [[_COMMUNITY_17. Regras Críticas de Implementação|17. Regras Críticas de Implementação]]
-- [[_COMMUNITY_PRD - Fluxo de Atendimento Médico|PRD - Fluxo de Atendimento Médico]]
-- [[_COMMUNITY_Fluxo de Confirmação de Agendamento com Follow-up Proativo|Fluxo de Confirmação de Agendamento com Follow-up Proativo]]
-- [[_COMMUNITY_4.1 USUÁRIOS (`apiv1users`)|4.1 USUÁRIOS (`/api/v1/users`)]]
-- [[_COMMUNITY_4.2 PACIENTES (`apiv1patients`)|4.2 PACIENTES (`/api/v1/patients`)]]
-- [[_COMMUNITY_4.3 PROFISSIONAIS (`apiv1professionals`)|4.3 PROFISSIONAIS (`/api/v1/professionals`)]]
-- [[_COMMUNITY_4.4 SERVIÇOS (`apiv1services`)|4.4 SERVIÇOS (`/api/v1/services`)]]
-- [[_COMMUNITY_📝 Parte 8 Dados de Teste Pré-configurados|📝 Parte 8: Dados de Teste Pré-configurados]]
-- [[_COMMUNITY_gaps-pendentes|gaps-pendentes.md]]
-- [[_COMMUNITY_🔄 Fluxo Completo|🔄 Fluxo Completo]]
-- [[_COMMUNITY_Getting Started|Getting Started]]
-- [[_COMMUNITY_tasks|tasks.md]]
-- [[_COMMUNITY_Requirement Estado PENDING_RESPONSE na Máquina de Estados do Agendamento|Requirement: Estado PENDING_RESPONSE na Máquina de Estados do Agendamento]]
-- [[_COMMUNITY_Design rf06-registro-clinico-prontuario|Design: rf06-registro-clinico-prontuario]]
-- [[_COMMUNITY_CompleteAppointmentUseCase.java|CompleteAppointmentUseCase.java]]
-- [[_COMMUNITY_UpdateUserUseCase|UpdateUserUseCase]]
-- [[_COMMUNITY_ERR-003 · Serviços duplicados podiam ser cadastrados|ERR-003 · Serviços duplicados podiam ser cadastrados]]
-- [[_COMMUNITY_ERR-004 · CPF formatado causava erro 400 ao cadastrar paciente|ERR-004 · CPF formatado causava erro 400 ao cadastrar paciente]]
-- [[_COMMUNITY_ERR-006 · Colisão de CPFE-mail de Teste (idx_usuario_email  idx_paciente_cpf)|ERR-006 · Colisão de CPF/E-mail de Teste (idx_usuario_email / idx_paciente_cpf)]]
-- [[_COMMUNITY_ERR-007 · Colisão de Nome de Serviço Ativo (idx_servico_name_active)|ERR-007 · Colisão de Nome de Serviço Ativo (idx_servico_name_active)]]
-- [[_COMMUNITY_ERR-008 · NullPointerException no SecurityContextHolder em Testes Unitários|ERR-008 · NullPointerException no SecurityContextHolder em Testes Unitários]]
-- [[_COMMUNITY_ERR-002 · PROFESSIONAL conseguia criar pacientes (falha de autorização)|ERR-002 · PROFESSIONAL conseguia criar pacientes (falha de autorização)]]
-- [[_COMMUNITY_1. Direção Estética|1. Direção Estética]]
-- [[_COMMUNITY_✅ Execução de Validação Real (04072026)|✅ Execução de Validação Real (04/07/2026)]]
-- [[_COMMUNITY_Preferências do Usuário|Preferências do Usuário]]
-- [[_COMMUNITY_16. Estados de UI|16. Estados de UI]]
-- [[_COMMUNITY_5. TanStack Query — Query Keys e Composables|5. TanStack Query — Query Keys e Composables]]
-- [[_COMMUNITY_8. Componentes Base (Design System Atoms)|8. Componentes Base (Design System Atoms)]]
-- [[_COMMUNITY_Rascunho de Análise Orientada a Objetos para o Projeto SAAP|Rascunho de Análise Orientada a Objetos para o Projeto SAAP]]
-- [[_COMMUNITY_✅ Cenários Testados|✅ Cenários Testados]]
-- [[_COMMUNITY_📌 Achados Originais (verificados no código-fonte antes da correção)|📌 Achados Originais (verificados no código-fonte antes da correção)]]
-- [[_COMMUNITY_11. Formulários — Validação com VeeValidate + Yup|11. Formulários — Validação com VeeValidate + Yup]]
-- [[_COMMUNITY_2. Stack Tecnológica|2. Stack Tecnológica]]
-- [[_COMMUNITY_4. Camada de API (Axios)|4. Camada de API (Axios)]]
-- [[_COMMUNITY_9. Layout Principal|9. Layout Principal]]
-- [[_COMMUNITY_Modelagem Estrutural (Classes Conceituais)|Modelagem Estrutural (Classes Conceituais)]]
-- [[_COMMUNITY_Modelagem Funcional (Casos de Uso)|Modelagem Funcional (Casos de Uso)]]
-- [[_COMMUNITY_openspec-archive-change|openspec-archive-change]]
-- [[_COMMUNITY_openspec-continue-change|openspec-continue-change]]
-- [[_COMMUNITY_openspec-sync-specs|openspec-sync-specs]]
-- [[_COMMUNITY_SAAP PRD|SAAP PRD]]
-- [[_COMMUNITY_Synchronous Waitlist Trigger|Synchronous Waitlist Trigger]]
-- [[_COMMUNITY_Background Scheduler (@Scheduled)|Background Scheduler (@Scheduled)]]
-- [[_COMMUNITY_User Auth Capability|User Auth Capability]]
-- [[_COMMUNITY_JwtAuthenticationFilter|JwtAuthenticationFilter]]
-- [[_COMMUNITY_TokenService|TokenService]]
-- [[_COMMUNITY_AppointmentStatus|AppointmentStatus]]
-- [[_COMMUNITY_Double Booking Prevention Strategy|Double Booking Prevention Strategy]]
-- [[_COMMUNITY_Scheduling Engine Capability|Scheduling Engine Capability]]
-- [[_COMMUNITY_State Machine Encapsulation in Domain|State Machine Encapsulation in Domain]]
-- [[_COMMUNITY_AuditLog Entity|AuditLog Entity]]
-- [[_COMMUNITY_CallNextPatientUseCase|CallNextPatientUseCase]]
-- [[_COMMUNITY_CheckInAppointmentUseCase|CheckInAppointmentUseCase]]
-- [[_COMMUNITY_Priority Attendance Capability|Priority Attendance Capability]]
-- [[_COMMUNITY_ConfirmationFollowUpScheduler|ConfirmationFollowUpScheduler]]
-- [[_COMMUNITY_PENDING_RESPONSE State|PENDING_RESPONSE State]]
-- [[_COMMUNITY_TriggerFollowUpUseCase|TriggerFollowUpUseCase]]
-- [[_COMMUNITY_Lazy Medical Record Creation|Lazy Medical Record Creation]]
-- [[_COMMUNITY_Medical Record Capability|Medical Record Capability]]
-- [[_COMMUNITY_MedicalRecord|MedicalRecord]]
-- [[_COMMUNITY_MedicalRecordEntry|MedicalRecordEntry]]
-- [[_COMMUNITY_Stateless Immutability Strategy|Stateless Immutability Strategy]]
-- [[_COMMUNITY_Medical Record Domain Tasks|Medical Record Domain Tasks]]
-- [[_COMMUNITY_Máquina de Estados e Transições do Agendamento|Máquina de Estados e Transições do Agendamento]]
-- [[_COMMUNITY_Aceitação e Recusa via Callback Público|Aceitação e Recusa via Callback Público]]
-- [[_COMMUNITY_User|User]]
-- [[_COMMUNITY_JwtAuthenticationFilter|JwtAuthenticationFilter]]
-- [[_COMMUNITY_ActionToken|ActionToken]]
-- [[_COMMUNITY_CompleteAppointmentUseCaseTest.java|CompleteAppointmentUseCaseTest.java]]
-- [[_COMMUNITY_ProfessionalRole.java|ProfessionalRole.java]]
-- [[_COMMUNITY_UserDetailsServiceImpl|UserDetailsServiceImpl]]
-- [[_COMMUNITY_PRD - Fluxo da Recepcionista|PRD - Fluxo da Recepcionista]]
-- [[_COMMUNITY_CallNextPatientUseCase.java|CallNextPatientUseCase.java]]
+- [[_COMMUNITY_Security Filters & Redis|Security Filters & Redis]]
+- [[_COMMUNITY_Domain Exceptions & Roles|Domain Exceptions & Roles]]
+- [[_COMMUNITY_Global Exception Handling|Global Exception Handling]]
+- [[_COMMUNITY_Medical Record Entry Use Cases|Medical Record Entry Use Cases]]
+- [[_COMMUNITY_Spring Boot App Bootstrap|Spring Boot App Bootstrap]]
+- [[_COMMUNITY_Medical Record Creation Flow|Medical Record Creation Flow]]
+- [[_COMMUNITY_Service Management Use Cases|Service Management Use Cases]]
+- [[_COMMUNITY_Waitlist & Repository Adapters|Waitlist & Repository Adapters]]
+- [[_COMMUNITY_Follow-up Deadline Scheduler|Follow-up Deadline Scheduler]]
+- [[_COMMUNITY_Medical Record Persistence Entities|Medical Record Persistence Entities]]
+- [[_COMMUNITY_User Management Use Cases|User Management Use Cases]]
+- [[_COMMUNITY_Professional Controller & RBAC|Professional Controller & RBAC]]
+- [[_COMMUNITY_Patient Management Use Cases|Patient Management Use Cases]]
+- [[_COMMUNITY_PRD-SAAP Product Requirements|PRD-SAAP Product Requirements]]
+- [[_COMMUNITY_User Controller & Roles|User Controller & Roles]]
+- [[_COMMUNITY_Professional Persistence Entity|Professional Persistence Entity]]
+- [[_COMMUNITY_Patient Persistence Entity|Patient Persistence Entity]]
+- [[_COMMUNITY_CPF Custom Validation|CPF Custom Validation]]
+- [[_COMMUNITY_Patient Domain Model|Patient Domain Model]]
+- [[_COMMUNITY_Appointment Controller & Public Actions|Appointment Controller & Public Actions]]
+- [[_COMMUNITY_Service Controller Endpoints|Service Controller Endpoints]]
+- [[_COMMUNITY_Service Persistence Entity|Service Persistence Entity]]
+- [[_COMMUNITY_Cancel Appointment Use Case|Cancel Appointment Use Case]]
+- [[_COMMUNITY_Action Token Security Config|Action Token Security Config]]
+- [[_COMMUNITY_Appointment Repository Adapter|Appointment Repository Adapter]]
+- [[_COMMUNITY_Login DTO & Audit Log Access Tests|Login DTO & Audit Log Access Tests]]
+- [[_COMMUNITY_WhatsAppEmail Notification Architecture Decisions|WhatsApp/Email Notification Architecture Decisions]]
+- [[_COMMUNITY_Login Rate Limit Filter Tests|Login Rate Limit Filter Tests]]
+- [[_COMMUNITY_Core Entities Spec|Core Entities Spec]]
+- [[_COMMUNITY_Medical Record Spec Delta|Medical Record Spec Delta]]
+- [[_COMMUNITY_Cancel Appointment By Token|Cancel Appointment By Token]]
+- [[_COMMUNITY_Patient CreateDeactivate Use Cases|Patient Create/Deactivate Use Cases]]
+- [[_COMMUNITY_Professional Domain Model|Professional Domain Model]]
+- [[_COMMUNITY_Medical Record Entry Entity|Medical Record Entry Entity]]
+- [[_COMMUNITY_OpenSpec Onboard Skill Docs|OpenSpec Onboard Skill Docs]]
+- [[_COMMUNITY_OpenSpec Onboard Skill Docs|OpenSpec Onboard Skill Docs]]
+- [[_COMMUNITY_Spring Security Configuration|Spring Security Configuration]]
+- [[_COMMUNITY_OpenSpec Onboard Skill Docs|OpenSpec Onboard Skill Docs]]
+- [[_COMMUNITY_List Active Professionals Use Case|List Active Professionals Use Case]]
+- [[_COMMUNITY_OpenSpec Onboard Skill Docs|OpenSpec Onboard Skill Docs]]
+- [[_COMMUNITY_OpenSpec Onboard Skill Docs|OpenSpec Onboard Skill Docs]]
+- [[_COMMUNITY_OpenSpec Onboard Skill Docs|OpenSpec Onboard Skill Docs]]
+- [[_COMMUNITY_OpenSpec Onboard Skill Docs|OpenSpec Onboard Skill Docs]]
+- [[_COMMUNITY_Audit Log Controller|Audit Log Controller]]
+- [[_COMMUNITY_WhatsApp Webhook & Waitlist Offer Flow|WhatsApp Webhook & Waitlist Offer Flow]]
+- [[_COMMUNITY_Accept Waitlist Offer Use Case Tests|Accept Waitlist Offer Use Case Tests]]
+- [[_COMMUNITY_Confirm Appointment Use Case|Confirm Appointment Use Case]]
+- [[_COMMUNITY_Audit Log Domain Model|Audit Log Domain Model]]
+- [[_COMMUNITY_Medical Record Entity|Medical Record Entity]]
+- [[_COMMUNITY_Web Mapper Tests|Web Mapper Tests]]
+- [[_COMMUNITY_Appointment DTOs|Appointment DTOs]]
+- [[_COMMUNITY_Complete Appointment Use Case|Complete Appointment Use Case]]
+- [[_COMMUNITY_Start Appointment Use Case|Start Appointment Use Case]]
+- [[_COMMUNITY_Update User Use Case|Update User Use Case]]
+- [[_COMMUNITY_Waitlist Timeout Scheduler|Waitlist Timeout Scheduler]]
+- [[_COMMUNITY_Appointment Repository Port|Appointment Repository Port]]
+- [[_COMMUNITY_Auth Controller LoginLogout|Auth Controller Login/Logout]]
+- [[_COMMUNITY_Priority Attendance Spec|Priority Attendance Spec]]
+- [[_COMMUNITY_Deactivate Service Use Case|Deactivate Service Use Case]]
+- [[_COMMUNITY_Deactivate User Use Case|Deactivate User Use Case]]
+- [[_COMMUNITY_Community 60|Community 60]]
+- [[_COMMUNITY_Community 61|Community 61]]
+- [[_COMMUNITY_Community 62|Community 62]]
+- [[_COMMUNITY_Community 63|Community 63]]
+- [[_COMMUNITY_Community 64|Community 64]]
+- [[_COMMUNITY_Community 65|Community 65]]
+- [[_COMMUNITY_Community 66|Community 66]]
+- [[_COMMUNITY_Community 67|Community 67]]
+- [[_COMMUNITY_Community 68|Community 68]]
+- [[_COMMUNITY_Community 69|Community 69]]
+- [[_COMMUNITY_Community 70|Community 70]]
+- [[_COMMUNITY_Community 71|Community 71]]
+- [[_COMMUNITY_Community 72|Community 72]]
+- [[_COMMUNITY_Community 73|Community 73]]
+- [[_COMMUNITY_Community 74|Community 74]]
+- [[_COMMUNITY_Community 75|Community 75]]
+- [[_COMMUNITY_Community 76|Community 76]]
+- [[_COMMUNITY_Community 77|Community 77]]
+- [[_COMMUNITY_Community 78|Community 78]]
+- [[_COMMUNITY_Community 79|Community 79]]
+- [[_COMMUNITY_Community 80|Community 80]]
+- [[_COMMUNITY_Community 81|Community 81]]
+- [[_COMMUNITY_Community 82|Community 82]]
+- [[_COMMUNITY_Community 83|Community 83]]
+- [[_COMMUNITY_Community 84|Community 84]]
+- [[_COMMUNITY_Community 85|Community 85]]
+- [[_COMMUNITY_Community 86|Community 86]]
+- [[_COMMUNITY_Community 87|Community 87]]
+- [[_COMMUNITY_Community 88|Community 88]]
+- [[_COMMUNITY_Community 89|Community 89]]
+- [[_COMMUNITY_Community 90|Community 90]]
+- [[_COMMUNITY_Community 91|Community 91]]
+- [[_COMMUNITY_Community 92|Community 92]]
+- [[_COMMUNITY_Community 93|Community 93]]
+- [[_COMMUNITY_Community 94|Community 94]]
+- [[_COMMUNITY_Community 95|Community 95]]
+- [[_COMMUNITY_Community 96|Community 96]]
+- [[_COMMUNITY_Community 97|Community 97]]
+- [[_COMMUNITY_Community 98|Community 98]]
+- [[_COMMUNITY_Community 99|Community 99]]
+- [[_COMMUNITY_Community 100|Community 100]]
+- [[_COMMUNITY_Community 101|Community 101]]
+- [[_COMMUNITY_Community 102|Community 102]]
+- [[_COMMUNITY_Community 103|Community 103]]
+- [[_COMMUNITY_Community 104|Community 104]]
+- [[_COMMUNITY_Community 105|Community 105]]
+- [[_COMMUNITY_Community 106|Community 106]]
+- [[_COMMUNITY_Community 107|Community 107]]
+- [[_COMMUNITY_Community 108|Community 108]]
+- [[_COMMUNITY_Community 109|Community 109]]
+- [[_COMMUNITY_Community 110|Community 110]]
+- [[_COMMUNITY_Community 111|Community 111]]
+- [[_COMMUNITY_Community 112|Community 112]]
+- [[_COMMUNITY_Community 113|Community 113]]
+- [[_COMMUNITY_Community 114|Community 114]]
+- [[_COMMUNITY_Community 115|Community 115]]
+- [[_COMMUNITY_Community 116|Community 116]]
+- [[_COMMUNITY_Community 117|Community 117]]
+- [[_COMMUNITY_Community 118|Community 118]]
+- [[_COMMUNITY_Community 119|Community 119]]
+- [[_COMMUNITY_Community 120|Community 120]]
+- [[_COMMUNITY_Community 121|Community 121]]
+- [[_COMMUNITY_Community 122|Community 122]]
+- [[_COMMUNITY_Community 123|Community 123]]
+- [[_COMMUNITY_Community 124|Community 124]]
+- [[_COMMUNITY_Community 125|Community 125]]
+- [[_COMMUNITY_Community 126|Community 126]]
+- [[_COMMUNITY_Community 127|Community 127]]
+- [[_COMMUNITY_Community 128|Community 128]]
+- [[_COMMUNITY_Community 129|Community 129]]
+- [[_COMMUNITY_Community 130|Community 130]]
+- [[_COMMUNITY_Community 131|Community 131]]
+- [[_COMMUNITY_Community 132|Community 132]]
+- [[_COMMUNITY_Community 133|Community 133]]
+- [[_COMMUNITY_Community 134|Community 134]]
+- [[_COMMUNITY_Community 135|Community 135]]
+- [[_COMMUNITY_Community 136|Community 136]]
+- [[_COMMUNITY_Community 137|Community 137]]
+- [[_COMMUNITY_Community 138|Community 138]]
+- [[_COMMUNITY_Community 139|Community 139]]
+- [[_COMMUNITY_Community 140|Community 140]]
+- [[_COMMUNITY_Community 141|Community 141]]
+- [[_COMMUNITY_Community 142|Community 142]]
+- [[_COMMUNITY_Community 143|Community 143]]
+- [[_COMMUNITY_Community 144|Community 144]]
+- [[_COMMUNITY_Community 145|Community 145]]
+- [[_COMMUNITY_Community 146|Community 146]]
+- [[_COMMUNITY_Community 147|Community 147]]
+- [[_COMMUNITY_Community 148|Community 148]]
+- [[_COMMUNITY_Community 149|Community 149]]
+- [[_COMMUNITY_Community 150|Community 150]]
+- [[_COMMUNITY_Community 151|Community 151]]
+- [[_COMMUNITY_Community 152|Community 152]]
+- [[_COMMUNITY_Community 153|Community 153]]
+- [[_COMMUNITY_Community 154|Community 154]]
+- [[_COMMUNITY_Community 155|Community 155]]
+- [[_COMMUNITY_Community 156|Community 156]]
+- [[_COMMUNITY_Community 157|Community 157]]
+- [[_COMMUNITY_Community 158|Community 158]]
+- [[_COMMUNITY_Community 159|Community 159]]
+- [[_COMMUNITY_Community 160|Community 160]]
+- [[_COMMUNITY_Community 161|Community 161]]
+- [[_COMMUNITY_Community 162|Community 162]]
+- [[_COMMUNITY_Community 163|Community 163]]
+- [[_COMMUNITY_Community 164|Community 164]]
+- [[_COMMUNITY_Community 165|Community 165]]
+- [[_COMMUNITY_Community 166|Community 166]]
+- [[_COMMUNITY_Community 167|Community 167]]
+- [[_COMMUNITY_Community 168|Community 168]]
+- [[_COMMUNITY_Community 169|Community 169]]
+- [[_COMMUNITY_Community 170|Community 170]]
+- [[_COMMUNITY_Community 171|Community 171]]
+- [[_COMMUNITY_Community 172|Community 172]]
+- [[_COMMUNITY_Community 173|Community 173]]
+- [[_COMMUNITY_Community 174|Community 174]]
+- [[_COMMUNITY_Community 175|Community 175]]
+- [[_COMMUNITY_Community 176|Community 176]]
+- [[_COMMUNITY_Community 177|Community 177]]
+- [[_COMMUNITY_Community 178|Community 178]]
+- [[_COMMUNITY_Community 179|Community 179]]
+- [[_COMMUNITY_Community 180|Community 180]]
+- [[_COMMUNITY_Community 181|Community 181]]
+- [[_COMMUNITY_Community 182|Community 182]]
+- [[_COMMUNITY_Community 183|Community 183]]
+- [[_COMMUNITY_Community 184|Community 184]]
+- [[_COMMUNITY_Community 185|Community 185]]
+- [[_COMMUNITY_Community 186|Community 186]]
+- [[_COMMUNITY_Community 187|Community 187]]
+- [[_COMMUNITY_Community 188|Community 188]]
+- [[_COMMUNITY_Community 189|Community 189]]
+- [[_COMMUNITY_Community 190|Community 190]]
+- [[_COMMUNITY_Community 191|Community 191]]
+- [[_COMMUNITY_Community 192|Community 192]]
+- [[_COMMUNITY_Community 193|Community 193]]
+- [[_COMMUNITY_Community 194|Community 194]]
+- [[_COMMUNITY_Community 195|Community 195]]
+- [[_COMMUNITY_Community 196|Community 196]]
+- [[_COMMUNITY_Community 197|Community 197]]
+- [[_COMMUNITY_Community 198|Community 198]]
+- [[_COMMUNITY_Community 199|Community 199]]
+- [[_COMMUNITY_Community 200|Community 200]]
+- [[_COMMUNITY_Community 201|Community 201]]
+- [[_COMMUNITY_Community 202|Community 202]]
+- [[_COMMUNITY_Community 203|Community 203]]
+- [[_COMMUNITY_Community 204|Community 204]]
+- [[_COMMUNITY_Community 205|Community 205]]
+- [[_COMMUNITY_Community 206|Community 206]]
+- [[_COMMUNITY_Community 207|Community 207]]
+- [[_COMMUNITY_Community 208|Community 208]]
+- [[_COMMUNITY_Community 209|Community 209]]
+- [[_COMMUNITY_Community 210|Community 210]]
+- [[_COMMUNITY_Community 211|Community 211]]
+- [[_COMMUNITY_Community 212|Community 212]]
+- [[_COMMUNITY_Community 213|Community 213]]
+- [[_COMMUNITY_Community 214|Community 214]]
+- [[_COMMUNITY_Community 215|Community 215]]
+- [[_COMMUNITY_Community 216|Community 216]]
+- [[_COMMUNITY_Community 217|Community 217]]
+- [[_COMMUNITY_Community 218|Community 218]]
+- [[_COMMUNITY_Community 219|Community 219]]
+- [[_COMMUNITY_Community 220|Community 220]]
+- [[_COMMUNITY_Community 221|Community 221]]
+- [[_COMMUNITY_Community 222|Community 222]]
+- [[_COMMUNITY_Community 223|Community 223]]
+- [[_COMMUNITY_Community 224|Community 224]]
+- [[_COMMUNITY_Community 225|Community 225]]
+- [[_COMMUNITY_Community 226|Community 226]]
+- [[_COMMUNITY_Community 227|Community 227]]
+- [[_COMMUNITY_Community 228|Community 228]]
+- [[_COMMUNITY_Community 229|Community 229]]
+- [[_COMMUNITY_Community 230|Community 230]]
+- [[_COMMUNITY_Community 231|Community 231]]
+- [[_COMMUNITY_Community 232|Community 232]]
+- [[_COMMUNITY_Community 233|Community 233]]
+- [[_COMMUNITY_Community 234|Community 234]]
+- [[_COMMUNITY_Community 235|Community 235]]
+- [[_COMMUNITY_Community 236|Community 236]]
+- [[_COMMUNITY_Community 237|Community 237]]
+- [[_COMMUNITY_Community 238|Community 238]]
+- [[_COMMUNITY_Community 239|Community 239]]
+- [[_COMMUNITY_Community 240|Community 240]]
+- [[_COMMUNITY_Community 241|Community 241]]
+- [[_COMMUNITY_Community 242|Community 242]]
+- [[_COMMUNITY_Community 243|Community 243]]
+- [[_COMMUNITY_Community 244|Community 244]]
+- [[_COMMUNITY_Community 245|Community 245]]
+- [[_COMMUNITY_Community 246|Community 246]]
+- [[_COMMUNITY_Community 247|Community 247]]
+- [[_COMMUNITY_Community 248|Community 248]]
+- [[_COMMUNITY_Community 249|Community 249]]
+- [[_COMMUNITY_Community 250|Community 250]]
+- [[_COMMUNITY_Community 251|Community 251]]
+- [[_COMMUNITY_Community 252|Community 252]]
+- [[_COMMUNITY_Community 253|Community 253]]
+- [[_COMMUNITY_Community 254|Community 254]]
+- [[_COMMUNITY_Community 255|Community 255]]
+- [[_COMMUNITY_Community 256|Community 256]]
+- [[_COMMUNITY_Community 257|Community 257]]
+- [[_COMMUNITY_Community 258|Community 258]]
+- [[_COMMUNITY_Community 259|Community 259]]
+- [[_COMMUNITY_Community 260|Community 260]]
+- [[_COMMUNITY_Community 261|Community 261]]
+- [[_COMMUNITY_Community 262|Community 262]]
+- [[_COMMUNITY_Community 263|Community 263]]
+- [[_COMMUNITY_Community 264|Community 264]]
+- [[_COMMUNITY_Community 265|Community 265]]
+- [[_COMMUNITY_Community 266|Community 266]]
+- [[_COMMUNITY_Community 267|Community 267]]
+- [[_COMMUNITY_Community 268|Community 268]]
+- [[_COMMUNITY_Community 269|Community 269]]
+- [[_COMMUNITY_Community 270|Community 270]]
+- [[_COMMUNITY_Community 271|Community 271]]
+- [[_COMMUNITY_Community 272|Community 272]]
+- [[_COMMUNITY_Community 273|Community 273]]
+- [[_COMMUNITY_Community 274|Community 274]]
+- [[_COMMUNITY_Community 275|Community 275]]
+- [[_COMMUNITY_Community 276|Community 276]]
+- [[_COMMUNITY_Community 277|Community 277]]
+- [[_COMMUNITY_Community 278|Community 278]]
+- [[_COMMUNITY_Community 279|Community 279]]
+- [[_COMMUNITY_Community 307|Community 307]]
+- [[_COMMUNITY_Community 308|Community 308]]
+- [[_COMMUNITY_Community 309|Community 309]]
+- [[_COMMUNITY_Community 310|Community 310]]
+- [[_COMMUNITY_Community 311|Community 311]]
+- [[_COMMUNITY_Community 312|Community 312]]
+- [[_COMMUNITY_Community 313|Community 313]]
+- [[_COMMUNITY_Community 314|Community 314]]
+- [[_COMMUNITY_Community 315|Community 315]]
+- [[_COMMUNITY_Community 316|Community 316]]
+- [[_COMMUNITY_Community 317|Community 317]]
+- [[_COMMUNITY_Community 318|Community 318]]
+- [[_COMMUNITY_Community 319|Community 319]]
+- [[_COMMUNITY_Community 341|Community 341]]
+- [[_COMMUNITY_Community 342|Community 342]]
+- [[_COMMUNITY_Community 343|Community 343]]
+- [[_COMMUNITY_Community 344|Community 344]]
+- [[_COMMUNITY_Community 345|Community 345]]
+- [[_COMMUNITY_Community 346|Community 346]]
+- [[_COMMUNITY_Community 347|Community 347]]
+- [[_COMMUNITY_Community 348|Community 348]]
+- [[_COMMUNITY_Community 349|Community 349]]
+- [[_COMMUNITY_Community 350|Community 350]]
+- [[_COMMUNITY_Community 351|Community 351]]
+- [[_COMMUNITY_Community 352|Community 352]]
+- [[_COMMUNITY_Community 353|Community 353]]
+- [[_COMMUNITY_Community 354|Community 354]]
+- [[_COMMUNITY_Community 355|Community 355]]
+- [[_COMMUNITY_Community 356|Community 356]]
+- [[_COMMUNITY_Community 357|Community 357]]
+- [[_COMMUNITY_Community 358|Community 358]]
+- [[_COMMUNITY_Community 359|Community 359]]
+- [[_COMMUNITY_Community 360|Community 360]]
+- [[_COMMUNITY_Community 361|Community 361]]
+- [[_COMMUNITY_Community 362|Community 362]]
+- [[_COMMUNITY_Community 363|Community 363]]
+- [[_COMMUNITY_Community 364|Community 364]]
+- [[_COMMUNITY_Community 365|Community 365]]
+- [[_COMMUNITY_Community 366|Community 366]]
+- [[_COMMUNITY_Community 367|Community 367]]
+- [[_COMMUNITY_Community 368|Community 368]]
+- [[_COMMUNITY_Community 369|Community 369]]
+- [[_COMMUNITY_Community 370|Community 370]]
+- [[_COMMUNITY_Community 371|Community 371]]
+- [[_COMMUNITY_Community 372|Community 372]]
+- [[_COMMUNITY_Community 373|Community 373]]
+- [[_COMMUNITY_Community 374|Community 374]]
+- [[_COMMUNITY_Community 375|Community 375]]
+- [[_COMMUNITY_Community 376|Community 376]]
+- [[_COMMUNITY_Community 377|Community 377]]
+- [[_COMMUNITY_Community 378|Community 378]]
+- [[_COMMUNITY_Community 379|Community 379]]
+- [[_COMMUNITY_Community 380|Community 380]]
+- [[_COMMUNITY_Community 381|Community 381]]
+- [[_COMMUNITY_Community 382|Community 382]]
+- [[_COMMUNITY_Community 383|Community 383]]
+- [[_COMMUNITY_Community 384|Community 384]]
+- [[_COMMUNITY_Community 385|Community 385]]
+- [[_COMMUNITY_Community 386|Community 386]]
+- [[_COMMUNITY_Community 387|Community 387]]
+- [[_COMMUNITY_Community 388|Community 388]]
+- [[_COMMUNITY_Community 389|Community 389]]
+- [[_COMMUNITY_Community 390|Community 390]]
+- [[_COMMUNITY_Community 391|Community 391]]
+- [[_COMMUNITY_Community 392|Community 392]]
+- [[_COMMUNITY_Community 393|Community 393]]
+- [[_COMMUNITY_Community 394|Community 394]]
+- [[_COMMUNITY_Community 395|Community 395]]
+- [[_COMMUNITY_Community 396|Community 396]]
+- [[_COMMUNITY_Community 397|Community 397]]
+- [[_COMMUNITY_Community 398|Community 398]]
+- [[_COMMUNITY_Community 399|Community 399]]
+- [[_COMMUNITY_Community 400|Community 400]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `Service` - 132 edges
-2. `Appointment` - 91 edges
-3. `AppointmentRepository` - 81 edges
-4. `UserRepository` - 72 edges
-5. `Professional` - 70 edges
-6. `User` - 66 edges
-7. `Patient` - 64 edges
-8. `ProfessionalRepository` - 62 edges
-9. `PageResult` - 57 edges
-10. `ServiceRepository` - 54 edges
+1. `Service` - 119 edges
+2. `AppointmentRepository` - 83 edges
+3. `UserRepository` - 72 edges
+4. `Professional` - 63 edges
+5. `Appointment` - 60 edges
+6. `Patient` - 59 edges
+7. `ProfessionalRepository` - 52 edges
+8. `User` - 51 edges
+9. `ServiceRepository` - 50 edges
+10. `PatientRepository` - 49 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `API Security Config` --conceptually_related_to--> `Autenticação de Usuário via JWT`  [INFERRED]
-  src/main/resources/application.yaml → openspec/specs/user-auth/spec.md
-- `AppointmentActionTokenService` --references--> `Service`  [EXTRACTED]
-  src/main/java/br/com/belloinfo/saap_mvp/application/service/AppointmentActionTokenService.java → src/main/java/br/com/belloinfo/saap_mvp/domain/model/Service.java
-- `AppointmentActionTokenService` --references--> `SecurityProperties`  [EXTRACTED]
-  src/main/java/br/com/belloinfo/saap_mvp/application/service/AppointmentActionTokenService.java → src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/SecurityProperties.java
-- `AcceptWaitlistOfferUseCase` --references--> `AppointmentActionTokenService`  [EXTRACTED]
-  src/main/java/br/com/belloinfo/saap_mvp/application/usecase/AcceptWaitlistOfferUseCase.java → src/main/java/br/com/belloinfo/saap_mvp/application/service/AppointmentActionTokenService.java
-- `CancelAppointmentByTokenUseCase` --references--> `AppointmentActionTokenService`  [EXTRACTED]
-  src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CancelAppointmentByTokenUseCase.java → src/main/java/br/com/belloinfo/saap_mvp/application/service/AppointmentActionTokenService.java
+- `RF03 Completion Note` --semantically_similar_to--> `CLAUDE.md (project root)`  [INFERRED] [semantically similar]
+  openspec/archive/rf03-follow-up-confirmacoes/COMPLETION_NOTE.md → CLAUDE.md
+- `ERR-001: Flyway Migration Sequence Gap` --shares_data_with--> `CLAUDE.md (project root)`  [INFERRED]
+  docs/ERROS-E-SOLUCOES.md → CLAUDE.md
+- `LoginRateLimitFilter.getClientIp` --shares_data_with--> `CLAUDE.md (project root)`  [INFERRED]
+  plans/006-fix-login-rate-limit-x-forwarded-for.md → CLAUDE.md
+- `REST API Endpoint Catalog (/api/v1)` --shares_data_with--> `CLAUDE.md (project root)`  [INFERRED]
+  README.md → CLAUDE.md
+- `ERR-002: PROFESSIONAL Could Create Patients (Authz Bypass)` --semantically_similar_to--> `Professional Ownership Check Pattern (LGPD/RNF01)`  [INFERRED] [semantically similar]
+  docs/ERROS-E-SOLUCOES.md → plans/003-add-ownership-check-to-medical-record-read.md
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
+- **Post-audit Fix Plan Batch (Plans 002-006, baseline commit a5a9a5a)** — plans_002_gate_swagger_ui_by_profile, plans_003_add_ownership_check_to_medical_record_read, plans_004_fix_generic_exception_handler_leak, plans_005_add_pessimistic_lock_to_call_next_patient, plans_006_fix_login_rate_limit_x_forwarded_for [INFERRED 0.85]
+- **RF03 Follow-up Confirmations OpenSpec Change** — openspec_archive_rf03_follow_up_confirmacoes_proposal, openspec_archive_rf03_follow_up_confirmacoes_design, openspec_archive_rf03_follow_up_confirmacoes_tasks, openspec_archive_rf03_follow_up_confirmacoes_completion_note, openspec_archive_rf03_follow_up_confirmacoes_specs_confirmation_follow_up_spec, openspec_specs_appointment_follow_up_spec, openspec_specs_scheduling_engine_spec [EXTRACTED 1.00]
+- **Multi-channel (Email/WhatsApp) Notification Feature Documentation** — claude_md_saap_mvp, docs_twilio, docs_notification_testing [EXTRACTED 1.00]
+- **Redis vs in-memory token blacklist selected via @ConditionalOnProperty against live application.yaml config** — plans_010_fix_token_blacklist_service_tokenblacklistservice, plans_010_fix_token_blacklist_service_redistokenblacklistservice, plans_010_fix_token_blacklist_service_inmemorytokenblacklistservice, src_main_resources_application_redis_config [EXTRACTED 0.90]
+- **Lote 2 — Performance + Moderate Tech Debt plans executed as a dependent batch after Lote 1** — plans_readme, plans_009_move_action_tokens_to_post, plans_010_fix_token_blacklist_service, plans_011_paginate_audit_logs_list, plans_012_fix_core_mapper_medical_record_lazy_collection, plans_013_fix_exception_handler_string_matching, plans_014_refactor_auth_controller, plans_015_extract_get_authenticated_user, plans_016_archive_completed_openspec_tasks [EXTRACTED 0.85]
+- **Lote 4 — Direction/Feature plans sharing a common 'defined-but-unused' evidence-based gap pattern (waitlist join, real notifications, PATIENT role)** — plans_readme, plans_024_implement_waitlist_join_use_case, plans_025_implement_real_notification_channels, plans_026_implement_patient_user_role [EXTRACTED 0.85]
 - **Agendamento Triad** — docs_assets_img_diagrama_classes_conceituais_saap_agendamento, docs_assets_img_diagrama_classes_conceituais_saap_paciente, docs_assets_img_diagrama_classes_conceituais_saap_profissional, docs_assets_img_diagrama_classes_conceituais_saap_servico [EXTRACTED 1.00]
 - **Camadas da Arquitetura Limpa/Hexagonal** — docs_assets_img_schema_final_domain_entities, docs_assets_img_schema_final_use_cases, docs_assets_img_schema_final_adapters, docs_assets_img_schema_final_infrastructure [INFERRED 0.85]
 - **Entidades de domínio centrais do sistema** — docs_assets_img_schema_final_agendamento, docs_assets_img_schema_final_profissional, docs_assets_img_schema_final_paciente [EXTRACTED 1.00]
 
-## Communities (390 total, 98 thin omitted)
+## Communities (401 total, 98 thin omitted)
 
-### Community 0 - "Execute Java Setup"
-Cohesion: 0.08
-Nodes (27): CancelAppointmentUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID, CreateMedicalRecordEntryUseCaseTest, BeforeEach (+19 more)
+### Community 0 - "Security Filters & Redis"
+Cohesion: 0.05
+Nodes (46): Date, Object, OncePerRequestFilter, Order, RedisTemplate, Set, InMemoryTokenBlacklistService, ConditionalOnProperty (+38 more)
 
-### Community 1 - "Java Uuid Localdatetime"
-Cohesion: 0.12
-Nodes (23): AppointmentStatus, AppointmentEntity, AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, Long (+15 more)
+### Community 1 - "Domain Exceptions & Roles"
+Cohesion: 0.06
+Nodes (31): RuntimeException, String, ResourceNotFoundException, CancelAppointmentUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+23 more)
 
-### Community 2 - "String Java Blacklist"
-Cohesion: 0.07
-Nodes (36): AtomicInteger, AuthenticationConfiguration, CorsConfigurationSource, EnableMethodSecurity, EnableWebSecurity, HttpSecurity, MockitoSettings, OncePerRequestFilter (+28 more)
+### Community 2 - "Global Exception Handling"
+Cohesion: 0.06
+Nodes (48): AuthenticationException, DataIntegrityViolationException, EntityNotFoundException, ErrorResponse, Exception, ExceptionHandler, IllegalStateException, MedicalRecordConflictException (+40 more)
 
-### Community 3 - "Mappscorrectly Toresponse Java"
-Cohesion: 0.18
-Nodes (18): AppointmentController, GetMapping, HttpServletRequest, LocalDateTime, PostMapping, PreAuthorize, PutMapping, RequestMapping (+10 more)
+### Community 3 - "Medical Record Entry Use Cases"
+Cohesion: 0.06
+Nodes (49): BaseIntegrationTest, CreateMedicalRecordEntryRequestDTO, CreateMedicalRecordEntryUseCase, EntityManager, MedicalRecordEntryRepository, MedicalRecordEntryResponseDTO, MedicalRecordResponseDTO, ObjectMapper (+41 more)
 
-### Community 4 - "Java Uuid String"
-Cohesion: 0.11
-Nodes (19): AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor, PrePersist, PreUpdate (+11 more)
-
-### Community 5 - "Onapplicationevent Java Applicationenvironmentpreparedevent"
+### Community 4 - "Spring Boot App Bootstrap"
 Cohesion: 0.06
 Nodes (35): AfterAll, ApplicationListener, BeforeAll, EnableConfigurationProperties, EnableScheduling, SpringBootApplication, App, FollowUp (+27 more)
 
-### Community 6 - "Java Transactional Acceptwaitlistofferusecase"
-Cohesion: 0.27
-Nodes (5): BeforeEach, String, Test, Transactional, SendFollowUpNotificationsUseCaseIntegrationTest
+### Community 5 - "Medical Record Creation Flow"
+Cohesion: 0.08
+Nodes (32): AccessDeniedException, CreateMedicalRecordEntryUseCase, RequiredArgsConstructor, String, Transactional, UUID, Component, RequiredArgsConstructor (+24 more)
 
-### Community 7 - "Java String Uuid"
-Cohesion: 0.13
-Nodes (20): UserRole, DeleteMapping, GetMapping, HttpServletRequest, PostMapping, PreAuthorize, RequestMapping, RequiredArgsConstructor (+12 more)
+### Community 6 - "Service Management Use Cases"
+Cohesion: 0.10
+Nodes (19): CreateServiceUseCase, ListActiveServicesUseCase, UUID, UpdateServiceUseCase, AllArgsConstructor, BigDecimal, Builder, Getter (+11 more)
 
-### Community 8 - "Java String Component"
-Cohesion: 0.24
-Nodes (10): Set, Logger, Scheduled, String, TokenBlacklistService, BeforeEach, DisplayName, String (+2 more)
-
-### Community 9 - "Java Uuid Requiredargsconstructor"
-Cohesion: 0.18
-Nodes (17): WaitlistStatus, AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor, PrePersist (+9 more)
-
-### Community 10 - "Cancelappointmentbytokenusecase Java String"
-Cohesion: 0.16
-Nodes (15): Appointment, AllArgsConstructor, Builder, Getter, LocalDateTime, Long, NoArgsConstructor, Setter (+7 more)
-
-### Community 11 - "Java String Servicecontroller"
-Cohesion: 0.12
-Nodes (23): Integer, DeleteMapping, GetMapping, HttpServletRequest, PostMapping, PreAuthorize, PutMapping, RequestMapping (+15 more)
-
-### Community 12 - "Java String Patientcontroller"
-Cohesion: 0.12
-Nodes (21): DeleteMapping, GetMapping, HttpServletRequest, PreAuthorize, PutMapping, RequestMapping, RequiredArgsConstructor, ResponseEntity (+13 more)
-
-### Community 13 - "Java String Uuid"
-Cohesion: 0.09
-Nodes (29): AuditService, RequiredArgsConstructor, String, Transactional, UUID, ProfessionalRole, PostMapping, DeleteMapping (+21 more)
-
-### Community 14 - "Java Uuid Auditlog"
-Cohesion: 0.12
-Nodes (18): CheckInAppointmentUseCase, RequiredArgsConstructor, String, Transactional, UUID, AuditLog, AllArgsConstructor, Builder (+10 more)
-
-### Community 15 - "String Updatemedicalrecordentryrequestdto Java"
-Cohesion: 0.18
-Nodes (13): String, UpdateMedicalRecordEntryRequestDTO, String, BeforeEach, DisplayName, EntityManager, MockMvc, ObjectMapper (+5 more)
-
-### Community 16 - "Professionalentity Java String"
-Cohesion: 0.11
-Nodes (21): Lock, AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor, PrePersist (+13 more)
-
-### Community 17 - "Java Cpfvalidator Constraintvalidatorcontext"
+### Community 7 - "Waitlist & Repository Adapters"
 Cohesion: 0.14
-Nodes (14): Constraint, ConstraintValidator, Documented, Retention, CPF, CpfValidator, ConstraintValidatorContext, Override (+6 more)
+Nodes (22): Component, JpaPatientRepository, JpaProfessionalRepository, JpaServiceRepository, List, LocalDateTime, Optional, Override (+14 more)
 
-### Community 18 - "Errorresponse Java Globalexceptionhandler"
-Cohesion: 0.15
-Nodes (18): AuthenticationException, DataIntegrityViolationException, EntityNotFoundException, Exception, ExceptionHandler, JsonInclude, MethodArgumentNotValidException, RestControllerAdvice (+10 more)
-
-### Community 19 - "Serviceentity Java String"
+### Community 8 - "Follow-up Deadline Scheduler"
 Cohesion: 0.10
-Nodes (21): JpaRepository, AllArgsConstructor, BigDecimal, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor (+13 more)
+Nodes (18): Component, Logger, RequiredArgsConstructor, Transactional, ProcessMissedDeadlinesUseCase, ClinicSettings, Component, ConfigurationProperties (+10 more)
 
-### Community 20 - "Java Uuid Confirmappointmentusecase"
-Cohesion: 0.31
-Nodes (8): AppointmentRepositoryAdapter, Component, List, LocalDateTime, Optional, Override, RequiredArgsConstructor, UUID
+### Community 9 - "Medical Record Persistence Entities"
+Cohesion: 0.16
+Nodes (20): AuditLogEntity, Mapping, MedicalRecordEntity, MedicalRecordEntry, MedicalRecordEntryEntity, PatientEntity, ProfessionalEntity, ServiceEntity (+12 more)
 
-### Community 21 - "Test Beforeeach Transactional"
-Cohesion: 0.17
-Nodes (9): String, BeforeEach, Test, Transactional, PriorityAttendanceIntegrationTest, AppointmentRepositoryIntegrationTest, BeforeEach, Test (+1 more)
-
-### Community 22 - "Java Uuid Getmedicalrecordbypatientusecase"
-Cohesion: 0.06
-Nodes (46): GetMedicalRecordByPatientUseCase, RequiredArgsConstructor, Transactional, UUID, AllArgsConstructor, Builder, Getter, List (+38 more)
-
-### Community 23 - "Waitlistentryentity Java Localdatetime"
+### Community 10 - "User Management Use Cases"
 Cohesion: 0.11
-Nodes (20): AllArgsConstructor, Builder, Entity, Getter, LocalDate, LocalDateTime, NoArgsConstructor, PrePersist (+12 more)
+Nodes (15): CreateUserUseCase, PasswordEncoder, ListActiveUsersUseCase, List, Optional, PageResult, String, User (+7 more)
 
-### Community 24 - "Java Createserviceusecase Execute"
-Cohesion: 0.09
-Nodes (21): CreateServiceUseCase, DeactivateServiceUseCase, UUID, ListActiveServicesUseCase, UUID, UpdateServiceUseCase, AllArgsConstructor, BigDecimal (+13 more)
-
-### Community 25 - "Professional Java String"
+### Community 11 - "Professional Controller & RBAC"
 Cohesion: 0.13
-Nodes (13): AllArgsConstructor, Builder, Getter, LocalDateTime, NoArgsConstructor, Setter, String, UUID (+5 more)
+Nodes (22): ProfessionalRole, DeleteMapping, GetMapping, HttpServletRequest, PostMapping, PreAuthorize, PutMapping, RequestMapping (+14 more)
 
-### Community 26 - "Medicalrecordentryentity Java Uuid"
-Cohesion: 0.12
-Nodes (17): AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, Long, NoArgsConstructor, PrePersist (+9 more)
+### Community 12 - "Patient Management Use Cases"
+Cohesion: 0.13
+Nodes (23): CreatePatientUseCase, DeactivatePatientUseCase, DeleteMapping, FindPatientByIdUseCase, ListActivePatientsUseCase, PatientRequestDTO, PatientResponseDTO, AuditService (+15 more)
 
-### Community 27 - "Loginrequestdto Java Securityintegrationtest"
-Cohesion: 0.10
-Nodes (23): AuditLogRepositoryAdapter, Component, List, Optional, Override, RequiredArgsConstructor, UUID, AuditLogEntity (+15 more)
-
-### Community 28 - "Java Execute Transactional"
-Cohesion: 0.16
-Nodes (13): AccessDeniedException, CreateMedicalRecordEntryUseCase, RequiredArgsConstructor, String, Transactional, UUID, RequiredArgsConstructor, String (+5 more)
-
-### Community 29 - "Dofilter Loginratelimitfiltertest Passesthrough"
-Cohesion: 0.16
-Nodes (10): String, LoginRequestDTO, BeforeEach, MockMvc, ObjectMapper, PasswordEncoder, Test, Transactional (+2 more)
-
-### Community 30 - "Securityproperties Getexpiration Getsecret"
-Cohesion: 0.17
-Nodes (10): IllegalStateException, PostConstruct, Component, ConfigurationProperties, Logger, Security, SecurityProperties, AppointmentActionTokenServiceTest (+2 more)
-
-### Community 31 - "Execute Updateprofessionalusecase Java"
-Cohesion: 0.31
-Nodes (7): BeforeEach, DisplayName, ExtendWith, String, Test, UUID, UpdateProfessionalUseCaseTest
-
-### Community 32 - "User Java String"
+### Community 13 - "PRD-SAAP Product Requirements"
 Cohesion: 0.07
 Nodes (28): 1. Controle do Documento, 2.1. Contexto e Justificativa, 2.2. Objetivo do Produto, 2.3. Stack Tecnológico Alvo, 2. Visão Geral do Produto, 3. Personas e Papéis de Acesso (RBAC), 4. Requisitos Funcionais (RF) e Regras de Negócio, 5. Requisitos Não Funcionais (RNF) (+20 more)
 
-### Community 33 - "Waitlistentry Java Localdatetime"
-Cohesion: 0.20
-Nodes (13): AllArgsConstructor, Builder, Getter, LocalDateTime, NoArgsConstructor, Setter, UUID, WaitlistEntry (+5 more)
+### Community 14 - "User Controller & Roles"
+Cohesion: 0.13
+Nodes (21): UserRole, DeleteMapping, GetMapping, HttpServletRequest, PostMapping, PreAuthorize, PutMapping, RequestMapping (+13 more)
 
-### Community 34 - "Java Deactivateuserusecase Execute"
-Cohesion: 0.19
-Nodes (8): CreateUserUseCase, PasswordEncoder, ListActiveUsersUseCase, List, Optional, String, UUID, UserRepository
+### Community 15 - "Professional Persistence Entity"
+Cohesion: 0.11
+Nodes (21): Lock, AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor, PrePersist (+13 more)
 
-### Community 35 - "Java Paginationsupport Listauditlogsusecase"
-Cohesion: 0.22
-Nodes (6): ListActiveProfessionalsUseCase, BeforeEach, DisplayName, ExtendWith, Test, ListActiveProfessionalsUseCaseTest
+### Community 16 - "Patient Persistence Entity"
+Cohesion: 0.11
+Nodes (20): AllArgsConstructor, Builder, Entity, Getter, LocalDate, LocalDateTime, NoArgsConstructor, PrePersist (+12 more)
 
-### Community 36 - "Java Auditlogcontroller List"
-Cohesion: 0.16
-Nodes (16): AuditLogController, GetMapping, PreAuthorize, RequestMapping, RequiredArgsConstructor, ResponseEntity, RestController, AuditLogResponseDTO (+8 more)
+### Community 17 - "CPF Custom Validation"
+Cohesion: 0.14
+Nodes (14): Constraint, ConstraintValidator, Documented, Retention, CPF, CpfValidator, ConstraintValidatorContext, Override (+6 more)
 
-### Community 37 - "Execute Acceptwaitlistofferusecasetest Throwsexception"
-Cohesion: 0.28
-Nodes (9): DecodedToken, AcceptWaitlistOfferUseCaseTest, BeforeEach, DisplayName, ExtendWith, LocalDateTime, String, Test (+1 more)
-
-### Community 38 - "Createpatientusecase Java Updatepatientusecase"
-Cohesion: 0.16
-Nodes (9): CreatePatientUseCase, DeactivatePatientUseCase, UUID, UUID, UpdatePatientUseCase, Optional, String, UUID (+1 more)
-
-### Community 39 - "Saapproperties Getcron Setcron"
-Cohesion: 0.09
-Nodes (22): ADDED Requirements, medical-record Delta Specification, Requirement: Acesso Restrito a Profissionais de Saúde, Requirement: Auditoria de Acesso e Escrita de Prontuário, Requirement: Consulta de Prontuário por Paciente, Requirement: Entrada de Evolução 1:1 com Agendamento, Requirement: Janela de Edição Atrelada ao Estado do Agendamento, Requirement: Prontuário Único por Paciente (+14 more)
-
-### Community 40 - "Medicalrecordentity Java Uuid"
-Cohesion: 0.15
-Nodes (15): AllArgsConstructor, Builder, Entity, Getter, List, LocalDateTime, NoArgsConstructor, PrePersist (+7 more)
-
-### Community 41 - "Execute Startappointmentusecase Java"
-Cohesion: 0.21
-Nodes (10): RequiredArgsConstructor, Transactional, UUID, StartAppointmentUseCase, BeforeEach, DisplayName, ExtendWith, Test (+2 more)
-
-### Community 42 - "Medicalrecordentry Java Uuid"
-Cohesion: 0.17
-Nodes (13): AllArgsConstructor, Builder, Getter, LocalDateTime, Long, NoArgsConstructor, Setter, String (+5 more)
-
-### Community 43 - "Createprofessionalusecase Java Execute"
-Cohesion: 0.18
-Nodes (6): IllegalArgumentException, BeforeEach, ExtendWith, MockMvc, Test, ServiceControllerTest
-
-### Community 44 - "Java Uuid Patient"
+### Community 18 - "Patient Domain Model"
 Cohesion: 0.13
 Nodes (17): AllArgsConstructor, Builder, Getter, LocalDate, LocalDateTime, NoArgsConstructor, Setter, String (+9 more)
 
-### Community 45 - "Tokenservice Java Tokenservicetest"
+### Community 19 - "Appointment Controller & Public Actions"
+Cohesion: 0.11
+Nodes (21): AppointmentController, AcceptWaitlistOfferUseCase, AuditService, CancelAppointmentByTokenUseCase, CancelAppointmentUseCase, CompleteAppointmentUseCase, ConfirmAppointmentByTokenUseCase, ConfirmAppointmentUseCase (+13 more)
+
+### Community 20 - "Service Controller Endpoints"
+Cohesion: 0.15
+Nodes (19): DeleteMapping, GetMapping, HttpServletRequest, PostMapping, PreAuthorize, PutMapping, RequestMapping, RequiredArgsConstructor (+11 more)
+
+### Community 21 - "Service Persistence Entity"
+Cohesion: 0.10
+Nodes (21): JpaRepository, AllArgsConstructor, BigDecimal, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor (+13 more)
+
+### Community 22 - "Cancel Appointment Use Case"
+Cohesion: 0.12
+Nodes (19): CancelAppointmentUseCase, RequiredArgsConstructor, Transactional, UUID, ConfirmAppointmentByTokenUseCase, Component, RequiredArgsConstructor, String (+11 more)
+
+### Community 23 - "Action Token Security Config"
+Cohesion: 0.15
+Nodes (11): ConfigurationProperties, Long, PostConstruct, ActionToken, Component, Logger, String, Login (+3 more)
+
+### Community 24 - "Appointment Repository Adapter"
+Cohesion: 0.22
+Nodes (14): AppointmentRepositoryAdapter, Appointment, AppointmentStatus, Component, JpaPatientRepository, JpaProfessionalRepository, JpaServiceRepository, List (+6 more)
+
+### Community 25 - "Login DTO & Audit Log Access Tests"
+Cohesion: 0.15
+Nodes (11): String, LoginRequestDTO, String, BeforeEach, MockMvc, ObjectMapper, PasswordEncoder, Test (+3 more)
+
+### Community 26 - "WhatsApp/Email Notification Architecture Decisions"
+Cohesion: 0.12
+Nodes (22): CLAUDE.md (project root), Magic-link Action Token GET Revert Fix, Dual JWT Secret Design (JWT_SECRET vs ACTION_TOKEN_SECRET), NotificationOrchestrator, NotificationServiceImpl, SMS Channel Removed (SmsNotificationService), Waitlist Status Lifecycle, WhatsAppNotificationService (+14 more)
+
+### Community 27 - "Login Rate Limit Filter Tests"
+Cohesion: 0.21
+Nodes (11): MockitoSettings, BeforeEach, DisplayName, ExtendWith, FilterChain, HttpServletRequest, HttpServletResponse, String (+3 more)
+
+### Community 28 - "Core Entities Spec"
 Cohesion: 0.09
 Nodes (22): Core Entities Specification, Requirement: Cadastro de Paciente (Patient), Requirement: Cadastro de Profissional (Professional), Requirement: Cadastro de Serviço (Service), Requirement: Cadastro de Usuário (User), Requirement: Exclusão Lógica (Soft Delete) de Profissionais e Serviços, Requirement: Interface REST API das Entidades Core, Requirement: Tratamento de Erros da API (+14 more)
 
-### Community 46 - "Servicecontrollertest Illegalargumentexception Java"
+### Community 29 - "Medical Record Spec Delta"
+Cohesion: 0.09
+Nodes (21): ADDED Requirements, medical-record Delta Specification, Requirement: Acesso Restrito a Profissionais de Saúde, Requirement: Auditoria de Acesso e Escrita de Prontuário, Requirement: Consulta de Prontuário por Paciente, Requirement: Entrada de Evolução 1:1 com Agendamento, Requirement: Janela de Edição Atrelada ao Estado do Agendamento, Requirement: Prontuário Único por Paciente (+13 more)
+
+### Community 30 - "Cancel Appointment By Token"
+Cohesion: 0.17
+Nodes (12): CancelAppointmentByTokenUseCase, Component, RequiredArgsConstructor, String, Transactional, CancelAppointmentByTokenUseCaseTest, BeforeEach, DisplayName (+4 more)
+
+### Community 31 - "Patient Create/Deactivate Use Cases"
+Cohesion: 0.15
+Nodes (9): CreatePatientUseCase, DeactivatePatientUseCase, UUID, UUID, UpdatePatientUseCase, Optional, String, UUID (+1 more)
+
+### Community 32 - "Professional Domain Model"
+Cohesion: 0.13
+Nodes (13): AllArgsConstructor, Builder, Getter, LocalDateTime, NoArgsConstructor, Setter, String, UUID (+5 more)
+
+### Community 33 - "Medical Record Entry Entity"
+Cohesion: 0.12
+Nodes (17): AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, Long, NoArgsConstructor, PrePersist (+9 more)
+
+### Community 34 - "OpenSpec Onboard Skill Docs"
 Cohesion: 0.10
 Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
 
-### Community 47 - "Appointmentactiontokenservice Java Appointmentactiontokenservicetest"
-Cohesion: 0.33
-Nodes (6): AcceptWaitlistOfferUseCase, Component, Logger, RequiredArgsConstructor, String, Transactional
-
-### Community 48 - "Createuserusecase Execute Java"
-Cohesion: 0.35
-Nodes (6): CreateUserUseCaseTest, BeforeEach, DisplayName, ExtendWith, PasswordEncoder, Test
-
-### Community 49 - "Execute Deactivatepatientusecase Java"
-Cohesion: 0.35
-Nodes (6): DeactivatePatientUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
-
-### Community 50 - "Findprofessionalbyidusecase Execute Java"
-Cohesion: 0.21
-Nodes (9): FindProfessionalByIdUseCase, Optional, UUID, FindProfessionalByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
-
-### Community 51 - "Finduserbyidusecase Execute Java"
-Cohesion: 0.21
-Nodes (9): FindUserByIdUseCase, Optional, UUID, FindUserByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
-
-### Community 52 - "Execute Listappointmentsusecase Java"
-Cohesion: 0.22
-Nodes (10): LocalDateTime, RequiredArgsConstructor, Transactional, UUID, ListAppointmentsUseCase, BeforeEach, DisplayName, ExtendWith (+2 more)
-
-### Community 53 - "Professionalrepositoryadapter Java Component"
-Cohesion: 0.27
-Nodes (8): Component, List, Optional, Override, RequiredArgsConstructor, String, UUID, ProfessionalRepositoryAdapter
-
-### Community 54 - "Authcontroller Java Loginresponsedto"
-Cohesion: 0.22
-Nodes (11): AuthController, AuthenticationManager, HttpServletRequest, PostMapping, RequestMapping, ResponseEntity, RestController, Void (+3 more)
-
-### Community 55 - "Execute Declinewaitlistofferusecasetest Throwsexception"
-Cohesion: 0.24
-Nodes (8): DeclineWaitlistOfferUseCaseTest, BeforeEach, DisplayName, ExtendWith, LocalDateTime, String, Test, UUID
-
-### Community 56 - "Java Localdatetime Bookappointmentusecase"
-Cohesion: 0.43
-Nodes (5): BookAppointmentUseCase, LocalDateTime, RequiredArgsConstructor, Transactional, UUID
-
-### Community 57 - "Callnextpatientusecase Java Execute"
-Cohesion: 0.33
-Nodes (8): PaymentMethod, PriorityLevel, BookAppointmentRequestDTO, LocalDateTime, UUID, CheckInRequestDTO, String, UUID
-
-### Community 58 - "Save Coremapper Java"
-Cohesion: 0.39
-Nodes (3): CoreMapper, Mapper, UUID
-
-### Community 59 - "Execute Cancelappointmentbytokenusecasetest Throwsexception"
-Cohesion: 0.27
-Nodes (7): CancelAppointmentByTokenUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test, UUID
-
-### Community 60 - "Execute Confirmappointmentbytokenusecasetest Throwsexception"
-Cohesion: 0.27
-Nodes (7): ConfirmAppointmentByTokenUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test, UUID
-
-### Community 61 - "Execute Updatemedicalrecordentryusecasetest Java"
-Cohesion: 0.29
-Nodes (8): BeforeEach, DisplayName, EnumSource, ExtendWith, ParameterizedTest, Test, UUID, UpdateMedicalRecordEntryUseCaseTest
-
-### Community 62 - "Auditintegrationtest Java Setup"
+### Community 35 - "OpenSpec Onboard Skill Docs"
 Cohesion: 0.10
 Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
 
-### Community 63 - "Execute Listactivepatientsusecase Java"
-Cohesion: 0.24
-Nodes (8): RequiredArgsConstructor, Transactional, ListActivePatientsUseCase, BeforeEach, DisplayName, ExtendWith, Test, ListActivePatientsUseCaseTest
+### Community 36 - "Spring Security Configuration"
+Cohesion: 0.19
+Nodes (14): AuthenticationConfiguration, Bean, CorsConfigurationSource, EnableMethodSecurity, EnableWebSecurity, HttpSecurity, JwtAuthenticationFilter, PasswordEncoder (+6 more)
 
-### Community 64 - "Transitionto Appointmentdomaintest Shouldallowcancellationfrompendingandconfirmedandarrived"
-Cohesion: 0.20
-Nodes (6): CancelAppointmentUseCase, RequiredArgsConstructor, Transactional, UUID, AppointmentDomainTest, Test
+### Community 37 - "OpenSpec Onboard Skill Docs"
+Cohesion: 0.10
+Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
 
-### Community 65 - "Userrepositoryadapter Java Component"
+### Community 38 - "List Active Professionals Use Case"
 Cohesion: 0.16
-Nodes (12): Component, List, Optional, Override, RequiredArgsConstructor, String, UUID, UserRepositoryAdapter (+4 more)
+Nodes (8): ListActiveProfessionalsUseCase, List, PageResult, BeforeEach, DisplayName, ExtendWith, Test, ListActiveProfessionalsUseCaseTest
 
-### Community 66 - "Waitlistentryrepositoryadapter Java Component"
+### Community 39 - "OpenSpec Onboard Skill Docs"
 Cohesion: 0.10
 Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
 
-### Community 67 - "Patientcontrollertest Java Beforeeach"
-Cohesion: 0.25
-Nodes (5): BeforeEach, ExtendWith, MockMvc, Test, PatientControllerTest
+### Community 40 - "OpenSpec Onboard Skill Docs"
+Cohesion: 0.10
+Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
 
-### Community 68 - "Professionalcontrollertest Java Beforeeach"
-Cohesion: 0.25
-Nodes (5): BeforeEach, ExtendWith, MockMvc, Test, ProfessionalControllerTest
+### Community 41 - "OpenSpec Onboard Skill Docs"
+Cohesion: 0.10
+Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
 
-### Community 69 - "Usercontrollertest Java Beforeeach"
+### Community 42 - "OpenSpec Onboard Skill Docs"
+Cohesion: 0.10
+Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
+
+### Community 43 - "Audit Log Controller"
+Cohesion: 0.17
+Nodes (14): AuditLogController, GetMapping, PreAuthorize, RequestMapping, RequiredArgsConstructor, ResponseEntity, RestController, AuditLogResponseDTO (+6 more)
+
+### Community 44 - "WhatsApp Webhook & Waitlist Offer Flow"
 Cohesion: 0.23
-Nodes (5): BeforeEach, ExtendWith, MockMvc, Test, UserControllerTest
+Nodes (13): AppointmentActionTokenService, AcceptWaitlistOfferUseCase, DeclineWaitlistOfferUseCase, HttpServletRequest, Map, PostMapping, RequestMapping, RequiredArgsConstructor (+5 more)
 
-### Community 70 - "Baseintegrationtest Java Saapmvpapplicationtests"
-Cohesion: 0.24
-Nodes (9): ActiveProfiles, DynamicPropertyRegistry, DynamicPropertySource, SpringBootTest, BaseIntegrationTest, PostgreSQLContainer, Testcontainers, Test (+1 more)
+### Community 45 - "Accept Waitlist Offer Use Case Tests"
+Cohesion: 0.28
+Nodes (9): DecodedToken, AcceptWaitlistOfferUseCaseTest, BeforeEach, DisplayName, ExtendWith, LocalDateTime, String, Test (+1 more)
 
-### Community 71 - "Agendamento Convenio Convenioservico"
-Cohesion: 0.26
-Nodes (13): Agendamento, Convenio, ConvenioServico, EntradaProntuario, FilaEspera, GradeHorario, Notificacao, Paciente (+5 more)
-
-### Community 72 - "Infraestrutura Entidade Banco"
-Cohesion: 0.18
-Nodes (13): Adaptadores de Interface, Agendamento (entidade de domínio), CreateAppointmentUseCase, Entidades de Domínio (Domain Entities), Infraestrutura (Frameworks & Drivers), JWT (autenticação de infraestrutura), MySQL (banco de dados), NextJS (framework de infraestrutura) (+5 more)
-
-### Community 74 - "Servicerepositoryadapter Java Component"
-Cohesion: 0.10
-Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
-
-### Community 75 - "Execute Confirmappointmentusecasetest Confirmssuccessfully"
+### Community 46 - "Confirm Appointment Use Case"
 Cohesion: 0.21
 Nodes (10): ConfirmAppointmentUseCase, RequiredArgsConstructor, Transactional, UUID, ConfirmAppointmentUseCaseTest, BeforeEach, DisplayName, ExtendWith (+2 more)
 
-### Community 76 - "Execute Createpatientusecasetest Java"
-Cohesion: 0.33
-Nodes (6): CreatePatientUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test
+### Community 47 - "Audit Log Domain Model"
+Cohesion: 0.16
+Nodes (13): AuditLog, AllArgsConstructor, Builder, Getter, LocalDateTime, NoArgsConstructor, Setter, String (+5 more)
 
-### Community 77 - "Appointmentcontrollertest Java Setup"
+### Community 48 - "Medical Record Entity"
 Cohesion: 0.15
-Nodes (9): CompleteAppointmentUseCase, RequiredArgsConstructor, Transactional, UUID, AppointmentControllerTest, BeforeEach, ExtendWith, MockMvc (+1 more)
+Nodes (15): AllArgsConstructor, Builder, Entity, Getter, List, LocalDateTime, NoArgsConstructor, PrePersist (+7 more)
 
-### Community 78 - "Findpatientbyidusecase Findpatientbyidusecasetest Execute"
-Cohesion: 0.21
-Nodes (9): FindPatientByIdUseCase, Optional, UUID, FindPatientByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
-
-### Community 79 - "Execute Deactivateserviceusecasetest Getvalue"
-Cohesion: 0.32
-Nodes (7): getValue(), DeactivateServiceUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
-
-### Community 80 - "Execute Completeappointmentusecasetest Throwsconflict"
-Cohesion: 0.10
-Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
-
-### Community 81 - "Execute Createprofessionalusecasetest Java"
-Cohesion: 0.19
-Nodes (10): CreateProfessionalUseCase, UUID, UpdateProfessionalUseCase, ProfessionalRepository, CreateProfessionalUseCaseTest, BeforeEach, DisplayName, ExtendWith (+2 more)
-
-### Community 82 - "Execute Createserviceusecasetest Java"
-Cohesion: 0.33
-Nodes (6): CreateServiceUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test
-
-### Community 83 - "Execute Deactivateprofessionalusecasetest Activeprofessional"
-Cohesion: 0.21
-Nodes (8): DeactivateProfessionalUseCase, UUID, DeactivateProfessionalUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
-
-### Community 84 - "Execute Deactivateuserusecasetest Java"
-Cohesion: 0.21
-Nodes (8): DeactivateUserUseCase, UUID, DeactivateUserUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
-
-### Community 85 - "Repositoryintegrationtest Java Test"
-Cohesion: 0.30
-Nodes (3): Test, Transactional, RepositoryIntegrationTest
-
-### Community 86 - "Appointmentpubliccontrollerintegrationtest Java Setup"
-Cohesion: 0.29
-Nodes (6): AppointmentPublicControllerIntegrationTest, BeforeEach, MockMvc, Test, Transactional, WebApplicationContext
-
-### Community 87 - "Waitlistpubliccontrollerintegrationtest Java Beforeeach"
-Cohesion: 0.29
-Nodes (7): BeforeEach, LocalDateTime, MockMvc, Test, Transactional, WebApplicationContext, WaitlistPublicControllerIntegrationTest
-
-### Community 88 - "Listactiveusersusecasetest Execute Java"
-Cohesion: 0.31
-Nodes (6): BeforeEach, DisplayName, ExtendWith, String, Test, ListActiveUsersUseCaseTest
-
-### Community 89 - "Processwaitlistslotofferusecase Java Component"
-Cohesion: 0.33
-Nodes (8): Component, LocalDateTime, Logger, RequiredArgsConstructor, String, Transactional, UUID, ProcessWaitlistSlotOfferUseCase
-
-### Community 90 - "Medicalrecordentryrepositoryadapter Java Component"
-Cohesion: 0.38
-Nodes (7): Component, EntityManager, Optional, Override, RequiredArgsConstructor, UUID, MedicalRecordEntryRepositoryAdapter
-
-### Community 91 - "Medicalrecordrepositoryadapter Java Component"
-Cohesion: 0.10
-Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
-
-### Community 92 - "Findappointmentbyidusecasetest Execute Java"
-Cohesion: 0.21
-Nodes (11): FindAppointmentByIdUseCase, Optional, RequiredArgsConstructor, Transactional, UUID, FindAppointmentByIdUseCaseTest, BeforeEach, DisplayName (+3 more)
-
-### Community 93 - "Findservicebyidusecasetest Execute Java"
-Cohesion: 0.21
-Nodes (9): FindServiceByIdUseCase, Optional, UUID, FindServiceByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
-
-### Community 94 - "Appointmentconcurrencyintegrationtest Aftereach Java"
-Cohesion: 0.36
-Nodes (4): AfterEach, AppointmentConcurrencyIntegrationTest, BeforeEach, Test
-
-### Community 95 - "Declinewaitlistofferusecase Java Execute"
-Cohesion: 0.26
-Nodes (8): AppointmentActionTokenService, String, DeclineWaitlistOfferUseCase, Component, Logger, RequiredArgsConstructor, String, Transactional
-
-### Community 96 - "Waitlisttimeoutscheduler Expire Java"
-Cohesion: 0.20
-Nodes (10): Component, Logger, RequiredArgsConstructor, Scheduled, Transactional, WaitlistTimeoutScheduler, BeforeEach, Test (+2 more)
-
-### Community 97 - "Listactiveprofessionalsusecasetest Execute Java"
-Cohesion: 0.10
-Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
-
-### Community 98 - "Listactiveservicesusecasetest Execute Java"
-Cohesion: 0.39
-Nodes (5): BeforeEach, DisplayName, ExtendWith, Test, ListActiveServicesUseCaseTest
-
-### Community 99 - "Confirmappointmentbytokenusecase Illegalstateexception Java"
-Cohesion: 0.43
-Nodes (5): ConfirmAppointmentByTokenUseCase, Component, RequiredArgsConstructor, String, Transactional
-
-### Community 100 - "Processmisseddeadlinesusecase Java Component"
-Cohesion: 0.06
-Nodes (30): String, NotificationService, Component, Logger, RequiredArgsConstructor, Transactional, ProcessMissedDeadlinesUseCase, Component (+22 more)
-
-### Community 101 - "Flywaymigrationsequencetest Java Migrationfilesshouldfollownamingconvention"
-Cohesion: 0.46
-Nodes (5): FlywayMigrationSequenceTest, DisplayName, Pattern, String, Test
-
-### Community 102 - "Openapiconfig Openapi Profile"
-Cohesion: 0.48
-Nodes (5): OpenAPI, Profile, Bean, Configuration, OpenApiConfig
-
-### Community 103 - "Webmvcconfig Pathmatchconfigurer Java"
-Cohesion: 0.43
-Nodes (5): PathMatchConfigurer, Configuration, Override, WebMvcConfig, WebMvcConfigurer
-
-### Community 104 - "Servletinitializer Springapplicationbuilder Springbootservletinitializer"
-Cohesion: 0.47
-Nodes (4): SpringApplicationBuilder, SpringBootServletInitializer, Override, ServletInitializer
-
-### Community 105 - "Cancelappointmentusecase Java Execute"
-Cohesion: 0.10
-Nodes (19): 📅 Agendamentos e Fila Presencial (`/api/v1/appointments`), ⚙️ Arquitetura do Projeto (Hexagonal / Clean), 🕵️ Auditoria (`/api/v1/audit-logs`), 🏃 Como Executar a Aplicação, 🧪 Como Executar os Testes, ⚙️ Configuração Local, 📖 Documentação da API (Swagger UI), 📦 Empacotamento (Build) (+11 more)
-
-### Community 106 - "Findservicebyidusecase Java Execute"
+### Community 49 - "Web Mapper Tests"
 Cohesion: 0.27
 Nodes (5): Mapping, BeforeEach, DisplayName, Test, WebMapperTest
 
-### Community 109 - "Deactivateserviceusecase Java Execute"
+### Community 50 - "Appointment DTOs"
+Cohesion: 0.35
+Nodes (9): AppointmentResponseDTO, BookAppointmentRequestDTO, CheckInRequestDTO, HttpServletRequest, PostMapping, PreAuthorize, PutMapping, ResponseEntity (+1 more)
+
+### Community 51 - "Complete Appointment Use Case"
+Cohesion: 0.22
+Nodes (10): CompleteAppointmentUseCase, RequiredArgsConstructor, Transactional, UUID, CompleteAppointmentUseCaseTest, BeforeEach, DisplayName, ExtendWith (+2 more)
+
+### Community 52 - "Start Appointment Use Case"
+Cohesion: 0.21
+Nodes (10): RequiredArgsConstructor, Transactional, UUID, StartAppointmentUseCase, BeforeEach, DisplayName, ExtendWith, Test (+2 more)
+
+### Community 53 - "Update User Use Case"
+Cohesion: 0.15
+Nodes (12): PasswordEncoder, UUID, UpdateUserUseCase, AllArgsConstructor, Builder, Getter, LocalDateTime, NoArgsConstructor (+4 more)
+
+### Community 54 - "Waitlist Timeout Scheduler"
+Cohesion: 0.18
+Nodes (10): Component, Logger, RequiredArgsConstructor, Scheduled, Transactional, WaitlistTimeoutScheduler, BeforeEach, Test (+2 more)
+
+### Community 55 - "Appointment Repository Port"
+Cohesion: 0.27
+Nodes (8): AppointmentRepository, Appointment, AppointmentStatus, List, LocalDateTime, Optional, PageResult, UUID
+
+### Community 56 - "Auth Controller Login/Logout"
+Cohesion: 0.23
+Nodes (14): LoginRequestDTO, LoginResponseDTO, AuthController, AuditService, AuthenticationManager, HttpServletRequest, PostMapping, RequestMapping (+6 more)
+
+### Community 57 - "Priority Attendance Spec"
 Cohesion: 0.12
 Nodes (16): priority-attendance Specification, Purpose, Requirement: Chamada do Próximo Paciente da Fila pelo Profissional, Requirement: Controle de Acesso Baseado em Papéis (RBAC) para Endpoints da Fila, Requirement: Cálculo do Score de Prioridade da Fila Presencial, Requirement: Trilha de Auditoria Imutável de Alteração de Prioridades, Requirement: Validação Documental de Prioridade Legal no Check-In, Requirements (+8 more)
 
-### Community 111 - "Plugin Package Json"
-Cohesion: 0.50
-Nodes (3): dependencies, @kilocode/plugin, @opencode-ai/plugin
+### Community 58 - "Deactivate Service Use Case"
+Cohesion: 0.21
+Nodes (9): DeactivateServiceUseCase, UUID, getValue(), DeactivateServiceUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
 
-### Community 119 - "Webmapper Java Mapper"
+### Community 59 - "Deactivate User Use Case"
+Cohesion: 0.21
+Nodes (8): DeactivateUserUseCase, UUID, DeactivateUserUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
+
+### Community 60 - "Community 60"
+Cohesion: 0.21
+Nodes (11): FindAppointmentByIdUseCase, Optional, RequiredArgsConstructor, Transactional, UUID, FindAppointmentByIdUseCaseTest, BeforeEach, DisplayName (+3 more)
+
+### Community 61 - "Community 61"
+Cohesion: 0.19
+Nodes (12): AllArgsConstructor, Builder, Getter, List, LocalDateTime, NoArgsConstructor, Setter, UUID (+4 more)
+
+### Community 62 - "Community 62"
+Cohesion: 0.26
+Nodes (10): Component, List, Optional, Override, PageResult, RequiredArgsConstructor, String, User (+2 more)
+
+### Community 63 - "Community 63"
+Cohesion: 0.13
+Nodes (14): AppointmentEntity, AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, Long, NoArgsConstructor (+6 more)
+
+### Community 64 - "Community 64"
+Cohesion: 0.23
+Nodes (11): AtomicInteger, Component, FilterChain, HttpServletRequest, HttpServletResponse, Logger, Map, Override (+3 more)
+
+### Community 65 - "Community 65"
+Cohesion: 0.29
+Nodes (9): DateTimeFormatter, Appointment, Override, RequiredArgsConstructor, Service, Slf4j, String, WaitlistEntry (+1 more)
+
+### Community 66 - "Community 66"
 Cohesion: 0.12
 Nodes (15): Critérios de Sucesso e Entregáveis, Diagrama de Classes Conceituais (Domínio), Dinâmica, Escopo, Estrutura das Entidades (Domain Layer), Exemplo: Entidade "Agendamento", Funcionalidades Iniciais, Introdução (+7 more)
 
-### Community 124 - "Openspec Propose Explore"
-Cohesion: 0.20
-Nodes (7): Date, UUID, String, TokenService, BeforeEach, Test, TokenServiceTest
+### Community 67 - "Community 67"
+Cohesion: 0.23
+Nodes (6): IllegalArgumentException, BeforeEach, ExtendWith, MockMvc, Test, ServiceControllerTest
 
-### Community 157 - "Openspec Onboard"
+### Community 68 - "Community 68"
+Cohesion: 0.34
+Nodes (9): Query, AppointmentEntity, AppointmentStatus, List, LocalDateTime, Page, Pageable, UUID (+1 more)
+
+### Community 69 - "Community 69"
+Cohesion: 0.19
+Nodes (6): CreateProfessionalUseCase, DeactivateProfessionalUseCase, UUID, UUID, UpdateProfessionalUseCase, ProfessionalRepository
+
+### Community 70 - "Community 70"
+Cohesion: 0.21
+Nodes (9): FindPatientByIdUseCase, Optional, UUID, FindPatientByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
+
+### Community 71 - "Community 71"
+Cohesion: 0.21
+Nodes (9): FindProfessionalByIdUseCase, Optional, UUID, FindProfessionalByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
+
+### Community 72 - "Community 72"
+Cohesion: 0.21
+Nodes (9): FindServiceByIdUseCase, Optional, UUID, FindServiceByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
+
+### Community 73 - "Community 73"
+Cohesion: 0.21
+Nodes (9): FindUserByIdUseCase, Optional, UUID, FindUserByIdUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test (+1 more)
+
+### Community 74 - "Community 74"
+Cohesion: 0.22
+Nodes (10): LocalDateTime, RequiredArgsConstructor, Transactional, UUID, ListAppointmentsUseCase, BeforeEach, DisplayName, ExtendWith (+2 more)
+
+### Community 75 - "Community 75"
+Cohesion: 0.28
+Nodes (9): AppointmentStatus, BeforeEach, DisplayName, EnumSource, ExtendWith, ParameterizedTest, Test, UUID (+1 more)
+
+### Community 76 - "Community 76"
+Cohesion: 0.22
+Nodes (13): PaymentMethod, PriorityLevel, AppointmentResponseDTO, LocalDateTime, Long, String, UUID, BookAppointmentRequestDTO (+5 more)
+
+### Community 77 - "Community 77"
+Cohesion: 0.23
+Nodes (13): WaitlistStatus, AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor, PrePersist (+5 more)
+
+### Community 78 - "Community 78"
+Cohesion: 0.27
+Nodes (8): Component, List, Optional, Override, RequiredArgsConstructor, String, UUID, ProfessionalRepositoryAdapter
+
+### Community 79 - "Community 79"
+Cohesion: 0.14
+Nodes (13): AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor, PrePersist, PreUpdate (+5 more)
+
+### Community 80 - "Community 80"
+Cohesion: 0.28
+Nodes (8): CreateMedicalRecordEntryUseCaseTest, BeforeEach, DisplayName, EnumSource, ExtendWith, ParameterizedTest, Test, UUID
+
+### Community 81 - "Community 81"
+Cohesion: 0.27
+Nodes (8): DeclineWaitlistOfferUseCaseTest, BeforeEach, DisplayName, ExtendWith, LocalDateTime, String, Test, UUID
+
+### Community 82 - "Community 82"
 Cohesion: 0.32
 Nodes (7): BeforeEach, DisplayName, ExtendWith, String, Test, UUID, UpdatePatientUseCaseTest
 
-### Community 158 - "Openspec Apply Change"
+### Community 83 - "Community 83"
+Cohesion: 0.27
+Nodes (9): Appointment, BeforeEach, DisplayName, Patient, Professional, Service, Test, WaitlistEntry (+1 more)
+
+### Community 84 - "Community 84"
 Cohesion: 0.13
 Nodes (15): 1️⃣ Fluxo de Fila de Espera (Waitlist), 2️⃣ CRUD Pacientes (`/api/v1/patients`), 3️⃣ CRUD Serviços (`/api/v1/services`), 4️⃣ CRUD Usuários (`/api/v1/users`) + Autenticação, 5️⃣ CRUD Profissionais (`/api/v1/professionals`), 6️⃣ Prontuário (`/api/v1/medical-records`), 7️⃣ Audit Logs (`/api/v1/audit-logs`), 8️⃣ Logout e Blacklist de Token (`/api/v1/auth/logout`) (+7 more)
 
-### Community 159 - "Openspec Archive Change"
+### Community 85 - "Community 85"
 Cohesion: 0.13
 Nodes (14): ADDED Requirements, Requirement: Chamada do Próximo Paciente da Fila pelo Profissional, Requirement: Controle de Acesso Baseado em Papéis (RBAC) para Endpoints da Fila, Requirement: Cálculo do Score de Prioridade da Fila Presencial, Requirement: Trilha de Auditoria Imutável de Alteração de Prioridades, Requirement: Validação Documental de Prioridade Legal no Check-In, Scenario: Auditoria registrada ao realizar check-in com validação de prioridade, Scenario: Chamada bem-sucedida do próximo paciente da fila presencial (+6 more)
 
-### Community 160 - "Opsx Apply"
+### Community 86 - "Community 86"
 Cohesion: 0.13
 Nodes (14): Purpose, Requirement: Aceitação de Vaga da Fila de Espera via Callback Público, Requirement: Disparo Automático de Oferta na Desistência, Requirement: Expiração de Oferta por Timeout, Requirement: Recusa de Vaga da Fila de Espera via Callback Público, Requirement: Registro de Entrada na Fila de Espera, Requirements, Scenario: Aceitação de vaga com sucesso (+6 more)
 
-### Community 161 - "Opsx Archive"
-Cohesion: 0.14
-Nodes (13): 1.1 Verificar que está Rodando, 2.1 Fluxo de Login, 2.2 Usar Token em Requisições Subsequentes, 2.3 Via Swagger UI, 🎯 Conclusão, Formato Padrão de Erro (GlobalExceptionHandler), 🚀 Parte 1: Verificação da Aplicação, 🔐 Parte 2: Autenticação JWT (+5 more)
+### Community 87 - "Community 87"
+Cohesion: 0.22
+Nodes (9): AppointmentActionTokenService, String, UUID, Component, Logger, RequiredArgsConstructor, String, Transactional (+1 more)
 
-### Community 162 - "Opsx Continue"
-Cohesion: 0.14
-Nodes (13): ADDED Requirements, Requirement: Cadastro de Paciente (Patient), Requirement: Cadastro de Profissional (Professional), Requirement: Cadastro de Serviço (Service), Requirement: Cadastro de Usuário (User), Requirement: Exclusão Lógica (Soft Delete) de Profissionais e Serviços, Scenario: Cadastro de paciente com CPF duplicado, Scenario: Cadastro de paciente com dados obrigatórios válidos (+5 more)
+### Community 88 - "Community 88"
+Cohesion: 0.22
+Nodes (10): String, NotificationService, Component, LocalDateTime, Logger, RequiredArgsConstructor, String, Transactional (+2 more)
 
-### Community 163 - "Opsx Explore"
-Cohesion: 0.18
-Nodes (7): AuditLogWithEmail, Component, RequiredArgsConstructor, String, ListAuditLogsUseCase, List, PageResult
+### Community 90 - "Community 90"
+Cohesion: 0.29
+Nodes (8): List, LocalDateTime, Optional, String, UUID, WaitlistEntry, WaitlistStatus, WaitlistEntryRepository
 
-### Community 164 - "Opsx"
-Cohesion: 0.15
-Nodes (12): ADDED Requirements, Requirement: Aceitação de Vaga da Fila de Espera via Callback Público, Requirement: Disparo Automático de Oferta na Desistência, Requirement: Expiração de Oferta por Timeout, Requirement: Recusa de Vaga da Fila de Espera via Callback Público, Requirement: Registro de Entrada na Fila de Espera, Scenario: Aceitação de vaga com sucesso, Scenario: Consulta cancelada e fila de espera vazia (+4 more)
+### Community 91 - "Community 91"
+Cohesion: 0.23
+Nodes (5): BeforeEach, ExtendWith, MockMvc, Test, ProfessionalControllerTest
 
-### Community 202 - "✅ Parte 5: Roteiro Completo de Testes (Checklist)"
-Cohesion: 0.17
-Nodes (12): 5.10 Testes de Validação, 5.11 Cenários Reais de Ponta a Ponta, 5.1 Preparação, 5.2 Testes de Usuários, 5.3 Testes de Pacientes, 5.4 Testes de Profissionais, 5.5 Testes de Serviços, 5.6 Testes de Agendamentos (Fluxo Completo) (+4 more)
+### Community 92 - "Community 92"
+Cohesion: 0.26
+Nodes (5): String, TokenService, BeforeEach, Test, TokenServiceTest
 
-### Community 203 - "📋 Detalhamento das Etapas"
-Cohesion: 0.17
-Nodes (12): 🧪 Agendamento de Teste (04/07/2026), 📋 Detalhamento das Etapas, ⚙️ Detalhe Técnico do `findNextInQueue`, Etapa 1: Confirmar Agendamento (Admin), Etapa 2: Check-in (Recepcionista), Etapa 3: Chamar Próximo Paciente (Profissional), Etapa 4: Iniciar Consulta (Profissional), Etapa 5: Preencher Evolução Clínica (Profissional) (+4 more)
+### Community 93 - "Community 93"
+Cohesion: 0.27
+Nodes (7): ConfirmAppointmentByTokenUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test, UUID
 
-### Community 204 - "ADDED Requirements"
-Cohesion: 0.17
-Nodes (11): ADDED Requirements, Requirement: Transição de Estado PENDING → PENDING_RESPONSE, Requirement: Worker de Processamento de Deadlines de Resposta, Requirement: Worker de Varredura para Envio de Notificações de Confirmação, Scenario: Cancelamento automático desabilitado — prazo expirado sem resposta, Scenario: Cancelamento automático habilitado — prazo expirado sem resposta, Scenario: Envio bem-sucedido para agendamentos elegíveis, Scenario: Ignorar agendamentos fora da janela de confirmação (+3 more)
-
-### Community 205 - "Requirements"
-Cohesion: 0.17
-Nodes (11): Purpose, Requirement: Controle de Transação Concorrente sob Alta Carga, Requirement: Máquina de Estados e Transições do Agendamento, Requirement: Prevenção de Conflito de Horários (Double-booking), Requirements, Scenario: Agendamento em horário disponível, Scenario: Duas requisições simultâneas para o mesmo slot, Scenario: Tentativa de agendamento em horário ocupado (+3 more)
-
-### Community 206 - "Requirement: Autenticação de Usuário via JWT"
-Cohesion: 0.17
-Nodes (11): Purpose, Requirement: Autenticação de Usuário via JWT, Requirement: Autorização das Rotas HTTP e RBAC, Requirements, Scenario: Acesso a recurso livre com token válido, Scenario: Autenticação com credenciais inválidas, Scenario: Autenticação com credenciais válidas, Scenario: Autenticação de usuário inativo (+3 more)
-
-### Community 207 - "SKILL.md"
-Cohesion: 0.18
-Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
-
-### Community 208 - "SKILL.md"
-Cohesion: 0.18
-Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
-
-### Community 209 - "SAAP — Design System & Frontend Architecture"
-Cohesion: 0.18
-Nodes (10): 12. Utilitários de Formatação, 13. Configuração do TanStack Query, 14. Animações e Micro-interações, 15. Configuração do Ambiente, 19. Variáveis de Ambiente Necessárias, 20. Notas de Integração Crítica, 3. Tipos TypeScript (DTOs), 6. Store de Autenticação (Pinia) (+2 more)
-
-### Community 210 - "0. Bootstrap — Criar a Aplicação"
-Cohesion: 0.18
-Nodes (11): 0.10 Rodar em Desenvolvimento, 0.1 Pré-requisitos, 0.2 Scaffold com Vite, 0.3 Instalar Dependências, 0.4 Inicializar Tailwind CSS, 0.5 Configurar `vite.config.ts`, 0.6 Configurar `tsconfig.app.json`, 0.7 Criar Arquivo de Ambiente (+3 more)
-
-### Community 211 - "18. Checklist de Implementação"
-Cohesion: 0.18
-Nodes (11): 18. Checklist de Implementação, Fase 10 — Polimento, Fase 1 — Fundação, Fase 2 — Autenticação, Fase 3 — Componentes Base, Fase 4 — Dashboard, Fase 5 — Agendamentos (core), Fase 6 — Fila (+3 more)
-
-### Community 212 - "Modelagem Comportamental (Diagramas de Sequência)"
-Cohesion: 0.18
-Nodes (11): Base Legal e Fundamentação (UC09), Exemplo: Caso de Uso "Agendar Atendimento" (UC02), Exemplo: Caso de Uso "Atendimento Prioritário" (UC09), Exemplo: Caso de Uso "Cancelar/Remarcar" (UC06), Exemplo: Caso de Uso "Confirmar Presença" (UC03), Exemplo: Caso de Uso "Emitir Relatórios" (UC07), Exemplo: Caso de Uso "Gerenciar Fila de Espera" (UC05), Exemplo: Caso de Uso "Manter Cadastro" (UC01) (+3 more)
-
-### Community 213 - "4.5 AGENDAMENTOS (`/api/v1/appointments`)"
-Cohesion: 0.18
-Nodes (11): 4.5.1 CREATE - Agendar Consulta (Book Appointment), 4.5.2 READ - Buscar Agendamento por ID, 4.5.3 LIST - Listar Agendamentos (com filtros), 4.5.4 CONFIRM - Confirmar Agendamento, 4.5.5 CHECK-IN - Registrar Presença, 4.5.6 NEXT - Chamar Próximo Paciente (Fila), 4.5.7 START - Iniciar Atendimento, 4.5.8 COMPLETE - Completar Agendamento (+3 more)
-
-### Community 214 - "SKILL.md"
-Cohesion: 0.18
-Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
-
-### Community 215 - "SKILL.md"
-Cohesion: 0.18
-Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
-
-### Community 216 - "Decisions"
-Cohesion: 0.18
-Nodes (10): Context, Decision: Campos `followUpSentAt` e `followUpRequired` na entidade `Appointment`, Decision: Configurações via `@ConfigurationProperties`, Decision: Novo estado `PENDING_RESPONSE` na máquina de estados, Decision: Reutilização de `AppointmentActionTokenService`, Decision: Separação em dois workers (`@Scheduled`), Decisions, Goals / Non-Goals (+2 more)
-
-### Community 217 - "Tasks: rf06-registro-clinico-prontuario"
-Cohesion: 0.18
-Nodes (10): 1. Banco de Dados, 2. Domínio, 3. Persistência, 4. Aplicação (Use Cases), 5. Web (API REST), 6. Segurança, 7. Testes, 8. Verificação Final (após concluir a implementação) (+2 more)
-
-### Community 218 - "Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link"
-Cohesion: 0.18
-Nodes (10): appointment-follow-up Specification, Purpose, Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link, Requirement: Processamento de Worker Agendado para Confirmação, Requirements, Scenario: Cancelamento com sucesso via link público, Scenario: Confirmação com sucesso via link público, Scenario: Envio com sucesso para agendamentos pendentes do dia seguinte (+2 more)
-
-### Community 219 - "opsx-explore.md"
-Cohesion: 0.20
-Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
-
-### Community 220 - "explore.md"
-Cohesion: 0.20
-Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
-
-### Community 221 - "Regras do Projeto SAAP-MVP"
-Cohesion: 0.20
-Nodes (8): 🏗️ Convenções gerais, Histórico de incidentes, Numeração sequencial obrigatória, 📋 Registro de erros, 🗄️ REGRA: Migrações Flyway, Regras do Projeto SAAP-MVP, Se uma migração falhar, 🧪 Testes
-
-### Community 222 - "Guia de Testes com REST Client — SAAP MVP"
-Cohesion: 0.20
-Nodes (9): Adicionando um Novo Endpoint, Captura Automática de Variáveis, Convenção de Estrutura de um Arquivo `.http`, Estrutura dos Arquivos, Fluxo de Execução, Guia de Testes com REST Client — SAAP MVP, Mapeamento de Endpoints e Roles, Respostas HTTP Esperadas (+1 more)
-
-### Community 223 - "opsx-explore.md"
-Cohesion: 0.20
-Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
-
-### Community 224 - "ADDED Requirements"
-Cohesion: 0.20
-Nodes (9): ADDED Requirements, Requirement: Interface REST API das Entidades Core, Requirement: Tratamento de Erros da API, Requirement: Validação de Payload da API, Scenario: Cadastro de paciente com CPF de tamanho inválido, Scenario: Cadastro de paciente com e-mail em formato incorreto, Scenario: Cadastro de usuário com e-mail duplicado via API, Scenario: Criação bem-sucedida de paciente via API (+1 more)
-
-### Community 225 - "Requirement: Autenticação de Usuário via JWT"
-Cohesion: 0.20
-Nodes (9): ADDED Requirements, Requirement: Autenticação de Usuário via JWT, Requirement: Autorização das Rotas HTTP e RBAC, Scenario: Acesso a recurso livre com token válido, Scenario: Autenticação com credenciais inválidas, Scenario: Autenticação com credenciais válidas, Scenario: Autenticação de usuário inativo, Scenario: Bloqueio de acesso a recurso restrito (RBAC) (+1 more)
-
-### Community 226 - "ADDED Requirements"
-Cohesion: 0.20
-Nodes (9): ADDED Requirements, Requirement: Controle de Transação Concorrente sob Alta Carga, Requirement: Máquina de Estados e Transições do Agendamento, Requirement: Prevenção de Conflito de Horários (Double-booking), Scenario: Agendamento em horário disponível, Scenario: Duas requisições simultâneas para o mesmo slot, Scenario: Tentativa de agendamento em horário ocupado, Scenario: Transição inválida de início de consulta direta (+1 more)
-
-### Community 227 - "Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link"
-Cohesion: 0.20
-Nodes (9): MODIFIED Requirements, Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link, Requirement: Processamento de Worker Agendado para Confirmação, Scenario: Cancelamento com sucesso via link público, Scenario: Confirmação com sucesso via link público, Scenario: Envio com sucesso para agendamentos pendentes elegíveis, Scenario: Erro com agendamento em estado inválido para resposta via link, Scenario: Erro com token inválido ou expirado (+1 more)
-
-### Community 228 - "tasks.md"
-Cohesion: 0.20
-Nodes (9): 1. Migração de Banco de Dados, 2. Domínio — Enum e Entidade, 3. Configurações, 4. Use Cases de Domínio, 5. Repositório, 6. Scheduler (Infraestrutura), 7. Controller — Endpoints Públicos, 8. Testes (+1 more)
-
-### Community 229 - "ProcessMissedDeadlinesUseCaseIntegrationTest.java"
+### Community 94 - "Community 94"
 Cohesion: 0.23
 Nodes (9): AuditIntegrationTest, BeforeEach, MockMvc, ObjectMapper, PasswordEncoder, String, Test, Transactional (+1 more)
 
-### Community 230 - "MedicalRecordEntryResponseDTO"
+### Community 95 - "Community 95"
+Cohesion: 0.14
+Nodes (13): 1.1 Verificar que está Rodando, 2.1 Fluxo de Login, 2.2 Usar Token em Requisições Subsequentes, 2.3 Via Swagger UI, 🎯 Conclusão, Formato Padrão de Erro (GlobalExceptionHandler), 🚀 Parte 1: Verificação da Aplicação, 🔐 Parte 2: Autenticação JWT (+5 more)
+
+### Community 96 - "Community 96"
+Cohesion: 0.14
+Nodes (13): ADDED Requirements, Requirement: Cadastro de Paciente (Patient), Requirement: Cadastro de Profissional (Professional), Requirement: Cadastro de Serviço (Service), Requirement: Cadastro de Usuário (User), Requirement: Exclusão Lógica (Soft Delete) de Profissionais e Serviços, Scenario: Cadastro de paciente com CPF duplicado, Scenario: Cadastro de paciente com dados obrigatórios válidos (+5 more)
+
+### Community 97 - "Community 97"
+Cohesion: 0.15
+Nodes (14): Plan 007: Add GitHub Actions CI pipeline, CI gate blocks merge below 80% JaCoCo coverage, GitHub Actions workflow test.yml (test + coverage gate), Plan 008: Fix Testcontainers and Jackson version mismatch, Use dependencyManagement BOM import to unify transitive dependency versions, Jackson BOM 2.21.4 forced over springdoc's Jackson 3.x, Testcontainers modules pinned to 1.19.7, Plan 018: Remove unused repository port methods (+6 more)
+
+### Community 98 - "Community 98"
+Cohesion: 0.24
+Nodes (8): RequiredArgsConstructor, Transactional, ListActivePatientsUseCase, BeforeEach, DisplayName, ExtendWith, Test, ListActivePatientsUseCaseTest
+
+### Community 99 - "Community 99"
+Cohesion: 0.16
+Nodes (12): AuditLogEntity, AllArgsConstructor, Builder, Entity, Getter, LocalDateTime, NoArgsConstructor, PrePersist (+4 more)
+
+### Community 100 - "Community 100"
+Cohesion: 0.25
+Nodes (5): BeforeEach, ExtendWith, MockMvc, Test, PatientControllerTest
+
+### Community 101 - "Community 101"
+Cohesion: 0.25
+Nodes (5): BeforeEach, ExtendWith, MockMvc, Test, UserControllerTest
+
+### Community 102 - "Community 102"
+Cohesion: 0.24
+Nodes (9): ActiveProfiles, DynamicPropertyRegistry, DynamicPropertySource, SpringBootTest, BaseIntegrationTest, PostgreSQLContainer, Testcontainers, Test (+1 more)
+
+### Community 103 - "Community 103"
 Cohesion: 0.26
+Nodes (13): Agendamento, Convenio, ConvenioServico, EntradaProntuario, FilaEspera, GradeHorario, Notificacao, Paciente (+5 more)
+
+### Community 104 - "Community 104"
+Cohesion: 0.18
+Nodes (13): Adaptadores de Interface, Agendamento (entidade de domínio), CreateAppointmentUseCase, Entidades de Domínio (Domain Entities), Infraestrutura (Frameworks & Drivers), JWT (autenticação de infraestrutura), MySQL (banco de dados), NextJS (framework de infraestrutura) (+5 more)
+
+### Community 105 - "Community 105"
+Cohesion: 0.19
+Nodes (9): Integer, LocalDate, String, PatientRequestDTO, BigDecimal, String, ServiceRequestDTO, Mapper (+1 more)
+
+### Community 106 - "Community 106"
+Cohesion: 0.28
+Nodes (9): Mapper, Component, EntityManager, Optional, Override, RequiredArgsConstructor, UUID, MedicalRecordRepositoryAdapter (+1 more)
+
+### Community 107 - "Community 107"
+Cohesion: 0.15
+Nodes (13): RF03 Completion Note, RF03 Design Doc, Decision: New PENDING_RESPONSE State, Decision: Separate Two @Scheduled Workers, RF03 Proposal, New Capability: confirmation-follow-up, confirmation-follow-up Specification (archived, RF03), Requirement: Two Scheduled Workers (Send Follow-up / Process Deadlines) (+5 more)
+
+### Community 108 - "Community 108"
+Cohesion: 0.24
+Nodes (8): String, NotificationChannel, Component, List, RequiredArgsConstructor, Slf4j, String, NotificationOrchestrator
+
+### Community 109 - "Community 109"
+Cohesion: 0.28
 Nodes (8): Component, List, Optional, Override, RequiredArgsConstructor, String, UUID, ServiceRepositoryAdapter
 
-### Community 231 - "10. Páginas — Especificações"
+### Community 110 - "Community 110"
+Cohesion: 0.33
+Nodes (6): CreatePatientUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test
+
+### Community 111 - "Community 111"
+Cohesion: 0.29
+Nodes (10): AtomicLong, CheckInAppointmentUseCase, Appointment, AuditLogRepository, PriorityLevel, RequiredArgsConstructor, Service, String (+2 more)
+
+### Community 112 - "Community 112"
+Cohesion: 0.17
+Nodes (12): 5.10 Testes de Validação, 5.11 Cenários Reais de Ponta a Ponta, 5.1 Preparação, 5.2 Testes de Usuários, 5.3 Testes de Pacientes, 5.4 Testes de Profissionais, 5.5 Testes de Serviços, 5.6 Testes de Agendamentos (Fluxo Completo) (+4 more)
+
+### Community 113 - "Community 113"
+Cohesion: 0.17
+Nodes (12): 🧪 Agendamento de Teste (04/07/2026), 📋 Detalhamento das Etapas, ⚙️ Detalhe Técnico do `findNextInQueue`, Etapa 1: Confirmar Agendamento (Admin), Etapa 2: Check-in (Recepcionista), Etapa 3: Chamar Próximo Paciente (Profissional), Etapa 4: Iniciar Consulta (Profissional), Etapa 5: Preencher Evolução Clínica (Profissional) (+4 more)
+
+### Community 114 - "Community 114"
+Cohesion: 0.27
+Nodes (9): NotificationService, ConsoleNotificationService, Appointment, ConditionalOnProperty, Logger, Override, Service, String (+1 more)
+
+### Community 115 - "Community 115"
+Cohesion: 0.17
+Nodes (11): ADDED Requirements, Requirement: Disparo Automático de Oferta na Desistência, Requirement: Expiração de Oferta por Timeout, Requirement: Recusa de Vaga da Fila de Espera via Callback Público, Requirement: Registro de Entrada na Fila de Espera, Scenario: Aceitação de vaga com sucesso, Scenario: Consulta cancelada e fila de espera vazia, Scenario: Consulta cancelada e oferta disparada para o primeiro da fila (+3 more)
+
+### Community 116 - "Community 116"
+Cohesion: 0.17
+Nodes (11): Purpose, Requirement: Autenticação de Usuário via JWT, Requirement: Autorização das Rotas HTTP e RBAC, Requirements, Scenario: Acesso a recurso livre com token válido, Scenario: Autenticação com credenciais inválidas, Scenario: Autenticação com credenciais válidas, Scenario: Autenticação de usuário inativo (+3 more)
+
+### Community 117 - "Community 117"
+Cohesion: 0.32
+Nodes (8): Async, Component, Map, Override, RequiredArgsConstructor, Slf4j, String, WhatsAppNotificationService
+
+### Community 118 - "Community 118"
+Cohesion: 0.32
+Nodes (8): List, Optional, Page, Pageable, String, UserEntity, UUID, JpaUserRepository
+
+### Community 119 - "Community 119"
+Cohesion: 0.33
+Nodes (6): CreateProfessionalUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test
+
+### Community 120 - "Community 120"
+Cohesion: 0.33
+Nodes (6): CreateServiceUseCaseTest, BeforeEach, DisplayName, ExtendWith, String, Test
+
+### Community 121 - "Community 121"
+Cohesion: 0.33
+Nodes (6): DeactivateProfessionalUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
+
+### Community 122 - "Community 122"
+Cohesion: 0.30
+Nodes (5): String, BeforeEach, Test, Transactional, PriorityAttendanceIntegrationTest
+
+### Community 123 - "Community 123"
+Cohesion: 0.30
+Nodes (3): Test, Transactional, RepositoryIntegrationTest
+
+### Community 124 - "Community 124"
+Cohesion: 0.29
+Nodes (6): AppointmentPublicControllerIntegrationTest, BeforeEach, MockMvc, Test, Transactional, WebApplicationContext
+
+### Community 125 - "Community 125"
+Cohesion: 0.29
+Nodes (7): BeforeEach, LocalDateTime, MockMvc, Test, Transactional, WebApplicationContext, WaitlistPublicControllerIntegrationTest
+
+### Community 126 - "Community 126"
+Cohesion: 0.18
+Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
+
+### Community 127 - "Community 127"
+Cohesion: 0.18
+Nodes (10): 12. Utilitários de Formatação, 13. Configuração do TanStack Query, 14. Animações e Micro-interações, 15. Configuração do Ambiente, 19. Variáveis de Ambiente Necessárias, 20. Notas de Integração Crítica, 3. Tipos TypeScript (DTOs), 6. Store de Autenticação (Pinia) (+2 more)
+
+### Community 128 - "Community 128"
+Cohesion: 0.18
+Nodes (11): 0.10 Rodar em Desenvolvimento, 0.1 Pré-requisitos, 0.2 Scaffold com Vite, 0.3 Instalar Dependências, 0.4 Inicializar Tailwind CSS, 0.5 Configurar `vite.config.ts`, 0.6 Configurar `tsconfig.app.json`, 0.7 Criar Arquivo de Ambiente (+3 more)
+
+### Community 129 - "Community 129"
+Cohesion: 0.18
+Nodes (11): 18. Checklist de Implementação, Fase 10 — Polimento, Fase 1 — Fundação, Fase 2 — Autenticação, Fase 3 — Componentes Base, Fase 4 — Dashboard, Fase 5 — Agendamentos (core), Fase 6 — Fila (+3 more)
+
+### Community 130 - "Community 130"
+Cohesion: 0.18
+Nodes (11): Base Legal e Fundamentação (UC09), Exemplo: Caso de Uso "Agendar Atendimento" (UC02), Exemplo: Caso de Uso "Atendimento Prioritário" (UC09), Exemplo: Caso de Uso "Cancelar/Remarcar" (UC06), Exemplo: Caso de Uso "Confirmar Presença" (UC03), Exemplo: Caso de Uso "Emitir Relatórios" (UC07), Exemplo: Caso de Uso "Gerenciar Fila de Espera" (UC05), Exemplo: Caso de Uso "Manter Cadastro" (UC01) (+3 more)
+
+### Community 131 - "Community 131"
+Cohesion: 0.18
+Nodes (11): 4.5.1 CREATE - Agendar Consulta (Book Appointment), 4.5.2 READ - Buscar Agendamento por ID, 4.5.3 LIST - Listar Agendamentos (com filtros), 4.5.4 CONFIRM - Confirmar Agendamento, 4.5.5 CHECK-IN - Registrar Presença, 4.5.6 NEXT - Chamar Próximo Paciente (Fila), 4.5.7 START - Iniciar Atendimento, 4.5.8 COMPLETE - Completar Agendamento (+3 more)
+
+### Community 132 - "Community 132"
+Cohesion: 0.18
+Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
+
+### Community 133 - "Community 133"
+Cohesion: 0.35
+Nodes (8): JavaMailSender, EmailNotificationService, Async, Component, Override, RequiredArgsConstructor, Slf4j, String
+
+### Community 134 - "Community 134"
+Cohesion: 0.18
+Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
+
+### Community 135 - "Community 135"
+Cohesion: 0.18
+Nodes (10): 1. Banco de Dados, 2. Domínio, 3. Persistência, 4. Aplicação (Use Cases), 5. Web (API REST), 6. Segurança, 7. Testes, 8. Verificação Final (após concluir a implementação) (+2 more)
+
+### Community 136 - "Community 136"
+Cohesion: 0.24
+Nodes (11): Plan DIRECTION-002 / 025: Implement real notification channels (WhatsApp, SMS, Email), ConsoleNotificationService (logs only, no real delivery), EmailNotificationService (planned, via SMTP/SendGrid), PRD RNF03 requires WhatsApp/SMS/Email delivery; console-only logging violates the requirement, SmsNotificationService (planned, via SMS gateway), WhatsAppNotificationService (planned, via Twilio), application.yaml (main Spring Boot config), application-dev.yaml (Swagger UI / OpenAPI enabled in dev profile) (+3 more)
+
+### Community 137 - "Community 137"
+Cohesion: 0.29
+Nodes (4): AppointmentRepositoryIntegrationTest, BeforeEach, Test, Transactional
+
+### Community 138 - "Community 138"
+Cohesion: 0.38
+Nodes (5): BeforeEach, DisplayName, GreenMailExtension, Test, NotificationOrchestratorEndToEndTest
+
+### Community 139 - "Community 139"
+Cohesion: 0.31
+Nodes (7): AuditLogRepositoryAdapter, Component, List, Optional, Override, RequiredArgsConstructor, UUID
+
+### Community 140 - "Community 140"
+Cohesion: 0.35
+Nodes (6): CreateUserUseCaseTest, BeforeEach, DisplayName, ExtendWith, PasswordEncoder, Test
+
+### Community 141 - "Community 141"
+Cohesion: 0.35
+Nodes (6): DeactivatePatientUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
+
+### Community 142 - "Community 142"
+Cohesion: 0.31
+Nodes (6): BeforeEach, DisplayName, ExtendWith, String, Test, ListActiveUsersUseCaseTest
+
+### Community 143 - "Community 143"
+Cohesion: 0.31
+Nodes (4): AfterEach, AppointmentConcurrencyIntegrationTest, BeforeEach, Test
+
+### Community 144 - "Community 144"
+Cohesion: 0.20
+Nodes (9): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+1 more)
+
+### Community 145 - "Community 145"
+Cohesion: 0.20
+Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
+
+### Community 146 - "Community 146"
+Cohesion: 0.20
+Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
+
+### Community 147 - "Community 147"
+Cohesion: 0.20
+Nodes (10): CpfValidator (@CPF), ERROS-E-SOLUCOES.md (Error/Solution Log), ERR-001: Flyway Migration Sequence Gap, ERR-003: Duplicate Active Services Allowed, ERR-004: Formatted CPF Rejected/Persisted Raw, ERR-005: Unknown Property 'api' IDE Warning, ERR-006: Test CPF/Email Collision, ERR-007: Active Service Name Collision in Tests (+2 more)
+
+### Community 148 - "Community 148"
+Cohesion: 0.20
+Nodes (9): Adicionando um Novo Endpoint, Captura Automática de Variáveis, Convenção de Estrutura de um Arquivo `.http`, Estrutura dos Arquivos, Fluxo de Execução, Guia de Testes com REST Client — SAAP MVP, Mapeamento de Endpoints e Roles, Respostas HTTP Esperadas (+1 more)
+
+### Community 149 - "Community 149"
+Cohesion: 0.20
+Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
+
+### Community 150 - "Community 150"
+Cohesion: 0.20
+Nodes (9): ADDED Requirements, Requirement: Interface REST API das Entidades Core, Requirement: Tratamento de Erros da API, Requirement: Validação de Payload da API, Scenario: Cadastro de paciente com CPF de tamanho inválido, Scenario: Cadastro de paciente com e-mail em formato incorreto, Scenario: Cadastro de usuário com e-mail duplicado via API, Scenario: Criação bem-sucedida de paciente via API (+1 more)
+
+### Community 151 - "Community 151"
+Cohesion: 0.20
+Nodes (9): ADDED Requirements, Requirement: Controle de Transação Concorrente sob Alta Carga, Requirement: Máquina de Estados e Transições do Agendamento, Requirement: Prevenção de Conflito de Horários (Double-booking), Scenario: Agendamento em horário disponível, Scenario: Duas requisições simultâneas para o mesmo slot, Scenario: Tentativa de agendamento em horário ocupado, Scenario: Transição inválida de início de consulta direta (+1 more)
+
+### Community 152 - "Community 152"
+Cohesion: 0.33
+Nodes (8): CallNextPatientUseCase, Appointment, AuditLogRepository, RequiredArgsConstructor, Service, String, Transactional, UUID
+
+### Community 153 - "Community 153"
+Cohesion: 0.33
+Nodes (8): AuditLogWithEmail, AuditLog, AuditLogRepository, Component, PageResult, RequiredArgsConstructor, String, ListAuditLogsUseCase
+
+### Community 154 - "Community 154"
+Cohesion: 0.38
+Nodes (8): AllArgsConstructor, Builder, Getter, LocalDateTime, NoArgsConstructor, Setter, UUID, WaitlistEntry
+
+### Community 155 - "Community 155"
+Cohesion: 0.38
+Nodes (7): Component, EntityManager, Optional, Override, RequiredArgsConstructor, UUID, MedicalRecordEntryRepositoryAdapter
+
+### Community 156 - "Community 156"
+Cohesion: 0.31
+Nodes (8): LocalDateTime, String, UUID, MedicalRecordEntryResponseDTO, List, LocalDateTime, UUID, MedicalRecordResponseDTO
+
+### Community 157 - "Community 157"
+Cohesion: 0.31
+Nodes (5): BeforeEach, String, Test, Transactional, SendFollowUpNotificationsUseCaseIntegrationTest
+
+### Community 158 - "Community 158"
+Cohesion: 0.40
+Nodes (5): EmailNotificationServiceIntegrationTest, BeforeEach, DisplayName, GreenMailExtension, Test
+
+### Community 159 - "Community 159"
+Cohesion: 0.25
+Nodes (9): Appointment.transitionTo State Machine, scheduling-engine Specification, Requirement: Concurrent Transaction Control (Pessimistic/Optimistic Lock), Requirement: Double-booking Prevention, Requirement: State Machine Transition Enforcement, ObjectOptimisticLockingFailureException Handler (409), Plan 005: Add Pessimistic Lock to CallNextPatientUseCase, BookAppointmentUseCase.findByIdWithLock (pattern to match) (+1 more)
+
+### Community 160 - "Community 160"
+Cohesion: 0.22
+Nodes (7): Priority Score Formula (checkIn), "Chamar Próximo" Single-Action Queue Call, Emergency/Walk-in Insertion Flow (EMERG tag), Priority-Ordered Waiting Room List (P1>P2>P3), Receptionist Check-in Action, Real-time Clinic Dashboard, CallNextPatientUseCase (race condition)
+
+### Community 161 - "Community 161"
 Cohesion: 0.22
 Nodes (9): 10.1 LoginPage, 10.2 DashboardPage, 10.3 AppointmentsPage, 10.4 AppointmentDetailPage, 10.5 QueuePage, 10.6 PatientsPage, 10.7 AuditLogsPage, 10.8 PublicConfirmPage (+1 more)
 
-### Community 232 - "🔎 Parte 7: Referência Rápida de Endpoints"
+### Community 162 - "Community 162"
 Cohesion: 0.22
 Nodes (9): Agendamentos e Fila Presencial, Auditoria (`ADMIN`, exclusivo), Autenticação, Pacientes (`ADMIN`, `ASSISTANT`; leitura também `RECEPTIONIST`, `PROFESSIONAL`), 🔎 Parte 7: Referência Rápida de Endpoints, Profissionais (`ADMIN`; leitura também `RECEPTIONIST`), Prontuário e Registro Clínico (`PROFESSIONAL`, exclusivo — auditado), Serviços (`ADMIN`; leitura também `RECEPTIONIST`, `PATIENT`) (+1 more)
 
-### Community 233 - "Teste do Fluxo de Follow-up (RF03)"
+### Community 163 - "Community 163"
 Cohesion: 0.22
 Nodes (9): ⚙️ Configuração do Scheduler, Dados Base, Jobs do Scheduler, 📸 Logs do ConsoleNotificationService, 📌 Observações, 🧪 Pré-requisitos, 📋 Resumo dos Testes, Teste do Fluxo de Follow-up (RF03) (+1 more)
 
-### Community 234 - "🔎 Fechamento dos Gaps Pendentes (04/07/2026, continuação)"
+### Community 164 - "Community 164"
 Cohesion: 0.22
 Nodes (9): Auto-cancelamento por não-resposta (`processMissedDeadlines`), Concorrência, 🔎 Fechamento dos Gaps Pendentes (04/07/2026, continuação), Fila com múltiplas prioridades, Paginação — ✅ Implementada em 04/07/2026, Rate limit de login, Scheduler real (`AppointmentFollowUpScheduler`), Validação de campo obrigatório (+1 more)
 
-### Community 235 - "Decisions"
+### Community 165 - "Community 165"
+Cohesion: 0.22
+Nodes (8): 🏗️ Convenções gerais, Histórico de incidentes, Numeração sequencial obrigatória, 📋 Registro de erros, 🗄️ REGRA: Migrações Flyway, Regras do Projeto SAAP-MVP, Se uma migração falhar, 🧪 Testes
+
+### Community 166 - "Community 166"
 Cohesion: 0.22
 Nodes (8): 1. Pacotes e Estrutura de Camadas (Hexagonal), 2. DTO Mappers Isolados, 3. Validador de CPF Customizado e Auto-contido, 4. Tratamento Global de Exceções, Context, Decisions, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 236 - "Decisions"
+### Community 167 - "Community 167"
 Cohesion: 0.22
 Nodes (8): 1. Separação de Classes de Domínio e Entidades JPA, 2. Padrão de Exclusão Lógica (Soft Delete) para Professional e Service, 3. Autenticação e Criptografia, 4. Nomenclatura de Atributos Booleanos (active vs isActive), Context, Decisions, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 237 - "Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link"
+### Community 168 - "Community 168"
 Cohesion: 0.22
 Nodes (8): ADDED Requirements, Requirement: Endpoints Públicos de Confirmação e Cancelamento por Link, Requirement: Processamento de Worker Agendado para Confirmação, Scenario: Cancelamento com sucesso via link público, Scenario: Confirmação com sucesso via link público, Scenario: Envio com sucesso para agendamentos pendentes do dia seguinte, Scenario: Erro com token inválido ou expirado, Scenario: Ignorar agendamentos em outros status ou datas futuras distantes
 
-### Community 238 - "Decisions"
+### Community 169 - "Community 169"
 Cohesion: 0.22
 Nodes (8): 1. Biblioteca JWT: com.auth0:java-jwt, 2. Autenticação Stateless com Filtro Customizado, 3. Configuração de Variáveis Sensíveis via .env, 4. Controle de Acesso Baseado em Funções (RBAC) nos Controladores, Context, Decisions, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 239 - "tasks.md"
+### Community 170 - "Community 170"
+Cohesion: 0.22
+Nodes (8): ADDED Requirements, Requirement: Autenticação de Usuário via JWT, Requirement: Autorização das Rotas HTTP e RBAC, Scenario: Acesso a recurso livre com token válido, Scenario: Autenticação com credenciais válidas, Scenario: Autenticação de usuário inativo, Scenario: Bloqueio de acesso a recurso restrito (RBAC), Scenario: Requisição sem token em rota protegida
+
+### Community 171 - "Community 171"
+Cohesion: 0.28
+Nodes (9): Plan 009: Move action tokens from GET query string to POST body, ActionTokenRequest DTO, AppointmentController public confirm/cancel endpoints, POST body avoids logging tokens that leak via GET query strings (referer headers, access logs, WAF), WaitlistPublicController accept/decline endpoints, Plan 016: Archive completed openspec rf03-follow-up-confirmacoes change, Move fully-implemented openspec change to archive/ with a completion note to prevent rework confusion, COMPLETION_NOTE.md documenting done status and related plans (+1 more)
+
+### Community 172 - "Community 172"
+Cohesion: 0.28
+Nodes (9): Plan 011: Paginate ListAuditLogsUseCase to avoid full user table scan, Batch-fetch only referenced IDs instead of full table scan on every page view, JpaUserRepository findByIdIn @Query implementation, ListAuditLogsUseCase.execute(), UserRepository.findByIdIn(List<UUID>) port method, Plan 012: Fix CoreMapper asymmetric medical record entries mapping, CoreMapper.toDomain(MedicalRecordEntity) / toEntity(MedicalRecord), MedicalRecord.entries lazy @OneToMany collection (+1 more)
+
+### Community 173 - "Community 173"
+Cohesion: 0.33
+Nodes (6): AcceptWaitlistOfferUseCase, Component, Logger, RequiredArgsConstructor, String, Transactional
+
+### Community 174 - "Community 174"
+Cohesion: 0.33
+Nodes (6): DeclineWaitlistOfferUseCase, Component, Logger, RequiredArgsConstructor, String, Transactional
+
+### Community 175 - "Community 175"
+Cohesion: 0.39
+Nodes (5): BeforeEach, DisplayName, ExtendWith, Test, ListActiveServicesUseCaseTest
+
+### Community 176 - "Community 176"
 Cohesion: 0.25
 Nodes (7): 1. Banco de Dados e Migrações, 2. Modelos de Domínio Puro, 3. Interfaces de Repositório de Domínio (Ports), 4. Camada de Persistência (JPA Entities & Mappers), 5. Implementação dos Repositórios JPA (Adapters), 6. Testes e Validação, 7. Ajustes: CPF e SUS no Paciente
 
-### Community 240 - "design.md"
+### Community 177 - "Community 177"
 Cohesion: 0.25
 Nodes (7): 1. Modelo de Dados: Entidade `WaitlistEntry`, 2. Mecanismo de Disparo de Oferta, 3. Mecanismo de Ações Públicas via JWT, Context, Decisions, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 241 - "design.md"
+### Community 178 - "Community 178"
 Cohesion: 0.25
 Nodes (7): 1. Mecanismo de Execução Agendada (Background Scheduler), 2. Segurança via Tokens Auto-contidos (Action Tokens JWT), 3. Exposição de Endpoints Públicos, Context, Decisions, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 242 - "design.md"
+### Community 179 - "Community 179"
 Cohesion: 0.25
 Nodes (7): 1. Garantia de Unicidade e Prevenção de Double-Booking, 2. Máquina de Estados Encapsulada no Domínio, 3. Autorização REST baseada em Security Rules (RBAC), Context, Decisions, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 243 - "design.md"
+### Community 180 - "Community 180"
 Cohesion: 0.25
 Nodes (7): 1. Obtenção do Profissional Logado na Chamada do Próximo Paciente, 2. Algoritmo da Fila de Prioridades (Min-Heap no Banco), 3. Trilha de Auditoria no Banco de Dados, Context, Decisions, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 244 - "Proposal: rf06-registro-clinico-prontuario"
+### Community 181 - "Community 181"
 Cohesion: 0.25
 Nodes (7): Capabilities, Impact, Modified Capabilities, New Capabilities, Proposal: rf06-registro-clinico-prontuario, What Changes, Why
 
-### Community 245 - "Requirement: Máquina de Estados e Transições do Agendamento"
+### Community 182 - "Community 182"
 Cohesion: 0.25
 Nodes (7): MODIFIED Requirements, Requirement: Máquina de Estados e Transições do Agendamento, Scenario: Finalização com evolução preenchida, Scenario: Tentativa de finalização sem evolução, Scenario: Transição inválida de início de consulta direta, Scenario: Transição válida de confirmação, scheduling-engine Delta Specification
 
-### Community 246 - "ERR-001 · Lacuna na sequência de migrações Flyway (V1 → V3 sem V2)"
-Cohesion: 0.29
-Nodes (7): Causa raiz, ERR-001 · Lacuna na sequência de migrações Flyway (V1 → V3 sem V2), Prevenção implementada, Primeira resposta (errada), Resultado, Sintoma, Solução correta aplicada
+### Community 183 - "Community 183"
+Cohesion: 0.36
+Nodes (3): AppointmentActionTokenServiceTest, BeforeEach, Test
 
-### Community 247 - "ERR-009 · Violação de unique constraint em testes de integração com múltiplos métodos"
-Cohesion: 0.29
-Nodes (7): Causa raiz, ERR-009 · Violação de unique constraint em testes de integração com múltiplos métodos, Lição, Primeira resposta (errada), Sintoma, Solução correta, Verificação
+### Community 184 - "Community 184"
+Cohesion: 0.46
+Nodes (5): FlywayMigrationSequenceTest, DisplayName, Pattern, String, Test
 
-### Community 248 - "Justificativa da Abordagem Orientada a Objetos"
+### Community 185 - "Community 185"
+Cohesion: 0.29
+Nodes (7): EmailNotificationService, Email Notification Test Flow (Follow-up/Waitlist), plano-feature-admin.md (Admin Bootstrap Plan), ChangePasswordUseCase, InitializeAdminUseCase, needs_password_change Forced Password Change Flow, V11__adicionar_coluna_troca_senha_usuario.sql
+
+### Community 186 - "Community 186"
+Cohesion: 0.33
+Nodes (7): Medical Record Immutability After COMPLETED, ERR-002: PROFESSIONAL Could Create Patients (Authz Bypass), Receptionist LGPD Access Restriction (No Medical Record Access), Plan 003: Add Ownership Check to Medical Record Read, CreateMedicalRecordEntryUseCase (ownership pattern), GetMedicalRecordByPatientUseCase, Professional Ownership Check Pattern (LGPD/RNF01)
+
+### Community 187 - "Community 187"
 Cohesion: 0.29
 Nodes (7): Abstração e Especialização, Baixo Acoplamento com a Arquitetura, Encapsulamento de Regras de Negócio, Entidades e Objetos de Valor, Justificativa da Abordagem Orientada a Objetos, Polimorfismo de Relacionamento, Reflexão para o Projeto
 
-### Community 249 - "Algoritmo de Fila Prioritária (UC09)"
+### Community 188 - "Community 188"
 Cohesion: 0.29
 Nodes (7): Algoritmo de Fila Prioritária (UC09), Aplicação no SAAP — Fluxo de Atendimento, Complexidade Algorítmica, Conceito e Fundamentação Teórica, Considerações de Auditoria e Conformidade, Modelagem de Dados — Prisma Schema (Extensão), Níveis de Prioridade (Base Legal Lei 10.048/2000)
 
-### Community 250 - "📊 Parte 4: Entidades e Fluxo CRUD Completo"
+### Community 189 - "Community 189"
 Cohesion: 0.29
 Nodes (7): 4.6.1 GET - Consultar Prontuário do Paciente, 4.6.2 CREATE - Registrar Evolução Clínica, 4.6.3 UPDATE - Editar Evolução Clínica, 4.6 PRONTUÁRIO / REGISTRO CLÍNICO (`/api/v1/medical-records`), 4.7.1 LIST - Listar Logs de Auditoria, 4.7 AUDITORIA (`/api/v1/audit-logs`), 📊 Parte 4: Entidades e Fluxo CRUD Completo
 
-### Community 251 - "proposal.md"
+### Community 190 - "Community 190"
+Cohesion: 0.48
+Nodes (5): OpenAPI, Profile, Bean, Configuration, OpenApiConfig
+
+### Community 191 - "Community 191"
 Cohesion: 0.29
 Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
 
-### Community 252 - "tasks.md"
+### Community 192 - "Community 192"
 Cohesion: 0.29
 Nodes (6): 1. Validador Customizado de CPF, 2. Camada de Aplicação (Use Cases), 3. Camada Web (DTOs e Mappers), 4. Camada de Apresentação (REST Controllers), 5. Tratamento de Exceções Global, 6. Testes e Validação
 
-### Community 253 - "proposal.md"
+### Community 193 - "Community 193"
 Cohesion: 0.29
 Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
 
-### Community 254 - "proposal.md"
+### Community 194 - "Community 194"
 Cohesion: 0.29
 Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
 
-### Community 255 - "tasks.md"
+### Community 195 - "Community 195"
 Cohesion: 0.29
 Nodes (6): 1. Banco de Dados e Migração, 2. Entidades de Domínio e Camada de Persistência, 3. Serviços de Fila de Espera e Casos de Uso, 4. Agendamento em Background (Worker Scheduler), 5. Endpoints REST Públicos e Segurança, 6. Testes Automatizados e Homologação
 
-### Community 256 - "proposal.md"
+### Community 196 - "Community 196"
 Cohesion: 0.29
 Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
 
-### Community 257 - "tasks.md"
+### Community 197 - "Community 197"
 Cohesion: 0.29
 Nodes (6): 1. Banco de Dados e Migração, 2. Entidades de Domínio e Camada de Persistência, 3. Serviços Core (Token e Notificação), 4. Agendamento em Background (Worker Scheduler), 5. Endpoints REST Públicos e Segurança, 6. Testes Automatizados e Homologação
 
-### Community 258 - "proposal.md"
+### Community 198 - "Community 198"
 Cohesion: 0.29
 Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
 
-### Community 259 - "tasks.md"
+### Community 199 - "Community 199"
 Cohesion: 0.29
 Nodes (6): 1. Configuração e Dependências, 2. Criptografia e Serviços de Token, 3. Integração com Spring Security e UserDetailsService, 4. Configuração de Segurança Global, 5. Controladores REST e DTOs de Login, 6. Testes Automatizados
 
-### Community 260 - "proposal.md"
+### Community 200 - "Community 200"
 Cohesion: 0.29
 Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
 
-### Community 261 - "proposal.md"
+### Community 201 - "Community 201"
 Cohesion: 0.29
 Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
 
-### Community 262 - "tasks.md"
+### Community 202 - "Community 202"
 Cohesion: 0.29
 Nodes (6): 1. Banco de Dados e Migração, 2. Entidades de Domínio e Camada de Persistência, 3. Modificações de Repositório Existentes, 4. Camada de Aplicação (Use Cases e Regras de Negócio), 5. Endpoints REST e Segurança (RBAC), 6. Testes Automatizados e Homologação
 
-### Community 263 - "proposal.md"
-Cohesion: 0.29
-Nodes (6): Capabilities, Impact, Modified Capabilities, New Capabilities, What Changes, Why
-
-### Community 264 - "CancelAppointmentByTokenUseCase"
+### Community 203 - "Community 203"
 Cohesion: 0.43
-Nodes (5): CancelAppointmentByTokenUseCase, Component, RequiredArgsConstructor, String, Transactional
+Nodes (5): PathMatchConfigurer, Configuration, Override, WebMvcConfig, WebMvcConfigurer
 
-### Community 265 - "📋 Registro de Erros e Soluções — SAAP-MVP"
+### Community 204 - "Community 204"
+Cohesion: 0.29
+Nodes (7): Plan 004: Fix Generic Exception Handler Leak, ex.getMessage() Leaked in HTTP 500 Response, GlobalExceptionHandler.handleGenericException, README.md (SAAP MVP), Standardized Error Response JSON Envelope, REST API Endpoint Catalog (/api/v1), Swagger UI Bearer JWT Auth Flow
+
+### Community 205 - "Community 205"
 Cohesion: 0.33
-Nodes (6): Causa raiz, ERR-005 · Warning `Unknown property 'api'` no VSCode Spring Boot, 🔖 Referências rápidas, 📋 Registro de Erros e Soluções — SAAP-MVP, Sintoma, Solução aplicada
+Nodes (6): Plan 014: Refactor AuthController to follow Controller→UseCase convention, AuthController /login endpoint, Controller→UseCase→Domain convention: business logic must live in use cases, not controllers, LoginUseCase (new), Plan 015: Extract getAuthenticatedUserEmail helper to avoid duplication, Extract identical copy-pasted method from 6 controllers into one shared static utility
 
-### Community 266 - "17. Regras Críticas de Implementação"
+### Community 206 - "Community 206"
+Cohesion: 0.43
+Nodes (5): AuditService, RequiredArgsConstructor, String, Transactional, UUID
+
+### Community 207 - "Community 207"
+Cohesion: 0.38
+Nodes (4): Function, Page, Pageable, PaginationSupport
+
+### Community 208 - "Community 208"
 Cohesion: 0.33
 Nodes (6): 17.1 Transições de Status Permitidas, 17.2 Checagem de Conflito de Horário, 17.3 Polling da Fila, 17.4 Token de Ação Pública, 17.5 CPF Mask + Validação, 17. Regras Críticas de Implementação
 
-### Community 267 - "PRD - Fluxo de Atendimento Médico"
-Cohesion: 0.33
-Nodes (5): 1. Visão Geral, 2. Jornada do Médico (Passo a Passo), 3. Regras de Fila e Prioridade, 4. Fluxo de Emergências e Encaixes, PRD - Fluxo de Atendimento Médico
-
-### Community 268 - "Fluxo de Confirmação de Agendamento com Follow-up Proativo"
+### Community 209 - "Community 209"
 Cohesion: 0.33
 Nodes (6): Campos no Modelo Appointment (Extensão), Configuração (Administrador), Fluxo de Confirmação de Agendamento com Follow-up Proativo, Fluxo Detalhado, Integração com Outros Casos de Uso, Vantagens do Follow-up Proativo
 
-### Community 269 - "4.1 USUÁRIOS (`/api/v1/users`)"
+### Community 210 - "Community 210"
 Cohesion: 0.33
 Nodes (6): 4.1.1 CREATE - Cadastrar Novo Usuário, 4.1.2 READ - Buscar Usuário por ID, 4.1.3 LIST - Listar Todos os Usuários Ativos, 4.1.4 UPDATE - Atualizar Usuário, 4.1.5 DELETE - Desativar Usuário (Soft Delete), 4.1 USUÁRIOS (`/api/v1/users`)
 
-### Community 270 - "4.2 PACIENTES (`/api/v1/patients`)"
+### Community 211 - "Community 211"
 Cohesion: 0.33
 Nodes (6): 4.2.1 CREATE - Cadastrar Novo Paciente, 4.2.2 READ - Buscar Paciente por ID, 4.2.3 LIST - Listar Todos os Pacientes Ativos, 4.2.4 UPDATE - Atualizar Paciente, 4.2.5 DELETE - Desativar Paciente, 4.2 PACIENTES (`/api/v1/patients`)
 
-### Community 271 - "4.3 PROFISSIONAIS (`/api/v1/professionals`)"
+### Community 212 - "Community 212"
 Cohesion: 0.33
 Nodes (6): 4.3.1 CREATE - Cadastrar Novo Profissional, 4.3.2 READ - Buscar Profissional por ID, 4.3.3 LIST - Listar Todos os Profissionais Ativos, 4.3.4 UPDATE - Atualizar Profissional, 4.3.5 DELETE - Desativar Profissional, 4.3 PROFISSIONAIS (`/api/v1/professionals`)
 
-### Community 272 - "4.4 SERVIÇOS (`/api/v1/services`)"
+### Community 213 - "Community 213"
 Cohesion: 0.33
 Nodes (6): 4.4.1 CREATE - Cadastrar Novo Serviço, 4.4.2 READ - Buscar Serviço por ID, 4.4.3 LIST - Listar Todos os Serviços Ativos, 4.4.4 UPDATE - Atualizar Serviço, 4.4.5 DELETE - Desativar Serviço, 4.4 SERVIÇOS (`/api/v1/services`)
 
-### Community 273 - "📝 Parte 8: Dados de Teste Pré-configurados"
+### Community 214 - "Community 214"
 Cohesion: 0.33
 Nodes (6): CPFs Válidos para Testes (Formato: 11 dígitos), Especialidades de Profissionais, 📝 Parte 8: Dados de Teste Pré-configurados, Prioridades de Agendamento, Status de Agendamento, Usuário Admin (Pré-criado no banco via migration V10)
 
-### Community 274 - "gaps-pendentes.md"
+### Community 215 - "Community 215"
 Cohesion: 0.40
 Nodes (3): Gaps de Teste Pendentes, Regra, Status Final
 
-### Community 275 - "🔄 Fluxo Completo"
+### Community 216 - "Community 216"
 Cohesion: 0.33
 Nodes (6): Etapa 1: Criar Agendamento PENDING, Etapa 2: Transicionar para PENDING_RESPONSE, Etapa 3: Gerar Token JWT (pela aplicação), Etapa 4: Confirmar Presença, Etapa 5: Cancelar Consulta, 🔄 Fluxo Completo
 
-### Community 276 - "Getting Started"
+### Community 217 - "Community 217"
 Cohesion: 0.33
 Nodes (5): Getting Started, Guides, Maven Parent overrides, Read Me First, Reference Documentation
 
-### Community 277 - "tasks.md"
+### Community 218 - "Community 218"
+Cohesion: 0.53
+Nodes (5): JsonInclude, ErrorResponse, LocalDateTime, Map, String
+
+### Community 219 - "Community 219"
 Cohesion: 0.33
 Nodes (5): 1. Banco de Dados e Migrações, 2. Domínio e Persistência (JPA), 3. Regras de Negócio e Casos de Uso, 4. Controladores Web REST e Segurança, 5. Testes Automatizados e Homologação
 
-### Community 278 - "Requirement: Estado PENDING_RESPONSE na Máquina de Estados do Agendamento"
-Cohesion: 0.33
-Nodes (5): ADDED Requirements, Requirement: Estado PENDING_RESPONSE na Máquina de Estados do Agendamento, Scenario: Transição ilegal a partir de PENDING_RESPONSE, Scenario: Transição PENDING_RESPONSE → CANCELLED, Scenario: Transição PENDING_RESPONSE → CONFIRMED
-
-### Community 279 - "Design: rf06-registro-clinico-prontuario"
+### Community 220 - "Community 220"
 Cohesion: 0.33
 Nodes (5): Context, Decisions, Design: rf06-registro-clinico-prontuario, Goals / Non-Goals, Risks / Trade-offs
 
-### Community 280 - "CompleteAppointmentUseCase.java"
-Cohesion: 0.30
-Nodes (8): Component, List, LocalDateTime, Optional, Override, RequiredArgsConstructor, UUID, WaitlistEntryRepositoryAdapter
-
-### Community 281 - "UpdateUserUseCase"
+### Community 221 - "Community 221"
 Cohesion: 0.53
-Nodes (3): PasswordEncoder, UUID, UpdateUserUseCase
+Nodes (6): Plan 010: Add Redis-backed token blacklist service for production, @ConditionalOnProperty switches Redis vs in-memory blacklist implementation without changing callers' contract, InMemoryTokenBlacklistService (dev/test fallback), RedisTokenBlacklistService (production, multi-instance), TokenBlacklistService interface, application.yaml spring.data.redis + api.security.redis.enabled config block
 
-### Community 282 - "ERR-003 · Serviços duplicados podiam ser cadastrados"
-Cohesion: 0.40
-Nodes (5): Causa raiz, ERR-003 · Serviços duplicados podiam ser cadastrados, Sintoma, Solução aplicada, Verificação
+### Community 222 - "Community 222"
+Cohesion: 0.47
+Nodes (4): SpringApplicationBuilder, SpringBootServletInitializer, Override, ServletInitializer
 
-### Community 283 - "ERR-004 · CPF formatado causava erro 400 ao cadastrar paciente"
-Cohesion: 0.40
-Nodes (5): Causa raiz, ERR-004 · CPF formatado causava erro 400 ao cadastrar paciente, Sintoma, Solução aplicada, Verificação
+### Community 223 - "Community 223"
+Cohesion: 0.53
+Nodes (4): Page, Pageable, UUID, JpaAuditLogRepository
 
-### Community 284 - "ERR-006 · Colisão de CPF/E-mail de Teste (idx_usuario_email / idx_paciente_cpf)"
-Cohesion: 0.40
-Nodes (5): Causa raiz, ERR-006 · Colisão de CPF/E-mail de Teste (idx_usuario_email / idx_paciente_cpf), Sintoma, Solução aplicada, Verificação
+### Community 224 - "Community 224"
+Cohesion: 0.53
+Nodes (5): LocalDate, LocalDateTime, String, UUID, PatientResponseDTO
 
-### Community 285 - "ERR-007 · Colisão de Nome de Serviço Ativo (idx_servico_name_active)"
-Cohesion: 0.40
-Nodes (5): Causa raiz, ERR-007 · Colisão de Nome de Serviço Ativo (idx_servico_name_active), Sintoma, Solução aplicada, Verificação
-
-### Community 286 - "ERR-008 · NullPointerException no SecurityContextHolder em Testes Unitários"
-Cohesion: 0.40
-Nodes (5): Causa raiz, ERR-008 · NullPointerException no SecurityContextHolder em Testes Unitários, Sintoma, Solução aplicada, Verificação
-
-### Community 287 - "ERR-002 · PROFESSIONAL conseguia criar pacientes (falha de autorização)"
-Cohesion: 0.40
-Nodes (5): Causa raiz, ERR-002 · PROFESSIONAL conseguia criar pacientes (falha de autorização), Sintoma, Solução aplicada, Verificação
-
-### Community 288 - "1. Direção Estética"
+### Community 225 - "Community 225"
 Cohesion: 0.40
 Nodes (5): 1.1 Conceito Visual: "Clínica Viva", 1.2 Paleta de Cores, 1.3 Tipografia, 1.4 Espaçamento e Grid, 1. Direção Estética
 
-### Community 289 - "✅ Execução de Validação Real (04/07/2026)"
+### Community 226 - "Community 226"
 Cohesion: 0.40
 Nodes (5): Correção de Documentação, ✅ Execução de Validação Real (04/07/2026), Guarda de Negócio Confirmada, RF03 — Follow-up, RF06 — Check-in e Atendimento
 
-### Community 290 - "Preferências do Usuário"
+### Community 227 - "Community 227"
 Cohesion: 0.50
-Nodes (3): Idioma, Preferências do Usuário, Regras de Workflow (Graphify e Contexto)
+Nodes (5): Plan 021: Document required JWT_SECRET and ACTION_TOKEN_SECRET, .env.example with JWT_SECRET / ACTION_TOKEN_SECRET placeholders and warnings, README.md local setup section (openssl rand -hex 32 instructions), Policy: any env var without a default must be documented in .env.example and README with generation command, application.yaml api.security.token.secret (JWT_SECRET) + api.security.action-token.secret (ACTION_TOKEN_SECRET)
 
-### Community 291 - "16. Estados de UI"
+### Community 228 - "Community 228"
+Cohesion: 0.60
+Nodes (5): Plan 022: Add correlation/trace IDs to logging via MDC, AuditService storing traceId from MDC on audit log entries (RNF01), logback-spring.xml pattern with %X{traceId}, SLF4J MDC correlation ID pattern to correlate interleaved logs per request without full distributed tracing, TraceIdFilter (OncePerRequestFilter, HIGHEST_PRECEDENCE)
+
+### Community 229 - "Community 229"
+Cohesion: 0.60
+Nodes (5): Plan DIRECTION-001 / 024: Implement use case for patients to join the waitlist, CreateWaitlistEntryUseCase (new), POST /join endpoint on WaitlistPublicController/WaitlistPatientController, Feature 70% complete (offer/accept/decline works) but has no patient-facing entry point to join — evidenced by zero `new WaitlistEntry(` calls and manual SQL inserts in test docs, WaitlistEntry domain model (WAITING → OFFERED → ACCEPTED/DECLINED/EXPIRED)
+
+### Community 230 - "Community 230"
+Cohesion: 0.60
+Nodes (5): Plan DIRECTION-003 / 026: Implement PATIENT user role for authenticated patient access, CreatePatientUserUseCase (new, patient self-registration), UserRole.PATIENT defined but zero @PreAuthorize("hasRole('PATIENT')") in codebase — dead enum value, patients can only act via stateless action tokens, GET /api/v1/patients/me, /me/appointments, /me/waitlist-entries, PUT /me (PreAuthorize hasRole('PATIENT')), UserRole.PATIENT enum value (domain/valueobject/UserRole.java)
+
+### Community 232 - "Community 232"
+Cohesion: 0.70
+Nodes (4): log_error(), log_info(), log_success(), test-endpoints.sh script
+
+### Community 233 - "Community 233"
 Cohesion: 0.50
 Nodes (4): 16.1 Loading States, 16.2 Toasts (vue-sonner), 16.3 ConfirmDialog, 16. Estados de UI
 
-### Community 292 - "5. TanStack Query — Query Keys e Composables"
+### Community 234 - "Community 234"
 Cohesion: 0.50
 Nodes (4): 5.1 Query Keys (centralizados), 5.2 Query Composables, 5.3 Mutation Composables, 5. TanStack Query — Query Keys e Composables
 
-### Community 293 - "8. Componentes Base (Design System Atoms)"
+### Community 235 - "Community 235"
 Cohesion: 0.50
 Nodes (4): 8.1 AppButton, 8.2 PriorityBadge, 8.3 StatusBadge, 8. Componentes Base (Design System Atoms)
 
-### Community 294 - "Rascunho de Análise Orientada a Objetos para o Projeto SAAP"
+### Community 236 - "Community 236"
+Cohesion: 0.50
+Nodes (4): Twilio Console - Try WhatsApp / Sandbox Settings Screenshot, "When a message comes in" webhook set to Twilio demo-reply URL (POST), Sandbox Configuration Panel (webhook URL + method fields), Sandbox Participants list (join code + registered WhatsApp number)
+
+### Community 237 - "Community 237"
+Cohesion: 0.83
+Nodes (4): Twilio WhatsApp Sandbox — Wizard Wrap-up Screen, Post-Sandbox Next Steps (Register Sender, Submit Template, Learn WhatsApp API), Sandbox International Delivery Limitation Warning, Twilio Sandbox Setup Wizard (Connect, Business-Initiated, User-Initiated, Wrap-up)
+
+### Community 238 - "Community 238"
 Cohesion: 0.50
 Nodes (3): **Por que essa estrutura é "OO"?**, Rascunho de Análise Orientada a Objetos para o Projeto SAAP, **Reflexão para o Projeto**
 
-### Community 295 - "✅ Cenários Testados"
+### Community 239 - "Community 239"
 Cohesion: 0.50
 Nodes (4): Cenário 1: Confirmação via Link Público, Cenário 2: Cancelamento via Link Público, Cenário 3: Não Resposta do Paciente, ✅ Cenários Testados
 
-### Community 296 - "📌 Achados Originais (verificados no código-fonte antes da correção)"
+### Community 240 - "Community 240"
 Cohesion: 0.50
 Nodes (4): 1. Inconsistência de status HTTP — fila de espera vs. agendamento, 2. `PUT /professionals/{id}` desvincula usuário silenciosamente, 3. `403 Forbidden` inacessível — mas só nas 2 rotas com `hasRole()` direto no `SecurityConfig` (correção ao achado original), 📌 Achados Originais (verificados no código-fonte antes da correção)
 
-### Community 297 - "11. Formulários — Validação com VeeValidate + Yup"
+### Community 241 - "Community 241"
+Cohesion: 0.83
+Nodes (3): EnableAsync, ApplicationConfig, Configuration
+
+### Community 242 - "Community 242"
+Cohesion: 0.50
+Nodes (3): dependencies, @kilocode/plugin, @opencode-ai/plugin
+
+### Community 243 - "Community 243"
+Cohesion: 0.50
+Nodes (4): Plan 002: Gate Swagger/OpenAPI by Profile, OpenApiConfig (@Profile("dev")), SecurityConfig (permitAll swagger), Springdoc Disabled-by-default / Dev-enabled Fix
+
+### Community 244 - "Community 244"
+Cohesion: 0.50
+Nodes (4): Plan 006: Fix LoginRateLimitFilter Trusted Proxies, LoginRateLimitFilter.getClientIp, X-Forwarded-For Spoofing Bypasses Rate Limit, api.security.login.trusted-proxies Config
+
+### Community 245 - "Community 245"
+Cohesion: 0.67
+Nodes (3): Plan 013: Replace string-matching exception handling with typed exceptions, GlobalExceptionHandler (HTTP status decision), ScheduleConflictException (domain/exception)
+
+### Community 246 - "Community 246"
+Cohesion: 0.67
+Nodes (4): Plan 019: Replace Thread.sleep in priority tests with injectable Clock, Use injectable Clock instead of Thread.sleep to avoid flaky timing-dependent tests, Injected Clock bean (Clock.fixed) for deterministic timestamps, PriorityAttendanceIntegrationTest.java (Thread.sleep(10) at line 232)
+
+### Community 247 - "Community 247"
+Cohesion: 0.67
+Nodes (4): Plan 023: Add database index (status, data_hora) for follow-up scheduler query, AppointmentFollowUpScheduler query (WHERE status = 'PENDING_RESPONSE' AND data_hora >= ...), Composite index avoids full table scan on hourly scheduler tick as table grows, V11__criar_index_agendamento_status_data_hora.sql (composite index on agendamento(status, data_hora))
+
+### Community 248 - "Community 248"
+Cohesion: 0.67
+Nodes (3): CreateMedicalRecordEntryRequestDTO, String, UUID
+
+### Community 249 - "Community 249"
+Cohesion: 0.50
+Nodes (3): Long, String, LoginResponseDTO
+
+### Community 250 - "Community 250"
 Cohesion: 0.67
 Nodes (3): 11.1 Schema de Validação: Paciente, 11.2 Schema: Agendamento, 11. Formulários — Validação com VeeValidate + Yup
 
-### Community 298 - "2. Stack Tecnológica"
+### Community 251 - "Community 251"
 Cohesion: 0.67
 Nodes (3): 2.1 Dependências Principais, 2.2 Estrutura de Diretórios, 2. Stack Tecnológica
 
-### Community 299 - "4. Camada de API (Axios)"
+### Community 252 - "Community 252"
 Cohesion: 0.67
 Nodes (3): 4.1 Cliente HTTP, 4.2 Funções de API por Recurso, 4. Camada de API (Axios)
 
-### Community 300 - "9. Layout Principal"
+### Community 253 - "Community 253"
 Cohesion: 0.67
 Nodes (3): 9.1 AppLayout.vue, 9.2 Comportamento do Layout, 9. Layout Principal
 
-### Community 301 - "Modelagem Estrutural (Classes Conceituais)"
+### Community 254 - "Community 254"
+Cohesion: 1.00
+Nodes (3): Sandbox Configuration - 'When a message comes in' webhook (demo-reply URL, POST), Sandbox Participants (join code 'bicycle-from', 1 participant whatsapp:+557193706925), Twilio WhatsApp Sandbox Settings Screenshot
+
+### Community 255 - "Community 255"
 Cohesion: 0.67
 Nodes (3): Entidades Core (Domínio), Modelagem Estrutural (Classes Conceituais), Relacionamentos Iniciais (Visão OO)
 
-### Community 302 - "Modelagem Funcional (Casos de Uso)"
+### Community 256 - "Community 256"
 Cohesion: 0.67
 Nodes (3): Identificação dos Casos de Uso, Modelagem Funcional (Casos de Uso), Regra Operacional de Atendimento por Período
 
-### Community 382 - "User"
-Cohesion: 0.18
-Nodes (9): AllArgsConstructor, Builder, Getter, LocalDateTime, NoArgsConstructor, Setter, String, UUID (+1 more)
-
-### Community 383 - "JwtAuthenticationFilter"
-Cohesion: 0.29
-Nodes (8): Component, FilterChain, HttpServletRequest, HttpServletResponse, Override, String, UserDetailsService, JwtAuthenticationFilter
-
-### Community 384 - "ActionToken"
-Cohesion: 0.30
-Nodes (4): ActionToken, Long, String, Token
-
-### Community 385 - "CompleteAppointmentUseCaseTest.java"
-Cohesion: 0.35
-Nodes (6): CompleteAppointmentUseCaseTest, BeforeEach, DisplayName, ExtendWith, Test, UUID
-
-### Community 387 - "UserDetailsServiceImpl"
-Cohesion: 0.32
-Nodes (5): Override, String, UserDetailsServiceImpl, UserDetails, UserDetailsService
-
-### Community 388 - "PRD - Fluxo da Recepcionista"
-Cohesion: 0.29
-Nodes (6): 1. Visão Geral, 2. Autenticação e Controle de Acesso, 3. Dashboard e Monitoramento da Clínica, 4. Gestão de Agendas (Médicos e Consultas), 5. Gestão de Pacientes e Recepção, PRD - Fluxo da Recepcionista
-
-### Community 389 - "CallNextPatientUseCase.java"
-Cohesion: 0.43
-Nodes (5): CallNextPatientUseCase, RequiredArgsConstructor, String, Transactional, UUID
+## Ambiguous Edges - Review These
+- `Sandbox Configuration - 'When a message comes in' webhook (demo-reply URL, POST)` → `Sandbox Participants (join code 'bicycle-from', 1 participant whatsapp:+557193706925)`  [AMBIGUOUS]
+  docs/image.png · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **891 isolated node(s):** `@kilocode/plugin`, `@opencode-ai/plugin`, `br.com.belloinfo:saap-mvp`, `The Stance`, `What You Might Do` (+886 more)
+- **788 isolated node(s):** `@kilocode/plugin`, `@opencode-ai/plugin`, `The Stance`, `What You Might Do`, `Check for context` (+783 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **98 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Service` connect `Java Createserviceusecase Execute` to `Execute Java Setup`, `UserDetailsServiceImpl`, `CallNextPatientUseCase.java`, `Java Transactional Acceptwaitlistofferusecase`, `Java String Component`, `Cancelappointmentbytokenusecase Java String`, `Java String Uuid`, `Java Uuid Auditlog`, `Test Beforeeach Transactional`, `Java Uuid Getmedicalrecordbypatientusecase`, `UpdateUserUseCase`, `Java Execute Transactional`, `Waitlistentry Java Localdatetime`, `Java Deactivateuserusecase Execute`, `Java Paginationsupport Listauditlogsusecase`, `Opsx Explore`, `Java Auditlogcontroller List`, `Createpatientusecase Java Updatepatientusecase`, `Execute Startappointmentusecase Java`, `Createprofessionalusecase Java Execute`, `Findprofessionalbyidusecase Execute Java`, `Finduserbyidusecase Execute Java`, `Execute Listappointmentsusecase Java`, `Java Localdatetime Bookappointmentusecase`, `Save Coremapper Java`, `Execute Listactivepatientsusecase Java`, `Transitionto Appointmentdomaintest Shouldallowcancellationfrompendingandconfirmedandarrived`, `Patientrepositoryadapter Java Component`, `Execute Confirmappointmentusecasetest Confirmssuccessfully`, `Appointmentcontrollertest Java Setup`, `Findpatientbyidusecase Findpatientbyidusecasetest Execute`, `Execute Createprofessionalusecasetest Java`, `Execute Createserviceusecasetest Java`, `Execute Deactivateprofessionalusecasetest Activeprofessional`, `Execute Deactivateuserusecasetest Java`, `Appointmentpubliccontrollerintegrationtest Java Setup`, `Waitlistpubliccontrollerintegrationtest Java Beforeeach`, `Findappointmentbyidusecasetest Execute Java`, `Findservicebyidusecasetest Execute Java`, `Appointmentconcurrencyintegrationtest Aftereach Java`, `Declinewaitlistofferusecase Java Execute`, `Waitlisttimeoutscheduler Expire Java`, `Processmisseddeadlinesusecase Java Component`, `MedicalRecordEntryResponseDTO`, `Findservicebyidusecase Java Execute`, `Openspec Propose Explore`?**
-  _High betweenness centrality (0.076) - this node is a cross-community bridge._
-- **Why does `User` connect `User` to `Execute Java Setup`, `UserDetailsServiceImpl`, `Java String Uuid`, `Java String Uuid`, `String Updatemedicalrecordentryrequestdto Java`, `Test Beforeeach Transactional`, `UpdateUserUseCase`, `Dofilter Loginratelimitfiltertest Passesthrough`, `Java Deactivateuserusecase Execute`, `Opsx Explore`, `Java Auditlogcontroller List`, `Createuserusecase Execute Java`, `Finduserbyidusecase Execute Java`, `Save Coremapper Java`, `Userrepositoryadapter Java Component`, `Patientrepositoryadapter Java Component`, `Execute Deactivateuserusecasetest Java`, `Appointmentpubliccontrollerintegrationtest Java Setup`, `Waitlistpubliccontrollerintegrationtest Java Beforeeach`, `Listactiveusersusecasetest Execute Java`, `Appointmentconcurrencyintegrationtest Aftereach Java`, `Waitlisttimeoutscheduler Expire Java`, `ProcessMissedDeadlinesUseCaseIntegrationTest.java`, `Findservicebyidusecase Java Execute`, `Openspec Propose Explore`?**
-  _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `Appointment` connect `Cancelappointmentbytokenusecase Java String` to `Execute Java Setup`, `Java Uuid Localdatetime`, `CompleteAppointmentUseCaseTest.java`, `CallNextPatientUseCase.java`, `CancelAppointmentByTokenUseCase`, `Java Uuid Auditlog`, `String Updatemedicalrecordentryrequestdto Java`, `Java Uuid Confirmappointmentusecase`, `Java Createserviceusecase Execute`, `Professional Java String`, `Java Auditlogcontroller List`, `Execute Startappointmentusecase Java`, `Java Uuid Patient`, `Appointmentactiontokenservice Java Appointmentactiontokenservicetest`, `Execute Listappointmentsusecase Java`, `Java Localdatetime Bookappointmentusecase`, `Callnextpatientusecase Java Execute`, `Save Coremapper Java`, `Execute Cancelappointmentbytokenusecasetest Throwsexception`, `Execute Confirmappointmentbytokenusecasetest Throwsexception`, `Execute Updatemedicalrecordentryusecasetest Java`, `Transitionto Appointmentdomaintest Shouldallowcancellationfrompendingandconfirmedandarrived`, `Patientrepositoryadapter Java Component`, `Execute Confirmappointmentusecasetest Confirmssuccessfully`, `Appointmentcontrollertest Java Setup`, `Appointmentpubliccontrollerintegrationtest Java Setup`, `Findappointmentbyidusecasetest Execute Java`, `Waitlisttimeoutscheduler Expire Java`, `Confirmappointmentbytokenusecase Illegalstateexception Java`, `Processmisseddeadlinesusecase Java Component`, `Findservicebyidusecase Java Execute`?**
-  _High betweenness centrality (0.038) - this node is a cross-community bridge._
-- **What connects `@kilocode/plugin`, `@opencode-ai/plugin`, `br.com.belloinfo:saap-mvp` to the rest of the system?**
-  _905 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Execute Java Setup` be split into smaller, more focused modules?**
-  _Cohesion score 0.08090117767537122 - nodes in this community are weakly interconnected._
-- **Should `Java Uuid Localdatetime` be split into smaller, more focused modules?**
-  _Cohesion score 0.12310606060606061 - nodes in this community are weakly interconnected._
-- **Should `String Java Blacklist` be split into smaller, more focused modules?**
-  _Cohesion score 0.07337662337662337 - nodes in this community are weakly interconnected._
+- **What is the exact relationship between `Sandbox Configuration - 'When a message comes in' webhook (demo-reply URL, POST)` and `Sandbox Participants (join code 'bicycle-from', 1 participant whatsapp:+557193706925)`?**
+  _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
+- **Why does `Service` connect `Service Management Use Cases` to `Security Filters & Redis`, `Domain Exceptions & Roles`, `Medical Record Creation Flow`, `Follow-up Deadline Scheduler`, `Medical Record Persistence Entities`, `User Management Use Cases`, `Community 137`, `Community 143`, `Cancel Appointment Use Case`, `Community 154`, `Community 157`, `Patient Create/Deactivate Use Cases`, `List Active Professionals Use Case`, `Confirm Appointment Use Case`, `Web Mapper Tests`, `Complete Appointment Use Case`, `Start Appointment Use Case`, `Update User Use Case`, `Waitlist Timeout Scheduler`, `Deactivate Service Use Case`, `Deactivate User Use Case`, `Community 60`, `Community 69`, `Community 70`, `Community 71`, `Community 72`, `Community 73`, `Community 74`, `Community 206`, `Community 87`, `Community 92`, `Community 98`, `Community 105`, `Community 109`, `Community 120`, `Community 122`, `Community 124`, `Community 125`?**
+  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+- **Why does `UserRepository` connect `User Management Use Cases` to `Domain Exceptions & Roles`, `Global Exception Handling`, `Medical Record Entry Use Cases`, `Medical Record Creation Flow`, `Follow-up Deadline Scheduler`, `Community 137`, `Community 140`, `Community 142`, `Community 143`, `Appointment Controller & Public Actions`, `Community 153`, `Login DTO & Audit Log Access Tests`, `Community 157`, `Update User Use Case`, `Waitlist Timeout Scheduler`, `Deactivate User Use Case`, `Community 62`, `Community 73`, `Community 206`, `Community 94`, `Community 122`, `Community 123`, `Community 124`, `Community 125`?**
+  _High betweenness centrality (0.070) - this node is a cross-community bridge._
+- **Why does `AppointmentRepository` connect `Appointment Repository Port` to `Domain Exceptions & Roles`, `Global Exception Handling`, `Medical Record Entry Use Cases`, `Medical Record Creation Flow`, `Follow-up Deadline Scheduler`, `Community 137`, `Cancel Appointment Use Case`, `Community 152`, `Appointment Repository Adapter`, `Community 157`, `Cancel Appointment By Token`, `Community 173`, `Confirm Appointment Use Case`, `Accept Waitlist Offer Use Case Tests`, `Complete Appointment Use Case`, `Start Appointment Use Case`, `Waitlist Timeout Scheduler`, `Community 60`, `Community 74`, `Community 75`, `Community 80`, `Community 87`, `Community 93`, `Community 111`, `Community 122`, `Community 124`, `Community 125`?**
+  _High betweenness centrality (0.058) - this node is a cross-community bridge._
+- **What connects `@kilocode/plugin`, `@opencode-ai/plugin`, `The Stance` to the rest of the system?**
+  _825 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Security Filters & Redis` be split into smaller, more focused modules?**
+  _Cohesion score 0.05221518987341772 - nodes in this community are weakly interconnected._
+- **Should `Domain Exceptions & Roles` be split into smaller, more focused modules?**
+  _Cohesion score 0.06315789473684211 - nodes in this community are weakly interconnected._

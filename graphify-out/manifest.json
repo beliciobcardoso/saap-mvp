@@ -1,8 +1,8 @@
 {
   ".claude/settings.local.json": {
-    "mtime": 1783242428.2224622,
-    "ast_hash": "1e5bfb5eb323df1ea5a7a762e21e6916",
-    "semantic_hash": "1e5bfb5eb323df1ea5a7a762e21e6916"
+    "mtime": 1783744394.3721564,
+    "ast_hash": "cfee72004680c764cbcc09abfe701b15",
+    "semantic_hash": "cfee72004680c764cbcc09abfe701b15"
   },
   ".opencode/package.json": {
     "mtime": 1783243943.0194914,
@@ -15,9 +15,9 @@
     "semantic_hash": "ab50dd89da7da2346b28003352eeeeeb"
   },
   "pom.xml": {
-    "mtime": 1783130271.1776137,
-    "ast_hash": "8d795024b8afd07655d764498ad1de0c",
-    "semantic_hash": "8d795024b8afd07655d764498ad1de0c"
+    "mtime": 1783741941.6420913,
+    "ast_hash": "7358037e49c3f3df8319a4959ef2e474",
+    "semantic_hash": "7358037e49c3f3df8319a4959ef2e474"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/SaapMvpApplication.java": {
     "mtime": 1782666212.8815072,
@@ -50,14 +50,14 @@
     "semantic_hash": "3043b469b2abd80a9c000f9ce9ecf596"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/BookAppointmentUseCase.java": {
-    "mtime": 1782615778.8287332,
-    "ast_hash": "0c3892651e4b690a2f74663d339d5eee",
-    "semantic_hash": "0c3892651e4b690a2f74663d339d5eee"
+    "mtime": 1783732878.387139,
+    "ast_hash": "a62d405967eb1699141bac129c47b3bb",
+    "semantic_hash": "a62d405967eb1699141bac129c47b3bb"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CallNextPatientUseCase.java": {
-    "mtime": 1782657974.3129652,
-    "ast_hash": "b375bbb5deafb50d83a4d65723c713b8",
-    "semantic_hash": "b375bbb5deafb50d83a4d65723c713b8"
+    "mtime": 1783725579.2553742,
+    "ast_hash": "30a3fe7d29a5512f2496d19efdd703fb",
+    "semantic_hash": "30a3fe7d29a5512f2496d19efdd703fb"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CancelAppointmentByTokenUseCase.java": {
     "mtime": 1782662648.5553372,
@@ -70,9 +70,9 @@
     "semantic_hash": "ea82d86bed2b13a023521d844c596b12"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CheckInAppointmentUseCase.java": {
-    "mtime": 1782657950.0399814,
-    "ast_hash": "a1d789281e4ef18d9cde9116a59db918",
-    "semantic_hash": "a1d789281e4ef18d9cde9116a59db918"
+    "mtime": 1783737546.7461944,
+    "ast_hash": "4c2c2b2ab311838d15ac1fdf35f66705",
+    "semantic_hash": "4c2c2b2ab311838d15ac1fdf35f66705"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/CompleteAppointmentUseCase.java": {
     "mtime": 1783050707.0253406,
@@ -165,9 +165,9 @@
     "semantic_hash": "9c76362bf4e7bc78fd6492197b00628c"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/GetMedicalRecordByPatientUseCase.java": {
-    "mtime": 1783038931.3386073,
-    "ast_hash": "24b7c72c1268eb6a9f9e95d3bad61ae6",
-    "semantic_hash": "24b7c72c1268eb6a9f9e95d3bad61ae6"
+    "mtime": 1783722503.1993701,
+    "ast_hash": "4a54207e8d9ac9bcf1643fd2a7b096ba",
+    "semantic_hash": "4a54207e8d9ac9bcf1643fd2a7b096ba"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListActivePatientsUseCase.java": {
     "mtime": 1783199558.212237,
@@ -195,9 +195,9 @@
     "semantic_hash": "38b2f6b22cc9d4bc395146611edde9cb"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ListAuditLogsUseCase.java": {
-    "mtime": 1783200127.1573598,
-    "ast_hash": "7316869b31c76bb96cdf5311ea16849d",
-    "semantic_hash": "7316869b31c76bb96cdf5311ea16849d"
+    "mtime": 1783732422.9207573,
+    "ast_hash": "b5530999b8bfd4b9fcc0a20a85eba718",
+    "semantic_hash": "b5530999b8bfd4b9fcc0a20a85eba718"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/ProcessMissedDeadlinesUseCase.java": {
     "mtime": 1782662629.6341898,
@@ -305,9 +305,9 @@
     "semantic_hash": "3b9d030b1bc19a3de51f04962828619a"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/AppointmentRepository.java": {
-    "mtime": 1783200212.9480486,
-    "ast_hash": "e2a795fe5aeccf2b66ba46f83940a544",
-    "semantic_hash": "e2a795fe5aeccf2b66ba46f83940a544"
+    "mtime": 1783734447.909521,
+    "ast_hash": "c08679ea399abc9209a068945a873d2d",
+    "semantic_hash": "c08679ea399abc9209a068945a873d2d"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/AuditLogRepository.java": {
     "mtime": 1783200044.2656827,
@@ -340,14 +340,14 @@
     "semantic_hash": "968466d327bcfbf9895eff47f1a3543b"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/UserRepository.java": {
-    "mtime": 1783199900.0733182,
-    "ast_hash": "4d14e1861738e16cd21eee71c382236c",
-    "semantic_hash": "4d14e1861738e16cd21eee71c382236c"
+    "mtime": 1783732390.276082,
+    "ast_hash": "f4d5c61b3d53f54365f26e410a2bf31b",
+    "semantic_hash": "f4d5c61b3d53f54365f26e410a2bf31b"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/domain/repository/WaitlistEntryRepository.java": {
-    "mtime": 1782617585.639439,
-    "ast_hash": "58c0edd7b47bebfd5f00870603ed2667",
-    "semantic_hash": "58c0edd7b47bebfd5f00870603ed2667"
+    "mtime": 1783783149.1986666,
+    "ast_hash": "7df6a1913d2475e8a6237a6569772ee3",
+    "semantic_hash": "7df6a1913d2475e8a6237a6569772ee3"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/domain/valueobject/AppointmentStatus.java": {
     "mtime": 1782662537.0916345,
@@ -400,9 +400,9 @@
     "semantic_hash": "04ee5af2e1d94d302943a6974d9e41f4"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/ConsoleNotificationService.java": {
-    "mtime": 1782617620.9489872,
-    "ast_hash": "8a3e9b7884538d343c083d43424ad149",
-    "semantic_hash": "8a3e9b7884538d343c083d43424ad149"
+    "mtime": 1783740101.492171,
+    "ast_hash": "f2f9b50667956c8ae091ced53d6cdb99",
+    "semantic_hash": "f2f9b50667956c8ae091ced53d6cdb99"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/PaginationSupport.java": {
     "mtime": 1783199466.7047276,
@@ -410,9 +410,9 @@
     "semantic_hash": "1ecb4ed743523436fbcc69e7fbe59e31"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/AppointmentRepositoryAdapter.java": {
-    "mtime": 1783200285.8001442,
-    "ast_hash": "38e260d0cf2ce2618150624b369289e4",
-    "semantic_hash": "38e260d0cf2ce2618150624b369289e4"
+    "mtime": 1783737706.982332,
+    "ast_hash": "ff0689dec429521a6162e4a95f36f068",
+    "semantic_hash": "ff0689dec429521a6162e4a95f36f068"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/AuditLogRepositoryAdapter.java": {
     "mtime": 1783200083.867106,
@@ -445,14 +445,14 @@
     "semantic_hash": "70e4b28b20a7edea219dac9a098a344e"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/UserRepositoryAdapter.java": {
-    "mtime": 1783199942.197774,
-    "ast_hash": "b1842da20cc10a850eb46f1e92528f79",
-    "semantic_hash": "b1842da20cc10a850eb46f1e92528f79"
+    "mtime": 1783732417.011872,
+    "ast_hash": "4b20fd883fb67925cac8f7ffc856101f",
+    "semantic_hash": "4b20fd883fb67925cac8f7ffc856101f"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/adapter/WaitlistEntryRepositoryAdapter.java": {
-    "mtime": 1782617597.5932863,
-    "ast_hash": "a40b5c4bab46d35b66572a5cd9a6efd9",
-    "semantic_hash": "a40b5c4bab46d35b66572a5cd9a6efd9"
+    "mtime": 1783783170.8153396,
+    "ast_hash": "e6b42586b8febacd521f1b0789b7fa73",
+    "semantic_hash": "e6b42586b8febacd521f1b0789b7fa73"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/entity/AppointmentEntity.java": {
     "mtime": 1782665306.388757,
@@ -500,14 +500,14 @@
     "semantic_hash": "a54f0d8bc27cd4e8da8d5766117c245b"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/mapper/CoreMapper.java": {
-    "mtime": 1783038883.788857,
-    "ast_hash": "2246c64b018b236beb05a130b0962adc",
-    "semantic_hash": "2246c64b018b236beb05a130b0962adc"
+    "mtime": 1783735488.5581527,
+    "ast_hash": "a7fd4a87ec4f794f7d933b0527104dd0",
+    "semantic_hash": "a7fd4a87ec4f794f7d933b0527104dd0"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaAppointmentRepository.java": {
-    "mtime": 1783200263.9845536,
-    "ast_hash": "0c9d81abf35d7b082fb8c4c4df231755",
-    "semantic_hash": "0c9d81abf35d7b082fb8c4c4df231755"
+    "mtime": 1783737700.829687,
+    "ast_hash": "6aeb01829458d32311b3b91acdda1754",
+    "semantic_hash": "6aeb01829458d32311b3b91acdda1754"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaAuditLogRepository.java": {
     "mtime": 1783200078.0560043,
@@ -540,14 +540,14 @@
     "semantic_hash": "082e531d0b0ebdad6e373891ebde4763"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaUserRepository.java": {
-    "mtime": 1783199914.6761298,
-    "ast_hash": "598b6916d593c34acd58adee70c5a8ac",
-    "semantic_hash": "598b6916d593c34acd58adee70c5a8ac"
+    "mtime": 1783732404.977983,
+    "ast_hash": "383adc05fca1510b4f13d5ef5cf5cb4b",
+    "semantic_hash": "383adc05fca1510b4f13d5ef5cf5cb4b"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaWaitlistEntryRepository.java": {
-    "mtime": 1782617589.390391,
-    "ast_hash": "3240df1b59c0becf7eb24051ecec4410",
-    "semantic_hash": "3240df1b59c0becf7eb24051ecec4410"
+    "mtime": 1783783164.1985052,
+    "ast_hash": "fde4b0a32f7bdc71dafd11a9c92f05b3",
+    "semantic_hash": "fde4b0a32f7bdc71dafd11a9c92f05b3"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/scheduler/AppointmentFollowUpScheduler.java": {
     "mtime": 1782662700.0231376,
@@ -565,19 +565,19 @@
     "semantic_hash": "e08cb44dd73ff2e4bc1d197d09aad11b"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/LoginRateLimitFilter.java": {
-    "mtime": 1783140884.5564516,
-    "ast_hash": "e6a3ff171275a7ac37a3443514769e99",
-    "semantic_hash": "e6a3ff171275a7ac37a3443514769e99"
+    "mtime": 1783726917.6954951,
+    "ast_hash": "9be701c9b8c0e5b44f60e116dc8398e9",
+    "semantic_hash": "9be701c9b8c0e5b44f60e116dc8398e9"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/SecurityConfig.java": {
-    "mtime": 1783194644.2125347,
-    "ast_hash": "1f83fe51b9df688d68af9bc754ec5bf3",
-    "semantic_hash": "1f83fe51b9df688d68af9bc754ec5bf3"
+    "mtime": 1783783267.5216236,
+    "ast_hash": "698b6ba739b185c43d91fd6ebc7079d9",
+    "semantic_hash": "698b6ba739b185c43d91fd6ebc7079d9"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/SecurityProperties.java": {
-    "mtime": 1783140472.6455212,
-    "ast_hash": "e4b35f60f139fe43c24a29e035c5a8c4",
-    "semantic_hash": "e4b35f60f139fe43c24a29e035c5a8c4"
+    "mtime": 1783726917.6934342,
+    "ast_hash": "5bf5bbb58233ae363482c154272d6be2",
+    "semantic_hash": "5bf5bbb58233ae363482c154272d6be2"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/TokenBlacklistService.java": {
     "mtime": 1783140487.4843385,
@@ -600,9 +600,9 @@
     "semantic_hash": "70ab8df1e691b7044965b445127d1bf9"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AppointmentController.java": {
-    "mtime": 1783200342.3315134,
-    "ast_hash": "94056bfd53961083af7127399ada2ac4",
-    "semantic_hash": "94056bfd53961083af7127399ada2ac4"
+    "mtime": 1783785527.710096,
+    "ast_hash": "628e6d067ad0c90e359029260ef1aa9e",
+    "semantic_hash": "628e6d067ad0c90e359029260ef1aa9e"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AuditLogController.java": {
     "mtime": 1783200178.8936787,
@@ -610,19 +610,19 @@
     "semantic_hash": "edd025905feec954e5df828272e8149c"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AuthController.java": {
-    "mtime": 1783140533.9017673,
-    "ast_hash": "b67b2726502b8c0bc3778199fb5da1ec",
-    "semantic_hash": "b67b2726502b8c0bc3778199fb5da1ec"
+    "mtime": 1783733043.0632973,
+    "ast_hash": "808da82c44870d6ca27c14d4ca6859e2",
+    "semantic_hash": "808da82c44870d6ca27c14d4ca6859e2"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/MedicalRecordController.java": {
-    "mtime": 1783050747.0890114,
-    "ast_hash": "63cd84d8c5af80d2d6a4133eafc763d3",
-    "semantic_hash": "63cd84d8c5af80d2d6a4133eafc763d3"
+    "mtime": 1783733174.326795,
+    "ast_hash": "0f943c3b358041d5d9d51f7c710ed32f",
+    "semantic_hash": "0f943c3b358041d5d9d51f7c710ed32f"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/PatientController.java": {
-    "mtime": 1783199597.0731454,
-    "ast_hash": "7acab51be961cc5028356ddd8ba8b199",
-    "semantic_hash": "7acab51be961cc5028356ddd8ba8b199"
+    "mtime": 1783733086.631513,
+    "ast_hash": "6fe34732a47fe88f971e99bd286ece2e",
+    "semantic_hash": "6fe34732a47fe88f971e99bd286ece2e"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/ProfessionalController.java": {
     "mtime": 1783199870.2651446,
@@ -740,9 +740,9 @@
     "semantic_hash": "5e0e1afff2ce24c3004fc11f78336a3d"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/exception/GlobalExceptionHandler.java": {
-    "mtime": 1783135760.2806377,
-    "ast_hash": "31ff8d7361eafc16ac5118f5de9336f4",
-    "semantic_hash": "31ff8d7361eafc16ac5118f5de9336f4"
+    "mtime": 1783732919.9885044,
+    "ast_hash": "7aef85c6d41d24883d4b7b5616cb910b",
+    "semantic_hash": "7aef85c6d41d24883d4b7b5616cb910b"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/mapper/WebMapper.java": {
     "mtime": 1783050724.8683057,
@@ -760,14 +760,9 @@
     "semantic_hash": "a4bd4ef727c99979c252a5cea347367c"
   },
   "src/main/resources/META-INF/additional-spring-configuration-metadata.json": {
-    "mtime": 1783175791.0611444,
-    "ast_hash": "f2ab8725d5bba13b56ea45612737c3e9",
-    "semantic_hash": "f2ab8725d5bba13b56ea45612737c3e9"
-  },
-  "src/main/resources/db/migration/V10__inserir_usuario_admin_teste.sql": {
-    "mtime": 1783052435.8480415,
-    "ast_hash": "4ccec000518bca69c2f7bbcfc611d8ec",
-    "semantic_hash": "4ccec000518bca69c2f7bbcfc611d8ec"
+    "mtime": 1783768409.9851947,
+    "ast_hash": "aae0559245b521d890c2f32bf49d750e",
+    "semantic_hash": "aae0559245b521d890c2f32bf49d750e"
   },
   "src/main/resources/db/migration/V1__criar_tabelas_core.sql": {
     "mtime": 1782562628.4174712,
@@ -970,7 +965,7 @@
     "semantic_hash": "c7c07d47ef1c4bf29b7ddd60ff026101"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/PriorityAttendanceIntegrationTest.java": {
-    "mtime": 1782658236.5744183,
+    "mtime": 1783737198.78539,
     "ast_hash": "046064de6c93d4a908713c0c1810c842",
     "semantic_hash": "046064de6c93d4a908713c0c1810c842"
   },
@@ -1050,9 +1045,9 @@
     "semantic_hash": "16d634efe45e3ae4f30b70fe0f07314a"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/security/LoginRateLimitFilterTest.java": {
-    "mtime": 1783142160.4041336,
-    "ast_hash": "38b16e28931410792cf4903f6b0e5fc0",
-    "semantic_hash": "38b16e28931410792cf4903f6b0e5fc0"
+    "mtime": 1783726917.6972322,
+    "ast_hash": "df24ed054062da9373fe45f88ccf65e2",
+    "semantic_hash": "df24ed054062da9373fe45f88ccf65e2"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/security/TokenBlacklistServiceTest.java": {
     "mtime": 1783143040.9395566,
@@ -1065,12 +1060,12 @@
     "semantic_hash": "02af0a2daa12250a095481c22c1256b9"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AppointmentControllerTest.java": {
-    "mtime": 1783200654.8200693,
-    "ast_hash": "5fe42b68e8104c6dbce2efb0966e1ed2",
-    "semantic_hash": "5fe42b68e8104c6dbce2efb0966e1ed2"
+    "mtime": 1783738256.4622543,
+    "ast_hash": "029fe833c386cd57a83d90850c9930ba",
+    "semantic_hash": "029fe833c386cd57a83d90850c9930ba"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/AppointmentPublicControllerIntegrationTest.java": {
-    "mtime": 1782662769.0134397,
+    "mtime": 1783785788.2022502,
     "ast_hash": "5aab370165ded326adab14ca445e8462",
     "semantic_hash": "5aab370165ded326adab14ca445e8462"
   },
@@ -1080,9 +1075,9 @@
     "semantic_hash": "e3bf5c7ff9033545d1862d17bb5a6f1e"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/MedicalRecordControllerIntegrationTest.java": {
-    "mtime": 1783179467.5774603,
-    "ast_hash": "e4e118e5bc37a23d37d2ab32d7a9ba36",
-    "semantic_hash": "e4e118e5bc37a23d37d2ab32d7a9ba36"
+    "mtime": 1783722503.20318,
+    "ast_hash": "cd230832ecd9a6f285b1a9e3a3973eb5",
+    "semantic_hash": "cd230832ecd9a6f285b1a9e3a3973eb5"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/PatientControllerTest.java": {
     "mtime": 1783200575.568397,
@@ -1110,7 +1105,7 @@
     "semantic_hash": "35685eaf1428c6540eea9674a715daa0"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/WaitlistPublicControllerIntegrationTest.java": {
-    "mtime": 1782667943.9361434,
+    "mtime": 1783785802.8849986,
     "ast_hash": "436af164b7a4a08855648bb52d15f2ae",
     "semantic_hash": "436af164b7a4a08855648bb52d15f2ae"
   },
@@ -1450,9 +1445,9 @@
     "semantic_hash": "a1347d39ced92eb7179a62bad7ee8f76"
   },
   "CLAUDE.md": {
-    "mtime": 1783266706.5708973,
-    "ast_hash": "e677e790d919040e01b4ae6b157bcf2b",
-    "semantic_hash": ""
+    "mtime": 1783789346.2852159,
+    "ast_hash": "1ed7991d5ab3285b0cb22f573c4437f6",
+    "semantic_hash": "1ed7991d5ab3285b0cb22f573c4437f6"
   },
   "GEMINI.md": {
     "mtime": 1782614210.099278,
@@ -1465,14 +1460,14 @@
     "semantic_hash": "8d240bfd6f6c19dc543e7118a31deaad"
   },
   "README.md": {
-    "mtime": 1783051668.4029021,
-    "ast_hash": "1e2030a5d8718615b4c3763ac7137771",
-    "semantic_hash": "1e2030a5d8718615b4c3763ac7137771"
+    "mtime": 1783733974.6204433,
+    "ast_hash": "fd841c5b163422ee68bb6b4a26910fdd",
+    "semantic_hash": "fd841c5b163422ee68bb6b4a26910fdd"
   },
   "docs/ERROS-E-SOLUCOES.md": {
-    "mtime": 1782663027.038879,
-    "ast_hash": "d5769c635d922a91e651ab7d51e737a3",
-    "semantic_hash": "d5769c635d922a91e651ab7d51e737a3"
+    "mtime": 1783733575.0370882,
+    "ast_hash": "e9da870c8f11eef3e6d9c4512386206f",
+    "semantic_hash": "e9da870c8f11eef3e6d9c4512386206f"
   },
   "docs/FrontEnd/DESIGN_SYSTEM.md": {
     "mtime": 1782673670.7634482,
@@ -1694,41 +1689,6 @@
     "ast_hash": "1ad63230cfe9208c6b48c45a22317252",
     "semantic_hash": "1ad63230cfe9208c6b48c45a22317252"
   },
-  "openspec/changes/rf03-follow-up-confirmacoes/.openspec.yaml": {
-    "mtime": 1782662148.8532426,
-    "ast_hash": "aa6db2eaf8f605159d974c0bba1bf50a",
-    "semantic_hash": "aa6db2eaf8f605159d974c0bba1bf50a"
-  },
-  "openspec/changes/rf03-follow-up-confirmacoes/design.md": {
-    "mtime": 1782662253.029499,
-    "ast_hash": "d0bf20e9c09abe3e2748f0f5699db66e",
-    "semantic_hash": "d0bf20e9c09abe3e2748f0f5699db66e"
-  },
-  "openspec/changes/rf03-follow-up-confirmacoes/proposal.md": {
-    "mtime": 1782662204.9218376,
-    "ast_hash": "78d4f175e4f4cf60153043048bf79910",
-    "semantic_hash": "78d4f175e4f4cf60153043048bf79910"
-  },
-  "openspec/changes/rf03-follow-up-confirmacoes/specs/appointment-follow-up/spec.md": {
-    "mtime": 1782662291.3122354,
-    "ast_hash": "97a2dba1670cac3ff00d098cb921572b",
-    "semantic_hash": "97a2dba1670cac3ff00d098cb921572b"
-  },
-  "openspec/changes/rf03-follow-up-confirmacoes/specs/confirmation-follow-up/spec.md": {
-    "mtime": 1782662273.4583578,
-    "ast_hash": "dbafd95e263871caf3401940cbafa107",
-    "semantic_hash": "dbafd95e263871caf3401940cbafa107"
-  },
-  "openspec/changes/rf03-follow-up-confirmacoes/specs/scheduling-engine/spec.md": {
-    "mtime": 1782662302.5391588,
-    "ast_hash": "7465bba5e85ed6183d9ebec1720dd262",
-    "semantic_hash": "7465bba5e85ed6183d9ebec1720dd262"
-  },
-  "openspec/changes/rf03-follow-up-confirmacoes/tasks.md": {
-    "mtime": 1782662341.663895,
-    "ast_hash": "1488bcde88a4fbdd503ef6d4fca89c93",
-    "semantic_hash": "1488bcde88a4fbdd503ef6d4fca89c93"
-  },
   "openspec/changes/rf06-registro-clinico-prontuario/.openspec.yaml": {
     "mtime": 1783035422.1290805,
     "ast_hash": "7f48377552c3f516e4e868cb6ea8d4f2",
@@ -1795,9 +1755,9 @@
     "semantic_hash": "841f92f8b5f04eb0a362490148aae540"
   },
   "src/main/resources/application.yaml": {
-    "mtime": 1783184873.7564263,
-    "ast_hash": "57c2b41fc184c3316c3177a0d98a8c71",
-    "semantic_hash": "57c2b41fc184c3316c3177a0d98a8c71"
+    "mtime": 1783784810.4036806,
+    "ast_hash": "b5f6cc28483e611687044fbfb0faab7d",
+    "semantic_hash": "b5f6cc28483e611687044fbfb0faab7d"
   },
   "docs/assets/img/Diagrama_Casos_Uso.jpg": {
     "mtime": 1782557725.6300807,
@@ -1832,11 +1792,336 @@
   "docs/PRD-Fluxo-Medico.md": {
     "mtime": 1783267230.7028897,
     "ast_hash": "91189d5fdd18b1a8dae26010bddf97f3",
-    "semantic_hash": ""
+    "semantic_hash": "91189d5fdd18b1a8dae26010bddf97f3"
   },
   "docs/PRD-Fluxo-Recepcionista.md": {
     "mtime": 1783268009.7523246,
     "ast_hash": "44b7666d759cd40c95aa45e79fbd47e1",
-    "semantic_hash": ""
+    "semantic_hash": "44b7666d759cd40c95aa45e79fbd47e1"
+  },
+  ".qwen/settings.json": {
+    "mtime": 1783735058.1898065,
+    "ast_hash": "64389da8f77aca53e89ed25d611726ef",
+    "semantic_hash": "64389da8f77aca53e89ed25d611726ef"
+  },
+  "docs/dev-setup/admin-user-setup.sql": {
+    "mtime": 1783719095.2999287,
+    "ast_hash": "7e86b8c231a69e88c5f1a3ebf7377647",
+    "semantic_hash": "7e86b8c231a69e88c5f1a3ebf7377647"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/application/usecase/LoginUseCase.java": {
+    "mtime": 1783732962.0013874,
+    "ast_hash": "05a59ae240fc3c0150325207225a6400",
+    "semantic_hash": "05a59ae240fc3c0150325207225a6400"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/domain/exception/ScheduleConflictException.java": {
+    "mtime": 1783732856.931644,
+    "ast_hash": "e28cdc1ec5037df88e8cb43ea5cf9271",
+    "semantic_hash": "e28cdc1ec5037df88e8cb43ea5cf9271"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/config/ApplicationConfig.java": {
+    "mtime": 1783739497.2154691,
+    "ast_hash": "56359a44ff3a78afd959a7f2e26ee663",
+    "semantic_hash": "56359a44ff3a78afd959a7f2e26ee663"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/EmailNotificationService.java": {
+    "mtime": 1783785110.0718815,
+    "ast_hash": "98fc00484746d551c6d7fb8de0f9ceeb",
+    "semantic_hash": "98fc00484746d551c6d7fb8de0f9ceeb"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/NotificationChannel.java": {
+    "mtime": 1783739006.3447928,
+    "ast_hash": "ba6b664e6963ca8190ece40543b7d73a",
+    "semantic_hash": "ba6b664e6963ca8190ece40543b7d73a"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/NotificationOrchestrator.java": {
+    "mtime": 1783779833.11063,
+    "ast_hash": "41f6c5db86416bc89204e1a32054121f",
+    "semantic_hash": "41f6c5db86416bc89204e1a32054121f"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/WhatsAppNotificationService.java": {
+    "mtime": 1783784173.3759391,
+    "ast_hash": "c96567318426375896e7bae95359d169",
+    "semantic_hash": "c96567318426375896e7bae95359d169"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/InMemoryTokenBlacklistService.java": {
+    "mtime": 1783732287.7362585,
+    "ast_hash": "d221b0fe4c9dded1176fe73877b19540",
+    "semantic_hash": "d221b0fe4c9dded1176fe73877b19540"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/RedisTokenBlacklistService.java": {
+    "mtime": 1783732287.7510319,
+    "ast_hash": "e2027484f2343952611f7de087eb07fa",
+    "semantic_hash": "e2027484f2343952611f7de087eb07fa"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/SecurityUtils.java": {
+    "mtime": 1783733063.0080707,
+    "ast_hash": "4dd705f19326a38c14993d4360e2fd59",
+    "semantic_hash": "4dd705f19326a38c14993d4360e2fd59"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/TokenBlacklistServiceInterface.java": {
+    "mtime": 1783732287.7548862,
+    "ast_hash": "1f25f1273ac53f4bd1a8fe8aa2552916",
+    "semantic_hash": "1f25f1273ac53f4bd1a8fe8aa2552916"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/service/NotificationServiceImpl.java": {
+    "mtime": 1783785153.860038,
+    "ast_hash": "6bf8228dc65b16b8403b203e6726b2c6",
+    "semantic_hash": "6bf8228dc65b16b8403b203e6726b2c6"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/controller/WhatsAppWebhookController.java": {
+    "mtime": 1783786223.9428387,
+    "ast_hash": "c6d98e5b1b43bc4c557cf9b230747c00",
+    "semantic_hash": "c6d98e5b1b43bc4c557cf9b230747c00"
+  },
+  "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/web/filter/TraceIdFilter.java": {
+    "mtime": 1783734662.5261614,
+    "ast_hash": "248b127e061fe42d1aad26594b079d52",
+    "semantic_hash": "248b127e061fe42d1aad26594b079d52"
+  },
+  "src/main/resources/db/dev-seed/V11__insert_test_data.sql": {
+    "mtime": 1783744852.6037295,
+    "ast_hash": "44e70d1d077040983d761e5cccb1c3b8",
+    "semantic_hash": "44e70d1d077040983d761e5cccb1c3b8"
+  },
+  "src/main/resources/db/dev-seed/V12__corrigir_senhas_test_data.sql": {
+    "mtime": 1783744879.8032768,
+    "ast_hash": "a1cbe60d4aeee2997a34237ee77c1977",
+    "semantic_hash": "a1cbe60d4aeee2997a34237ee77c1977"
+  },
+  "src/main/resources/db/migration/V10__criar_index_agendamento_status_data_hora.sql": {
+    "mtime": 1783735426.953484,
+    "ast_hash": "4ffc65b54b85af02079b654a01de6ddd",
+    "semantic_hash": "4ffc65b54b85af02079b654a01de6ddd"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/EmailNotificationServiceIntegrationTest.java": {
+    "mtime": 1783741993.5265286,
+    "ast_hash": "a8f9468e9aea2fd0206423e1ba4481fe",
+    "semantic_hash": "a8f9468e9aea2fd0206423e1ba4481fe"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/NotificationOrchestratorEndToEndTest.java": {
+    "mtime": 1783785164.2188396,
+    "ast_hash": "549d34b2d2afa6671039723af87d401c",
+    "semantic_hash": "549d34b2d2afa6671039723af87d401c"
+  },
+  "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/service/NotificationServiceImplIntegrationTest.java": {
+    "mtime": 1783785176.0474372,
+    "ast_hash": "4e4693748072ef93ab9d2d68f2ea259d",
+    "semantic_hash": "4e4693748072ef93ab9d2d68f2ea259d"
+  },
+  "test-endpoints.sh": {
+    "mtime": 1783742649.5922647,
+    "ast_hash": "03b17c576ef61c2949bc6b454d078444",
+    "semantic_hash": "03b17c576ef61c2949bc6b454d078444"
+  },
+  ".github/workflows/test.yml": {
+    "mtime": 1783728337.3844616,
+    "ast_hash": "890fd9c9cdebc5db9547181ab9b46428",
+    "semantic_hash": "890fd9c9cdebc5db9547181ab9b46428"
+  },
+  "docs/NOTIFICATION_TESTING.md": {
+    "mtime": 1783789309.9265897,
+    "ast_hash": "0390631e2ff7ac100cc5d9ae90258e1c",
+    "semantic_hash": "0390631e2ff7ac100cc5d9ae90258e1c"
+  },
+  "docs/plano-feature-admin.md": {
+    "mtime": 1783739053.9111652,
+    "ast_hash": "2a4f34263e8d75d995053de21ccc7561",
+    "semantic_hash": "2a4f34263e8d75d995053de21ccc7561"
+  },
+  "docs/twilio.md": {
+    "mtime": 1783789262.2225294,
+    "ast_hash": "6864fa77b9932c438cd6d34a5b44917e",
+    "semantic_hash": "6864fa77b9932c438cd6d34a5b44917e"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/.openspec.yaml": {
+    "mtime": 1782662148.8532426,
+    "ast_hash": "aa6db2eaf8f605159d974c0bba1bf50a",
+    "semantic_hash": "aa6db2eaf8f605159d974c0bba1bf50a"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/COMPLETION_NOTE.md": {
+    "mtime": 1783733206.3094254,
+    "ast_hash": "7d79a241fd244c2d3fa9fdd7b48c1eee",
+    "semantic_hash": "7d79a241fd244c2d3fa9fdd7b48c1eee"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/design.md": {
+    "mtime": 1782662253.029499,
+    "ast_hash": "d0bf20e9c09abe3e2748f0f5699db66e",
+    "semantic_hash": "d0bf20e9c09abe3e2748f0f5699db66e"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/proposal.md": {
+    "mtime": 1782662204.9218376,
+    "ast_hash": "78d4f175e4f4cf60153043048bf79910",
+    "semantic_hash": "78d4f175e4f4cf60153043048bf79910"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/specs/appointment-follow-up/spec.md": {
+    "mtime": 1782662291.3122354,
+    "ast_hash": "97a2dba1670cac3ff00d098cb921572b",
+    "semantic_hash": "97a2dba1670cac3ff00d098cb921572b"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/specs/confirmation-follow-up/spec.md": {
+    "mtime": 1782662273.4583578,
+    "ast_hash": "dbafd95e263871caf3401940cbafa107",
+    "semantic_hash": "dbafd95e263871caf3401940cbafa107"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/specs/scheduling-engine/spec.md": {
+    "mtime": 1782662302.5391588,
+    "ast_hash": "7465bba5e85ed6183d9ebec1720dd262",
+    "semantic_hash": "7465bba5e85ed6183d9ebec1720dd262"
+  },
+  "openspec/archive/rf03-follow-up-confirmacoes/tasks.md": {
+    "mtime": 1782662341.663895,
+    "ast_hash": "1488bcde88a4fbdd503ef6d4fca89c93",
+    "semantic_hash": "1488bcde88a4fbdd503ef6d4fca89c93"
+  },
+  "plans/002-gate-swagger-ui-by-profile.md": {
+    "mtime": 1783716249.9984512,
+    "ast_hash": "4ecbb8a50ecb5e8471db1bc3d004236a",
+    "semantic_hash": "4ecbb8a50ecb5e8471db1bc3d004236a"
+  },
+  "plans/003-add-ownership-check-to-medical-record-read.md": {
+    "mtime": 1783716250.0334508,
+    "ast_hash": "5639855d4b81f20fc188bb3be20d34b6",
+    "semantic_hash": "5639855d4b81f20fc188bb3be20d34b6"
+  },
+  "plans/004-fix-generic-exception-handler-leak.md": {
+    "mtime": 1783716273.7522166,
+    "ast_hash": "53b06c6b6294ca714c7baff5777d01ce",
+    "semantic_hash": "53b06c6b6294ca714c7baff5777d01ce"
+  },
+  "plans/005-add-pessimistic-lock-to-call-next-patient.md": {
+    "mtime": 1783716292.655029,
+    "ast_hash": "67855a6820d5869f35734cc8f13e7f3e",
+    "semantic_hash": "67855a6820d5869f35734cc8f13e7f3e"
+  },
+  "plans/006-fix-login-rate-limit-x-forwarded-for.md": {
+    "mtime": 1783716321.6887395,
+    "ast_hash": "daa99050309f062c18caffb570d242b7",
+    "semantic_hash": "daa99050309f062c18caffb570d242b7"
+  },
+  "plans/007-add-github-actions-ci-pipeline.md": {
+    "mtime": 1783716339.709559,
+    "ast_hash": "bcca463a0e92ffd43714ae84fc45a6e8",
+    "semantic_hash": "bcca463a0e92ffd43714ae84fc45a6e8"
+  },
+  "plans/008-fix-testcontainers-jackson-dependency-mismatch.md": {
+    "mtime": 1783716360.0783544,
+    "ast_hash": "8dcecff53008d6d1b10850c06cbd69f8",
+    "semantic_hash": "8dcecff53008d6d1b10850c06cbd69f8"
+  },
+  "plans/009-move-action-tokens-to-post.md": {
+    "mtime": 1783730891.4708788,
+    "ast_hash": "31ae4b0f391b9d8af173c423680fa04d",
+    "semantic_hash": "31ae4b0f391b9d8af173c423680fa04d"
+  },
+  "plans/010-fix-token-blacklist-service.md": {
+    "mtime": 1783730903.6735244,
+    "ast_hash": "8007aae0c639b044d2948f0846071f88",
+    "semantic_hash": "8007aae0c639b044d2948f0846071f88"
+  },
+  "plans/011-paginate-audit-logs-list.md": {
+    "mtime": 1783730912.4532723,
+    "ast_hash": "38297fd1e5004d04463378af3e2019e0",
+    "semantic_hash": "38297fd1e5004d04463378af3e2019e0"
+  },
+  "plans/012-fix-core-mapper-medical-record-lazy-collection.md": {
+    "mtime": 1783730920.9230313,
+    "ast_hash": "6175db34eaf0b4ccac093dddcb722e4c",
+    "semantic_hash": "6175db34eaf0b4ccac093dddcb722e4c"
+  },
+  "plans/013-fix-exception-handler-string-matching.md": {
+    "mtime": 1783730930.8777509,
+    "ast_hash": "5239109007dba1e2bc8dcbb9ddb7ba41",
+    "semantic_hash": "5239109007dba1e2bc8dcbb9ddb7ba41"
+  },
+  "plans/014-refactor-auth-controller.md": {
+    "mtime": 1783730946.0623286,
+    "ast_hash": "0fc54552e99812bffcd388b8dda7115a",
+    "semantic_hash": "0fc54552e99812bffcd388b8dda7115a"
+  },
+  "plans/015-extract-get-authenticated-user.md": {
+    "mtime": 1783730951.8276346,
+    "ast_hash": "e4c7278cad0a82137c1d8df420cb2dfc",
+    "semantic_hash": "e4c7278cad0a82137c1d8df420cb2dfc"
+  },
+  "plans/016-archive-completed-openspec-tasks.md": {
+    "mtime": 1783730963.448239,
+    "ast_hash": "b7c737853b09c9c61e2ac981fed80263",
+    "semantic_hash": "b7c737853b09c9c61e2ac981fed80263"
+  },
+  "plans/018-remove-unused-repository-methods.md": {
+    "mtime": 1783730982.310347,
+    "ast_hash": "dd5a3f0d983e688b97fd8c62f3ea8a3b",
+    "semantic_hash": "dd5a3f0d983e688b97fd8c62f3ea8a3b"
+  },
+  "plans/019-replace-thread-sleep-with-clock.md": {
+    "mtime": 1783730995.000012,
+    "ast_hash": "17b23197542c4be933bf5177bbe37242",
+    "semantic_hash": "17b23197542c4be933bf5177bbe37242"
+  },
+  "plans/020-add-code-formatting-linter.md": {
+    "mtime": 1783730995.5869966,
+    "ast_hash": "81ba50b1face02f0faf395fdef7ab38b",
+    "semantic_hash": "81ba50b1face02f0faf395fdef7ab38b"
+  },
+  "plans/021-document-required-env-vars.md": {
+    "mtime": 1783731001.7358358,
+    "ast_hash": "40875e9de8b57bc8251dc8a5fdb4bd26",
+    "semantic_hash": "40875e9de8b57bc8251dc8a5fdb4bd26"
+  },
+  "plans/022-add-correlation-ids-to-logging.md": {
+    "mtime": 1783731009.2446406,
+    "ast_hash": "9936440537aa2a319897228ff55acfe9",
+    "semantic_hash": "9936440537aa2a319897228ff55acfe9"
+  },
+  "plans/023-add-database-index-for-follow-up-query.md": {
+    "mtime": 1783731014.5065048,
+    "ast_hash": "5c2127600f8df4bc54beba0ed0aa7317",
+    "semantic_hash": "5c2127600f8df4bc54beba0ed0aa7317"
+  },
+  "plans/024-implement-waitlist-join-use-case.md": {
+    "mtime": 1783731030.6100934,
+    "ast_hash": "d410d5c353703e6a938a8bab69c11691",
+    "semantic_hash": "d410d5c353703e6a938a8bab69c11691"
+  },
+  "plans/025-implement-real-notification-channels.md": {
+    "mtime": 1783737205.528688,
+    "ast_hash": "6f7f799df7919a1560cf2631519772a7",
+    "semantic_hash": "6f7f799df7919a1560cf2631519772a7"
+  },
+  "plans/026-implement-patient-user-role.md": {
+    "mtime": 1783731052.8395357,
+    "ast_hash": "0de39cda282ba22ae7fb35064de592a7",
+    "semantic_hash": "0de39cda282ba22ae7fb35064de592a7"
+  },
+  "plans/README.md": {
+    "mtime": 1783738173.1708887,
+    "ast_hash": "fe71223154fe7c84656c022f4a07a32f",
+    "semantic_hash": "fe71223154fe7c84656c022f4a07a32f"
+  },
+  "src/main/resources/application-dev.yaml": {
+    "mtime": 1783721519.902904,
+    "ast_hash": "d4e2cf33a849525b7271010513a6421b",
+    "semantic_hash": "d4e2cf33a849525b7271010513a6421b"
+  },
+  "src/test/resources/application-test.yaml": {
+    "mtime": 1783766235.0910058,
+    "ast_hash": "19ce71121dd75d8569b936552fec2d20",
+    "semantic_hash": "19ce71121dd75d8569b936552fec2d20"
+  },
+  "docs/image-1.png": {
+    "mtime": 1783774099.3093693,
+    "ast_hash": "e22f06cae37083e648d9c82973566b36",
+    "semantic_hash": "e22f06cae37083e648d9c82973566b36"
+  },
+  "docs/image-2.png": {
+    "mtime": 1783775088.8842032,
+    "ast_hash": "dce8e212617381310b864e5c1acf9cb5",
+    "semantic_hash": "dce8e212617381310b864e5c1acf9cb5"
+  },
+  "docs/image.png": {
+    "mtime": 1783773391.1073236,
+    "ast_hash": "293f1e00535d17d4be62c9ae13dc95cc",
+    "semantic_hash": "293f1e00535d17d4be62c9ae13dc95cc"
   }
 }
