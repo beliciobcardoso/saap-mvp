@@ -15,8 +15,12 @@ public interface AppointmentRepository {
     List<Appointment> findAll();
     boolean existsByProfessionalIdAndDateTimeAndStatusNotIn(UUID professionalId, LocalDateTime dateTime, List<AppointmentStatus> statuses);
     PageResult<Appointment> findByFilters(UUID professionalId, UUID patientId, LocalDateTime startDateTime, LocalDateTime endDateTime, int page, int size);
-    List<Appointment> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(AppointmentStatus status, LocalDateTime startDateTime, LocalDateTime endDateTime);
-    Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime start, LocalDateTime end);
+
+    /**
+     * Busca o próximo agendamento na fila com lock pessimista para evitar race conditions.
+     * Trava o agendamento encontrado para impedir que múltiplas requisições simultâneas peguem o mesmo paciente.
+     */
+    Optional<Appointment> findNextInQueueWithLock(UUID professionalId, LocalDateTime start, LocalDateTime end);
 
     /**
      * Busca agendamentos elegíveis para receber notificação de follow-up:
@@ -29,4 +33,9 @@ public interface AppointmentRepository {
      * (ou seja, a consulta está próxima e o paciente ainda não respondeu).
      */
     List<Appointment> findPendingResponsePastDeadline(LocalDateTime deadline);
+
+    /**
+     * Verifica se existe agendamento com paciente e profissional específicos.
+     */
+    boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId);
 }

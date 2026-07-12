@@ -47,9 +47,23 @@ Content-Type: application/json
 ### ==============================================================
 
 ###
-# Listar logs de auditoria (Como ADMIN)
-# Esperado: 200 OK com lista de logs ordenada por data decrescente
+# Listar logs de auditoria (Como ADMIN) — página padrão
+# Esperado: 200 OK com PageResponseDTO (content, totalElements, totalPages, page, size)
 GET {{baseUrl}}/audit-logs HTTP/1.1
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+###
+# Listar logs de auditoria com paginação explícita (Como ADMIN)
+# Esperado: 200 OK com no máximo 5 itens em content, ordenado por data decrescente
+GET {{baseUrl}}/audit-logs?page=0&size=5 HTTP/1.1
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+###
+# Segunda página de logs de auditoria (Como ADMIN)
+# Esperado: 200 OK com page=1 no corpo da resposta
+GET {{baseUrl}}/audit-logs?page=1&size=5 HTTP/1.1
 Authorization: Bearer {{adminToken}}
 Content-Type: application/json
 

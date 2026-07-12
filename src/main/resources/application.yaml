@@ -9,6 +9,8 @@ api:
     action-token:
       secret: "${ACTION_TOKEN_SECRET}"
       expiration: "${ACTION_TOKEN_EXPIRATION:86400000}"
+    redis:
+      enabled: "${REDIS_ENABLED:false}"
 
 saap:
   app:
@@ -43,6 +45,26 @@ spring:
   application:
     name: saap-mvp
 
+  mail:
+    host: "${MAIL_HOST:localhost}"
+    port: "${MAIL_PORT:587}"
+    username: "${MAIL_USERNAME:}"
+    password: "${MAIL_PASSWORD:}"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+  data:
+    redis:
+      host: "${REDIS_HOST:localhost}"
+      port: "${REDIS_PORT:6379}"
+      password: "${REDIS_PASSWORD:}"
+      timeout: "${REDIS_TIMEOUT:2000}"
+
   datasource:
     url: "${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:saap_db}}"
     username: "${DATABASE_USERNAME:postgres}"
@@ -58,3 +80,26 @@ spring:
 
   flyway:
     enabled: "${FLYWAY_ENABLED:true}"
+    out-of-order: true
+    ignore-missing-migrations: true
+    validate-on-migrate: false
+    locations: "${FLYWAY_LOCATIONS:classpath:db/migration,classpath:db/dev-seed}"
+
+oci:
+  config-path: "${OCI_CONFIG_PATH:~/.oci/config}"
+  profile: "${OCI_PROFILE:DEFAULT}"
+  email:
+    compartment-id: "${OCI_EMAIL_COMPARTMENT_ID:}"
+
+app:
+  notifications:
+    enabled: "${APP_NOTIFICATIONS_ENABLED:true}"
+    email:
+      from: "${MAIL_FROM:noreply@saap.local}"
+    twilio:
+      account-sid: "${TWILIO_ACCOUNT_SID:}"
+      auth-token: "${TWILIO_AUTH_TOKEN:}"
+      from-number: "${TWILIO_FROM_NUMBER:}"
+      waitlist-content-sid: "${TWILIO_WAITLIST_CONTENT_SID:HX28a4a3f480ad514ff2c8b07860b450d5}"
+      webhook-base-url: "${TWILIO_WEBHOOK_BASE_URL:${saap.app.base-url}}"
+      webhook-validate-signature: "${TWILIO_WEBHOOK_VALIDATE_SIGNATURE:true}"

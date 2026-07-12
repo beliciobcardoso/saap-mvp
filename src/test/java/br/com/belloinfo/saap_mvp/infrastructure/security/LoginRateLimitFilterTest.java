@@ -35,12 +35,23 @@ class LoginRateLimitFilterTest {
     @Mock
     private FilterChain filterChain;
 
+    @Mock
+    private SecurityProperties securityProperties;
+
     private StringWriter responseWriter;
 
     @BeforeEach
     void setUp() {
-        filter = new LoginRateLimitFilter();
+        filter = new LoginRateLimitFilter(securityProperties);
         responseWriter = new StringWriter();
+
+        // Configurar padrão: trusted-proxies vazio (não confia em X-Forwarded-For)
+        SecurityProperties.Security security = mock(SecurityProperties.Security.class);
+        SecurityProperties.Security.Login login = mock(SecurityProperties.Security.Login.class);
+
+        when(securityProperties.getSecurity()).thenReturn(security);
+        when(security.getLogin()).thenReturn(login);
+        when(login.getTrustedProxies()).thenReturn("");
     }
 
     private void configureLoginRequest(String ip) {
@@ -117,14 +128,45 @@ class LoginRateLimitFilterTest {
     }
 
     @Test
-    @DisplayName("X-Forwarded-For é usado quando disponível")
-    void doFilter_withXForwardedFor_usesForwardedIp() throws ServletException, IOException {
+    @DisplayName("X-Forwarded-For é ignorado quando trusted-proxies vazio (padrão)")
+    void doFilter_withXForwardedFor_emptyTrustedProxies_ignoresHeader() throws ServletException, IOException {
         when(request.getRequestURI()).thenReturn("/api/v1/auth/login");
         when(request.getMethod()).thenReturn("POST");
         when(request.getHeader("X-Forwarded-For")).thenReturn("203.0.113.1, 70.41.3.18");
         when(request.getRemoteAddr()).thenReturn("192.168.1.1");
         when(response.getWriter()).thenReturn(new PrintWriter(responseWriter));
 
+        // trusted-proxies vazio — usar remoteAddr
+        SecurityProperties.Security.Login login = mock(SecurityProperties.Security.Login.class);
+        when(login.getTrustedProxies()).thenReturn("");
+        when(securityProperties.getSecurity().getLogin()).thenReturn(login);
+
+        // 5 tentativas com 192.168.1.1 → 6ª tentativa é bloqueada
+        for (int i = 0; i < 5; i++) {
+            filter.doFilterInternal(request, response, filterChain);
+        }
+        filter.doFilterInternal(request, response, filterChain);
+
+        verify(response).setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+        verify(response).setContentType("application/json");
+        verify(filterChain, times(5)).doFilter(request, response);
+    }
+
+    @Test
+    @DisplayName("X-Forwarded-For é usado quando trusted-proxies contém remoteAddr")
+    void doFilter_withXForwardedFor_trustedProxy_usesHeader() throws ServletException, IOException {
+        when(request.getRequestURI()).thenReturn("/api/v1/auth/login");
+        when(request.getMethod()).thenReturn("POST");
+        when(request.getHeader("X-Forwarded-For")).thenReturn("203.0.113.1, 70.41.3.18");
+        when(request.getRemoteAddr()).thenReturn("192.168.1.1");
+        when(response.getWriter()).thenReturn(new PrintWriter(responseWriter));
+
+        // trusted-proxies contém o remoteAddr — usar X-Forwarded-For
+        SecurityProperties.Security.Login login = mock(SecurityProperties.Security.Login.class);
+        when(login.getTrustedProxies()).thenReturn("192.168.1.1,10.0.0.1");
+        when(securityProperties.getSecurity().getLogin()).thenReturn(login);
+
+        // 5 tentativas com 203.0.113.1 (do X-Forwarded-For) → 6ª tentativa é bloqueada
         for (int i = 0; i < 5; i++) {
             filter.doFilterInternal(request, response, filterChain);
         }

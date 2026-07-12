@@ -1,0 +1,15 @@
+/home/bello/Projetos/saap-mvp/openspec/changes/rf03-follow-up-confirmacoes/tasks.md
+/home/bello/Projetos/saap-mvp/openspec/changes/rf06-registro-clinico-prontuario/.openspec.yaml
+/home/bello/Projetos/saap-mvp/openspec/changes/rf06-registro-clinico-prontuario/design.md
+/home/bello/Projetos/saap-mvp/openspec/changes/rf06-registro-clinico-prontuario/proposal.md
+/home/bello/Projetos/saap-mvp/openspec/changes/rf06-registro-clinico-prontuario/specs/medical-record/spec.md
+/home/bello/Projetos/saap-mvp/openspec/changes/rf06-registro-clinico-prontuario/specs/scheduling-engine/spec.md
+/home/bello/Projetos/saap-mvp/openspec/changes/rf06-registro-clinico-prontuario/tasks.md
+/home/bello/Projetos/saap-mvp/openspec/config.yaml
+/home/bello/Projetos/saap-mvp/openspec/specs/appointment-follow-up/spec.md
+/home/bello/Projetos/saap-mvp/openspec/specs/core-entities/spec.md
+/home/bello/Projetos/saap-mvp/openspec/specs/priority-attendance/spec.md
+/home/bello/Projetos/saap-mvp/openspec/specs/scheduling-engine/spec.md
+/home/bello/Projetos/saap-mvp/openspec/specs/user-auth/spec.md
+/home/bello/Projetos/saap-mvp/openspec/specs/waitlist/spec.md
+/home/bello/Projetos/saap-mvp/src/main/resources/application.yaml

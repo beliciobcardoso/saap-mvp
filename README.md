@@ -73,6 +73,19 @@ src/main/java/br/com/belloinfo/saap_mvp/
    > [!TIP]
    > **Criação Automática do Banco:** Você não precisa rodar comandos SQL no PostgreSQL para criar o banco de dados. Na primeira inicialização, um Listener do Spring (`DatabaseInitializerListener`) criará automaticamente o banco de dados especificado em `DB_NAME` caso ele não exista no servidor.
 
+4. Configure as chaves de segurança (obrigatório):
+   - `JWT_SECRET`: segredo para assinatura de tokens JWT. Gere com:
+     ```bash
+     openssl rand -hex 32
+     ```
+   - `ACTION_TOKEN_SECRET`: segredo separado para tokens de ação (confirmação/cancelamento por e-mail). **DEVE ser diferente do JWT_SECRET**. Gere com:
+     ```bash
+     openssl rand -hex 32
+     ```
+   
+   > [!IMPORTANT]
+   > Ambas as variáveis devem ter **no mínimo 32 caracteres** e ser diferentes uma da outra. Nunca compartilhe ou faça commit desses valores.
+
 ---
 
 ## 🏃 Como Executar a Aplicação
@@ -110,6 +123,10 @@ O arquivo `.war` resultante será gerado na pasta `target/`.
 
 Todas as rotas REST são expostas automaticamente com o prefixo global `/api/v1`.
 
+### 🔐 Autenticação (`/api/v1/auth`)
+- `POST /api/v1/auth/login` - Autentica e retorna o JWT (rota pública).
+- `POST /api/v1/auth/logout` - Invalida o token atual, adicionando-o à blacklist (qualquer role autenticada).
+
 ### 👥 Usuários (`/api/v1/users`)
 - `POST /api/v1/users` - Cadastra um novo usuário.
 - `GET /api/v1/users/{id}` - Busca usuário por UUID.
@@ -141,13 +158,20 @@ Todas as rotas REST são expostas automaticamente com o prefixo global `/api/v1`
 ### 📅 Agendamentos e Fila Presencial (`/api/v1/appointments`)
 - `POST /api/v1/appointments` - Realiza a reserva de um slot (agendamento).
 - `GET /api/v1/appointments/{id}` - Busca agendamento por UUID.
-- `GET /api/v1/appointments` - Lista agendamentos filtrando por profissional, paciente e intervalo de tempo.
+- `GET /api/v1/appointments?professionalId=&patientId=&start=&end=&page=&size=` - Lista agendamentos paginados (`PageResponseDTO`), filtrando por profissional, paciente e intervalo de tempo.
 - `PUT /api/v1/appointments/{id}/confirm` - Confirma a consulta (Recepção).
 - `PUT /api/v1/appointments/{id}/cancel` - Cancela a consulta (Recepção/Paciente).
 - `PUT /api/v1/appointments/{id}/check-in` - Realiza check-in presencial com validação documental de prioridade legal (Recepção).
 - `POST /api/v1/appointments/next` - Chama o próximo paciente da fila presencial com base no score de prioridades (Profissional).
 - `PUT /api/v1/appointments/{id}/start` - Inicia o atendimento do agendamento (Profissional).
 - `PUT /api/v1/appointments/{id}/complete` - Conclui a consulta e finaliza o atendimento; exige evolução clínica preenchida (Profissional).
+
+#### Ações públicas por link (sem autenticação)
+Usadas em links de e-mail/WhatsApp (token de ação, não JWT — ver `AppointmentActionTokenService`):
+- `GET /api/v1/appointments/public/confirm?token=` - Confirma presença via link.
+- `GET /api/v1/appointments/public/cancel?token=` - Cancela consulta via link.
+- `GET /api/v1/appointments/public/waitlist/accept?token=` - Aceita oferta de vaga da fila de espera (confirma o agendamento).
+- `GET /api/v1/appointments/public/waitlist/decline?token=` - Recusa oferta de vaga da fila de espera.
 
 ### 🩺 Prontuário e Registro Clínico (`/api/v1/medical-records`)
 Acesso exclusivo de usuários com `ROLE_PROFESSIONAL`. Toda leitura e escrita é auditada (RNF01).
@@ -156,7 +180,10 @@ Acesso exclusivo de usuários com `ROLE_PROFESSIONAL`. Toda leitura e escrita é
 - `PUT /api/v1/medical-records/entries/{entryId}` - Edita a evolução enquanto o agendamento estiver `IN_PROGRESS`; após `COMPLETED` a entrada é imutável (HTTP 409).
 
 ### 🕵️ Auditoria (`/api/v1/audit-logs`)
-- `GET /api/v1/audit-logs` - Lista todos os logs de auditoria ordenados por data decrescente (Exclusivo ADMIN).
+- `GET /api/v1/audit-logs?page=&size=` - Lista logs de auditoria paginados (`PageResponseDTO`, `page` padrão `0`, `size` padrão `20`), ordenados por data decrescente (Exclusivo ADMIN).
+
+### 🔔 Notificações
+- Fila de espera (`WaitlistStatus`: `WAITING -> OFFERED -> ACCEPTED | DECLINED | EXPIRED`) e notificações multi-canal (E-mail via SMTP, WhatsApp via Twilio com botões interativos de resposta rápida) são disparadas automaticamente pelo `NotificationOrchestrator` em pontos-chave do fluxo (confirmação, cancelamento, oferta de vaga). Não há endpoints REST dedicados além do webhook do Twilio (`POST /api/v1/notifications/whatsapp/webhook`, uso interno do provedor). Ver `docs/twilio.md` e `docs/NOTIFICATION_TESTING.md` para configuração e testes.
 
 ---
 

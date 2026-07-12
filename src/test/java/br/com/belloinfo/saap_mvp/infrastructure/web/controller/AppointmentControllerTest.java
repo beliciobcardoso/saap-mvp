@@ -11,6 +11,7 @@ import br.com.belloinfo.saap_mvp.domain.repository.ProfessionalRepository;
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
 import br.com.belloinfo.saap_mvp.domain.valueobject.PaymentMethod;
 import br.com.belloinfo.saap_mvp.domain.valueobject.PriorityLevel;
+import br.com.belloinfo.saap_mvp.domain.exception.ScheduleConflictException;
 import br.com.belloinfo.saap_mvp.infrastructure.web.exception.GlobalExceptionHandler;
 import br.com.belloinfo.saap_mvp.infrastructure.web.mapper.WebMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -160,7 +161,7 @@ class AppointmentControllerTest {
         LocalDateTime time = LocalDateTime.now().plusDays(2);
 
         when(bookAppointmentUseCase.execute(eq(patientId), eq(professionalId), eq(serviceId), any(LocalDateTime.class), eq(PaymentMethod.PIX), any()))
-                .thenThrow(new IllegalStateException("Horário indisponível para este profissional"));
+                .thenThrow(new ScheduleConflictException("O horário solicitado não está disponível. Tente outro horário."));
 
         String requestJson = String.format("""
                 {
@@ -177,7 +178,7 @@ class AppointmentControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isConflict())
-                .andExpect(jsonPath("$.message", containsString("Horário indisponível")));
+                .andExpect(jsonPath("$.message", containsString("horário solicitado não está disponível")));
     }
 
     @Test
@@ -267,6 +268,7 @@ class AppointmentControllerTest {
         // Mock SecurityContext
         Authentication authentication = mock(Authentication.class);
         when(authentication.getName()).thenReturn(email);
+        when(authentication.isAuthenticated()).thenReturn(true);
         SecurityContext securityContext = mock(SecurityContext.class);
         when(securityContext.getAuthentication()).thenReturn(authentication);
         SecurityContextHolder.setContext(securityContext);

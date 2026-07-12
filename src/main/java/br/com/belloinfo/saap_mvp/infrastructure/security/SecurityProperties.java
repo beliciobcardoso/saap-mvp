@@ -47,6 +47,7 @@ public class SecurityProperties {
     public static class Security {
         private final Token token = new Token();
         private final ActionToken actionToken = new ActionToken();
+        private final Login login = new Login();
 
         public Token getToken() {
             return token;
@@ -54,6 +55,10 @@ public class SecurityProperties {
 
         public ActionToken getActionToken() {
             return actionToken;
+        }
+
+        public Login getLogin() {
+            return login;
         }
 
         public static class Token {
@@ -95,6 +100,18 @@ public class SecurityProperties {
 
             public void setExpiration(Long expiration) {
                 this.expiration = expiration;
+            }
+        }
+
+        public static class Login {
+            private String trustedProxies = "";
+
+            public String getTrustedProxies() {
+                return trustedProxies;
+            }
+
+            public void setTrustedProxies(String trustedProxies) {
+                this.trustedProxies = trustedProxies;
             }
         }
     }

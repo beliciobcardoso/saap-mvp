@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface JpaWaitlistEntryRepository extends JpaRepository<WaitlistEntryEntity, UUID> {
@@ -15,4 +16,7 @@ public interface JpaWaitlistEntryRepository extends JpaRepository<WaitlistEntryE
     List<WaitlistEntryEntity> findByActiveTrueAndStatusAndOfferExpiresAtBefore(WaitlistStatus status, LocalDateTime now);
 
     List<WaitlistEntryEntity> findByStatusAndOfferedAppointmentTimeAndActiveTrue(WaitlistStatus status, LocalDateTime offeredAppointmentTime);
+
+    Optional<WaitlistEntryEntity> findFirstByPatientPhoneAndStatusAndActiveTrueOrderByOfferedAppointmentTimeDesc(
+            String phone, WaitlistStatus status);
 }

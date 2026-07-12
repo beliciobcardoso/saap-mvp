@@ -11,13 +11,15 @@ Cada controller possui seu próprio arquivo `.http` dentro de `docs/REST Client/
 
 ```
 docs/REST Client/
-├── Auth.http           # POST /auth/login (público)
+├── Auth.http           # POST /auth/login (público), POST /auth/logout (autenticado)
 ├── Users.http          # CRUD /users     (ADMIN)
 ├── Patients.http       # CRUD /patients  (ADMIN, RECEPTIONIST)
 ├── Professionals.http  # CRUD /professionals (ADMIN / ADMIN+RECEPTIONIST p/ leitura)
 ├── Services.http       # CRUD /services  (ADMIN / ADMIN+RECEPTIONIST p/ leitura)
-├── Appointments.http   # Fluxos /appointments (ADMIN, RECEPTIONIST, PROFESSIONAL, PATIENT)
-├── AuditLogs.http      # Logs /audit-logs (ADMIN)
+├── Appointments.http   # Fluxos /appointments (ADMIN, RECEPTIONIST, PROFESSIONAL, PATIENT) + waitlist público
+├── MedicalRecords.http # Prontuário /medical-records (PROFESSIONAL)
+├── AuditLogs.http      # Logs /audit-logs paginados (ADMIN)
+├── FullTest.http        # Fluxo end-to-end completo (todos os recursos)
 └── REST_CLIENT.md      # Este guia
 ```
 
@@ -166,9 +168,16 @@ Isso elimina a necessidade de copiar e colar manualmente IDs e tokens entre as r
 | PUT    | `/appointments/{id}/check-in`| ADMIN, RECEPTIONIST               |
 | POST   | `/appointments/next`        | PROFESSIONAL                      |
 | PUT    | `/appointments/{id}/start`   | ADMIN, PROFESSIONAL               |
+| PUT    | `/appointments/{id}/complete`| ADMIN, PROFESSIONAL              |
 | GET    | `/appointments/public/confirm` | Pública (sem autenticação)     |
 | GET    | `/appointments/public/cancel`  | Pública (sem autenticação)     |
-| GET    | `/audit-logs`                  | ADMIN                             |
+| GET    | `/appointments/public/waitlist/accept` | Pública (sem autenticação) |
+| GET    | `/appointments/public/waitlist/decline`| Pública (sem autenticação) |
+| POST   | `/auth/logout`                 | Qualquer role autenticada         |
+| GET    | `/audit-logs?page=&size=`      | ADMIN (resposta paginada, `PageResponseDTO`) |
+| GET    | `/medical-records/patients/{patientId}` | PROFESSIONAL             |
+| POST   | `/medical-records/entries`     | PROFESSIONAL (só com agendamento IN_PROGRESS) |
+| PUT    | `/medical-records/entries/{entryId}` | PROFESSIONAL (409 se agendamento já COMPLETED) |
 
 ---
 
@@ -183,6 +192,7 @@ Isso elimina a necessidade de copiar e colar manualmente IDs e tokens entre as r
 | Sem autenticação (sem token)         | `401 Unauthorized` |
 | Token válido mas sem permissão       | `403 Forbidden` |
 | Recurso não encontrado               | `404 Not Found` |
+| Conflito de estado (ex: evolução clínica após COMPLETED, transição de status inválida) | `409 Conflict` |
 
 ---
 

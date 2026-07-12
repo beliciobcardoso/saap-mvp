@@ -23,6 +23,11 @@ public class LoginRateLimitFilter extends OncePerRequestFilter {
     private static final long WINDOW_MS = 60_000L; // 1 minuto
 
     private final Map<String, RateLimitEntry> attempts = new ConcurrentHashMap<>();
+    private final SecurityProperties securityProperties;
+
+    public LoginRateLimitFilter(SecurityProperties securityProperties) {
+        this.securityProperties = securityProperties;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -56,11 +61,38 @@ public class LoginRateLimitFilter extends OncePerRequestFilter {
     }
 
     private String getClientIp(HttpServletRequest request) {
-        String xForwardedFor = request.getHeader("X-Forwarded-For");
-        if (xForwardedFor != null && !xForwardedFor.isEmpty()) {
-            return xForwardedFor.split(",")[0].trim();
+        String remoteAddr = request.getRemoteAddr();
+        String trustedProxies = securityProperties.getSecurity().getLogin().getTrustedProxies();
+
+        // Se trustedProxies está vazio (padrão/produção), nunca confie em X-Forwarded-For
+        if (trustedProxies == null || trustedProxies.isBlank()) {
+            return remoteAddr;
         }
-        return request.getRemoteAddr();
+
+        // Valor especial "all" — confie em X-Forwarded-For sem validar IP do proxy
+        if ("all".equalsIgnoreCase(trustedProxies.trim())) {
+            String xForwardedFor = request.getHeader("X-Forwarded-For");
+            if (xForwardedFor != null && !xForwardedFor.isEmpty()) {
+                return xForwardedFor.split(",")[0].trim();
+            }
+            return remoteAddr;
+        }
+
+        // Validar se remoteAddr está na lista de trusted proxies
+        String[] proxies = trustedProxies.split(",");
+        for (String proxy : proxies) {
+            if (proxy.trim().equals(remoteAddr)) {
+                // IP do proxy é confiável — usar X-Forwarded-For
+                String xForwardedFor = request.getHeader("X-Forwarded-For");
+                if (xForwardedFor != null && !xForwardedFor.isEmpty()) {
+                    return xForwardedFor.split(",")[0].trim();
+                }
+                break;
+            }
+        }
+
+        // IP do proxy não é confiável — usar remoteAddr direto
+        return remoteAddr;
     }
 
     private static class RateLimitEntry {

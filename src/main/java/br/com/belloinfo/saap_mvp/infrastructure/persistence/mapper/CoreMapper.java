@@ -70,7 +70,6 @@ public interface CoreMapper {
     MedicalRecord toDomain(MedicalRecordEntity entity);
 
     @Mapping(target = "patient", expression = "java(mapPatientIdToPatientEntity(domain.getPatientId()))")
-    @Mapping(target = "entries", ignore = true)
     MedicalRecordEntity toEntity(MedicalRecord domain);
 
     // MedicalRecordEntry Mapping

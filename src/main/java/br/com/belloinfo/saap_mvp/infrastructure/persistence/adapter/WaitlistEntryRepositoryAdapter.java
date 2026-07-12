@@ -71,4 +71,11 @@ public class WaitlistEntryRepositoryAdapter implements WaitlistEntryRepository {
                 status, offeredAppointmentTime
         ).stream().map(mapper::toDomain).collect(Collectors.toList());
     }
+
+    @Override
+    public Optional<WaitlistEntry> findMostRecentOfferedByPatientPhone(String phone) {
+        return jpaWaitlistEntryRepository.findFirstByPatientPhoneAndStatusAndActiveTrueOrderByOfferedAppointmentTimeDesc(
+                phone, WaitlistStatus.OFFERED
+        ).map(mapper::toDomain);
+    }
 }

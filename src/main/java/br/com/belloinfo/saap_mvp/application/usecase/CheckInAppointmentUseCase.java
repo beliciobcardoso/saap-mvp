@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 @RequiredArgsConstructor
@@ -18,13 +19,14 @@ public class CheckInAppointmentUseCase {
 
     private final AppointmentRepository appointmentRepository;
     private final AuditLogRepository auditLogRepository;
+    private static final AtomicLong checkInCounter = new AtomicLong(System.nanoTime());
 
     @Transactional
     public Appointment execute(UUID appointmentId, PriorityLevel verifiedLevel, UUID verifiedBy, String notes, String ipAddress) {
         Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new IllegalArgumentException("Agendamento não encontrado"));
 
-        appointment.checkIn(verifiedLevel, verifiedBy, notes, System.currentTimeMillis());
+        appointment.checkIn(verifiedLevel, verifiedBy, notes, checkInCounter.incrementAndGet());
         Appointment savedAppointment = appointmentRepository.save(appointment);
 
         AuditLog auditLog = AuditLog.builder()

@@ -42,11 +42,11 @@ docker exec -i postgis psql -U postgres -d saap_db -c "
 
 # 3. Sincronizar checksums
 ./mvnw flyway:repair -Dflyway.url="jdbc:postgresql://localhost:5432/saap_db" \
-  -Dflyway.user=postgres -Dflyway.password=P@ssw0rds
+  -Dflyway.user=postgres -Dflyway.password="${DB_PASSWORD:-postgres}"
 
 # 4. Validar
 ./mvnw flyway:validate -Dflyway.url="jdbc:postgresql://localhost:5432/saap_db" \
-  -Dflyway.user=postgres -Dflyway.password=P@ssw0rds
+  -Dflyway.user=postgres -Dflyway.password="${DB_PASSWORD:-postgres}"
 ```
 
 ### Resultado

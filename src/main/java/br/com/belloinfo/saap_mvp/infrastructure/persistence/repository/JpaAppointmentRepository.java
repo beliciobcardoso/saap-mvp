@@ -2,15 +2,16 @@ package br.com.belloinfo.saap_mvp.infrastructure.persistence.repository;
 
 import br.com.belloinfo.saap_mvp.domain.valueobject.AppointmentStatus;
 import br.com.belloinfo.saap_mvp.infrastructure.persistence.entity.AppointmentEntity;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntity, UUID> {
@@ -30,17 +31,16 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
             Pageable pageable
     );
 
-    List<AppointmentEntity> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(
-            AppointmentStatus status,
-            LocalDateTime start,
-            LocalDateTime end
-    );
-
-    Optional<AppointmentEntity> findFirstByProfessionalIdAndStatusAndDateTimeBetweenOrderByPriorityScoreAsc(
-            UUID professionalId,
-            AppointmentStatus status,
-            LocalDateTime start,
-            LocalDateTime end
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT a FROM AppointmentEntity a WHERE " +
+           "a.professional.id = :professionalId AND " +
+           "a.status = 'ARRIVED' AND " +
+           "a.dateTime >= :startOfDay AND a.dateTime < :endOfDay " +
+           "ORDER BY a.priorityScore ASC, a.dateTime ASC, a.id ASC")
+    List<AppointmentEntity> findNextInQueueWithLock(
+            @Param("professionalId") UUID professionalId,
+            @Param("startOfDay") LocalDateTime startOfDay,
+            @Param("endOfDay") LocalDateTime endOfDay
     );
 
     @Query("SELECT a FROM AppointmentEntity a WHERE " +
@@ -59,4 +59,6 @@ public interface JpaAppointmentRepository extends JpaRepository<AppointmentEntit
     List<AppointmentEntity> findPendingResponsePastDeadline(
             @Param("deadline") LocalDateTime deadline
     );
+
+    boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId);
 }

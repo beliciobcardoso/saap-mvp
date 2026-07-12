@@ -1,0 +1,175 @@
+### ==============================================================
+### SAAP MVP - Prontuário / Registro Clínico
+### Base URL: http://localhost:8080/api/v1
+### Rota base: /medical-records
+### Roles necessárias: ROLE_PROFESSIONAL (toda a controller usa @PreAuthorize a nível de classe)
+### Toda leitura/escrita é auditada via AuditService (RNF01)
+### Regra de negócio: evolução clínica só pode ser criada/editada enquanto o
+###   agendamento está IN_PROGRESS. Após COMPLETED, a entrada é imutável
+###   (edição retorna 409 Conflict via MedicalRecordConflictException).
+### ==============================================================
+
+@hostname = http://localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+@baseUrl = {{host}}/api/v1
+
+###
+@token = {{login_admin.response.body.token}}
+# @name login_admin
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "john.nobody@email.com",
+    "password": "SenhaForte123!"
+}
+
+###
+@receptionistToken = {{login_receptionist.response.body.token}}
+# @name login_receptionist
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "ana.lima@saap.com",
+    "password": "Recepcao123!"
+}
+
+###
+@professionalToken = {{login_professional.response.body.token}}
+# @name login_professional
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "dr.carlos@saap.com",
+    "password": "Medico123!"
+}
+
+
+### ==============================================================
+### PRÉ-REQUISITO: agendamento em IN_PROGRESS
+### ==============================================================
+### As requisições abaixo dependem de um agendamento já em status
+### IN_PROGRESS (ver Appointments.http: book_appointment → confirm →
+### check-in → next → start). Preencha manualmente o ID abaixo com o
+### appointmentId retornado por esse fluxo.
+
+@patientId = d34e24f7-839f-4097-8281-1fc58c8a9d28
+@appointmentId = SUBSTITUA_PELO_APPOINTMENT_ID_IN_PROGRESS
+
+
+### ==============================================================
+### CRIAÇÃO E LEITURA DE EVOLUÇÃO CLÍNICA (PROFESSIONAL)
+### ==============================================================
+
+###
+# Criar evolução clínica — agendamento precisa estar IN_PROGRESS
+# Esperado: 201 Created
+# @name create_medical_record_entry
+POST {{baseUrl}}/medical-records/entries HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "appointmentId": "{{appointmentId}}",
+    "evolution": "Paciente relata melhora dos sintomas após início do tratamento."
+}
+
+###
+# Buscar prontuário completo do paciente (histórico de entradas)
+# Esperado: 200 OK com lista de evoluções clínicas
+GET {{baseUrl}}/medical-records/patients/{{patientId}} HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# Editar a evolução criada enquanto o agendamento ainda está IN_PROGRESS
+# Esperado: 200 OK
+PUT {{baseUrl}}/medical-records/entries/{{create_medical_record_entry.response.body.id}} HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "evolution": "Paciente relata melhora dos sintomas. Prescrição ajustada."
+}
+
+
+### ==============================================================
+### CONFLITO DE EDIÇÃO APÓS COMPLETED
+### ==============================================================
+### Para reproduzir: conclua o agendamento (PUT /appointments/{id}/complete
+### em Appointments.http) e então tente editar a mesma entrada abaixo.
+
+###
+# Tentar editar a evolução após o agendamento estar COMPLETED
+# Esperado: 409 Conflict — entrada imutável após conclusão do atendimento
+PUT {{baseUrl}}/medical-records/entries/{{create_medical_record_entry.response.body.id}} HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "evolution": "Tentativa de edição após alta."
+}
+
+
+### ==============================================================
+### CONTROLE DE ACESSO (apenas ROLE_PROFESSIONAL)
+### ==============================================================
+
+###
+# ❌ ADMIN não pode acessar prontuário (só PROFESSIONAL)
+# Esperado: 403 Forbidden
+GET {{baseUrl}}/medical-records/patients/{{patientId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+# ❌ RECEPTIONIST não pode criar evolução clínica
+# Esperado: 403 Forbidden
+POST {{baseUrl}}/medical-records/entries HTTP/1.1
+Authorization: Bearer {{receptionistToken}}
+Content-Type: application/json
+
+{
+    "appointmentId": "{{appointmentId}}",
+    "evolution": "Tentativa de acesso negado."
+}
+
+###
+# ❌ Sem token
+# Esperado: 401 Unauthorized
+GET {{baseUrl}}/medical-records/patients/{{patientId}} HTTP/1.1
+Content-Type: application/json
+
+
+### ==============================================================
+### VALIDAÇÃO DE ENTRADA
+### ==============================================================
+
+###
+# ❌ Criar evolução sem o campo obrigatório "evolution"
+# Esperado: 400 Bad Request
+POST {{baseUrl}}/medical-records/entries HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "appointmentId": "{{appointmentId}}"
+}
+
+###
+# ❌ Criar evolução com appointmentId inexistente
+# Esperado: 404 Not Found
+POST {{baseUrl}}/medical-records/entries HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "appointmentId": "00000000-0000-0000-0000-000000000000",
+    "evolution": "Teste com agendamento inexistente."
+}

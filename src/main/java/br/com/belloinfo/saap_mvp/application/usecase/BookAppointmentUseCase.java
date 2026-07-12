@@ -1,5 +1,6 @@
 package br.com.belloinfo.saap_mvp.application.usecase;
 
+import br.com.belloinfo.saap_mvp.domain.exception.ScheduleConflictException;
 import br.com.belloinfo.saap_mvp.domain.model.Appointment;
 import br.com.belloinfo.saap_mvp.domain.model.Patient;
 import br.com.belloinfo.saap_mvp.domain.model.Professional;
@@ -47,7 +48,7 @@ public class BookAppointmentUseCase {
         );
 
         if (hasConflict) {
-            throw new IllegalStateException("Horário indisponível para este profissional");
+            throw new ScheduleConflictException("Horário indisponível para este profissional");
         }
 
         PriorityLevel priority = declaredPriority != null ? declaredPriority : PriorityLevel.P5;

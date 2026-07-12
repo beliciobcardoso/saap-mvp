@@ -55,15 +55,15 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
     }
 
     @Override
+    public boolean existsByProfessionalIdAndDateTimeAndStatusNotIn(UUID professionalId, LocalDateTime dateTime, List<AppointmentStatus> statuses) {
+        return jpaAppointmentRepository.existsByProfessionalIdAndDateTimeAndStatusNotIn(professionalId, dateTime, statuses);
+    }
+
+    @Override
     public List<Appointment> findAll() {
         return jpaAppointmentRepository.findAll().stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public boolean existsByProfessionalIdAndDateTimeAndStatusNotIn(UUID professionalId, LocalDateTime dateTime, List<AppointmentStatus> statuses) {
-        return jpaAppointmentRepository.existsByProfessionalIdAndDateTimeAndStatusNotIn(professionalId, dateTime, statuses);
     }
 
     @Override
@@ -75,20 +75,12 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
     }
 
     @Override
-    public List<Appointment> findByStatusAndDateTimeBetweenAndFollowUpSentFalse(AppointmentStatus status, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        return jpaAppointmentRepository.findByStatusAndDateTimeBetweenAndFollowUpSentFalse(status, startDateTime, endDateTime).stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public Optional<Appointment> findNextInQueue(UUID professionalId, LocalDateTime start, LocalDateTime end) {
-        return jpaAppointmentRepository.findFirstByProfessionalIdAndStatusAndDateTimeBetweenOrderByPriorityScoreAsc(
+    public Optional<Appointment> findNextInQueueWithLock(UUID professionalId, LocalDateTime start, LocalDateTime end) {
+        return jpaAppointmentRepository.findNextInQueueWithLock(
                 professionalId,
-                AppointmentStatus.ARRIVED,
                 start,
                 end
-        ).map(mapper::toDomain);
+        ).stream().findFirst().map(mapper::toDomain);
     }
 
     @Override
@@ -103,5 +95,10 @@ public class AppointmentRepositoryAdapter implements AppointmentRepository {
         return jpaAppointmentRepository.findPendingResponsePastDeadline(deadline).stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean existsByPatientIdAndProfessionalId(UUID patientId, UUID professionalId) {
+        return jpaAppointmentRepository.existsByPatientIdAndProfessionalId(patientId, professionalId);
     }
 }

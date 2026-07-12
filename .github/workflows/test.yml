@@ -1,0 +1,59 @@
+name: Test & Verify Build
+
+on:
+  push:
+    branches: [ main, developer ]
+  pull_request:
+    branches: [ main, developer ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: saap_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Compile
+      run: ./mvnw clean compile
+
+    - name: Run tests
+      run: ./mvnw test
+      env:
+        DATABASE_URL: jdbc:postgresql://localhost:5432/saap_db
+        DATABASE_USERNAME: postgres
+        DATABASE_PASSWORD: postgres
+        JWT_SECRET: test-secret-key-minimum-32-chars-required-for-jwt
+        ACTION_TOKEN_SECRET: action-token-secret-key-minimum-32-chars-required-for-jwt
+
+    - name: Verify coverage
+      run: ./mvnw verify
+
+    - name: Upload coverage reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: jacoco-report
+        path: target/site/jacoco/
+        retention-days: 7
