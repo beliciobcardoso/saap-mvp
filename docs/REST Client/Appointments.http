@@ -224,3 +224,39 @@ GET {{baseUrl}}/appointments/public/confirm?token=token-invalido-aqui HTTP/1.1
 # Esperado: 409 Conflict
 # Gere um token para um agendamento já confirmado e use aqui
 GET {{baseUrl}}/appointments/public/confirm?token={{followUpConfirmToken}} HTTP/1.1
+
+
+### ==============================================================
+### FILA DE ESPERA (WAITLIST) — OFERTA DE VAGA POR LINK PÚBLICO
+### ==============================================================
+### Como obter os tokens de teste:
+###   1. Gere uma oferta de vaga (cancelamento de um agendamento com
+###      pacientes na waitlist dispara ProcessWaitlistSlotOfferUseCase).
+###   2. Consulte os logs do servidor (ou o e-mail/WhatsApp) para obter o
+###      link com o token de aceite/recusa.
+###   3. Copie o token da query param ?token=... e use nas requisições abaixo.
+### ==============================================================
+
+###
+# Aceitar oferta de vaga da fila de espera via link público (sem autenticação)
+# Esperado: 200 OK e status da entrada mudado para ACCEPTED
+# Substitua o token pelo valor obtido nos logs do servidor
+@waitlistAcceptToken = SUBSTITUA_PELO_TOKEN_DOS_LOGS
+GET {{baseUrl}}/appointments/public/waitlist/accept?token={{waitlistAcceptToken}} HTTP/1.1
+
+###
+# Recusar oferta de vaga da fila de espera via link público (sem autenticação)
+# Esperado: 200 OK e status da entrada mudado para DECLINED
+# Substitua o token pelo valor obtido nos logs do servidor
+@waitlistDeclineToken = SUBSTITUA_PELO_TOKEN_DOS_LOGS
+GET {{baseUrl}}/appointments/public/waitlist/decline?token={{waitlistDeclineToken}} HTTP/1.1
+
+###
+# TESTE: Token inválido
+# Esperado: 400 Bad Request
+GET {{baseUrl}}/appointments/public/waitlist/accept?token=token-invalido-aqui HTTP/1.1
+
+###
+# TESTE: Token válido mas oferta já expirada/respondida
+# Esperado: 409 Conflict
+GET {{baseUrl}}/appointments/public/waitlist/accept?token={{waitlistAcceptToken}} HTTP/1.1

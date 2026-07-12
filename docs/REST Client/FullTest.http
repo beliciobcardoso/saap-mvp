@@ -293,9 +293,40 @@ Authorization: Bearer {{professionalToken}}
 Content-Type: application/json
 
 ###
+# Criar evolução clínica (PROFESSIONAL) — só permitido enquanto IN_PROGRESS
+# Esperado: 201 Created
+# @name create_medical_record_entry
+POST {{baseUrl}}/medical-records/entries HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "appointmentId": "{{appointmentId}}",
+    "evolution": "Paciente relata melhora dos sintomas. Prescrição mantida."
+}
+
+###
 # Concluir consulta e finalizar atendimento (PROFESSIONAL)
 # Esperado: 200 OK com status mudado para COMPLETED
 PUT {{baseUrl}}/appointments/{{appointmentId}}/complete HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+###
+# Tentar editar a evolução após COMPLETED (PROFESSIONAL)
+# Esperado: 409 Conflict — entrada imutável após conclusão do atendimento
+PUT {{baseUrl}}/medical-records/entries/{{create_medical_record_entry.response.body.id}} HTTP/1.1
+Authorization: Bearer {{professionalToken}}
+Content-Type: application/json
+
+{
+    "evolution": "Tentativa de edição após alta."
+}
+
+###
+# Logout (invalida o token JWT via blacklist Redis)
+# Esperado: 204 No Content
+POST {{baseUrl}}/auth/logout HTTP/1.1
 Authorization: Bearer {{professionalToken}}
 Content-Type: application/json
 
