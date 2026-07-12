@@ -505,9 +505,9 @@
     "semantic_hash": "a7fd4a87ec4f794f7d933b0527104dd0"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaAppointmentRepository.java": {
-    "mtime": 1783737700.829687,
-    "ast_hash": "6aeb01829458d32311b3b91acdda1754",
-    "semantic_hash": "6aeb01829458d32311b3b91acdda1754"
+    "mtime": 1783806938.5114543,
+    "ast_hash": "d2dc8d1d4c2ba0389627bbc1584c5b7c",
+    "semantic_hash": "d2dc8d1d4c2ba0389627bbc1584c5b7c"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/persistence/repository/JpaAuditLogRepository.java": {
     "mtime": 1783200078.0560043,
@@ -885,9 +885,9 @@
     "semantic_hash": "206383dfa9a587b6f6c4ec7ecf1250e2"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/CreateUserUseCaseTest.java": {
-    "mtime": 1783133953.9519076,
-    "ast_hash": "887b2b8452d70d1bf1d217a219516560",
-    "semantic_hash": "887b2b8452d70d1bf1d217a219516560"
+    "mtime": 1783806911.9690402,
+    "ast_hash": "151025672fb060f742622e8f4e431678",
+    "semantic_hash": "151025672fb060f742622e8f4e431678"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/application/usecase/DeactivatePatientUseCaseTest.java": {
     "mtime": 1783135849.4660132,
@@ -1480,9 +1480,9 @@
     "semantic_hash": "d1cbb2187ecba0400ac7178e9fbb60a8"
   },
   "docs/REST Client/REST_CLIENT.md": {
-    "mtime": 1782667768.2067966,
-    "ast_hash": "9777acd77a5a2111be6f516719a98b5e",
-    "semantic_hash": "9777acd77a5a2111be6f516719a98b5e"
+    "mtime": 1783812979.3579288,
+    "ast_hash": "ec1ad94da6eb80a3003f9541f4fefba5",
+    "semantic_hash": "ec1ad94da6eb80a3003f9541f4fefba5"
   },
   "docs/SAAP_AI_TEST_GUIDE.md": {
     "mtime": 1783184755.0785177,
@@ -1850,9 +1850,9 @@
     "semantic_hash": "d221b0fe4c9dded1176fe73877b19540"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/RedisTokenBlacklistService.java": {
-    "mtime": 1783732287.7510319,
-    "ast_hash": "e2027484f2343952611f7de087eb07fa",
-    "semantic_hash": "e2027484f2343952611f7de087eb07fa"
+    "mtime": 1783806548.343753,
+    "ast_hash": "3bdf75ef13f8c746911aa6d2b8858d52",
+    "semantic_hash": "3bdf75ef13f8c746911aa6d2b8858d52"
   },
   "src/main/java/br/com/belloinfo/saap_mvp/infrastructure/security/SecurityUtils.java": {
     "mtime": 1783733063.0080707,
@@ -1900,19 +1900,14 @@
     "semantic_hash": "a8f9468e9aea2fd0206423e1ba4481fe"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/messaging/NotificationOrchestratorEndToEndTest.java": {
-    "mtime": 1783785164.2188396,
-    "ast_hash": "549d34b2d2afa6671039723af87d401c",
-    "semantic_hash": "549d34b2d2afa6671039723af87d401c"
+    "mtime": 1783806759.043799,
+    "ast_hash": "0e1c52a4a8c45bf86be63c6e246297df",
+    "semantic_hash": "0e1c52a4a8c45bf86be63c6e246297df"
   },
   "src/test/java/br/com/belloinfo/saap_mvp/infrastructure/service/NotificationServiceImplIntegrationTest.java": {
     "mtime": 1783785176.0474372,
     "ast_hash": "4e4693748072ef93ab9d2d68f2ea259d",
     "semantic_hash": "4e4693748072ef93ab9d2d68f2ea259d"
-  },
-  "test-endpoints.sh": {
-    "mtime": 1783742649.5922647,
-    "ast_hash": "03b17c576ef61c2949bc6b454d078444",
-    "semantic_hash": "03b17c576ef61c2949bc6b454d078444"
   },
   ".github/workflows/test.yml": {
     "mtime": 1783728337.3844616,
@@ -1928,11 +1923,6 @@
     "mtime": 1783739053.9111652,
     "ast_hash": "2a4f34263e8d75d995053de21ccc7561",
     "semantic_hash": "2a4f34263e8d75d995053de21ccc7561"
-  },
-  "docs/twilio.md": {
-    "mtime": 1783789262.2225294,
-    "ast_hash": "6864fa77b9932c438cd6d34a5b44917e",
-    "semantic_hash": "6864fa77b9932c438cd6d34a5b44917e"
   },
   "openspec/archive/rf03-follow-up-confirmacoes/.openspec.yaml": {
     "mtime": 1782662148.8532426,
@@ -2109,17 +2099,27 @@
     "ast_hash": "19ce71121dd75d8569b936552fec2d20",
     "semantic_hash": "19ce71121dd75d8569b936552fec2d20"
   },
-  "docs/image-1.png": {
+  "Scripts/test-endpoints.sh": {
+    "mtime": 1783742649.5922647,
+    "ast_hash": "03b17c576ef61c2949bc6b454d078444",
+    "semantic_hash": "03b17c576ef61c2949bc6b454d078444"
+  },
+  "docs/Twilio/twilio.md": {
+    "mtime": 1783789262.2225294,
+    "ast_hash": "6864fa77b9932c438cd6d34a5b44917e",
+    "semantic_hash": "6864fa77b9932c438cd6d34a5b44917e"
+  },
+  "docs/Twilio/image-1.png": {
     "mtime": 1783774099.3093693,
     "ast_hash": "e22f06cae37083e648d9c82973566b36",
     "semantic_hash": "e22f06cae37083e648d9c82973566b36"
   },
-  "docs/image-2.png": {
+  "docs/Twilio/image-2.png": {
     "mtime": 1783775088.8842032,
     "ast_hash": "dce8e212617381310b864e5c1acf9cb5",
     "semantic_hash": "dce8e212617381310b864e5c1acf9cb5"
   },
-  "docs/image.png": {
+  "docs/Twilio/image.png": {
     "mtime": 1783773391.1073236,
     "ast_hash": "293f1e00535d17d4be62c9ae13dc95cc",
     "semantic_hash": "293f1e00535d17d4be62c9ae13dc95cc"
