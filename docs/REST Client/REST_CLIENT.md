@@ -28,6 +28,101 @@ docs/REST Client/
 
 ---
 
+## Pré-requisito: Bootstrap do Primeiro Usuário (banco limpo)
+
+A API **não tem endpoint de self-register** (`AuthController` só expõe `/login` e `/logout`) e o
+repositório **não tem seed de usuários via Flyway**. Isso cria um problema de ovo-e-galinha:
+`POST /users` exige token de ADMIN, mas num banco recém-criado não existe nenhum ADMIN ainda para
+gerar esse token.
+
+Sempre que for testar contra um banco novo (ex.: primeira subida do `docker compose up`, banco
+limpo local), siga esta sequência **nesta ordem**, antes de rodar qualquer outro arquivo `.http`:
+
+### Passo 0 — Criar o primeiro ADMIN direto no banco (via SQL)
+
+Necessário só uma vez por banco. Gere o hash bcrypt da senha:
+
+```bash
+python3 -c "import bcrypt; print(bcrypt.hashpw(b'SenhaForte123!', bcrypt.gensalt(10)).decode())"
+```
+
+Copie o hash gerado e insira na tabela `usuario` (ajuste o nome do serviço/container do Postgres
+se for diferente de `postgres`):
+
+```bash
+docker compose exec -T postgres psql -U postgres -d saap_db -c "
+INSERT INTO usuario (id, email, password, role, is_active, created_at, updated_at)
+VALUES (gen_random_uuid(), 'john.nobody@email.com', '<HASH_GERADO_AQUI>', 'ADMIN', true, now(), now());
+"
+```
+
+> `gen_random_uuid()` já está disponível pelas migrações do projeto (extensão `pgcrypto`). Se der
+> erro de função inexistente, gere o UUID à parte (`uuidgen`) e cole o valor literal.
+
+### Passo 1 — Logar com o ADMIN recém-criado
+
+Rode a requisição `login_admin` de `Auth.http` com:
+- E-mail: `john.nobody@email.com`
+- Senha: `SenhaForte123!`
+
+Isso popula `@token` com um JWT válido de ADMIN — usado como `Authorization: Bearer {{token}}`
+pelos demais arquivos.
+
+### Passo 2 — Criar os demais usuários de teste via API
+
+Com o `@token` do Passo 1, use `POST /users` (ver `Users.http`) para criar cada usuário abaixo.
+Todos são usados como **login** em algum arquivo `.http` da pasta — sem eles, o login naquele
+arquivo falha com `401`:
+
+| E-mail                  | Senha            | Role           | Usado em (login)                                           |
+|--------------------------|------------------|----------------|-------------------------------------------------------------|
+| `john.nobody@email.com` | `SenhaForte123!` | `ADMIN`        | Auth, Users, Patients, Professionals, Services, Appointments, MedicalRecords, AuditLogs |
+| `ana.lima@saap.com`     | `Recepcao123!`   | `RECEPTIONIST` | Appointments, AuditLogs                                      |
+| `dr.carlos@saap.com`    | `Medico123!`     | `PROFESSIONAL` | MedicalRecords                                               |
+| `admin@saap.com`        | `adminPass123`   | `ADMIN`        | FullTest                                                     |
+| `recep@saap.com`        | `password123`    | `RECEPTIONIST` | FullTest                                                     |
+| `dr.pedro@saap.com`     | `Medico123!`     | `PROFESSIONAL` | FullTest                                                     |
+
+Exemplo de request (repita trocando `email`/`password`/`role` pelos valores da tabela):
+
+```http
+POST {{baseUrl}}/users HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "email": "ana.lima@saap.com",
+    "password": "Recepcao123!",
+    "role": "RECEPTIONIST"
+}
+```
+
+### Passo 3 — Agora sim, rodar os arquivos `.http`
+
+Com os 6 usuários da tabela acima existindo no banco, todos os arquivos da pasta podem ser
+executados na ordem normal (login → CRUD → testes de segurança), incluindo `FullTest.http`.
+
+> **Atenção — `FullTest.http` tem dois blocos `# @name login_admin`** (um com
+> `john.nobody@email.com`, outro com `admin@saap.com`). O HTTP Client resolve
+> `{{login_admin.response.body.token}}` para a **última** requisição executada com esse nome — o
+> token usado no resto do arquivo acaba sendo o de `admin@saap.com`. Não quebra nada, mas é sutil;
+> ao reescrever o arquivo prefira um `@name` único por login.
+
+### Outros e-mails que aparecem nos arquivos (não precisam existir antes)
+
+Estes são criados pela própria requisição do arquivo em que aparecem, ou são casos de teste
+negativo — **não** devem ser pré-criados:
+
+| E-mail                                                                              | Origem                                                              |
+|--------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| `dr.joao@saap.com`, `dr.joao.jr@saap.com`                                            | Criados por `POST /professionals` dentro de `Professionals.http`     |
+| `joao.pereira@email.com`, `maria.silva@email.com`, `maria.santos@email.com`, `negado@saap.com` | Pacientes criados por `POST /patients` dentro de `Patients.http`/`FullTest.http` |
+| `recepcionista@saap.com`, `recepcionista.atualizado@saap.com`                        | Criado (POST) e depois renomeado (PUT) dentro de `Users.http`        |
+| `incompleto@email.com`, `incompleto@saap.com`                                        | Teste negativo — payload incompleto, espera `400`                    |
+| `nao.existe@email.com`                                                               | Teste negativo — login esperado `401`                                 |
+
+---
+
 ## Convenção de Estrutura de um Arquivo `.http`
 
 Cada arquivo segue este template padrão:
@@ -119,19 +214,6 @@ POST {{baseUrl}}/patients HTTP/1.1
 ```
 
 Isso elimina a necessidade de copiar e colar manualmente IDs e tokens entre as requisições.
-
----
-
-## Usuário de Teste Padrão
-
-| Campo    | Valor                      |
-|----------|----------------------------|
-| E-mail   | `john.nobody@email.com`    |
-| Senha    | `SenhaForte123!`           |
-| Role     | `ADMIN`                    |
-
-> Este usuário foi inserido via seeding no banco de dados local.
-> Para ambientes de teste (Testcontainers), os testes criam seus próprios usuários via `@BeforeEach`.
 
 ---
 

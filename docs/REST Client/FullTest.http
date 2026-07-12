@@ -30,6 +30,8 @@
 @host = {{hostname}}:{{port}}
 @baseUrl = {{host}}/api/v1
 @token = {{login_admin.response.body.token}}
+@id_paciente = {{id_paciente.response.body.content[0].id}}
+@id_profissional = {{id_profissional.response.body.content[0].id}}
 
 
 ### ==============================================================
@@ -47,6 +49,18 @@ Content-Type: application/json
     "password": "SenhaForte123!"
 }
 
+###
+# @name login_admin
+# Esperado: 200 OK com token JWT
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "admin@saap.com",
+    "password": "adminPass123"
+}
+
+
 ### ==============================================================
 ### PASSO 2: Verificar dados criados no banco
 ### ==============================================================
@@ -59,14 +73,16 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
-# Listar profissionais → deve retornar 1 (Dr. Carlos Mendes)
+# Listar profissionais → deve retornar 1
+# @name id_profissional
 # Esperado: 200 OK
 GET {{baseUrl}}/professionals HTTP/1.1
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
-# Listar pacientes → deve retornar 1 (Maria da Silva)
+# Listar pacientes → deve retornar 1
+# @name id_paciente
 # Esperado: 200 OK
 GET {{baseUrl}}/patients HTTP/1.1
 Authorization: Bearer {{token}}
@@ -75,14 +91,14 @@ Content-Type: application/json
 ###
 # Buscar paciente por ID
 # Esperado: 200 OK com dados da Maria
-GET {{baseUrl}}/patients/d34e24f7-839f-4097-8281-1fc58c8a9d28 HTTP/1.1
+GET {{baseUrl}}/patients/{{id_paciente.response.body.content[0].id}} HTTP/1.1
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 # Buscar profissional por ID
 # Esperado: 200 OK com dados do Dr. Carlos
-GET {{baseUrl}}/professionals/5134ffb1-6a1e-4d55-8abb-538ce717cfba HTTP/1.1
+GET {{baseUrl}}/professionals/{{id_profissional.response.body.content[0].id}} HTTP/1.1
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -98,8 +114,8 @@ POST {{baseUrl}}/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "ana.lima@saap.com",
-    "password": "Recepcao123!"
+    "email": "recep@saap.com",
+    "password": "password123"
 }
 
 ###
@@ -110,7 +126,7 @@ POST {{baseUrl}}/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "dr.carlos@saap.com",
+    "email": "dr.pedro@saap.com",
     "password": "Medico123!"
 }
 
@@ -238,8 +254,8 @@ Content-Type: application/json
 
 ###
 @serviceId = {{create_service.response.body.id}}
-@patientId = d34e24f7-839f-4097-8281-1fc58c8a9d28
-@professionalId = 5134ffb1-6a1e-4d55-8abb-538ce717cfba
+@patientId = {{id_paciente.response.body.content[0].id}}
+@professionalId = {{id_profissional.response.body.content[0].id}}
 @appointmentId = {{book_appointment.response.body.id}}
 # Agendar consulta (ADMIN/RECEPTIONIST/PATIENT)
 # Esperado: 201 Created com dados do agendamento e priorityLevel "P1" declarado
